@@ -16,8 +16,8 @@ components:
       simple_aero_model: # Parameters for simple models
         lift_coefficient_reel_out: 0.8
         drag_coefficient_reel_out: 0.1
-        lift_coefficient_reel_in: 0.8
-        drag_coefficient_reel_in: 0.075
+        lift_coefficient_reel_in: 0.1
+        drag_coefficient_reel_in: 0.015
       lift_polynomial:
       drag_polynomial:
       wing_airfoils:

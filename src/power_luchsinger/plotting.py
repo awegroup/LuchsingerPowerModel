@@ -46,8 +46,10 @@ def plot_comprehensive_analysis(
     Example:
         >>> from src.core import PowerModel
         >>> from src.core.plotting import plot_comprehensive_analysis
+        >>> from src.power_luchsinger.power_model import load_wind_shear_profiles
         >>> model = PowerModel(config)
-        >>> data = model.generate_power_curve(numPoints=100)
+        >>> wind_shear_data = load_wind_shear_profiles('data/clustered_profiles_wind_resource.yml')
+        >>> data = model.generate_power_curves_with_shear(wind_shear_data, numPoints=100)['profiles'][0]
         >>> params = {
         ...     'wingArea': model.wingArea,
         ...     'nominalGeneratorPower': model.nominalGeneratorPower,

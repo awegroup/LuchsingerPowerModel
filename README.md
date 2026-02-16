@@ -72,10 +72,12 @@ model = PowerModel.from_yaml('data/100kW_system_example.yml')
 power = model.calculate_power(windSpeed=10.0)
 print(f"Power at 10 m/s: {power:.0f} W")
 
-# Generate complete power curve
-power_curve = model.generate_power_curve(numPoints=100)
-print(f"Wind speeds: {power_curve['windSpeed']}")
-print(f"Power output: {power_curve['power']}")
+# Generate power curves with wind shear profiles
+from src.power_luchsinger.power_model import load_wind_shear_profiles
+
+wind_shear_data = load_wind_shear_profiles('data/clustered_profiles_wind_resource.yml')
+power_curves = model.generate_power_curves_with_shear(wind_shear_data, numPoints=100)
+print(f"Generated {len(power_curves['profiles'])} power curves")
 ```
 
 ### Using with a Custom Configuration Dictionary
@@ -112,7 +114,11 @@ config = {
 }
 
 model = PowerModel(config)
-power_curve = model.generate_power_curve()
+
+# Load wind shear profiles and generate power curves
+from src.power_luchsinger.power_model import load_wind_shear_profiles
+wind_shear_data = load_wind_shear_profiles('data/clustered_profiles_wind_resource.yml')
+power_curves = model.generate_power_curves_with_shear(wind_shear_data)
 ```
 
 ## Configuration Reference
