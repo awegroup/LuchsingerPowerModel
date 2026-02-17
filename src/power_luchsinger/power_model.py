@@ -280,6 +280,7 @@ class PowerModel:
         windSpeeds = np.arange(self.cutInWindSpeed, self.cutOutWindSpeed, 0.1)
 
         self.nominalWindSpeedForce = self.cutOutWindSpeed
+        self.nominalAvgWindSpeedForce = self.cutOutWindSpeed  # Same as reference when no shear
         self.nominalGammaOutForce = 0.33
 
         self.nominalWindSpeedPower = self.cutOutWindSpeed
@@ -303,6 +304,7 @@ class PowerModel:
 
             if tetherForce >= self.nominalTetherForce:
                 self.nominalWindSpeedForce = vw
+                self.nominalAvgWindSpeedForce = vw  # Same as reference when no shear
                 self.nominalGammaOutForce = gammaOut
                 break
 
@@ -311,7 +313,7 @@ class PowerModel:
             if vw <= self.nominalWindSpeedForce:
                 continue
 
-            mu = vw / self.nominalWindSpeedForce
+            mu = vw / self.nominalAvgWindSpeedForce
             gammaOut = (
                 np.cos(self.elevationAngleOut) -
                 (np.cos(self.elevationAngleOut) - self.nominalGammaOutForce) / mu
@@ -350,6 +352,7 @@ class PowerModel:
         windSpeeds = np.arange(self.cutInWindSpeed, self.cutOutWindSpeed, 0.1)
 
         self.nominalWindSpeedForce = self.cutOutWindSpeed
+        self.nominalAvgWindSpeedForce = self.cutOutWindSpeed  # Average wind speed at force limit
         self.nominalGammaOutForce = 0.33
 
         self.nominalWindSpeedPower = self.cutOutWindSpeed
@@ -384,6 +387,7 @@ class PowerModel:
 
             if tetherForce >= self.nominalTetherForce:
                 self.nominalWindSpeedForce = vw
+                self.nominalAvgWindSpeedForce = avgWindSpeed  # Store average wind speed
                 self.nominalGammaOutForce = gammaOut
                 break
 
@@ -397,7 +401,7 @@ class PowerModel:
             )
             avgWindSpeed = np.mean(windSpeedsOut)
             
-            mu = avgWindSpeed / self.nominalWindSpeedForce
+            mu = avgWindSpeed / self.nominalAvgWindSpeedForce  # Use average wind speed
             gammaOut = (
                 np.cos(self.elevationAngleOut) -
                 (np.cos(self.elevationAngleOut) - self.nominalGammaOutForce) / mu
@@ -766,7 +770,9 @@ class PowerModel:
             windSpeedsOut = None
             windSpeedsIn = None
         
-        mu = avgWindSpeedOut / self.nominalWindSpeedForce
+        # Use average wind speed for mu calculation (accounts for wind shear)
+        nominalAvgWind = getattr(self, 'nominalAvgWindSpeedForce', self.nominalWindSpeedForce)
+        mu = avgWindSpeedOut / nominalAvgWind
         gammaInMax = self.reelInSpeedLimit / avgWindSpeedIn
 
         gammaOut = (
@@ -779,14 +785,35 @@ class PowerModel:
         vIn = avgWindSpeedIn * gammaIn
 
         # Calculate with segmentation if wind profile provided
-        if windSpeedsIn is not None:
+        if windSpeedsOut is not None and windSpeedsIn is not None:
             segment_length = self.reelingLength / n_segments
             
-            # Reel-out phase: force-limited (constant force)
-            tetherForceOut = self.nominalTetherForce
+            # Reel-out phase: force-limited (constant reel-out speed)
+            # Calculate actual forces per segment with varying wind speeds
+            energyOut = 0.0
+            totalForceOut = 0.0
             timeOut = self.reelingLength / vOut if vOut > 0 else float('inf')
-            mechPowerOut = tetherForceOut * vOut
-            energyOut = mechPowerOut * timeOut
+            
+            for ws in windSpeedsOut:
+                # Calculate tether force for this segment
+                # gammaOut is constant (vOut / avgWindSpeedOut), but local gamma varies
+                gammaOut_local = vOut / ws
+                force = calculate_tether_force_out(
+                    airDensity, ws, self.wingArea,
+                    gammaOut_local, self.elevationAngleOut, self.forceFactorOut
+                )
+                totalForceOut += force
+                
+                # Mechanical power in this segment
+                mechPower = force * vOut
+                
+                # Time in this segment (same for all segments since vOut is constant)
+                time_segment = segment_length / vOut if vOut > 0 else float('inf')
+                
+                # Energy generated in this segment
+                energyOut += mechPower * time_segment
+            
+            tetherForceOut = totalForceOut / n_segments
             
             # Reel-in phase: calculate energy for each segment
             energyIn = 0.0
