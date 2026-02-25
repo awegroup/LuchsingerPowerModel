@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_comprehensive_analysis(
-    data: Dict[str, np.ndarray],
+    data: Dict,
     model_params: Optional[Dict] = None,
     save_path: Optional[str] = None,
     show: bool = True
@@ -29,10 +29,9 @@ def plot_comprehensive_analysis(
     - Energy per cycle (reel-out, reel-in, net)
 
     Args:
-        data (Dict[str, np.ndarray]): Dictionary with power curve data arrays.
-            Must contain: windSpeed, power, reelOutPower, reelInPower,
-            reelOutTime, reelInTime, tetherForceOut, tetherForceIn,
-            reelOutSpeed, reelInSpeed, gammaOut, gammaIn
+        data (Dict): Full power curve data dict returned by
+            ``generate_power_curves_with_shear``, containing a 'profiles'
+            list. The first profile is used for plotting.
         model_params (Dict, optional): Model parameters for annotations.
             Can include: wingArea, nominalGeneratorPower, nominalTetherForce,
             nominalWindSpeedForce, nominalWindSpeedPower, cutOutWindSpeed,
@@ -42,27 +41,24 @@ def plot_comprehensive_analysis(
 
     Returns:
         plt.Figure: The created figure object.
-
-    Example:
-        >>> from src.core import PowerModel
-        >>> from src.core.plotting import plot_comprehensive_analysis
-        >>> from src.power_luchsinger.power_model import load_wind_shear_profiles
-        >>> model = PowerModel(config)
-        >>> wind_shear_data = load_wind_shear_profiles('data/clustered_profiles_wind_resource.yml')
-        >>> data = model.generate_power_curves_with_shear(wind_shear_data, numPoints=100)['profiles'][0]
-        >>> params = {
-        ...     'wingArea': model.wingArea,
-        ...     'nominalGeneratorPower': model.nominalGeneratorPower,
-        ...     'nominalTetherForce': model.nominalTetherForce,
-        ...     'nominalWindSpeedForce': model.nominalWindSpeedForce,
-        ...     'nominalWindSpeedPower': model.nominalWindSpeedPower,
-        ...     'cutOutWindSpeed': model.cutOutWindSpeed,
-        ...     'elevationAngleOut': model.elevationAngleOut,
-        ...     'elevationAngleIn': model.elevationAngleIn,
-        ... }
-        >>> fig = plot_comprehensive_analysis(data, params)
     """
-    windSpeed = data['windSpeed']
+    # Extract first profile and map keys to plot-friendly names
+    profile = data['profiles'][0]
+    plot = {
+        'windSpeed': profile['windSpeedAtOp'],
+        'power': profile['power'],
+        'reelOutPower': profile['reelOutPower'],
+        'reelInPower': profile['reelInPower'],
+        'reelOutTime': profile['reelOutTime'],
+        'reelInTime': profile['reelInTime'],
+        'tetherForceOut': profile['tetherForceOut'],
+        'tetherForceIn': profile['tetherForceIn'],
+        'reelOutSpeed': profile['reelOutSpeed'],
+        'reelInSpeed': profile['reelInSpeed'],
+        'gammaOut': profile['gammaOut'],
+        'gammaIn': profile['gammaIn'],
+    }
+    windSpeed = plot['windSpeed']
     
     # Create figure with subplots (4 rows, 2 columns)
     fig = plt.figure(figsize=(16, 14))
@@ -70,10 +66,10 @@ def plot_comprehensive_analysis(
     
     # Subplot 1: Power curves
     ax1 = fig.add_subplot(gs[0, 0])
-    ax1.plot(windSpeed, data['power']/1000, 'b-', linewidth=2.5, label='Net Cycle Power')
-    ax1.plot(windSpeed, data['reelOutPower']/1000, 'g--', linewidth=1.5, alpha=0.7, label='Reel-Out Power')
-    ax1.plot(windSpeed, data['reelInPower']/1000, 'r--', linewidth=1.5, alpha=0.7, label='Reel-In Power')
-    ax1.fill_between(windSpeed, 0, data['power']/1000, alpha=0.2, color='blue')
+    ax1.plot(windSpeed, plot['power']/1000, 'b-', linewidth=2.5, label='Net Cycle Power')
+    ax1.plot(windSpeed, plot['reelOutPower']/1000, 'g--', linewidth=1.5, alpha=0.7, label='Reel-Out Power')
+    ax1.plot(windSpeed, plot['reelInPower']/1000, 'r--', linewidth=1.5, alpha=0.7, label='Reel-In Power')
+    ax1.fill_between(windSpeed, 0, plot['power']/1000, alpha=0.2, color='blue')
     
     if model_params:
         if 'nominalGeneratorPower' in model_params:
@@ -95,10 +91,10 @@ def plot_comprehensive_analysis(
     
     # Subplot 2: Cycle times
     ax2 = fig.add_subplot(gs[0, 1])
-    cycleTime = data['reelOutTime'] + data['reelInTime']
+    cycleTime = plot['reelOutTime'] + plot['reelInTime']
     ax2.plot(windSpeed, cycleTime, 'k-', linewidth=2.5, label='Total Cycle Time')
-    ax2.plot(windSpeed, data['reelOutTime'], 'g--', linewidth=1.5, alpha=0.7, label='Reel-Out Time')
-    ax2.plot(windSpeed, data['reelInTime'], 'r--', linewidth=1.5, alpha=0.7, label='Reel-In Time')
+    ax2.plot(windSpeed, plot['reelOutTime'], 'g--', linewidth=1.5, alpha=0.7, label='Reel-Out Time')
+    ax2.plot(windSpeed, plot['reelInTime'], 'r--', linewidth=1.5, alpha=0.7, label='Reel-In Time')
     
     if model_params:
         if 'nominalWindSpeedForce' in model_params:
@@ -117,8 +113,8 @@ def plot_comprehensive_analysis(
     
     # Subplot 3: Tether forces
     ax3 = fig.add_subplot(gs[1, 0])
-    ax3.plot(windSpeed, data['tetherForceOut']/1000, 'g-', linewidth=2, label='Reel-Out Force')
-    ax3.plot(windSpeed, data['tetherForceIn']/1000, 'r-', linewidth=2, label='Reel-In Force')
+    ax3.plot(windSpeed, plot['tetherForceOut']/1000, 'g-', linewidth=2, label='Reel-Out Force')
+    ax3.plot(windSpeed, plot['tetherForceIn']/1000, 'r-', linewidth=2, label='Reel-In Force')
     
     if model_params:
         if 'nominalTetherForce' in model_params:
@@ -142,8 +138,8 @@ def plot_comprehensive_analysis(
     ax4 = fig.add_subplot(gs[1, 1])
     ax4_twin = ax4.twinx()
     
-    l1 = ax4.plot(windSpeed, data['reelOutSpeed'], 'g-', linewidth=2, label='Reel-Out Speed')
-    l2 = ax4.plot(windSpeed, data['reelInSpeed'], 'r-', linewidth=2, label='Reel-In Speed')
+    l1 = ax4.plot(windSpeed, plot['reelOutSpeed'], 'g-', linewidth=2, label='Reel-Out Speed')
+    l2 = ax4.plot(windSpeed, plot['reelInSpeed'], 'r-', linewidth=2, label='Reel-In Speed')
     
     if model_params:
         if 'nominalWindSpeedForce' in model_params:
@@ -181,12 +177,12 @@ def plot_comprehensive_analysis(
     
     # Subplot 5: Energy per cycle
     ax5 = fig.add_subplot(gs[2, 0])
-    
+
     # Calculate energies (power * time)
-    energyOut = data['reelOutPower'] * data['reelOutTime'] / 3600000  # Convert to kWh
-    energyIn = data['reelInPower'] * data['reelInTime'] / 3600000      # Convert to kWh
-    cycleEnergy = data['power'] * (data['reelOutTime'] + data['reelInTime']) / 3600000  # kWh
-    
+    energyOut = plot['reelOutPower'] * plot['reelOutTime'] / 3600000  # Convert to kWh
+    energyIn = plot['reelInPower'] * plot['reelInTime'] / 3600000      # Convert to kWh
+    cycleEnergy = plot['power'] * (plot['reelOutTime'] + plot['reelInTime']) / 3600000  # kWh
+
     ax5.plot(windSpeed, energyOut, 'g-', linewidth=2.5, label='Reel-Out Energy')
     ax5.plot(windSpeed, energyIn, 'r-', linewidth=2.5, label='Reel-In Energy')
     ax5.plot(windSpeed, cycleEnergy, 'b-', linewidth=2.5, label='Net Cycle Energy')
@@ -209,8 +205,8 @@ def plot_comprehensive_analysis(
     
     # Subplot 6: Reeling factors (gamma) - spans bottom
     ax6 = fig.add_subplot(gs[2, 1])
-    ax6.plot(windSpeed, data['gammaOut'], 'g-', linewidth=2.5, label='Reel-Out Factor (γ_out)')
-    ax6.plot(windSpeed, data['gammaIn'], 'r-', linewidth=2.5, label='Reel-In Factor (γ_in)')
+    ax6.plot(windSpeed, plot['gammaOut'], 'g-', linewidth=2.5, label='Reel-Out Factor (γ_out)')
+    ax6.plot(windSpeed, plot['gammaIn'], 'r-', linewidth=2.5, label='Reel-In Factor (γ_in)')
     
     if model_params:
         if 'nominalWindSpeedForce' in model_params:

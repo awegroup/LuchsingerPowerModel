@@ -905,22 +905,33 @@ class PowerModel:
 
     def generate_power_curves_with_shear(
         self,
-        wind_shear_data: Dict[str, Any],
-        numPoints: int = 100
+        numPoints: int = 100,
+        output_path: Path = None,
+        verbose: bool = False,
+        show_plot: bool = False,
+        save_plot: bool = False,
+        validate_file: bool = True,
     ) -> Dict[str, Any]:
         """Generate power curves for multiple wind shear profiles.
-        
-        Calculates power curves for each wind profile/cluster in the wind
-        shear data. Wind speeds at reference height are converted to wind
-        speeds at operational altitude using the profile.
-        
+
+        Calculates power curves for each wind profile/cluster stored in
+        ``self.wind_resource``.  Optionally exports results in awesIO
+        format, prints a summary, and creates a comprehensive plot.
+
         Args:
-            wind_shear_data: Dictionary from load_wind_shear_profiles() with:
-                - 'profiles': List of wind profile dicts
-                - 'altitudes': Array of altitudes
-                - 'reference_height_m': Reference height
-            numPoints: Number of reference wind speed points.
-            
+            numPoints (int): Number of reference wind speed points.
+                Defaults to 100.
+            output_path (Path): If given, export power curves to this YAML
+                file in awesIO format.
+            verbose (bool): If True, print a summary of the results.
+                Defaults to False.
+            show_plot (bool): If True, display the comprehensive analysis
+                plot. Defaults to False.
+            save_plot (bool): If True, save the plot next to *output_path*
+                (or in ``results/``). Defaults to False.
+            validate_file (bool): If True, validate the exported YAML
+                against the awesIO schema. Defaults to True.
+
         Returns:
             Dict with:
                 - 'reference_height_m': Reference altitude for wind speeds
@@ -932,30 +943,33 @@ class PowerModel:
                     - 'power': Cycle power (W)
                     - ... other power curve variables
         """
+        wind_shear_data = self.wind_resource
         reference_height_m = wind_shear_data['reference_height_m']
         profiles = wind_shear_data['profiles']
-        
+
         # Wind speeds at reference height
         windSpeedsAtRef = np.linspace(
             self.cutInWindSpeed,
             self.cutOutWindSpeed,
             numPoints
         )
-        
+
         power_curves = []
-        
+
         for profile_data in profiles:
             profile_id = profile_data['id']
-            
+
             # Prepare wind profile for interpolation
             wind_profile = {
                 'altitudes': wind_shear_data['altitudes'],
                 'u_normalized': profile_data['u_normalized']
             }
-            
+
             # Recompute nominal wind speeds with this wind profile
-            self._compute_nominal_wind_speeds_with_shear(wind_profile, reference_height_m)
-            
+            self._compute_nominal_wind_speeds_with_shear(
+                wind_profile, reference_height_m
+            )
+
             # Calculate wind speeds at operational altitude (for reporting)
             windSpeedsAtOp = np.array([
                 self.get_wind_speed_at_operational_altitude(
@@ -963,17 +977,17 @@ class PowerModel:
                 )
                 for ws_ref in windSpeedsAtRef
             ])
-            
+
             # Calculate power using reference wind speed and wind profile
             results = [
                 self.calculate_power(
-                    ws_ref, 
-                    wind_profile=wind_profile, 
+                    ws_ref,
+                    wind_profile=wind_profile,
                     reference_height_m=reference_height_m
                 )
                 for ws_ref in windSpeedsAtRef
             ]
-            
+
             # Collect results for this profile
             profile_curve = {
                 'profile_id': profile_id,
@@ -993,15 +1007,107 @@ class PowerModel:
                 'gammaOut': np.array([r['gammaOut'] for r in results]),
                 'gammaIn': np.array([r['gammaIn'] for r in results]),
             }
-            
+
             power_curves.append(profile_curve)
-        
-        return {
+
+        data = {
             'reference_height_m': reference_height_m,
             'operational_altitude_m': self.operationalAltitude,
             'altitudes': wind_shear_data['altitudes'],
             'profiles': power_curves
         }
+
+        # Print summary
+        if verbose:
+            self._print_summary(data)
+
+        # Export to awesIO YAML
+        if output_path is not None:
+            self.export_power_curves_awesio(
+                data, output_path, file_validate=validate_file
+            )
+            if verbose:
+                print(f"\nExported power curves to: {output_path}")
+
+        # Plot
+        if show_plot or save_plot:
+            from src.power_luchsinger.plotting import (
+                plot_comprehensive_analysis,
+                extract_model_params,
+            )
+            save_path = None
+            if save_plot and output_path is not None:
+                save_path = str(
+                    output_path.parent / "power_curve_analysis.png"
+                )
+            elif save_plot:
+                save_path = "results/power_curve_analysis.png"
+
+            plot_comprehensive_analysis(
+                data, extract_model_params(self),
+                save_path=save_path,
+                show=show_plot,
+            )
+            if verbose and save_path:
+                print(f"Plot saved to: {save_path}")
+
+        return data
+
+    def _print_summary(self, data: Dict[str, Any]) -> None:
+        """Print a summary of the power curve calculation.
+
+        Args:
+            data (dict): Power curve data from generate_power_curves_with_shear.
+        """
+        profiles = data['profiles']
+        n_profiles = len(profiles)
+
+        print("\n" + "=" * 60)
+        print("POWER CURVE SUMMARY WITH WIND SHEAR")
+        print("=" * 60)
+        print(f"\nSystem Parameters:")
+        print(f"  Wing Area:              {self.wingArea:.1f} m²")
+        print(f"  Air Density:            {self.airDensity:.3f} kg/m³")
+        print(f"  Nominal Tether Force:   {self.nominalTetherForce:.0f} N")
+        print(f"  Nominal Generator Power:{self.nominalGeneratorPower/1000:.1f} kW")
+        print(f"  Tether Length:          {self.tetherMinLength:.0f}"
+              f" - {self.tetherMaxLength:.0f} m")
+
+        print(f"\nOperational Envelope:")
+        print(f"  Cut-in Wind Speed:      {self.cutInWindSpeed:.1f} m/s"
+              f" (at reference height)")
+        print(f"  Cut-out Wind Speed:     {self.cutOutWindSpeed:.1f} m/s"
+              f" (at reference height)")
+        print(f"  Force Limit Wind Speed: "
+              f"{self.nominalWindSpeedForce:.1f} m/s")
+        print(f"  Power Limit Wind Speed: "
+              f"{self.nominalWindSpeedPower:.1f} m/s")
+
+        print(f"\nWind Shear Configuration:")
+        print(f"  Reference Height:       "
+              f"{data['reference_height_m']:.1f} m")
+        print(f"  Operational Altitude:   "
+              f"{data['operational_altitude_m']:.1f} m")
+        print(f"  Number of Profiles:     {n_profiles}")
+
+        print(f"\nPower Statistics Across Profiles:")
+        for profile in profiles:
+            power = profile['power']
+            windSpeedRef = profile['windSpeedAtRef']
+            windSpeedOp = profile['windSpeedAtOp']
+            profile_id = profile['profile_id']
+
+            max_power = np.max(power)
+            idx_max = np.argmax(power)
+
+            print(f"\n  Profile {profile_id}:")
+            print(f"    Max Power:            {max_power/1000:.2f} kW")
+            print(f"    Wind Speed at Max:    {windSpeedRef[idx_max]:.1f}"
+                  f" m/s (ref), {windSpeedOp[idx_max]:.1f} m/s (op)")
+            print(f"    Avg Speed Ratio:      "
+                  f"{np.mean(windSpeedOp/windSpeedRef):.3f}")
+
+        print("=" * 60)
 
     def export_power_curves_awesio(
         self,
