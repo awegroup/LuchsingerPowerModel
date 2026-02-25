@@ -15,7 +15,6 @@ if str(workspace_root) not in sys.path:
     sys.path.insert(0, str(workspace_root))
 
 from src.power_luchsinger import PowerModel
-from src.power_luchsinger.power_model import load_wind_shear_profiles
 from src.power_luchsinger.plotting import plot_comprehensive_analysis, extract_model_params
 
 
@@ -76,35 +75,25 @@ def main():
     simulationSettingsPath = workspace_root / 'data' / 'simulation_settings_config.yml'
     windResourcePath = workspace_root / 'data' / 'clustered_profiles_wind_resource.yml'
 
-    if not systemConfigPath.exists():
-        print(f"Error: System config file not found: {systemConfigPath}")
-        sys.exit(1)
-
-    if not simulationSettingsPath.exists():
-        print(f"Error: Simulation settings file not found: {simulationSettingsPath}")
-        sys.exit(1)
-    
-    if not windResourcePath.exists():
-        print(f"Error: Wind resource file not found: {windResourcePath}")
-        sys.exit(1)
-
     print(f"Loading system configuration from: {systemConfigPath}")
     print(f"Loading simulation settings from: {simulationSettingsPath}")
     print(f"Loading wind resource profiles from: {windResourcePath}")
 
-    # Load power model with awesIO validation
-    model = PowerModel.from_yaml(
-        systemConfigPath,
-        simulationSettingsPath=simulationSettingsPath,
-        validate=True
+    # Load power model (all YAML loading handled internally via config_loader)
+    model = PowerModel(
+        system_config_path=systemConfigPath,
+        wind_resource_path=windResourcePath,
+        simulation_settings_path=simulationSettingsPath,
+        validate_file=True,
     )
-    
-    # Load wind shear profiles
-    print(f"\nLoading wind shear profiles...")
-    wind_shear_data = load_wind_shear_profiles(windResourcePath)
-    print(f"  Loaded {wind_shear_data['n_clusters']} wind profiles")
+
+    # Wind resource is already loaded in model
+    wind_shear_data = model.wind_resource
+    print(f"\nWind shear profiles loaded:")
+    print(f"  {wind_shear_data['n_clusters']} wind profiles")
     print(f"  Reference height: {wind_shear_data['reference_height_m']} m")
-    print(f"  Altitude range: {wind_shear_data['altitudes'][0]} - {wind_shear_data['altitudes'][-1]} m")
+    print(f"  Altitude range: {wind_shear_data['altitudes'][0]}"
+          f" - {wind_shear_data['altitudes'][-1]} m")
 
     # Generate power curves with wind shear (500 points)
     print(f"\nCalculating power curves with wind shear (500 points per profile)...")
@@ -125,6 +114,7 @@ def main():
         name="Luchsinger Model Power Curves with Wind Shear",
         description="Power curves for 100kW soft kite pumping ground-gen AWE system with wind shear profiles",
         note="Generated using Luchsinger pumping cycle model with 8 representative wind shear profiles",
+        file_validate=True
     )
 
     # For plotting, use the first profile as representative

@@ -6,16 +6,8 @@ metadata:
     shear profiles
   awesIO_version: 0.1.0
   schema: power_curves_schema.yml
-  time_created: '2026-02-13T11:49:50.676115'
+  time_created: '2026-02-26T00:29:22.537235'
   reference_height_m: 100.0
-  model_config:
-    wing_area_m2: 60.0
-    nominal_power_w: 150000.0
-    nominal_tether_force_n: 42000.0
-    cut_in_wind_speed_m_s: 4.0
-    cut_out_wind_speed_m_s: 25.0
-    operating_altitude_m: 124.99999999999999
-    tether_length_operational_m: 250.0
 altitudes_m:
 - 0.0
 - 10.0

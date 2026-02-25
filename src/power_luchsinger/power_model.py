@@ -18,13 +18,6 @@ import numpy as np
 import yaml
 from scipy import optimize as op
 
-try:
-    from awesio.validator import validate as awesio_validate
-    AWESIO_AVAILABLE = True
-except ImportError:
-    AWESIO_AVAILABLE = False
-    awesio_validate = None
-
 from src.power_luchsinger.calculations import (
     calculate_force_factor_out,
     calculate_force_factor_in,
@@ -32,82 +25,14 @@ from src.power_luchsinger.calculations import (
     calculate_tether_force_in,
     calculate_cycle_results
 )
+from src.power_luchsinger.config_loader import (
+    load_system_config,
+    load_wind_resource,
+    load_simulation_settings,
+)
 
 # Configure logger
 logger = logging.getLogger(__name__)
-
-
-def load_wind_shear_profiles(wind_resource_path: Path) -> Dict[str, Any]:
-    """Load wind shear profiles from awesIO wind resource YAML file.
-    
-    Extracts normalized wind profiles for each cluster, which represent
-    different atmospheric conditions and shear characteristics.
-    
-    Args:
-        wind_resource_path: Path to wind resource YAML file.
-        
-    Returns:
-        Dict containing:
-            - 'altitudes': Array of altitudes in meters
-            - 'reference_height_m': Reference altitude where normalized profiles = 1.0
-            - 'profiles': List of dicts, each with:
-                - 'id': Profile/cluster ID
-                - 'u_normalized': Normalized horizontal wind speed profile
-                - 'v_normalized': Normalized vertical wind speed profile
-            - 'n_clusters': Number of profiles/clusters
-            
-    Raises:
-        FileNotFoundError: If wind resource file not found.
-        ValueError: If required keys are missing from the file.
-    """
-    if not wind_resource_path.exists():
-        raise FileNotFoundError(f"Wind resource file not found: {wind_resource_path}")
-    
-    with open(wind_resource_path, 'r') as f:
-        data = yaml.safe_load(f)
-    
-    # Extract metadata
-    metadata = data.get('metadata', {})
-    n_clusters = metadata.get('n_clusters')
-    reference_height_m = metadata.get('reference_height_m')
-    
-    if n_clusters is None:
-        raise ValueError("'n_clusters' not found in wind resource metadata")
-    if reference_height_m is None:
-        raise ValueError("'reference_height_m' not found in wind resource metadata")
-    
-    # Extract altitudes
-    altitudes = np.array(data.get('altitudes', []))
-    if len(altitudes) == 0:
-        raise ValueError("'altitudes' array is empty or missing")
-    
-    # Extract clusters/profiles
-    clusters = data.get('clusters', [])
-    if len(clusters) != n_clusters:
-        raise ValueError(f"Expected {n_clusters} clusters, found {len(clusters)}")
-    
-    profiles = []
-    for cluster in clusters:
-        profile = {
-            'id': cluster.get('id'),
-            'u_normalized': np.array(cluster.get('u_normalized', [])),
-            'v_normalized': np.array(cluster.get('v_normalized', []))
-        }
-        
-        # Validate profile data
-        if len(profile['u_normalized']) != len(altitudes):
-            raise ValueError(f"Profile {profile['id']}: u_normalized length mismatch")
-        if len(profile['v_normalized']) != len(altitudes):
-            raise ValueError(f"Profile {profile['id']}: v_normalized length mismatch")
-        
-        profiles.append(profile)
-    
-    return {
-        'altitudes': altitudes,
-        'reference_height_m': reference_height_m,
-        'profiles': profiles,
-        'n_clusters': n_clusters
-    }
 
 
 class PowerModel:
@@ -121,38 +46,52 @@ class PowerModel:
     """
 
 
-    def __init__(self, config: Dict[str, Any], simulation_settings: Dict[str, Any] = None):
-        """Initialize power model with configuration parameters.
+    def __init__(
+        self,
+        system_config_path,
+        wind_resource_path,
+        simulation_settings_path,
+        validate_file=True,
+    ):
+        """Initialize the power model with configuration files.
 
         Args:
-            config: Dictionary containing model parameters (legacy format)
-                or awesIO system configuration.
-            simulation_settings: Optional simulation settings dictionary
-                for awesIO format configs. If None, default values will be used.
+            system_config_path (str or Path): Path to system configuration
+                YAML file.
+            wind_resource_path (str or Path): Path to wind resource YAML file.
+            simulation_settings_path (str or Path): Path to simulation
+                settings YAML file.
+            validate_file (bool): If True, validate YAML files against the
+                awesIO schema. Defaults to True.
 
         Raises:
             ValueError: If required configuration keys are missing.
             ValueError: If parameter values are physically invalid.
         """
-        self.config = config
-        
-        # Use default simulation settings if none provided
-        if simulation_settings is None:
-            logger.warning(
-                "No simulation settings provided. Using default values: "
-                f"{self._get_default_simulation_settings()}"
-            )
-            self.simulation_settings = self._get_default_simulation_settings()
-        else:
-            self.simulation_settings = simulation_settings
+        self.system_config_path = Path(system_config_path)
+        self.wind_resource_path = Path(wind_resource_path)
+        self.simulation_settings_path = Path(simulation_settings_path)
 
-        # Extract parameters (handles both legacy and awesIO formats)
-        self._extract_parameters()
+        # Load simulation settings first (needed by load_system_config)
+        self.simulation_settings = load_simulation_settings(
+            self.simulation_settings_path
+        )
+        self.wind_resource = load_wind_resource(
+            self.wind_resource_path, validate_file=validate_file
+        )
 
-        # Then validate physical constraints
+        # Load and extract all model parameters from system config
+        for key, value in load_system_config(
+            self.system_config_path,
+            self.simulation_settings,
+            validate_file=validate_file,
+        ).items():
+            setattr(self, key, value)
+
+        # Validate physical constraints
         self._validate_physical_constraints()
 
-        # Finally compute derived parameters
+        # Compute derived parameters
         self._compute_derived_parameters()
 
     def _validate_physical_constraints(self) -> None:
@@ -181,73 +120,6 @@ class PowerModel:
 
         if self.cutInWindSpeed >= self.cutOutWindSpeed:
             raise ValueError("Cut-in wind speed must be less than cut-out")
-
-    @staticmethod
-    def _get_default_simulation_settings() -> Dict[str, Any]:
-        """Get default simulation settings.
-        
-        Returns:
-            Dictionary with default operational and atmosphere parameters.
-        """
-        return {
-            'operational': {
-                'cut_in_wind_speed_m_s': 4.0,
-                'cut_out_wind_speed_m_s': 25.0,
-                'elevation_angle_out_deg': 30.0,
-                'elevation_angle_in_deg': 45.0,
-                'minimum_tether_length_m': 100.0,
-            },
-            'atmosphere': {
-                'air_density_kg_m3': 1.225,
-            }
-        }
-
-    def _extract_parameters(self) -> None:
-        """Extract parameters directly from awesIO format config."""
-        components = self.config.get('components', {})
-
-        # Extract operational and atmosphere parameters from simulation settings
-        operational = self.simulation_settings.get('operational', {})
-        atmosphere = self.simulation_settings.get('atmosphere', {})
-        
-        # Extract operational parameters
-        self.cutInWindSpeed = operational.get('cut_in_wind_speed_m_s')
-        self.cutOutWindSpeed = operational.get('cut_out_wind_speed_m_s')
-        self.elevationAngleOut = np.radians(operational.get('elevation_angle_out_deg'))
-        self.elevationAngleIn = np.radians(operational.get('elevation_angle_in_deg'))
-        self.tetherMinLength = operational.get('minimum_tether_length_m')
-
-        # Extract atmosphere parameters
-        self.airDensity = atmosphere.get('air_density_kg_m3')
-
-        # Extract wing parameters
-        wing = components.get('wing', {})
-        wing_structure = wing.get('structure', {})
-        wing_aero = wing.get('aerodynamics', {}).get('simple_aero_model', {})
-        
-        self.wingArea = wing_structure.get('projected_surface_area_m2')
-        self.liftCoefficientOut = wing_aero.get('lift_coefficient_reel_out')
-        self.dragCoefficientKiteOut = wing_aero.get('drag_coefficient_reel_out')
-        self.dragCoefficientKiteIn = wing_aero.get('drag_coefficient_reel_in')
-
-        # Extract tether parameters
-        tether = components.get('tether', {})
-        tether_structure = tether.get('structure', {})       
-        self.tetherMaxLength = tether_structure.get('length_m')
-
-
-        # Extract ground station parameters
-        ground_station = components.get('ground_station', {})
-        drum = ground_station.get('drum', {})
-        generator = ground_station.get('generator', {})
-        storage = ground_station.get('storage', {})
-        self.reelOutSpeedLimit = drum.get('max_tether_speed_m_s')
-        self.reelInSpeedLimit = drum.get('max_tether_speed_m_s')
-        self.nominalTetherForce = drum.get('max_tether_force_n') or tether_structure.get('max_tether_force_n')
-        self.nominalGeneratorPower = generator.get('rated_power_kw', 0) * 1000  # kW to W
-        self.generatorEfficiency = generator.get('efficiency')
-        self.storageEfficiency = storage.get('efficiency')
-
 
     def _compute_derived_parameters(self) -> None:
         """Compute derived parameters from base configuration."""
@@ -1131,70 +1003,6 @@ class PowerModel:
             'profiles': power_curves
         }
 
-    @classmethod
-    def from_yaml(
-        cls,
-        yamlPath: Path,
-        simulationSettingsPath: Path = None,
-        validate: bool = True
-    ) -> 'PowerModel':
-        """Load configuration from YAML file and create model instance.
-
-        Supports both legacy format and awesIO format configuration files.
-        If the file is in awesIO format, it will be validated before use.
-
-        Args:
-            yamlPath: Path to system YAML configuration file.
-            simulationSettingsPath: Path to simulation settings YAML file
-                containing operational and atmosphere parameters.
-                Required for awesIO format system configs.
-            validate: Whether to validate awesIO format files. Defaults to True.
-
-        Returns:
-            PowerModel: Initialized power model instance.
-
-        Raises:
-            FileNotFoundError: If YAML file doesn't exist.
-            ValueError: If YAML contains invalid configuration.
-            Exception: If awesIO validation fails.
-        """
-        yamlPath = Path(yamlPath)
-
-        if not yamlPath.exists():
-            raise FileNotFoundError(f"Configuration file not found: {yamlPath}")
-
-        with open(yamlPath, 'r') as f:
-            config = yaml.safe_load(f)
-
-        # Load simulation settings if provided
-        simulation_settings = None
-        if simulationSettingsPath is not None:
-            simulationSettingsPath = Path(simulationSettingsPath)
-            if not simulationSettingsPath.exists():
-                raise FileNotFoundError(
-                    f"Simulation settings file not found: {simulationSettingsPath}"
-                )
-            with open(simulationSettingsPath, 'r') as f:
-                simulation_settings = yaml.safe_load(f)
-            print(f"Loaded simulation settings from: {simulationSettingsPath.name}")
-
-        # Validate using awesIO validator (if schema exists and awesIO is available)
-        if validate and AWESIO_AVAILABLE:
-            try:
-                awesio_validate(
-                    input=yamlPath,
-                    restrictive=False,
-                    defaults=False,
-                )
-                print(f"  ✓ {yamlPath.name} validated against system_schema")
-            except FileNotFoundError:
-                print(f"  Note: system_schema not available, skipping validation")
-        elif validate and not AWESIO_AVAILABLE:
-            print(f"  Note: awesIO not available, skipping validation")
-
-        # Create model with awesIO config and simulation settings
-        return cls(config, simulation_settings)
-
     def export_power_curves_awesio(
         self,
         data: Dict[str, Any],
@@ -1202,7 +1010,7 @@ class PowerModel:
         name: str = "Luchsinger Power Curves with Wind Shear",
         description: str = "Power curves for pumping ground-gen AWE system with wind shear",
         note: str = "Power curve data generated from Luchsinger model with wind shear profiles",
-        validate: bool = True,
+        file_validate: bool = True,
     ) -> None:
         """Export power curve data with wind shear profiles in awesIO format.
 
@@ -1212,7 +1020,7 @@ class PowerModel:
             name: Name for the power curves dataset.
             description: Description of the power curves.
             note: Additional notes about the data.
-            validate: Whether to validate the output file. Defaults to True.
+            file_validate: Whether to validate the output file. Defaults to True.
         """
         output_path = Path(output_path)
 
@@ -1268,12 +1076,12 @@ class PowerModel:
             yaml.dump(output, f, default_flow_style=False, sort_keys=False)
 
         # Validate output if requested and awesIO is available
-        if validate and AWESIO_AVAILABLE:
-            awesio_validate(
-                input=output_path,
-                restrictive=False,
-                defaults=False,
-            )
-            print(f"  ✓ Output validated against power_curves_schema")
-        elif validate and not AWESIO_AVAILABLE:
-            print(f"  Note: awesIO not available, skipping output validation")
+        if file_validate:
+            try:
+                from awesio.validator import validate as awesio_validate
+                awesio_validate(input=output_path)
+                print(f"  ✓ {output_path.name} validated against system_schema")
+            except ImportError:
+                print("  awesIO not installed; skipping validation.")
+            except Exception as e:
+                print(f"  Validation failed: {e}")
