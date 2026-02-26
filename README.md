@@ -1,8 +1,6 @@
 # Luchsinger Power Model
 
-A simple, configurable power model for pumping kite airborne wind energy (AWE) systems based on the Luchsinger model.
-
-It takes an awesIO system YAML file and a simulation settings YAML file as input.
+A configurable power model for pumping kite airborne wind energy (AWE) systems based on the Luchsinger model. Takes awesIO-format YAML configuration files as input and always computes power curves using segmented wind shear profiles.
 
 ## Overview
 
@@ -11,23 +9,22 @@ This repository provides a standalone power model for AWE pumping kite systems. 
 - Aerodynamic forces on the kite
 - Ground station generator and storage efficiency losses
 - Optimal reeling velocity control
-- Three operating regions (force-limited, power-limited)
+- Wind shear along the tether deployment using segmented calculations
+- Three operating regions (below force limit, force-limited, power-limited)
 
 ## Purpose
 
 This repository is designed to be:
 
-1. **Tested/Used locally** using the scripts in the `scripts/` folder with configuration from `data/`
-2. **Integrated into a larger toolchain** where configuration values are set externally and passed to the `PowerModel` class
-
-When used as part of another toolchain, the wrapper code can create a configuration dictionary programmatically, bypassing the YAML files entirely.
+1. **Used locally** via the scripts in `scripts/` with configuration from `data/`
+2. **Integrated into a larger toolchain** where `PowerModel` is instantiated directly with paths to awesIO YAML files
 
 ## Features
 
-- **Simple API**: Calculate power at any wind speed or generate full power curves
-- **Configurable**: All parameters via YAML or Python dictionaries
-- **Reeling-factor optimization**: Includes optimal reeling factor calculation
-- **Standalone**: No external dependencies beyond NumPy, SciPy, and PyYAML
+- **Wind shear**: Tether deployment is divided into 20 segments; each segment uses the local wind speed interpolated from a normalized wind profile
+- **Reeling-factor optimization**: Optimal reel-out and reel-in velocity factors calculated per operating region
+- **awesIO format**: Input and output follow the awesIO data schema; optional validation on load and export
+- **Configurable**: All physical parameters via awesIO-format YAML files
 
 ## Installation
 
@@ -56,140 +53,89 @@ conda install numpy scipy pyyaml matplotlib
 ### Using the Script
 
 ```bash
-# Generate and plot power curve with an example 100kW configuration
 python scripts/calculate_power_curves.py
 ```
 
 ### Using as a Library
 
 ```python
+import numpy as np
 from src.power_luchsinger import PowerModel
 
-# Load from YAML configuration
-model = PowerModel.from_yaml('data/100kW_system_example.yml')
+model = PowerModel(
+    system_config_path='data/soft_kite_pumping_ground_gen_system.yml',
+    wind_resource_path='data/clustered_profiles_wind_resource.yml',
+    simulation_settings_path='data/simulation_settings_config.yml',
+    validate_file=True,
+)
 
-# Calculate power at a specific wind speed
-power = model.calculate_power(windSpeed=10.0)
-print(f"Power at 10 m/s: {power:.0f} W")
+# Generate power curves for all wind profiles in the wind resource file
+data = model.generate_power_curves(
+    wind_speeds=np.arange(4, 25, 1),   # optional; overrides num_points from settings
+    output_path='results/luchsinger_power_curves.yml',
+    verbose=True,
+    show_plot=True,
+    save_plot=True,
+    validate_file=True,
+)
 
-# Generate power curves with wind shear profiles
-from src.power_luchsinger.power_model import load_wind_shear_profiles
-
-wind_shear_data = load_wind_shear_profiles('data/clustered_profiles_wind_resource.yml')
-power_curves = model.generate_power_curves_with_shear(wind_shear_data, numPoints=100)
-print(f"Generated {len(power_curves['profiles'])} power curves")
+print(f"Generated {len(data['profiles'])} power curves")
 ```
 
-### Using with a Custom Configuration Dictionary
+## Configuration Files
 
-```python
-from src.power_luchsinger import PowerModel
+Three YAML files are required, all following the awesIO schema:
 
-config = {
-    'kite': {
-        'wingArea': 50.0,
-        'liftCoefficientOut': 0.8,
-        'dragCoefficientOut': 0.12,
-        'dragCoefficientIn': 0.06,
-    },
-    'tether': {
-        'maxLength': 500.0,
-        'minLength': 250.0,
-    },
-    'atmosphere': {
-        'airDensity': 1.225,  # kg/m³
-    },
-    'groundStation': {
-        'nominalTetherForce': 4000.0,      # N
-        'nominalGeneratorPower': 60000.0,  # W
-        'reelOutSpeedLimit': 10.0,         # m/s
-        'reelInSpeedLimit': 30.0,          # m/s
-    },
-    'operational': {
-        'cutInWindSpeed': 4.0,    # m/s
-        'cutOutWindSpeed': 25.0,  # m/s
-        'elevationAngleOut': 25.0,  # degrees
-        'elevationAngleIn': 45.0,   # degrees
-    },
-}
+| File | Description |
+|------|-------------|
+| `soft_kite_pumping_ground_gen_system.yml` | System configuration (kite, tether, ground station, operational envelope) |
+| `clustered_profiles_wind_resource.yml` | Wind resource with clustered normalized wind shear profiles |
+| `simulation_settings_config.yml` | Simulation settings (e.g. number of power curve points) |
 
-model = PowerModel(config)
-
-# Load wind shear profiles and generate power curves
-from src.power_luchsinger.power_model import load_wind_shear_profiles
-wind_shear_data = load_wind_shear_profiles('data/clustered_profiles_wind_resource.yml')
-power_curves = model.generate_power_curves_with_shear(wind_shear_data)
-```
-
-## Configuration Reference
-
-### Required Configuration Sections
-
-| Section | Description |
-|---------|-------------|
-| `kite` | Aerodynamic parameters |
-| `tether` | Tether properties |
-| `atmosphere` | Atmospheric conditions |
-| `groundStation` | Ground station parameters |
-| `operational` | Operating envelope |
-
-### Kite Parameters
+### System Configuration Parameters
 
 | Parameter | Description | Unit |
 |-----------|-------------|------|
 | `wingArea` | Projected wing area | m² |
 | `liftCoefficientOut` | Lift coefficient during reel-out | - |
-| `dragCoefficientOut` | Drag coefficient during reel-out | - |
-| `dragCoefficientIn` | Drag coefficient during reel-in | - |
-
-### Tether Parameters
-
-| Parameter | Description | Unit |
-|-----------|-------------|------|
-| `maxLength` | Maximum tether length | m |
-| `minLength` | Minimum tether length | m |
-
-### Atmosphere Parameters
-
-| Parameter | Description | Unit |
-|-----------|-------------|------|
+| `dragCoefficientKiteOut` | Kite drag coefficient during reel-out | - |
+| `dragCoefficientKiteIn` | Kite drag coefficient during reel-in | - |
+| `tetherMaxLength` | Maximum tether length | m |
+| `tetherMinLength` | Minimum tether length | m |
 | `airDensity` | Air density | kg/m³ |
-
-### Ground Station Parameters
-
-| Parameter | Description | Unit |
-|-----------|-------------|------|
 | `nominalTetherForce` | Maximum tether force | N |
 | `nominalGeneratorPower` | Maximum generator power | W |
 | `reelOutSpeedLimit` | Maximum reel-out speed | m/s |
 | `reelInSpeedLimit` | Maximum reel-in speed | m/s |
-
-### Operational Parameters
-
-| Parameter | Description | Unit |
-|-----------|-------------|------|
-| `cutInWindSpeed` | Cut-in wind speed | m/s |
-| `cutOutWindSpeed` | Cut-out wind speed | m/s |
-| `elevationAngleOut` | Elevation angle during reel-out | degrees |
-| `elevationAngleIn` | Elevation angle during reel-in | degrees |
+| `cutInWindSpeed` | Cut-in wind speed at reference height | m/s |
+| `cutOutWindSpeed` | Cut-out wind speed at reference height | m/s |
+| `elevationAngleOut` | Tether elevation angle during reel-out | rad |
+| `elevationAngleIn` | Tether elevation angle during reel-in | rad |
+| `generatorEfficiency` | Generator efficiency | - |
+| `storageEfficiency` | Energy storage round-trip efficiency | - |
 
 ## Physical Model
 
-### Luchsinger Pumping Cycle Model
+### Luchsinger Pumping Cycle
 
-The model implements a ground-based pumping kite power system with two phases:
+The model implements a ground-based pumping kite system with two phases:
 
-1. **Reel-out phase**: Kite flies crosswind generating high tether force, pulling out tether and driving the generator
-2. **Reel-in phase**: Kite is depowered (reduced angle of attack), tether is reeled in using the generator
+1. **Reel-out phase**: Kite flies crosswind generating high tether force, pulling out the tether and driving the generator
+2. **Reel-in phase**: Kite is depowered, tether is reeled back in consuming energy from storage
+
+### Wind Shear
+
+The reeling length is divided into 20 equal segments. For each segment the average altitude is computed and the local wind speed is interpolated from the normalized wind shear profile, then scaled by the reference wind speed. All forces and energies are integrated over these segments.
+
+Nominal operating wind speeds (force limit, power limit) are recomputed for each wind profile before calculating the power curve.
 
 ### Operating Regions
 
 | Region | Description |
 |--------|-------------|
-| **Region 1** | Below force limit - optimal reeling velocities |
-| **Region 2** | Force-limited - tether force at maximum |
-| **Region 3** | Power-limited - generator power at maximum |
-
+| **Region 1** | Below force limit — reel-out and reel-in factors jointly optimized |
+| **Region 2** | Force-limited — tether force held at nominal; reel-in factor optimized |
+| **Region 3** | Power-limited — generator power held at nominal; reel-in factor optimized |
 
 ## Project Structure
 
@@ -197,18 +143,20 @@ The model implements a ground-based pumping kite power system with two phases:
 ├── src/
 │   └── power_luchsinger/
 │       ├── __init__.py
-│       ├── power_model.py      # Main PowerModel class
-│       ├── calculations.py     # Pure calculation functions
-│       ├── plotting.py         # Plotting utilities for toolchains
-│       └── default_config.yml  # Default configuration parameters
+│       ├── power_model.py          # Main PowerModel class
+│       ├── calculations.py         # Pure aerodynamic calculation functions
+│       ├── config_loader.py        # awesIO YAML loading and parsing
+│       └── plotting.py             # Plotting utilities
 ├── scripts/
 │   ├── __init__.py
-│   └── calculate_power_curves.py  # Main script for generating plots
+│   └── calculate_power_curves.py   # Script for generating power curves
 ├── data/
-│   └── 100kW_system_example.yml    # Example configuration
-├── results/                    # Generated plots and outputs
+│   ├── soft_kite_pumping_ground_gen_system.yml
+│   ├── clustered_profiles_wind_resource.yml
+│   └── simulation_settings_config.yml
+├── results/                        # Generated outputs (YAML + plots)
 ├── requirements.txt
-├── README.md                   # This file
+├── README.md
 └── LICENSE
 ```
 

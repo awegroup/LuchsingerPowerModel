@@ -23,7 +23,6 @@ from src.power_luchsinger.calculations import (
     calculate_force_factor_in,
     calculate_tether_force_out,
     calculate_tether_force_in,
-    calculate_cycle_results
 )
 from src.power_luchsinger.config_loader import (
     load_system_config,
@@ -144,66 +143,7 @@ class PowerModel:
         )
         self.forceFactorIn = calculate_force_factor_in(self.dragCoefficientIn)
 
-        # Compute nominal wind speeds for force and power limits
-        self._compute_nominal_wind_speeds()
-
-    def _compute_nominal_wind_speeds(self) -> None:
-        """Compute wind speeds at which force and power limits are reached."""
-        windSpeeds = np.arange(self.cutInWindSpeed, self.cutOutWindSpeed, 0.1)
-
-        self.nominalWindSpeedForce = self.cutOutWindSpeed
-        self.nominalGammaOutForce = 0.33
-
-        self.nominalWindSpeedPower = self.cutOutWindSpeed
-        self.nominalGammaOutPower = 0.33
-
-        # Find force limit
-        for vw in windSpeeds:
-            gammaOutMax = self.reelOutSpeedLimit / vw
-            gammaInMax = self.reelInSpeedLimit / vw
-
-            gammaOut, gammaIn = self._optimize_gamma_out_in_region1(
-                self.elevationAngleOut, self.elevationAngleIn,
-                self.forceFactorOut, self.forceFactorIn,
-                gammaOutMax, gammaInMax
-            )
-
-            tetherForce = calculate_tether_force_out(
-                self.airDensity, vw, self.wingArea,
-                gammaOut, self.elevationAngleOut, self.forceFactorOut
-            )
-
-            if tetherForce >= self.nominalTetherForce:
-                self.nominalWindSpeedForce = vw
-                self.nominalGammaOutForce = gammaOut
-                break
-
-        # Find power limit (only for winds above force limit)
-        for vw in windSpeeds:
-            if vw <= self.nominalWindSpeedForce:
-                continue
-
-            mu = vw / self.nominalWindSpeedForce
-            gammaOut = (
-                np.cos(self.elevationAngleOut) -
-                (np.cos(self.elevationAngleOut) - self.nominalGammaOutForce) / mu
-            )
-            vOut = vw * gammaOut
-
-            # Simple power calculation
-            mechPower = self.nominalTetherForce * vOut
-            elecPower = mechPower * self.generatorEfficiency
-
-            if elecPower >= self.nominalGeneratorPower:
-                self.nominalWindSpeedPower = vw
-                self.nominalGammaOutPower = gammaOut
-                break
-
-        # Compute nominal reel-out speed for power-limited region
-        self.nominalReelOutSpeed = (
-            self.nominalGeneratorPower / 
-            (self.nominalTetherForce * self.generatorEfficiency)
-        )
+        # Nominal wind speeds are computed per wind profile in generate_power_curves
 
     def _compute_nominal_wind_speeds_with_shear(
         self,
@@ -370,17 +310,14 @@ class PowerModel:
 
     def calculate_power(self,
                        windSpeed: float,
-                       airDensity: float = None,
-                       wind_profile: Dict[str, np.ndarray] = None,
-                       reference_height_m: float = None) -> Dict[str, float]:
+                       wind_profile: Dict[str, np.ndarray],
+                       reference_height_m: float) -> Dict[str, float]:
         """Calculate power output for given wind speed.
 
         Args:
             windSpeed (float): Wind speed at reference height in m/s.
-            airDensity (float): Air density in kg/m³. If None, uses
-                atmosphere.airDensity from config.
-            wind_profile (Dict): Optional wind shear profile with 'altitudes' 
-                and 'u_normalized' arrays. If provided, uses segmented calculation.
+            wind_profile (Dict): Wind shear profile with 'altitudes' and
+                'u_normalized' arrays.
             reference_height_m (float): Reference height for wind_profile (m).
 
         Returns:
@@ -397,9 +334,6 @@ class PowerModel:
                 - 'gammaOut': Reel-out factor (-)
                 - 'gammaIn': Reel-in factor (-)
         """
-        if airDensity is None:
-            airDensity = self.airDensity
-
         if windSpeed < self.cutInWindSpeed or windSpeed > self.cutOutWindSpeed:
             return {
                 'cyclePower': 0.0,
@@ -416,47 +350,38 @@ class PowerModel:
             }
 
         if windSpeed < self.nominalWindSpeedForce:
-            return self._calculate_power_region1(windSpeed, airDensity, wind_profile, reference_height_m)
+            return self._calculate_power_region1(windSpeed, wind_profile, reference_height_m)
         elif windSpeed < self.nominalWindSpeedPower:
-            return self._calculate_power_region2(windSpeed, airDensity, wind_profile, reference_height_m)
+            return self._calculate_power_region2(windSpeed, wind_profile, reference_height_m)
         else:
-            return self._calculate_power_region3(windSpeed, airDensity, wind_profile, reference_height_m)
+            return self._calculate_power_region3(windSpeed, wind_profile, reference_height_m)
+
 
     def _calculate_power_region1(self,
                                   windSpeed: float,
-                                  airDensity: float,
-                                  wind_profile: Dict[str, np.ndarray] = None,
-                                  reference_height_m: float = None) -> Dict[str, float]:
+                                  wind_profile: Dict[str, np.ndarray],
+                                  reference_height_m: float) -> Dict[str, float]:
         """Calculate power in Region 1 (below force limit).
 
         Args:
             windSpeed (float): Wind speed at reference height in m/s.
-            airDensity (float): Air density in kg/m³.
-            wind_profile (Dict): Optional wind shear profile.
+            wind_profile (Dict): Wind shear profile with 'altitudes' and
+                'u_normalized' arrays.
             reference_height_m (float): Reference height for wind_profile (m).
 
         Returns:
             Dict with power and time details.
         """
-        # Get segmented wind speeds if profile provided
-        if wind_profile is not None and reference_height_m is not None:
-            n_segments = 20
-            windSpeedsOut = self.get_segmented_wind_speeds(
-                windSpeed, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=n_segments
-            )
-            windSpeedsIn = self.get_segmented_wind_speeds(
-                windSpeed, wind_profile, reference_height_m, self.elevationAngleIn, n_segments=n_segments
-            )
-            # Use average wind speed for gamma optimization
-            avgWindSpeedOut = np.mean(windSpeedsOut)
-            avgWindSpeedIn = np.mean(windSpeedsIn)
-        else:
-            # Use single wind speed (backward compatibility)
-            avgWindSpeedOut = windSpeed
-            avgWindSpeedIn = windSpeed
-            windSpeedsOut = None
-            windSpeedsIn = None
-        
+        n_segments = 20
+        windSpeedsOut = self.get_segmented_wind_speeds(
+            windSpeed, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=n_segments
+        )
+        windSpeedsIn = self.get_segmented_wind_speeds(
+            windSpeed, wind_profile, reference_height_m, self.elevationAngleIn, n_segments=n_segments
+        )
+        avgWindSpeedOut = np.mean(windSpeedsOut)
+        avgWindSpeedIn = np.mean(windSpeedsIn)
+
         gammaOutMax = self.reelOutSpeedLimit / avgWindSpeedOut
         gammaInMax = self.reelInSpeedLimit / avgWindSpeedIn
 
@@ -469,101 +394,61 @@ class PowerModel:
         vOut = avgWindSpeedOut * gammaOut
         vIn = avgWindSpeedIn * gammaIn
 
-        # Calculate with segmentation if wind profile provided
-        if windSpeedsOut is not None and windSpeedsIn is not None:
-            # Segment-by-segment calculation
-            segment_length = self.reelingLength / n_segments
-            
-            # Reel-out phase: calculate energy for each segment
-            energyOut = 0.0
-            totalForceOut = 0.0
-            for ws in windSpeedsOut:
-                # Tether force for this segment
-                force = calculate_tether_force_out(
-                    airDensity, ws, self.wingArea,
-                    gammaOut, self.elevationAngleOut, self.forceFactorOut
-                )
-                totalForceOut += force
-                
-                # Mechanical power in this segment
-                mechPower = force * vOut
-                
-                # Time in this segment
-                time_segment = segment_length / vOut if vOut > 0 else float('inf')
-                
-                # Energy generated in this segment
-                energyOut += mechPower * time_segment
-            
-            # Reel-in phase: calculate energy for each segment
-            energyIn = 0.0
-            totalForceIn = 0.0
-            for ws in windSpeedsIn:
-                # Tether force for this segment
-                force = calculate_tether_force_in(
-                    airDensity, ws, self.wingArea,
-                    gammaIn, self.elevationAngleIn, self.forceFactorIn
-                )
-                totalForceIn += force
-                
-                # Mechanical power in this segment (negative - consuming energy)
-                mechPower = force * vIn
-                
-                # Time in this segment
-                time_segment = segment_length / vIn if vIn > 0 else float('inf')
-                
-                # Energy consumed in this segment
-                energyIn += mechPower * time_segment
-            
-            # Average forces for reporting
-            tetherForceOut = totalForceOut / n_segments
-            tetherForceIn = totalForceIn / n_segments
-            
-            # Total times
-            timeOut = self.reelingLength / vOut if vOut > 0 else float('inf')
-            timeIn = self.reelingLength / vIn if vIn > 0 else float('inf')
-            
-            # Electrical energies
-            elecEnergyOut = energyOut * self.generatorEfficiency
-            elecEnergyIn = energyIn / self.generatorEfficiency
-            
-            # Average electrical powers
-            elecPowerOut = elecEnergyOut / timeOut if timeOut > 0 else 0.0
-            elecPowerIn = elecEnergyIn / timeIn if timeIn > 0 else 0.0
-            
-            # Cycle power
-            cycleTime = timeOut + timeIn
-            netEnergy = elecEnergyOut - (elecEnergyIn / self.storageEfficiency)
-            cyclePower = netEnergy / cycleTime if cycleTime > 0 else 0.0
-            
-            return {
-                'cyclePower': max(0.0, cyclePower),
-                'reelOutPower': elecPowerOut,
-                'reelInPower': elecPowerIn,
-                'reelOutTime': timeOut,
-                'reelInTime': timeIn,
-                'tetherForceOut': tetherForceOut,
-                'tetherForceIn': tetherForceIn,
-                'reelOutSpeed': vOut,
-                'reelInSpeed': vIn,
-                'gammaOut': gammaOut,
-                'gammaIn': gammaIn,
-            }
-        else:
-            # Original non-segmented calculation
-            tetherForceOut = calculate_tether_force_out(
-                airDensity, windSpeed, self.wingArea,
+        segment_length = self.reelingLength / n_segments
+
+        # Reel-out phase: calculate energy for each segment
+        energyOut = 0.0
+        totalForceOut = 0.0
+        for ws in windSpeedsOut:
+            force = calculate_tether_force_out(
+                self.airDensity, ws, self.wingArea,
                 gammaOut, self.elevationAngleOut, self.forceFactorOut
             )
-            tetherForceIn = calculate_tether_force_in(
-                airDensity, windSpeed, self.wingArea,
+            totalForceOut += force
+            mechPower = force * vOut
+            time_segment = segment_length / vOut if vOut > 0 else float('inf')
+            energyOut += mechPower * time_segment
+
+        # Reel-in phase: calculate energy for each segment
+        energyIn = 0.0
+        totalForceIn = 0.0
+        for ws in windSpeedsIn:
+            force = calculate_tether_force_in(
+                self.airDensity, ws, self.wingArea,
                 gammaIn, self.elevationAngleIn, self.forceFactorIn
             )
+            totalForceIn += force
+            mechPower = force * vIn
+            time_segment = segment_length / vIn if vIn > 0 else float('inf')
+            energyIn += mechPower * time_segment
 
-            return calculate_cycle_results(
-                tetherForceOut, tetherForceIn, vOut, vIn,
-                self.reelingLength, gammaOut, gammaIn,
-                self.generatorEfficiency, self.storageEfficiency
-            )
+        tetherForceOut = totalForceOut / n_segments
+        tetherForceIn = totalForceIn / n_segments
+        timeOut = self.reelingLength / vOut if vOut > 0 else float('inf')
+        timeIn = self.reelingLength / vIn if vIn > 0 else float('inf')
+
+        elecEnergyOut = energyOut * self.generatorEfficiency
+        elecEnergyIn = energyIn / self.generatorEfficiency
+        elecPowerOut = elecEnergyOut / timeOut if timeOut > 0 else 0.0
+        elecPowerIn = elecEnergyIn / timeIn if timeIn > 0 else 0.0
+
+        cycleTime = timeOut + timeIn
+        netEnergy = elecEnergyOut - (elecEnergyIn / self.storageEfficiency)
+        cyclePower = netEnergy / cycleTime if cycleTime > 0 else 0.0
+
+        return {
+            'cyclePower': max(0.0, cyclePower),
+            'reelOutPower': elecPowerOut,
+            'reelInPower': elecPowerIn,
+            'reelOutTime': timeOut,
+            'reelInTime': timeIn,
+            'tetherForceOut': tetherForceOut,
+            'tetherForceIn': tetherForceIn,
+            'reelOutSpeed': vOut,
+            'reelInSpeed': vIn,
+            'gammaOut': gammaOut,
+            'gammaIn': gammaIn,
+        }
 
     def _optimize_gamma_out_in_region1(self,
                                         elevationAngleOut: float,
@@ -607,37 +492,29 @@ class PowerModel:
 
     def _calculate_power_region2(self,
                                   windSpeed: float,
-                                  airDensity: float,
-                                  wind_profile: Dict[str, np.ndarray] = None,
-                                  reference_height_m: float = None) -> Dict[str, float]:
+                                  wind_profile: Dict[str, np.ndarray],
+                                  reference_height_m: float) -> Dict[str, float]:
         """Calculate power in Region 2 (force-limited, below power limit).
 
         Args:
             windSpeed (float): Wind speed at reference height in m/s.
-            airDensity (float): Air density in kg/m³.
-            wind_profile (Dict): Optional wind shear profile.
+            wind_profile (Dict): Wind shear profile with 'altitudes' and
+                'u_normalized' arrays.
             reference_height_m (float): Reference height for wind_profile (m).
 
         Returns:
             Dict with power and time details.
         """
-        # Get segmented wind speeds if profile provided
-        if wind_profile is not None and reference_height_m is not None:
-            n_segments = 20
-            windSpeedsOut = self.get_segmented_wind_speeds(
-                windSpeed, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=n_segments
-            )
-            windSpeedsIn = self.get_segmented_wind_speeds(
-                windSpeed, wind_profile, reference_height_m, self.elevationAngleIn, n_segments=n_segments
-            )
-            avgWindSpeedOut = np.mean(windSpeedsOut)
-            avgWindSpeedIn = np.mean(windSpeedsIn)
-        else:
-            avgWindSpeedOut = windSpeed
-            avgWindSpeedIn = windSpeed
-            windSpeedsOut = None
-            windSpeedsIn = None
-        
+        n_segments = 20
+        windSpeedsOut = self.get_segmented_wind_speeds(
+            windSpeed, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=n_segments
+        )
+        windSpeedsIn = self.get_segmented_wind_speeds(
+            windSpeed, wind_profile, reference_height_m, self.elevationAngleIn, n_segments=n_segments
+        )
+        avgWindSpeedOut = np.mean(windSpeedsOut)
+        avgWindSpeedIn = np.mean(windSpeedsIn)
+
         mu = avgWindSpeedOut / self.nominalWindSpeedForce
         gammaInMax = self.reelInSpeedLimit / avgWindSpeedIn
 
@@ -650,78 +527,52 @@ class PowerModel:
         gammaIn = self._optimize_gamma_in_region2(mu, gammaInMax)
         vIn = avgWindSpeedIn * gammaIn
 
-        # Calculate with segmentation if wind profile provided
-        if windSpeedsIn is not None:
-            segment_length = self.reelingLength / n_segments
-            
-            # Reel-out phase: force-limited (constant force)
-            tetherForceOut = self.nominalTetherForce
-            timeOut = self.reelingLength / vOut if vOut > 0 else float('inf')
-            mechPowerOut = tetherForceOut * vOut
-            energyOut = mechPowerOut * timeOut
-            
-            # Reel-in phase: calculate energy for each segment
-            energyIn = 0.0
-            totalForceIn = 0.0
-            for ws in windSpeedsIn:
-                # Tether force for this segment
-                force = calculate_tether_force_in(
-                    airDensity, ws, self.wingArea,
-                    gammaIn, self.elevationAngleIn, self.forceFactorIn
-                )
-                totalForceIn += force
-                
-                # Mechanical power in this segment
-                mechPower = force * vIn
-                
-                # Time in this segment
-                time_segment = segment_length / vIn if vIn > 0 else float('inf')
-                
-                # Energy consumed in this segment
-                energyIn += mechPower * time_segment
-            
-            tetherForceIn = totalForceIn / n_segments
-            timeIn = self.reelingLength / vIn if vIn > 0 else float('inf')
-            
-            # Electrical energies
-            elecEnergyOut = energyOut * self.generatorEfficiency
-            elecEnergyIn = energyIn / self.generatorEfficiency
-            
-            # Average electrical powers
-            elecPowerOut = elecEnergyOut / timeOut if timeOut > 0 else 0.0
-            elecPowerIn = elecEnergyIn / timeIn if timeIn > 0 else 0.0
-            
-            # Cycle power
-            cycleTime = timeOut + timeIn
-            netEnergy = elecEnergyOut - (elecEnergyIn / self.storageEfficiency)
-            cyclePower = netEnergy / cycleTime if cycleTime > 0 else 0.0
-            
-            return {
-                'cyclePower': max(0.0, cyclePower),
-                'reelOutPower': elecPowerOut,
-                'reelInPower': elecPowerIn,
-                'reelOutTime': timeOut,
-                'reelInTime': timeIn,
-                'tetherForceOut': tetherForceOut,
-                'tetherForceIn': tetherForceIn,
-                'reelOutSpeed': vOut,
-                'reelInSpeed': vIn,
-                'gammaOut': gammaOut,
-                'gammaIn': gammaIn,
-            }
-        else:
-            # Original non-segmented calculation
-            tetherForceOut = self.nominalTetherForce
-            tetherForceIn = calculate_tether_force_in(
-                airDensity, windSpeed, self.wingArea,
+        segment_length = self.reelingLength / n_segments
+
+        # Reel-out phase: force-limited (constant force)
+        tetherForceOut = self.nominalTetherForce
+        timeOut = self.reelingLength / vOut if vOut > 0 else float('inf')
+        mechPowerOut = tetherForceOut * vOut
+        energyOut = mechPowerOut * timeOut
+
+        # Reel-in phase: calculate energy for each segment
+        energyIn = 0.0
+        totalForceIn = 0.0
+        for ws in windSpeedsIn:
+            force = calculate_tether_force_in(
+                self.airDensity, ws, self.wingArea,
                 gammaIn, self.elevationAngleIn, self.forceFactorIn
             )
+            totalForceIn += force
+            mechPower = force * vIn
+            time_segment = segment_length / vIn if vIn > 0 else float('inf')
+            energyIn += mechPower * time_segment
 
-            return calculate_cycle_results(
-                tetherForceOut, tetherForceIn, vOut, vIn,
-                self.reelingLength, gammaOut, gammaIn,
-                self.generatorEfficiency, self.storageEfficiency
-            )
+        tetherForceIn = totalForceIn / n_segments
+        timeIn = self.reelingLength / vIn if vIn > 0 else float('inf')
+
+        elecEnergyOut = energyOut * self.generatorEfficiency
+        elecEnergyIn = energyIn / self.generatorEfficiency
+        elecPowerOut = elecEnergyOut / timeOut if timeOut > 0 else 0.0
+        elecPowerIn = elecEnergyIn / timeIn if timeIn > 0 else 0.0
+
+        cycleTime = timeOut + timeIn
+        netEnergy = elecEnergyOut - (elecEnergyIn / self.storageEfficiency)
+        cyclePower = netEnergy / cycleTime if cycleTime > 0 else 0.0
+
+        return {
+            'cyclePower': max(0.0, cyclePower),
+            'reelOutPower': elecPowerOut,
+            'reelInPower': elecPowerIn,
+            'reelOutTime': timeOut,
+            'reelInTime': timeIn,
+            'tetherForceOut': tetherForceOut,
+            'tetherForceIn': tetherForceIn,
+            'reelOutSpeed': vOut,
+            'reelInSpeed': vIn,
+            'gammaOut': gammaOut,
+            'gammaIn': gammaIn,
+        }
 
     def _optimize_gamma_in_region2(self, mu: float, gammaInMax: float) -> float:
         """Optimize gamma_in for Region 2 operation.
@@ -761,36 +612,29 @@ class PowerModel:
 
     def _calculate_power_region3(self,
                                   windSpeed: float,
-                                  airDensity: float,
-                                  wind_profile: Dict[str, np.ndarray] = None,
-                                  reference_height_m: float = None) -> Dict[str, float]:
+                                  wind_profile: Dict[str, np.ndarray],
+                                  reference_height_m: float) -> Dict[str, float]:
         """Calculate power in Region 3 (power-limited).
 
         Args:
             windSpeed (float): Wind speed at reference height in m/s.
-            airDensity (float): Air density in kg/m³.
-            wind_profile (Dict): Optional wind shear profile.
+            wind_profile (Dict): Wind shear profile with 'altitudes' and
+                'u_normalized' arrays.
             reference_height_m (float): Reference height for wind_profile (m).
 
         Returns:
             Dict with power and time details.
         """
-        # Get segmented wind speeds if profile provided
-        if wind_profile is not None and reference_height_m is not None:
-            n_segments = 20
-            windSpeedsOut = self.get_segmented_wind_speeds(
-                windSpeed, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=n_segments
-            )
-            windSpeedsIn = self.get_segmented_wind_speeds(
-                windSpeed, wind_profile, reference_height_m, self.elevationAngleIn, n_segments=n_segments
-            )
-            avgWindSpeedOut = np.mean(windSpeedsOut)
-            avgWindSpeedIn = np.mean(windSpeedsIn)
-        else:
-            avgWindSpeedOut = windSpeed
-            avgWindSpeedIn = windSpeed
-            windSpeedsIn = None
-        
+        n_segments = 20
+        windSpeedsOut = self.get_segmented_wind_speeds(
+            windSpeed, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=n_segments
+        )
+        windSpeedsIn = self.get_segmented_wind_speeds(
+            windSpeed, wind_profile, reference_height_m, self.elevationAngleIn, n_segments=n_segments
+        )
+        avgWindSpeedOut = np.mean(windSpeedsOut)
+        avgWindSpeedIn = np.mean(windSpeedsIn)
+
         mu = avgWindSpeedOut / self.nominalWindSpeedPower
         gammaInMax = self.reelInSpeedLimit / avgWindSpeedIn
 
@@ -800,76 +644,50 @@ class PowerModel:
         gammaIn = self._optimize_gamma_in_region3(mu, gammaInMax)
         vIn = avgWindSpeedIn * gammaIn
 
-        # Calculate with segmentation if wind profile provided
-        if windSpeedsIn is not None:
-            segment_length = self.reelingLength / n_segments
-            
-            # Reel-out phase: power-limited (constant power)
-            tetherForceOut = self.nominalTetherForce
-            timeOut = self.reelingLength / vOut if vOut > 0 else float('inf')
-            elecPowerOut = self.nominalGeneratorPower
-            energyOut = elecPowerOut * timeOut
-            
-            # Reel-in phase: calculate energy for each segment
-            energyIn = 0.0
-            totalForceIn = 0.0
-            for ws in windSpeedsIn:
-                # Tether force for this segment
-                force = calculate_tether_force_in(
-                    airDensity, ws, self.wingArea,
-                    gammaIn, self.elevationAngleIn, self.forceFactorIn
-                )
-                totalForceIn += force
-                
-                # Mechanical power in this segment
-                mechPower = force * vIn
-                
-                # Time in this segment
-                time_segment = segment_length / vIn if vIn > 0 else float('inf')
-                
-                # Energy consumed in this segment (mechanical)
-                energyIn += mechPower * time_segment
-            
-            tetherForceIn = totalForceIn / n_segments
-            timeIn = self.reelingLength / vIn if vIn > 0 else float('inf')
-            
-            # Electrical energy for reel-in
-            elecEnergyIn = energyIn / self.generatorEfficiency
-            
-            # Average electrical power for reel-in
-            elecPowerIn = elecEnergyIn / timeIn if timeIn > 0 else 0.0
-            
-            # Cycle power
-            cycleTime = timeOut + timeIn
-            netEnergy = energyOut - (elecEnergyIn / self.storageEfficiency)
-            cyclePower = netEnergy / cycleTime if cycleTime > 0 else 0.0
-            
-            return {
-                'cyclePower': max(0.0, cyclePower),
-                'reelOutPower': elecPowerOut,
-                'reelInPower': elecPowerIn,
-                'reelOutTime': timeOut,
-                'reelInTime': timeIn,
-                'tetherForceOut': tetherForceOut,
-                'tetherForceIn': tetherForceIn,
-                'reelOutSpeed': vOut,
-                'reelInSpeed': vIn,
-                'gammaOut': gammaOut,
-                'gammaIn': gammaIn,
-            }
-        else:
-            # Original non-segmented calculation
-            tetherForceOut = self.nominalTetherForce
-            tetherForceIn = calculate_tether_force_in(
-                airDensity, windSpeed, self.wingArea,
+        segment_length = self.reelingLength / n_segments
+
+        # Reel-out phase: power-limited (constant power)
+        tetherForceOut = self.nominalTetherForce
+        timeOut = self.reelingLength / vOut if vOut > 0 else float('inf')
+        elecPowerOut = self.nominalGeneratorPower
+        energyOut = elecPowerOut * timeOut
+
+        # Reel-in phase: calculate energy for each segment
+        energyIn = 0.0
+        totalForceIn = 0.0
+        for ws in windSpeedsIn:
+            force = calculate_tether_force_in(
+                self.airDensity, ws, self.wingArea,
                 gammaIn, self.elevationAngleIn, self.forceFactorIn
             )
+            totalForceIn += force
+            mechPower = force * vIn
+            time_segment = segment_length / vIn if vIn > 0 else float('inf')
+            energyIn += mechPower * time_segment
 
-            return calculate_cycle_results(
-                tetherForceOut, tetherForceIn, vOut, vIn,
-                self.reelingLength, gammaOut, gammaIn,
-                self.generatorEfficiency, self.storageEfficiency
-            )
+        tetherForceIn = totalForceIn / n_segments
+        timeIn = self.reelingLength / vIn if vIn > 0 else float('inf')
+
+        elecEnergyIn = energyIn / self.generatorEfficiency
+        elecPowerIn = elecEnergyIn / timeIn if timeIn > 0 else 0.0
+
+        cycleTime = timeOut + timeIn
+        netEnergy = energyOut - (elecEnergyIn / self.storageEfficiency)
+        cyclePower = netEnergy / cycleTime if cycleTime > 0 else 0.0
+
+        return {
+            'cyclePower': max(0.0, cyclePower),
+            'reelOutPower': elecPowerOut,
+            'reelInPower': elecPowerIn,
+            'reelOutTime': timeOut,
+            'reelInTime': timeIn,
+            'tetherForceOut': tetherForceOut,
+            'tetherForceIn': tetherForceIn,
+            'reelOutSpeed': vOut,
+            'reelInSpeed': vIn,
+            'gammaOut': gammaOut,
+            'gammaIn': gammaIn,
+        }
 
     def _optimize_gamma_in_region3(self, mu: float, gammaInMax: float) -> float:
         """Optimize gamma_in for Region 3 operation.
@@ -903,9 +721,9 @@ class PowerModel:
 
         return result['x'][0]
 
-    def generate_power_curves_with_shear(
+    def generate_power_curves(
         self,
-        numPoints: int = 100,
+        wind_speeds: np.ndarray = None,
         output_path: Path = None,
         verbose: bool = False,
         show_plot: bool = False,
@@ -919,8 +737,12 @@ class PowerModel:
         format, prints a summary, and creates a comprehensive plot.
 
         Args:
-            numPoints (int): Number of reference wind speed points.
-                Defaults to 100.
+            wind_speeds (np.ndarray): Optional array of reference wind speeds
+                (m/s) for which to compute the power curves. When provided,
+                overrides the ``num_points`` setting in the simulation settings
+                file. When ``None``, a linearly-spaced array is built from
+                ``cut_in`` to ``cut_out`` using ``power_curve.num_points``
+                from the simulation settings (default 100).
             output_path (Path): If given, export power curves to this YAML
                 file in awesIO format.
             verbose (bool): If True, print a summary of the results.
@@ -948,11 +770,19 @@ class PowerModel:
         profiles = wind_shear_data['profiles']
 
         # Wind speeds at reference height
-        windSpeedsAtRef = np.linspace(
-            self.cutInWindSpeed,
-            self.cutOutWindSpeed,
-            numPoints
-        )
+        if wind_speeds is not None:
+            windSpeedsAtRef = np.asarray(wind_speeds, dtype=float)
+        else:
+            num_points = (
+                self.simulation_settings
+                .get('power_curve', {})
+                .get('num_points', 100)
+            )
+            windSpeedsAtRef = np.linspace(
+                self.cutInWindSpeed,
+                self.cutOutWindSpeed,
+                num_points
+            )
 
         power_curves = []
 
@@ -1038,10 +868,10 @@ class PowerModel:
             save_path = None
             if save_plot and output_path is not None:
                 save_path = str(
-                    output_path.parent / "power_curve_analysis.png"
+                    output_path.parent / "power_curve_analysis.pdf"
                 )
             elif save_plot:
-                save_path = "results/power_curve_analysis.png"
+                save_path = "results/power_curve_analysis.pdf"
 
             plot_comprehensive_analysis(
                 data, extract_model_params(self),
@@ -1142,21 +972,39 @@ class PowerModel:
         power_curves_list = []
         for profile in profiles:
             profile_id = profile['profile_id']
-            
+
+            # Build wind_speed_data: one entry per reference wind speed
+            wind_speed_data = []
+            n = len(profile['power'])
+            for i in range(n):
+                power_val = float(profile['power'][i])
+                success = power_val > 0.0
+                entry = {
+                    'wind_speed_m_s': float(reference_wind_speeds[i]),
+                    'success': success,
+                    'performance': {
+                        'power': {
+                            'average_cycle_power_w': power_val,
+                            'average_reel_out_power_w': float(profile['reelOutPower'][i]),
+                            'average_reel_in_power_w': float(profile['reelInPower'][i]),
+                        },
+                        'timing': {
+                            'reel_out_time_s': float(profile['reelOutTime'][i]),
+                            'reel_in_time_s': float(profile['reelInTime'][i]),
+                            'cycle_time_s': float(profile['reelOutTime'][i] + profile['reelInTime'][i]),
+                        },
+                    },
+                }
+                wind_speed_data.append(entry)
+
             power_curve = {
                 'profile_id': int(profile_id),
-                'u_normalized': [float(u) for u in profile['u_normalized']],
-                'v_normalized': [float(v) for v in profile['v_normalized']],
-                'probability_weight': 1.0 / len(profiles),  # Equal weight for all profiles
-                'cycle_power_w': [float(p) for p in profile['power']],
-                'reel_out_power_w': [float(p) for p in profile['reelOutPower']],
-                'reel_in_power_w': [float(p) for p in profile['reelInPower']],
-                'reel_out_time_s': [float(t) for t in profile['reelOutTime']],
-                'reel_in_time_s': [float(t) for t in profile['reelInTime']],
-                'cycle_time_s': [
-                    float(t_out + t_in)
-                    for t_out, t_in in zip(profile['reelOutTime'], profile['reelInTime'])
-                ],
+                'probability_weight': 1.0 / len(profiles),
+                'wind_profile': {
+                    'u_normalized': [float(u) for u in profile['u_normalized']],
+                    'v_normalized': [float(v) for v in profile['v_normalized']],
+                },
+                'wind_speed_data': wind_speed_data,
             }
             power_curves_list.append(power_curve)
 
@@ -1170,6 +1018,15 @@ class PowerModel:
                 'schema': 'power_curves_schema.yml',
                 'time_created': datetime.now().isoformat(),
                 'reference_height_m': float(reference_height_m),
+                'model_config': {
+                    'wing_area_m2': float(self.wingArea),
+                    'nominal_power_w': float(self.nominalGeneratorPower),
+                    'nominal_tether_force_n': float(self.nominalTetherForce),
+                    'operating_altitude_m': float(self.operationalAltitude),
+                    'tether_length_operational_m': float(self.operationalLength),
+                    'cut_in_wind_speed_m_s': float(self.cutInWindSpeed),
+                    'cut_out_wind_speed_m_s': float(self.cutOutWindSpeed),
+                },
             },
             'altitudes_m': [float(alt) for alt in altitudes],
             'reference_wind_speeds_m_s': [float(v) for v in reference_wind_speeds],

@@ -27,14 +27,14 @@ def main():
     # Load power model (all YAML loading handled internally via config_loader)
     model = PowerModel(
         system_config_path=systemConfigPath,
-        wind_resource_path=windResourcePath,
+        # wind_resource_path=windResourcePath,  # Optional: load wind resource data for shear profiles
         simulation_settings_path=simulationSettingsPath,
         validate_file=True,
     )
-
-    # Generate power curves with wind shear (500 points)
-    data = model.generate_power_curves_with_shear(
-        numPoints=25,
+    windspeeds = np.array([0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20])  # Example wind speeds for power curve
+    # Generate power curves with wind shear
+    data = model.generate_power_curves(
+        wind_speeds=windspeeds,
         output_path=OUTPUT_PATH,
         verbose=True,
         show_plot=True,
