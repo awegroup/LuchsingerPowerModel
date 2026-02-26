@@ -42,193 +42,223 @@ def plot_comprehensive_analysis(
     Returns:
         plt.Figure: The created figure object.
     """
-    # Extract first profile and map keys to plot-friendly names
-    profile = data['profiles'][0]
-    plot = {
-        'windSpeed': profile['windSpeedAtOp'],
-        'power': profile['power'],
-        'reelOutPower': profile['reelOutPower'],
-        'reelInPower': profile['reelInPower'],
-        'reelOutTime': profile['reelOutTime'],
-        'reelInTime': profile['reelInTime'],
-        'tetherForceOut': profile['tetherForceOut'],
-        'tetherForceIn': profile['tetherForceIn'],
-        'reelOutSpeed': profile['reelOutSpeed'],
-        'reelInSpeed': profile['reelInSpeed'],
-        'gammaOut': profile['gammaOut'],
-        'gammaIn': profile['gammaIn'],
-    }
-    windSpeed = plot['windSpeed']
-    
+    profiles = data['profiles']
+    n_profiles = len(profiles)
+
+    # Build a colormap: use tab10 for up to 10 profiles, tab20 beyond
+    cmap = plt.get_cmap('tab10' if n_profiles <= 10 else 'tab20')
+    colors = [cmap(i % cmap.N) for i in range(n_profiles)]
+
+    # Use the reference wind speed axis (same across profiles)
+    windSpeedRef = profiles[0]['windSpeedAtRef']
+
     # Create figure with subplots (4 rows, 2 columns)
     fig = plt.figure(figsize=(16, 14))
     gs = fig.add_gridspec(4, 2, hspace=0.45, wspace=0.3)
-    
-    # Subplot 1: Power curves
+
+    def _add_region_lines(ax):
+        """Add vertical region-boundary lines if model_params available."""
+        if not model_params:
+            return
+        if 'nominalWindSpeedForce' in model_params:
+            ax.axvline(x=model_params['nominalWindSpeedForce'], color='orange',
+                       linestyle=':', alpha=0.5)
+        if ('nominalWindSpeedPower' in model_params and
+                'cutOutWindSpeed' in model_params and
+                model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']):
+            ax.axvline(x=model_params['nominalWindSpeedPower'], color='red',
+                       linestyle=':', alpha=0.5)
+
+    # Subplot 1: Power curves – all profiles
     ax1 = fig.add_subplot(gs[0, 0])
-    ax1.plot(windSpeed, plot['power']/1000, 'b-', linewidth=2.5, label='Net Cycle Power')
-    ax1.plot(windSpeed, plot['reelOutPower']/1000, 'g--', linewidth=1.5, alpha=0.7, label='Reel-Out Power')
-    ax1.plot(windSpeed, plot['reelInPower']/1000, 'r--', linewidth=1.5, alpha=0.7, label='Reel-In Power')
-    ax1.fill_between(windSpeed, 0, plot['power']/1000, alpha=0.2, color='blue')
-    
-    if model_params:
-        if 'nominalGeneratorPower' in model_params:
-            ax1.axhline(y=model_params['nominalGeneratorPower']/1000, color='purple', 
-                       linestyle=':', alpha=0.5, label='Nominal Power')
-        if 'nominalWindSpeedForce' in model_params:
-            ax1.axvline(x=model_params['nominalWindSpeedForce'], color='orange', 
-                       linestyle=':', alpha=0.5)
-        if 'nominalWindSpeedPower' in model_params and 'cutOutWindSpeed' in model_params:
-            if model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']:
-                ax1.axvline(x=model_params['nominalWindSpeedPower'], color='red', 
-                           linestyle=':', alpha=0.5)
-    
-    ax1.set_xlabel('Wind Speed (m/s)', fontsize=11)
+    for i, profile in enumerate(profiles):
+        c = colors[i]
+        lbl = f'Profile {profile["profile_id"]}'
+        ax1.plot(windSpeedRef, profile['power'] / 1000,
+                 color=c, linewidth=2, label=lbl)
+        ax1.plot(windSpeedRef, profile['reelOutPower'] / 1000,
+                 color=c, linewidth=1, linestyle='--', alpha=0.6)
+        ax1.plot(windSpeedRef, profile['reelInPower'] / 1000,
+                 color=c, linewidth=1, linestyle=':', alpha=0.6)
+
+    if model_params and 'nominalGeneratorPower' in model_params:
+        ax1.axhline(y=model_params['nominalGeneratorPower'] / 1000,
+                    color='purple', linestyle=':', alpha=0.5, label='Nominal Power')
+    _add_region_lines(ax1)
+
+    # Legend: profile colours + line-style guide
+    handles, labels = ax1.get_legend_handles_labels()
+    from matplotlib.lines import Line2D
+    handles += [
+        Line2D([0], [0], color='gray', linewidth=2, label='Cycle power'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='Reel-out power'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle=':', label='Reel-in power'),
+    ]
+    ax1.set_xlabel('Wind Speed at ref. height (m/s)', fontsize=11)
     ax1.set_ylabel('Power (kW)', fontsize=11)
-    ax1.set_title('Power Output', fontsize=12, fontweight='bold')
-    ax1.legend(loc='upper left', fontsize=9)
+    ax1.set_title('Power Output – All Profiles', fontsize=12, fontweight='bold')
+    ax1.legend(handles=handles, loc='upper left', fontsize=8, ncol=2)
     ax1.grid(True, alpha=0.3)
-    
-    # Subplot 2: Cycle times
+
+    # Subplot 2: Cycle times – all profiles
     ax2 = fig.add_subplot(gs[0, 1])
-    cycleTime = plot['reelOutTime'] + plot['reelInTime']
-    ax2.plot(windSpeed, cycleTime, 'k-', linewidth=2.5, label='Total Cycle Time')
-    ax2.plot(windSpeed, plot['reelOutTime'], 'g--', linewidth=1.5, alpha=0.7, label='Reel-Out Time')
-    ax2.plot(windSpeed, plot['reelInTime'], 'r--', linewidth=1.5, alpha=0.7, label='Reel-In Time')
-    
-    if model_params:
-        if 'nominalWindSpeedForce' in model_params:
-            ax2.axvline(x=model_params['nominalWindSpeedForce'], color='orange', 
-                       linestyle=':', alpha=0.5)
-        if 'nominalWindSpeedPower' in model_params and 'cutOutWindSpeed' in model_params:
-            if model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']:
-                ax2.axvline(x=model_params['nominalWindSpeedPower'], color='red', 
-                           linestyle=':', alpha=0.5)
-    
-    ax2.set_xlabel('Wind Speed (m/s)', fontsize=11)
+    for i, profile in enumerate(profiles):
+        c = colors[i]
+        lbl = f'Profile {profile["profile_id"]}'
+        cycleTime = profile['reelOutTime'] + profile['reelInTime']
+        ax2.plot(windSpeedRef, cycleTime,
+                 color=c, linewidth=2, label=lbl)
+        ax2.plot(windSpeedRef, profile['reelOutTime'],
+                 color=c, linewidth=1, linestyle='--', alpha=0.6)
+        ax2.plot(windSpeedRef, profile['reelInTime'],
+                 color=c, linewidth=1, linestyle=':', alpha=0.6)
+    _add_region_lines(ax2)
+
+    handles2, labels2 = ax2.get_legend_handles_labels()
+    handles2 += [
+        Line2D([0], [0], color='gray', linewidth=2, label='Total cycle'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='Reel-out'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle=':', label='Reel-in'),
+    ]
+    ax2.set_xlabel('Wind Speed at ref. height (m/s)', fontsize=11)
     ax2.set_ylabel('Time (s)', fontsize=11)
-    ax2.set_title('Cycle Times', fontsize=12, fontweight='bold')
-    ax2.legend(loc='upper right', fontsize=9)
+    ax2.set_title('Cycle Times – All Profiles', fontsize=12, fontweight='bold')
+    ax2.legend(handles=handles2, loc='upper right', fontsize=8, ncol=2)
     ax2.grid(True, alpha=0.3)
-    
-    # Subplot 3: Tether forces
+
+    # Subplot 3: Tether forces – all profiles
     ax3 = fig.add_subplot(gs[1, 0])
-    ax3.plot(windSpeed, plot['tetherForceOut']/1000, 'g-', linewidth=2, label='Reel-Out Force')
-    ax3.plot(windSpeed, plot['tetherForceIn']/1000, 'r-', linewidth=2, label='Reel-In Force')
-    
-    if model_params:
-        if 'nominalTetherForce' in model_params:
-            ax3.axhline(y=model_params['nominalTetherForce']/1000, color='purple', 
-                       linestyle=':', alpha=0.5, label='Nominal Force')
-        if 'nominalWindSpeedForce' in model_params:
-            ax3.axvline(x=model_params['nominalWindSpeedForce'], color='orange', 
-                       linestyle=':', alpha=0.5)
-        if 'nominalWindSpeedPower' in model_params and 'cutOutWindSpeed' in model_params:
-            if model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']:
-                ax3.axvline(x=model_params['nominalWindSpeedPower'], color='red', 
-                           linestyle=':', alpha=0.5)
-    
-    ax3.set_xlabel('Wind Speed (m/s)', fontsize=11)
+    for i, profile in enumerate(profiles):
+        c = colors[i]
+        lbl = f'Profile {profile["profile_id"]}'
+        ax3.plot(windSpeedRef, profile['tetherForceOut'] / 1000,
+                 color=c, linewidth=2, label=lbl)
+        ax3.plot(windSpeedRef, profile['tetherForceIn'] / 1000,
+                 color=c, linewidth=1, linestyle='--', alpha=0.6)
+
+    if model_params and 'nominalTetherForce' in model_params:
+        ax3.axhline(y=model_params['nominalTetherForce'] / 1000,
+                    color='purple', linestyle=':', alpha=0.5, label='Nominal Force')
+    _add_region_lines(ax3)
+
+    handles3, labels3 = ax3.get_legend_handles_labels()
+    handles3 += [
+        Line2D([0], [0], color='gray', linewidth=2, label='Reel-out force'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='Reel-in force'),
+    ]
+    ax3.set_xlabel('Wind Speed at ref. height (m/s)', fontsize=11)
     ax3.set_ylabel('Tether Force (kN)', fontsize=11)
-    ax3.set_title('Tether Forces', fontsize=12, fontweight='bold')
-    ax3.legend(loc='upper left', fontsize=9)
+    ax3.set_title('Tether Forces – All Profiles', fontsize=12, fontweight='bold')
+    ax3.legend(handles=handles3, loc='upper left', fontsize=8, ncol=2)
     ax3.grid(True, alpha=0.3)
-    
-    # Subplot 4: Reel speeds and elevation angles
+
+    # Subplot 4: Reel speeds – all profiles
     ax4 = fig.add_subplot(gs[1, 1])
     ax4_twin = ax4.twinx()
-    
-    l1 = ax4.plot(windSpeed, plot['reelOutSpeed'], 'g-', linewidth=2, label='Reel-Out Speed')
-    l2 = ax4.plot(windSpeed, plot['reelInSpeed'], 'r-', linewidth=2, label='Reel-In Speed')
-    
-    if model_params:
-        if 'nominalWindSpeedForce' in model_params:
-            ax4.axvline(x=model_params['nominalWindSpeedForce'], color='orange', 
-                       linestyle=':', alpha=0.5)
-        if 'nominalWindSpeedPower' in model_params and 'cutOutWindSpeed' in model_params:
-            if model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']:
-                ax4.axvline(x=model_params['nominalWindSpeedPower'], color='red', 
-                           linestyle=':', alpha=0.5)
-    
-    ax4.set_xlabel('Wind Speed (m/s)', fontsize=11)
-    ax4.set_ylabel('Reel Speed (m/s)', fontsize=11, color='black')
+
+    for i, profile in enumerate(profiles):
+        c = colors[i]
+        lbl = f'Profile {profile["profile_id"]}'
+        ax4.plot(windSpeedRef, profile['reelOutSpeed'],
+                 color=c, linewidth=2, label=lbl)
+        ax4.plot(windSpeedRef, profile['reelInSpeed'],
+                 color=c, linewidth=1, linestyle='--', alpha=0.6)
+    _add_region_lines(ax4)
+
+    ax4.set_xlabel('Wind Speed at ref. height (m/s)', fontsize=11)
+    ax4.set_ylabel('Reel Speed (m/s)', fontsize=11)
     ax4.tick_params(axis='y', labelcolor='black')
     ax4.grid(True, alpha=0.3)
-    
-    # Plot elevation angles on right y-axis if provided
+
     if model_params and 'elevationAngleOut' in model_params and 'elevationAngleIn' in model_params:
         elevOut_deg = np.rad2deg(model_params['elevationAngleOut'])
         elevIn_deg = np.rad2deg(model_params['elevationAngleIn'])
-        l3 = ax4_twin.plot(windSpeed, np.ones_like(windSpeed)*elevOut_deg, 'g--', 
-                          linewidth=1.5, alpha=0.5, label=f'Elev Out ({elevOut_deg:.1f}°)')
-        l4 = ax4_twin.plot(windSpeed, np.ones_like(windSpeed)*elevIn_deg, 'r--', 
-                          linewidth=1.5, alpha=0.5, label=f'Elev In ({elevIn_deg:.1f}°)')
+        l3 = ax4_twin.plot(windSpeedRef, np.ones_like(windSpeedRef) * elevOut_deg,
+                           'g--', linewidth=1.5, alpha=0.5,
+                           label=f'Elev Out ({elevOut_deg:.1f}°)')
+        l4 = ax4_twin.plot(windSpeedRef, np.ones_like(windSpeedRef) * elevIn_deg,
+                           'r--', linewidth=1.5, alpha=0.5,
+                           label=f'Elev In ({elevIn_deg:.1f}°)')
         ax4_twin.set_ylabel('Elevation Angle (°)', fontsize=11, color='gray')
         ax4_twin.tick_params(axis='y', labelcolor='gray')
-        
-        # Combine legends
-        lines = l1 + l2 + l3 + l4
-        labels = [l.get_label() for l in lines]
-        ax4.legend(lines, labels, loc='upper left', fontsize=9)
-    else:
-        ax4.legend(l1 + l2, [l.get_label() for l in l1 + l2], loc='upper left', fontsize=9)
-    
+        ax4_twin.legend(handles=l3 + l4, loc='center right', fontsize=8)
+
+    handles4, _ = ax4.get_legend_handles_labels()
+    handles4 += [
+        Line2D([0], [0], color='gray', linewidth=2, label='Reel-out speed'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='Reel-in speed'),
+    ]
+    ax4.legend(handles=handles4, loc='upper left', fontsize=8, ncol=2)
     ax4.set_title('Reel Speeds & Elevation Angles', fontsize=12, fontweight='bold')
-    
-    # Subplot 5: Energy per cycle
+
+    # Subplot 5: Energy per cycle – all profiles
     ax5 = fig.add_subplot(gs[2, 0])
+    for i, profile in enumerate(profiles):
+        c = colors[i]
+        lbl = f'Profile {profile["profile_id"]}'
+        energyOut = profile['reelOutPower'] * profile['reelOutTime'] / 3_600_000
+        energyIn = profile['reelInPower'] * profile['reelInTime'] / 3_600_000
+        cycleTime = profile['reelOutTime'] + profile['reelInTime']
+        cycleEnergy = profile['power'] * cycleTime / 3_600_000
+        ax5.plot(windSpeedRef, energyOut,
+                 color=c, linewidth=1, linestyle='--', alpha=0.6)
+        ax5.plot(windSpeedRef, energyIn,
+                 color=c, linewidth=1, linestyle=':', alpha=0.6)
+        ax5.plot(windSpeedRef, cycleEnergy,
+                 color=c, linewidth=2, label=lbl)
+    _add_region_lines(ax5)
 
-    # Calculate energies (power * time)
-    energyOut = plot['reelOutPower'] * plot['reelOutTime'] / 3600000  # Convert to kWh
-    energyIn = plot['reelInPower'] * plot['reelInTime'] / 3600000      # Convert to kWh
-    cycleEnergy = plot['power'] * (plot['reelOutTime'] + plot['reelInTime']) / 3600000  # kWh
-
-    ax5.plot(windSpeed, energyOut, 'g-', linewidth=2.5, label='Reel-Out Energy')
-    ax5.plot(windSpeed, energyIn, 'r-', linewidth=2.5, label='Reel-In Energy')
-    ax5.plot(windSpeed, cycleEnergy, 'b-', linewidth=2.5, label='Net Cycle Energy')
-    ax5.fill_between(windSpeed, 0, cycleEnergy, alpha=0.2, color='blue')
-    
-    if model_params:
-        if 'nominalWindSpeedForce' in model_params:
-            ax5.axvline(x=model_params['nominalWindSpeedForce'], color='orange', 
-                       linestyle=':', alpha=0.5)
-        if 'nominalWindSpeedPower' in model_params and 'cutOutWindSpeed' in model_params:
-            if model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']:
-                ax5.axvline(x=model_params['nominalWindSpeedPower'], color='red', 
-                           linestyle=':', alpha=0.5)
-    
-    ax5.set_xlabel('Wind Speed (m/s)', fontsize=11)
+    handles5, _ = ax5.get_legend_handles_labels()
+    handles5 += [
+        Line2D([0], [0], color='gray', linewidth=2, label='Net cycle energy'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='Reel-out energy'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle=':', label='Reel-in energy'),
+    ]
+    ax5.set_xlabel('Wind Speed at ref. height (m/s)', fontsize=11)
     ax5.set_ylabel('Energy per Cycle (kWh)', fontsize=11)
-    ax5.set_title('Energy per Cycle', fontsize=12, fontweight='bold')
-    ax5.legend(loc='upper left', fontsize=9)
+    ax5.set_title('Energy per Cycle – All Profiles', fontsize=12, fontweight='bold')
+    ax5.legend(handles=handles5, loc='upper left', fontsize=8, ncol=2)
     ax5.grid(True, alpha=0.3)
-    
-    # Subplot 6: Reeling factors (gamma) - spans bottom
+
+    # Subplot 6: Reeling factors (gamma) – all profiles
     ax6 = fig.add_subplot(gs[2, 1])
-    ax6.plot(windSpeed, plot['gammaOut'], 'g-', linewidth=2.5, label='Reel-Out Factor (γ_out)')
-    ax6.plot(windSpeed, plot['gammaIn'], 'r-', linewidth=2.5, label='Reel-In Factor (γ_in)')
-    
+    for i, profile in enumerate(profiles):
+        c = colors[i]
+        lbl = f'Profile {profile["profile_id"]}'
+        ax6.plot(windSpeedRef, profile['gammaOut'],
+                 color=c, linewidth=2, label=lbl)
+        ax6.plot(windSpeedRef, profile['gammaIn'],
+                 color=c, linewidth=1, linestyle='--', alpha=0.6)
+    _add_region_lines(ax6)
+
     if model_params:
         if 'nominalWindSpeedForce' in model_params:
-            ax6.axvline(x=model_params['nominalWindSpeedForce'], color='orange', 
-                       linestyle=':', alpha=0.5,
-                       label=f"Force Limit ({model_params['nominalWindSpeedForce']:.1f} m/s)")
-        if 'nominalWindSpeedPower' in model_params and 'cutOutWindSpeed' in model_params:
-            if model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']:
-                ax6.axvline(x=model_params['nominalWindSpeedPower'], color='red', 
-                           linestyle=':', alpha=0.5,
-                           label=f"Power Limit ({model_params['nominalWindSpeedPower']:.1f} m/s)")
-    
-    ax6.set_xlabel('Wind Speed (m/s)', fontsize=11)
+            ax6.axvline(x=model_params['nominalWindSpeedForce'], color='orange',
+                        linestyle=':', alpha=0.5,
+                        label=f"Force Limit ({model_params['nominalWindSpeedForce']:.1f} m/s)")
+        if ('nominalWindSpeedPower' in model_params and
+                'cutOutWindSpeed' in model_params and
+                model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']):
+            ax6.axvline(x=model_params['nominalWindSpeedPower'], color='red',
+                        linestyle=':', alpha=0.5,
+                        label=f"Power Limit ({model_params['nominalWindSpeedPower']:.1f} m/s)")
+
+    handles6, labels6 = ax6.get_legend_handles_labels()
+    handles6 += [
+        Line2D([0], [0], color='gray', linewidth=2, label='γ_out'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='γ_in'),
+    ]
+    ax6.set_xlabel('Wind Speed at ref. height (m/s)', fontsize=11)
     ax6.set_ylabel('Reeling Factor (-)', fontsize=11)
-    ax6.set_title('Dimensionless Reeling Factors', fontsize=12, fontweight='bold')
-    ax6.legend(loc='upper right', fontsize=9)
+    ax6.set_title('Dimensionless Reeling Factors – All Profiles', fontsize=12, fontweight='bold')
+    ax6.legend(handles=handles6, loc='upper right', fontsize=8, ncol=2)
     ax6.grid(True, alpha=0.3)
     
     # Overall title
     title = 'AWE Power Curve Analysis (Luchsinger Model)'
     if model_params and 'wingArea' in model_params and 'nominalGeneratorPower' in model_params:
-        title += f"\n{model_params['wingArea']} m² wing"
+        title += (f"\n{model_params['wingArea']} m² wing"
+                  f" – {n_profiles} wind shear profile{'s' if n_profiles != 1 else ''}")
     fig.suptitle(title, fontsize=14, fontweight='bold')
     
     # Save if path provided
