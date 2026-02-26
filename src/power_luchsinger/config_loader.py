@@ -105,7 +105,9 @@ def load_system_config(file_path, simulation_settings, validate_file=False):
             drum.get('max_tether_force_n')
             or tether_structure.get('max_tether_force_n')
         ),
-        'nominalGeneratorPower': generator.get('rated_power_kw', 0) * 1000,
+        'nominalGeneratorPower': (
+            generator.get('rated_power_kw') or generator.get('max_power_kw', 0)
+        ) * 1000,
         'generatorEfficiency': generator.get('efficiency'),
         'storageEfficiency': storage.get('efficiency'),
     }
