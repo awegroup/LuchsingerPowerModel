@@ -163,9 +163,11 @@ class PowerModel:
 
         self.nominalWindSpeedForce = self.cutOutWindSpeed
         self.nominalGammaOutForce = 0.33
+        self.nominalAvgWindSpeedForce = self.cutOutWindSpeed
 
         self.nominalWindSpeedPower = self.cutOutWindSpeed
         self.nominalGammaOutPower = 0.33
+        self.nominalAvgWindSpeedPower = self.cutOutWindSpeed
 
         # Find force limit with segmented calculations
         for vw in windSpeeds:
@@ -173,10 +175,14 @@ class PowerModel:
             windSpeedsOut = self.get_segmented_wind_speeds(
                 vw, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=20
             )
+            windSpeedsIn = self.get_segmented_wind_speeds(
+                vw, wind_profile, reference_height_m, self.elevationAngleIn, n_segments=20
+            )
             avgWindSpeed = np.mean(windSpeedsOut)
-            
+            avgWindSpeedIn = np.mean(windSpeedsIn)
+
             gammaOutMax = self.reelOutSpeedLimit / avgWindSpeed
-            gammaInMax = self.reelInSpeedLimit / avgWindSpeed
+            gammaInMax = self.reelInSpeedLimit / avgWindSpeedIn
 
             gammaOut, gammaIn = self._optimize_gamma_out_in_region1(
                 self.elevationAngleOut, self.elevationAngleIn,
@@ -197,6 +203,7 @@ class PowerModel:
             if tetherForce >= self.nominalTetherForce:
                 self.nominalWindSpeedForce = vw
                 self.nominalGammaOutForce = gammaOut
+                self.nominalAvgWindSpeedForce = avgWindSpeed
                 break
 
         # Find power limit (only for winds above force limit)
@@ -209,7 +216,7 @@ class PowerModel:
             )
             avgWindSpeed = np.mean(windSpeedsOut)
             
-            mu = avgWindSpeed / self.nominalWindSpeedForce
+            mu = avgWindSpeed / self.nominalAvgWindSpeedForce
             gammaOut = (
                 np.cos(self.elevationAngleOut) -
                 (np.cos(self.elevationAngleOut) - self.nominalGammaOutForce) / mu
@@ -223,6 +230,7 @@ class PowerModel:
             if elecPower >= self.nominalGeneratorPower:
                 self.nominalWindSpeedPower = vw
                 self.nominalGammaOutPower = gammaOut
+                self.nominalAvgWindSpeedPower = avgWindSpeed
                 break
 
         # Compute nominal reel-out speed for power-limited region
@@ -515,7 +523,7 @@ class PowerModel:
         avgWindSpeedOut = np.mean(windSpeedsOut)
         avgWindSpeedIn = np.mean(windSpeedsIn)
 
-        mu = avgWindSpeedOut / self.nominalWindSpeedForce
+        mu = avgWindSpeedOut / self.nominalAvgWindSpeedForce
         gammaInMax = self.reelInSpeedLimit / avgWindSpeedIn
 
         gammaOut = (
@@ -635,7 +643,7 @@ class PowerModel:
         avgWindSpeedOut = np.mean(windSpeedsOut)
         avgWindSpeedIn = np.mean(windSpeedsIn)
 
-        mu = avgWindSpeedOut / self.nominalWindSpeedPower
+        mu = avgWindSpeedOut / self.nominalAvgWindSpeedPower
         gammaInMax = self.reelInSpeedLimit / avgWindSpeedIn
 
         vOut = self.nominalReelOutSpeed
