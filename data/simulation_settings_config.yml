@@ -13,3 +13,7 @@ operational:
 # Atmosphere parameters
 atmosphere:
   air_density_kg_m3: 1.225        # Air density at sea level [kg/m³]
+
+# Power curve calculation settings
+power_curve:
+  num_points: 100                  # Number of wind speed points for power curve
