@@ -14,10 +14,10 @@ components:
     version: 1.0
     aerodynamics:
       simple_aero_model: # Parameters for simple models
-        lift_coefficient_reel_out: 0.9
-        drag_coefficient_reel_out: 0.2
-        lift_coefficient_reel_in: 0.20
-        drag_coefficient_reel_in: 0.1
+        lift_coefficient_reel_out: 0.7
+        drag_coefficient_reel_out: 0.16
+        lift_coefficient_reel_in: 0.22 
+        drag_coefficient_reel_in: 0.11
     structure:
       projected_surface_area_m2: 19.75
       mass_kg: 12.0
@@ -41,10 +41,10 @@ components:
     aerodynamics:
       drag_coefficient: 1.1
     structure:
-      length_m: 300.0
+      length_m: 500.0
       diameter_m: 0.004
       density_kg_m3: 724.0
-      max_tether_force_n: 5000
+      max_tether_force_n: 5000.0
       conductive: false
       material:
         type: dyneema
@@ -59,7 +59,7 @@ components:
       max_tether_speed_m_s: 10.0
     generator:
       type: permanent_magnet_synchronous
-      max_power_kw: 15.0
+      max_power_kw: 40.0
       efficiency: 1
     storage:
       type: battery_bank

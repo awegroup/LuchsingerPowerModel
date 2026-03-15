@@ -19,9 +19,10 @@ from src.power_luchsinger import PowerModel
 def main():
     """Main entry point for power curve calculation script."""
     # Use awesIO format configuration files
-    systemConfigPath = workspace_root / 'data' / 'kitepower V3_20.yml'
+    systemConfigPath = workspace_root / 'data' / 'kitepower V3_Mark.yml'
     simulationSettingsPath = workspace_root / 'data' / 'simulation_settings_config.yml'
-    windResourcePath = workspace_root / 'data' / 'clustered_profiles_wind_resource.yml'
+    # windResourcePath = workspace_root / 'data' / 'clustered_profiles_wind_resource.yml'
+    windResourcePath = workspace_root / 'data' / 'wind_resource.yml'
     OUTPUT_PATH = workspace_root / 'results' / 'luchsinger_power_curves.yml'
 
     # Load power model (all YAML loading handled internally via config_loader)

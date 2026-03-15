@@ -19,22 +19,29 @@ def calculate_force_factor_out(liftCoefficient: float,
     if dragCoefficient <= 0:
         raise ValueError("Drag coefficient must be positive")
     
-    return (liftCoefficient**3) / (dragCoefficient**2)
+    E2out  = (liftCoefficient / dragCoefficient)**2
+    force_factor_out = liftCoefficient * np.sqrt(1+1/E2out) * (1+E2out)
+
+    return force_factor_out
 
 
-def calculate_force_factor_in(dragCoefficient: float) -> float:
+def calculate_force_factor_in(liftCoefficient: float, dragCoefficient: float) -> float:
     """Calculate the dimensionless force factor for reel-in phase.
     
     During reel-in, the kite is depowered and the force is proportional
     to drag only.
     
     Args:
+        liftCoefficient (float): Lift coefficient during reel-in.
         dragCoefficient (float): Drag coefficient during reel-in.
             
     Returns:
         float: Force factor f_in = C_D.
     """
-    return dragCoefficient
+
+    E2in   = (liftCoefficient  / dragCoefficient)**2
+    force_factor_in  = liftCoefficient  * np.sqrt(1+1/E2in)
+    return force_factor_in
 
 
 def calculate_tether_force_out(airDensity: float,

@@ -101,7 +101,7 @@ class PowerModel:
         """
         if self.wingArea <= 0:
             raise ValueError("Wing area must be positive")
-        if self.liftCoefficientOut <= 0:
+        if self.liftCoefficientKiteOut <= 0:
             raise ValueError("Lift coefficient must be positive")
         if self.dragCoefficientKiteOut <= 0:
             raise ValueError("Drag coefficient must be positive")
@@ -133,15 +133,12 @@ class PowerModel:
         # Use reel-out elevation angle as representative
         self.operationalAltitude = self.operationalLength * np.sin(self.elevationAngleOut)
 
-        # Total drag coefficients
-        self.dragCoefficientOut = self.dragCoefficientKiteOut
-        self.dragCoefficientIn = self.dragCoefficientKiteIn
 
         # Force factors
         self.forceFactorOut = calculate_force_factor_out(
-            self.liftCoefficientOut, self.dragCoefficientOut
+            self.liftCoefficientKiteOut, self.dragCoefficientKiteOut
         )
-        self.forceFactorIn = calculate_force_factor_in(self.dragCoefficientIn)
+        self.forceFactorIn = calculate_force_factor_in(self.liftCoefficientKiteIn, self.dragCoefficientKiteIn)
 
         # Nominal wind speeds are computed per wind profile in generate_power_curves
 
@@ -495,6 +492,8 @@ class PowerModel:
         
         bounds = ((0.001, gammaOutMax), (0.001, gammaInMax))
         result = op.minimize(objective, (0.001, 0.001), bounds=bounds, method='SLSQP')
+        if self._verbose:
+            print(f"Region 1 optimizer: {result.nit} iterations")
         
         return result['x'][0], result['x'][1]
 
@@ -615,6 +614,8 @@ class PowerModel:
             bounds=[(0.001, gammaInMax)],
             method='SLSQP'
         )
+        if self._verbose:
+            print(f"Region 2 optimizer: {result.nit} iterations")
 
         return result['x'][0]
 
@@ -726,6 +727,8 @@ class PowerModel:
             bounds=[(0.001, gammaInMax)],
             method='SLSQP'
         )
+        if self._verbose:
+            print(f"Region 3 optimizer: {result.nit} iterations")
 
         return result['x'][0]
 
@@ -773,6 +776,7 @@ class PowerModel:
                     - 'power': Cycle power (W)
                     - ... other power curve variables
         """
+        self._verbose = verbose
         wind_shear_data = self.wind_resource
         reference_height_m = wind_shear_data['reference_height_m']
         profiles = wind_shear_data['profiles']
