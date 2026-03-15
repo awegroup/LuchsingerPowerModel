@@ -14,7 +14,7 @@ def calculate_force_factor_out(liftCoefficient: float,
         dragCoefficient (float): Drag coefficient during reel-out.
             
     Returns:
-        float: Force factor f_out = C_L³ / C_D².
+        float: Force factor f_out
     """
     if dragCoefficient <= 0:
         raise ValueError("Drag coefficient must be positive")
@@ -36,7 +36,7 @@ def calculate_force_factor_in(liftCoefficient: float, dragCoefficient: float) ->
         dragCoefficient (float): Drag coefficient during reel-in.
             
     Returns:
-        float: Force factor f_in = C_D.
+        float: Force factor f_in
     """
 
     E2in   = (liftCoefficient  / dragCoefficient)**2
