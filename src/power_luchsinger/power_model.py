@@ -141,99 +141,6 @@ class PowerModel:
 
         # Nominal wind speeds are computed per wind profile in generate_power_curves
 
-    def _compute_nominal_wind_speeds_with_shear(
-        self,
-        wind_profile: Dict[str, np.ndarray],
-        reference_height_m: float) -> None:
-        """Recompute nominal wind speeds using segmented wind shear calculations.
-        
-        This method recalculates the force and power limit wind speeds using
-        segmented wind speeds along the tether deployment.
-        
-        Args:
-            wind_profile: Dict with 'altitudes' and 'u_normalized' arrays.
-            reference_height_m: Reference altitude where wind_profile = 1.0 (m).
-        """
-        windSpeeds = np.arange(self.cutInWindSpeed, self.cutOutWindSpeed, 0.1)
-
-        self.nominalWindSpeedForce = self.cutOutWindSpeed
-        self.nominalGammaOutForce = 0.33
-        self.nominalAvgWindSpeedForce = self.cutOutWindSpeed
-
-        self.nominalWindSpeedPower = self.cutOutWindSpeed
-        self.nominalGammaOutPower = 0.33
-        self.nominalAvgWindSpeedPower = self.cutOutWindSpeed
-
-        # Find force limit with segmented calculations
-        for vw in windSpeeds:
-            # Get segmented wind speeds
-            windSpeedsOut = self.get_segmented_wind_speeds(
-                vw, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=20
-            )
-            windSpeedsIn = self.get_segmented_wind_speeds(
-                vw, wind_profile, reference_height_m, self.elevationAngleIn, n_segments=20
-            )
-            avgWindSpeed = np.mean(windSpeedsOut)
-            avgWindSpeedIn = np.mean(windSpeedsIn)
-
-            gammaOutMax = self.reelOutSpeedLimit / avgWindSpeed
-            gammaInMax = self.reelInSpeedLimit / avgWindSpeedIn
-
-            gammaOut, gammaIn = self._optimize_gamma_out_in_region1(
-                self.elevationAngleOut, self.elevationAngleIn,
-                self.forceFactorOut, self.forceFactorIn,
-                gammaOutMax, gammaInMax
-            )
-
-            # Calculate average tether force across segments
-            tetherForces = np.array([
-                calculate_tether_force_out(
-                    self.airDensity, ws, self.wingArea,
-                    gammaOut, self.elevationAngleOut, self.forceFactorOut
-                )
-                for ws in windSpeedsOut
-            ])
-            tetherForce = np.mean(tetherForces)
-
-            if tetherForce >= self.nominalTetherForce:
-                self.nominalWindSpeedForce = vw
-                self.nominalGammaOutForce = gammaOut
-                self.nominalAvgWindSpeedForce = avgWindSpeed
-                break
-
-        # Find power limit (only for winds above force limit)
-        for vw in windSpeeds:
-            if vw <= self.nominalWindSpeedForce:
-                continue
-
-            windSpeedsOut = self.get_segmented_wind_speeds(
-                vw, wind_profile, reference_height_m, self.elevationAngleOut, n_segments=20
-            )
-            avgWindSpeed = np.mean(windSpeedsOut)
-            
-            mu = avgWindSpeed / self.nominalAvgWindSpeedForce
-            gammaOut = (
-                np.cos(self.elevationAngleOut) -
-                (np.cos(self.elevationAngleOut) - self.nominalGammaOutForce) / mu
-            )
-            vOut = avgWindSpeed * gammaOut
-
-            # Simple power calculation
-            mechPower = self.nominalTetherForce * vOut
-            elecPower = mechPower * self.generatorEfficiency
-
-            if elecPower >= self.nominalGeneratorPower:
-                self.nominalWindSpeedPower = vw
-                self.nominalGammaOutPower = gammaOut
-                self.nominalAvgWindSpeedPower = avgWindSpeed
-                break
-
-        # Compute nominal reel-out speed for power-limited region
-        self.nominalReelOutSpeed = (
-            self.nominalGeneratorPower / 
-            (self.nominalTetherForce * self.generatorEfficiency)
-        )
-
     def get_wind_speed_at_operational_altitude(
         self,
         reference_wind_speed: float,
@@ -802,10 +709,83 @@ class PowerModel:
                 'u_normalized': profile_data['u_normalized']
             }
 
-            # Recompute nominal wind speeds with this wind profile
-            self._compute_nominal_wind_speeds_with_shear(
-                wind_profile, reference_height_m
-            )
+            # Initialise regime tracking for this profile.  Wind speeds are
+            # processed in ascending order so transitions are detected
+            # naturally: after detecting a transition the same wind speed is
+            # re-evaluated in the new regime (if/if/if fall-through
+            wind_speed_regime = 1
+            self.nominalWindSpeedForce = self.cutOutWindSpeed
+            self.nominalGammaOutForce = 0.33
+            self.nominalAvgWindSpeedForce = self.cutOutWindSpeed
+            self.nominalWindSpeedPower = self.cutOutWindSpeed
+            self.nominalGammaOutPower = 0.33
+            self.nominalAvgWindSpeedPower = self.cutOutWindSpeed
+            self.nominalReelOutSpeed = self.reelOutSpeedLimit
+
+            sorted_indices = np.argsort(windSpeedsAtRef)
+            _zero = {
+                'cyclePower': 0.0, 'reelOutPower': 0.0, 'reelInPower': 0.0,
+                'reelOutTime': 0.0, 'reelInTime': 0.0,
+                'tetherForceOut': 0.0, 'tetherForceIn': 0.0,
+                'reelOutSpeed': 0.0, 'reelInSpeed': 0.0,
+                'gammaOut': 0.0, 'gammaIn': 0.0,
+            }
+            results_sorted = []
+            for ws_ref in windSpeedsAtRef[sorted_indices]:
+                if ws_ref < self.cutInWindSpeed or ws_ref > self.cutOutWindSpeed:
+                    results_sorted.append(dict(_zero))
+                    continue
+
+                if wind_speed_regime == 1:
+                    result = self._calculate_power_region1(
+                        ws_ref, wind_profile, reference_height_m
+                    )
+                    if result['tetherForceOut'] >= self.nominalTetherForce:
+                        wind_speed_regime = 2
+                        avgWindSpeedOut = np.mean(
+                            self.get_segmented_wind_speeds(
+                                ws_ref, wind_profile, reference_height_m,
+                                self.elevationAngleOut
+                            )
+                        )
+                        self.nominalWindSpeedForce = ws_ref
+                        self.nominalGammaOutForce = result['gammaOut']
+                        self.nominalAvgWindSpeedForce = avgWindSpeedOut
+                        logger.debug(
+                            'Profile %s: regime 1→2 at %.2f m/s',
+                            profile_id, ws_ref
+                        )
+
+                if wind_speed_regime == 2:
+                    result = self._calculate_power_region2(
+                        ws_ref, wind_profile, reference_height_m
+                    )
+                    if result['reelOutPower'] >= self.nominalGeneratorPower:
+                        wind_speed_regime = 3
+                        avgWindSpeedOut = np.mean(
+                            self.get_segmented_wind_speeds(
+                                ws_ref, wind_profile, reference_height_m,
+                                self.elevationAngleOut
+                            )
+                        )
+                        self.nominalWindSpeedPower = ws_ref
+                        self.nominalGammaOutPower = result['gammaOut']
+                        self.nominalAvgWindSpeedPower = avgWindSpeedOut
+                        self.nominalReelOutSpeed = result['reelOutSpeed']
+                        logger.debug(
+                            'Profile %s: regime 2→3 at %.2f m/s',
+                            profile_id, ws_ref
+                        )
+
+                if wind_speed_regime == 3:
+                    result = self._calculate_power_region3(
+                        ws_ref, wind_profile, reference_height_m
+                    )
+
+                results_sorted.append(result)
+
+            # Restore original wind speed ordering
+            results = [results_sorted[i] for i in np.argsort(sorted_indices)]
 
             # Calculate wind speeds at operational altitude (for reporting)
             windSpeedsAtOp = np.array([
@@ -814,16 +794,6 @@ class PowerModel:
                 )
                 for ws_ref in windSpeedsAtRef
             ])
-
-            # Calculate power using reference wind speed and wind profile
-            results = [
-                self.calculate_power(
-                    ws_ref,
-                    wind_profile=wind_profile,
-                    reference_height_m=reference_height_m
-                )
-                for ws_ref in windSpeedsAtRef
-            ]
 
             # Collect results for this profile
             profile_curve = {
