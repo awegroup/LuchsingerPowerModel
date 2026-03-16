@@ -19,8 +19,10 @@ def calculate_force_factor_out(liftCoefficient: float,
     if dragCoefficient <= 0:
         raise ValueError("Drag coefficient must be positive")
     
-    E2out  = (liftCoefficient / dragCoefficient)**2
-    force_factor_out = liftCoefficient * np.sqrt(1+1/E2out) * (1+E2out)
+    force_factor_out = (liftCoefficient**3) / (dragCoefficient**2)
+
+    # E2out  = (liftCoefficient / dragCoefficient)**2
+    # force_factor_out = liftCoefficient * np.sqrt(1+1/E2out) * (1+E2out)
 
     return force_factor_out
 
@@ -39,8 +41,11 @@ def calculate_force_factor_in(liftCoefficient: float, dragCoefficient: float) ->
         float: Force factor f_in
     """
 
-    E2in   = (liftCoefficient  / dragCoefficient)**2
-    force_factor_in  = liftCoefficient  * np.sqrt(1+1/E2in)
+    force_factor_in = dragCoefficient
+
+    # E2in   = (liftCoefficient  / dragCoefficient)**2
+    # force_factor_in  = liftCoefficient  * np.sqrt(1+1/E2in)
+
     return force_factor_in
 
 

@@ -50,8 +50,7 @@ class PowerModel:
         system_config_path,
         wind_resource_path,
         simulation_settings_path,
-        validate_file=True,
-    ):
+        validate_file=True,):
         """Initialize the power model with configuration files.
 
         Args:
@@ -145,8 +144,7 @@ class PowerModel:
     def _compute_nominal_wind_speeds_with_shear(
         self,
         wind_profile: Dict[str, np.ndarray],
-        reference_height_m: float
-    ) -> None:
+        reference_height_m: float) -> None:
         """Recompute nominal wind speeds using segmented wind shear calculations.
         
         This method recalculates the force and power limit wind speeds using
@@ -240,8 +238,7 @@ class PowerModel:
         self,
         reference_wind_speed: float,
         wind_profile: Dict[str, np.ndarray],
-        reference_height_m: float
-    ) -> float:
+        reference_height_m: float) -> float:
         """Calculate wind speed at operational altitude using wind shear profile.
         
         Args:
@@ -270,8 +267,7 @@ class PowerModel:
         wind_profile: Dict[str, np.ndarray],
         reference_height_m: float,
         elevation_angle: float,
-        n_segments: int = 20
-    ) -> np.ndarray:
+        n_segments: int = 20) -> np.ndarray:
         """Calculate wind speeds for segmented tether deployment.
         
         Divides the reeling length into n_segments and calculates the wind speed
@@ -739,8 +735,7 @@ class PowerModel:
         verbose: bool = False,
         show_plot: bool = False,
         save_plot: bool = False,
-        validate_file: bool = True,
-    ) -> Dict[str, Any]:
+        validate_file: bool = True,) -> Dict[str, Any]:
         """Generate power curves for multiple wind shear profiles.
 
         Calculates power curves for each wind profile/cluster stored in
@@ -958,8 +953,7 @@ class PowerModel:
         name: str = "Luchsinger Power Curves with Wind Shear",
         description: str = "Power curves for pumping ground-gen AWE system with wind shear",
         note: str = "Power curve data generated from Luchsinger model with wind shear profiles",
-        file_validate: bool = True,
-    ) -> None:
+        file_validate: bool = True,) -> None:
         """Export power curve data with wind shear profiles in awesIO format.
 
         Args:
