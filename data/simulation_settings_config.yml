@@ -8,7 +8,7 @@ settings:
   elevation_angle_out_deg: 30.0   # Tether elevation during reel-out [degrees]
   elevation_angle_in_deg: 45.0    # Initial/reference reel-in angle [degrees], only used for luchsinger_original
 
-  num_points: 100                 # Number of wind speed points for power curve
+  num_points: 250                 # Number of wind speed points for power curve
   n_segments: 20                  # Number of tether segments used in phase integration
 
   minimum_tether_length_m: 100.0  # Minimum tether length [m]
