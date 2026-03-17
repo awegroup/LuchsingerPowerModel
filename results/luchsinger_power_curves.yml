@@ -4,14 +4,14 @@ metadata:
   note: Power curve data generated from Luchsinger model with wind shear profiles
   awesIO_version: 0.1.0
   schema: power_curves_schema.yml
-  time_created: '2026-03-16T21:08:53.906526'
+  time_created: '2026-03-17T12:41:03.887480'
   reference_height_m: 200.0
   model_config:
     wing_area_m2: 19.75
-    nominal_power_w: 40000.0
+    nominal_power_w: 15000.0
     nominal_tether_force_n: 5000.0
-    operating_altitude_m: 102.60604299770061
-    tether_length_operational_m: 300.0
+    operating_altitude_m: 99.99999999999999
+    tether_length_operational_m: 200.0
     cut_in_wind_speed_m_s: 4.0
     cut_out_wind_speed_m_s: 25.0
 altitudes_m:
@@ -280,1099 +280,1099 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 661.1847009035171
-        average_reel_out_power_w: 870.7108605285672
-        average_reel_in_power_w: 751.9976314617064
+        average_cycle_power_w: 636.8532375801468
+        average_reel_out_power_w: 745.5615324719814
+        average_reel_in_power_w: 374.7678952134036
       timing:
-        reel_out_time_s: 432.04748410641594
-        reel_in_time_s: 64.05772846662423
-        cycle_time_s: 496.10521257304015
+        reel_out_time_s: 217.31534663627176
+        reel_in_time_s: 23.352597154055534
+        cycle_time_s: 240.66794379032729
   - wind_speed_m_s: 4.212121212121212
     success: true
     performance:
       power:
-        average_cycle_power_w: 772.0499568932272
-        average_reel_out_power_w: 1016.7087674880125
-        average_reel_in_power_w: 878.0900982137824
+        average_cycle_power_w: 743.6386745627573
+        average_reel_out_power_w: 870.5748155086809
+        average_reel_in_power_w: 437.6077319228464
       timing:
-        reel_out_time_s: 410.2896971370282
-        reel_in_time_s: 60.83179969492373
-        cycle_time_s: 471.12149683195196
+        reel_out_time_s: 206.37140831645956
+        reel_in_time_s: 22.17656708154915
+        cycle_time_s: 228.5479753980087
   - wind_speed_m_s: 4.424242424242424
     success: true
     performance:
       power:
-        average_cycle_power_w: 894.6631911100798
-        average_reel_out_power_w: 1178.177528836024
-        average_reel_in_power_w: 1017.544113999286
+        average_cycle_power_w: 861.7397665488074
+        average_reel_out_power_w: 1008.8352905002254
+        average_reel_in_power_w: 507.10647206302895
       timing:
-        reel_out_time_s: 390.61827330169115
-        reel_in_time_s: 57.91520655886574
-        cycle_time_s: 448.5334798605569
+        reel_out_time_s: 196.47688873964293
+        reel_in_time_s: 21.11330701599542
+        cycle_time_s: 217.59019575563835
   - wind_speed_m_s: 4.636363636363637
     success: true
     performance:
       power:
-        average_cycle_power_w: 1029.6160283568797
-        average_reel_out_power_w: 1355.8962523475652
-        average_reel_in_power_w: 1171.0325625824905
+        average_cycle_power_w: 991.7263666679661
+        average_reel_out_power_w: 1161.0100822213183
+        average_reel_in_power_w: 583.599456094492
       timing:
-        reel_out_time_s: 372.74684903298623
-        reel_in_time_s: 55.26549122610717
-        cycle_time_s: 428.01234025909343
+        reel_out_time_s: 187.48775003913644
+        reel_in_time_s: 20.14733872114595
+        cycle_time_s: 207.6350887602824
   - wind_speed_m_s: 4.848484848484849
     success: true
     performance:
       power:
-        average_cycle_power_w: 1177.500093436433
-        average_reel_out_power_w: 1550.6440457975984
-        average_reel_in_power_w: 1339.2283277276686
+        average_cycle_power_w: 1134.6409513842489
+        average_reel_out_power_w: 1327.334909517008
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 356.43917438779323
-        reel_in_time_s: 52.847625984964985
-        cycle_time_s: 409.2868003727582
+        reel_out_time_s: 179.6873857490542
+        reel_in_time_s: 20.0
+        cycle_time_s: 199.6873857490542
   - wind_speed_m_s: 5.0606060606060606
     success: true
     performance:
       power:
-        average_cycle_power_w: 1338.9070111515452
-        average_reel_out_power_w: 1763.2000169610887
-        average_reel_in_power_w: 1522.8042931990944
+        average_cycle_power_w: 1290.0904734712674
+        average_reel_out_power_w: 1508.872401988606
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 341.49861019189774
-        reel_in_time_s: 50.63245603349937
-        cycle_time_s: 392.1310662253971
+        reel_out_time_s: 172.47157607564063
+        reel_in_time_s: 20.0
+        cycle_time_s: 192.47157607564063
   - wind_speed_m_s: 5.2727272727272725
     success: true
     performance:
       power:
-        average_cycle_power_w: 1514.4284063050225
-        average_reel_out_power_w: 1994.343273613
-        average_reel_in_power_w: 1722.4333427610409
+        average_cycle_power_w: 1458.3798105014184
+        average_reel_out_power_w: 1706.314570378403
+        average_reel_in_power_w: 596.5927279414109
       timing:
-        reel_out_time_s: 327.7601603565914
-        reel_in_time_s: 48.59551814709423
-        cycle_time_s: 376.3556785036857
+        reel_out_time_s: 165.76719936022093
+        reel_in_time_s: 20.0
+        cycle_time_s: 185.76719936022093
   - wind_speed_m_s: 5.484848484848484
     success: true
     performance:
       power:
-        average_cycle_power_w: 1704.6559036996698
-        average_reel_out_power_w: 2244.852923528295
-        average_reel_in_power_w: 1938.7883601777803
+        average_cycle_power_w: 1639.9463078742892
+        average_reel_out_power_w: 1920.5766146251287
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 315.08435304998295
-        reel_in_time_s: 46.716133467372366
-        cycle_time_s: 361.8004865173553
+        reel_out_time_s: 159.3939772015739
+        reel_in_time_s: 20.0
+        cycle_time_s: 179.3939772015739
   - wind_speed_m_s: 5.696969696969697
     success: true
     performance:
       power:
-        average_cycle_power_w: 1910.1811281382932
-        average_reel_out_power_w: 2515.5080744819384
-        average_reel_in_power_w: 2172.542229213589
+        average_cycle_power_w: 1835.2002034655131
+        average_reel_out_power_w: 2151.966773123742
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 303.35248884067505
-        reel_in_time_s: 44.97670296592765
-        cycle_time_s: 348.3291918066027
+        reel_out_time_s: 153.53848318215367
+        reel_in_time_s: 20.0
+        cycle_time_s: 173.53848318215367
   - wind_speed_m_s: 5.909090909090909
     success: true
     performance:
       power:
-        average_cycle_power_w: 2131.5957044236993
-        average_reel_out_power_w: 2807.087834248894
-        average_reel_in_power_w: 2424.3678336327384
+        average_cycle_power_w: 2044.5546082352853
+        average_reel_out_power_w: 2401.1303494774024
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 292.46291231818924
-        reel_in_time_s: 43.36215465433025
-        cycle_time_s: 335.8250669725195
+        reel_out_time_s: 148.13948514704722
+        reel_in_time_s: 20.0
+        cycle_time_s: 168.13948514704722
   - wind_speed_m_s: 6.121212121212121
     success: true
     performance:
       power:
-        average_cycle_power_w: 2369.4912573586917
-        average_reel_out_power_w: 3120.3713106041237
-        average_reel_in_power_w: 2694.9380571995016
+        average_cycle_power_w: 2268.4231036723945
+        average_reel_out_power_w: 2669.171300574016
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 282.3280589210243
-        reel_in_time_s: 41.85950573066533
-        cycle_time_s: 324.1875646516896
+        reel_out_time_s: 142.98334234637267
+        reel_in_time_s: 20.0
+        cycle_time_s: 162.98334234637267
   - wind_speed_m_s: 6.333333333333334
     success: true
     performance:
       power:
-        average_cycle_power_w: 2624.459411746079
-        average_reel_out_power_w: 3456.1376113225942
-        average_reel_in_power_w: 2984.9257836781535
+        average_cycle_power_w: 2507.1747446588934
+        average_reel_out_power_w: 2954.8335324150235
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 272.87209522510483
-        reel_in_time_s: 40.45751271576266
-        cycle_time_s: 313.3296079408675
+        reel_out_time_s: 138.66666119335216
+        reel_in_time_s: 20.0
+        cycle_time_s: 158.66666119335216
   - wind_speed_m_s: 6.545454545454545
     success: true
     performance:
       power:
-        average_cycle_power_w: 2900.276664087122
-        average_reel_out_power_w: 3814.468017358851
-        average_reel_in_power_w: 3138.8508785697622
+        average_cycle_power_w: 2761.216211207546
+        average_reel_out_power_w: 3260.1366425707533
+        average_reel_in_power_w: 596.5927279414107
       timing:
-        reel_out_time_s: 264.23910141105216
-        reel_in_time_s: 40.0
-        cycle_time_s: 304.23910141105216
+        reel_out_time_s: 134.60298388560153
+        reel_in_time_s: 20.0
+        cycle_time_s: 154.60298388560153
   - wind_speed_m_s: 6.757575757575758
     success: true
     performance:
       power:
-        average_cycle_power_w: 3195.377471100479
-        average_reel_out_power_w: 4198.806174203395
-        average_reel_in_power_w: 3216.2666399813816
+        average_cycle_power_w: 3030.9973390962073
+        average_reel_out_power_w: 3587.2820974131137
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 255.58942419147655
-        reel_in_time_s: 40.0
-        cycle_time_s: 295.58942419147655
+        reel_out_time_s: 130.42205499259924
+        reel_in_time_s: 20.0
+        cycle_time_s: 150.42205499259924
   - wind_speed_m_s: 6.96969696969697
     success: true
     performance:
       power:
-        average_cycle_power_w: 3508.6497226943225
-        average_reel_out_power_w: 4604.474508565185
-        average_reel_in_power_w: 3294.8768046638143
+        average_cycle_power_w: 3316.8407559196376
+        average_reel_out_power_w: 3935.1261159586766
+        average_reel_in_power_w: 596.592727941411
       timing:
-        reel_out_time_s: 248.34358978114588
-        reel_in_time_s: 40.0
-        cycle_time_s: 288.34358978114585
+        reel_out_time_s: 126.58988023309993
+        reel_in_time_s: 20.0
+        cycle_time_s: 146.58988023309993
   - wind_speed_m_s: 7.181818181818182
     success: true
     performance:
       power:
-        average_cycle_power_w: 3840.382585026357
-        average_reel_out_power_w: 5035.43778691534
-        average_reel_in_power_w: 3374.681372617056
+        average_cycle_power_w: 3619.1115596695686
+        average_reel_out_power_w: 4303.674369763571
+        average_reel_in_power_w: 596.5927279414109
       timing:
-        reel_out_time_s: 241.4972612558417
-        reel_in_time_s: 40.0
-        cycle_time_s: 281.4972612558417
+        reel_out_time_s: 123.16486450767276
+        reel_in_time_s: 20.0
+        cycle_time_s: 143.16486450767275
   - wind_speed_m_s: 7.3939393939393945
     success: true
     performance:
       power:
-        average_cycle_power_w: 4190.986407585034
-        average_reel_out_power_w: 5493.976945211955
-        average_reel_in_power_w: 3455.680343841109
+        average_cycle_power_w: 3938.225122241321
+        average_reel_out_power_w: 4695.199582687336
+        average_reel_in_power_w: 596.5927279414107
       timing:
-        reel_out_time_s: 234.74205009508879
-        reel_in_time_s: 40.0
-        cycle_time_s: 274.74205009508876
+        reel_out_time_s: 119.81428930933237
+        reel_in_time_s: 20.0
+        cycle_time_s: 139.81428930933237
   - wind_speed_m_s: 7.6060606060606055
     success: true
     performance:
       power:
-        average_cycle_power_w: 4560.898004024559
-        average_reel_out_power_w: 5980.206359883616
-        average_reel_in_power_w: 3537.8737183359726
+        average_cycle_power_w: 4274.525811952616
+        average_reel_out_power_w: 5109.532522418426
+        average_reel_in_power_w: 596.5927279414107
       timing:
-        reel_out_time_s: 228.24558705450985
-        reel_in_time_s: 40.0
-        cycle_time_s: 268.2455870545099
+        reel_out_time_s: 116.67256032413592
+        reel_in_time_s: 20.0
+        cycle_time_s: 136.67256032413593
   - wind_speed_m_s: 7.818181818181818
     success: true
     performance:
       power:
-        average_cycle_power_w: 4950.494719374478
-        average_reel_out_power_w: 6496.735228816115
-        average_reel_in_power_w: 3621.261496101647
+        average_cycle_power_w: 4628.368738739458
+        average_reel_out_power_w: 5547.055943360828
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 221.74444824425086
-        reel_in_time_s: 40.0
-        cycle_time_s: 261.74444824425086
+        reel_out_time_s: 113.74843233686498
+        reel_in_time_s: 20.0
+        cycle_time_s: 133.748432336865
   - wind_speed_m_s: 8.030303030303031
     success: true
     performance:
       power:
-        average_cycle_power_w: 5360.302476347071
-        average_reel_out_power_w: 7035.114600080592
-        average_reel_in_power_w: 3705.8436771381325
+        average_cycle_power_w: 5000.117606920241
+        average_reel_out_power_w: 6008.69837044622
+        average_reel_in_power_w: 596.5927279414111
       timing:
-        reel_out_time_s: 216.52926976130985
-        reel_in_time_s: 40.0
-        cycle_time_s: 256.5292697613098
+        reel_out_time_s: 110.98189728100033
+        reel_in_time_s: 20.0
+        cycle_time_s: 130.98189728100033
   - wind_speed_m_s: 8.242424242424242
     success: true
     performance:
       power:
-        average_cycle_power_w: 5790.588197340337
-        average_reel_out_power_w: 7602.365638556785
-        average_reel_in_power_w: 3791.6202614454282
+        average_cycle_power_w: 5390.123506790696
+        average_reel_out_power_w: 6495.088124820144
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 211.55376462469167
-        reel_in_time_s: 40.0
-        cycle_time_s: 251.55376462469167
+        reel_out_time_s: 108.36032461217796
+        reel_in_time_s: 20.0
+        cycle_time_s: 128.36032461217798
   - wind_speed_m_s: 8.454545454545455
     success: true
     performance:
       power:
-        average_cycle_power_w: 6241.770461056035
-        average_reel_out_power_w: 8205.5493837103
-        average_reel_in_power_w: 3878.5912490235364
+        average_cycle_power_w: 5798.732651251869
+        average_reel_out_power_w: 7006.851816110745
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 206.14055061556073
-        reel_in_time_s: 40.0
-        cycle_time_s: 246.14055061556073
+        reel_out_time_s: 105.87242658203066
+        reel_in_time_s: 20.0
+        cycle_time_s: 125.87242658203066
   - wind_speed_m_s: 8.666666666666668
     success: true
     performance:
       power:
-        average_cycle_power_w: 6714.243030008551
-        average_reel_out_power_w: 8835.35252894605
-        average_reel_in_power_w: 3966.7566398724543
+        average_cycle_power_w: 6226.160040793384
+        average_reel_out_power_w: 7541.15176352368
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 201.4228812841828
-        reel_in_time_s: 39.99999999999999
-        cycle_time_s: 241.4228812841828
+        reel_out_time_s: 103.76875611914616
+        reel_in_time_s: 20.0
+        cycle_time_s: 123.76875611914616
   - wind_speed_m_s: 8.878787878787879
     success: true
     performance:
       power:
-        average_cycle_power_w: 7208.376682528122
-        average_reel_out_power_w: 9496.724981265306
-        average_reel_in_power_w: 4056.1164339921806
+        average_cycle_power_w: 6673.033346698549
+        average_reel_out_power_w: 8106.4377843993225
+        average_reel_in_power_w: 596.5927279414111
       timing:
-        reel_out_time_s: 196.9017237932978
-        reel_in_time_s: 40.0
-        cycle_time_s: 236.9017237932978
+        reel_out_time_s: 101.43161111319948
+        reel_in_time_s: 20.0
+        cycle_time_s: 121.43161111319948
   - wind_speed_m_s: 9.09090909090909
     success: true
     performance:
       power:
-        average_cycle_power_w: 7724.54297316245
-        average_reel_out_power_w: 10189.757882306698
-        average_reel_in_power_w: 4146.670631382721
+        average_cycle_power_w: 7139.5190464226525
+        average_reel_out_power_w: 8699.045733429954
+        average_reel_in_power_w: 596.5927279414111
       timing:
-        reel_out_time_s: 192.61953285307737
-        reel_in_time_s: 39.99999999999999
-        cycle_time_s: 232.61953285307737
+        reel_out_time_s: 99.21102137994822
+        reel_in_time_s: 20.0
+        cycle_time_s: 119.21102137994822
   - wind_speed_m_s: 9.303030303030303
     success: true
     performance:
       power:
-        average_cycle_power_w: 7990.993120470405
-        average_reel_out_power_w: 10578.327765311302
-        average_reel_in_power_w: 4238.419232044069
+        average_cycle_power_w: 7626.03793070406
+        average_reel_out_power_w: 9323.113380465356
+        average_reel_in_power_w: 596.5927279414107
       timing:
-        reel_out_time_s: 189.06579984772702
-        reel_in_time_s: 40.0
-        cycle_time_s: 229.06579984772702
+        reel_out_time_s: 96.90353672610175
+        reel_in_time_s: 20.0
+        cycle_time_s: 116.90353672610175
   - wind_speed_m_s: 9.515151515151516
     success: true
     performance:
       power:
-        average_cycle_power_w: 8516.146776403202
-        average_reel_out_power_w: 11461.07104802318
-        average_reel_in_power_w: 4331.36223597623
+        average_cycle_power_w: 8132.5133236755755
+        average_reel_out_power_w: 9965.110278839265
+        average_reel_in_power_w: 596.5927279414108
       timing:
-        reel_out_time_s: 174.50376074101405
-        reel_in_time_s: 40.0
-        cycle_time_s: 214.50376074101405
+        reel_out_time_s: 95.26487564023364
+        reel_in_time_s: 20.0
+        cycle_time_s: 115.26487564023364
   - wind_speed_m_s: 9.727272727272727
     success: true
     performance:
       power:
-        average_cycle_power_w: 9023.560342910781
-        average_reel_out_power_w: 12343.814330735036
-        average_reel_in_power_w: 4425.499643179202
+        average_cycle_power_w: 8558.616574857608
+        average_reel_out_power_w: 10635.526808465876
+        average_reel_in_power_w: 1169.70502618727
       timing:
-        reel_out_time_s: 162.0244720483337
-        reel_in_time_s: 40.0
-        cycle_time_s: 202.0244720483337
+        reel_out_time_s: 93.68071324049113
+        reel_in_time_s: 20.0
+        cycle_time_s: 113.68071324049113
   - wind_speed_m_s: 9.93939393939394
     success: true
     performance:
       power:
-        average_cycle_power_w: 9513.926832258674
-        average_reel_out_power_w: 13226.557613446914
-        average_reel_in_power_w: 4520.8314536529815
+        average_cycle_power_w: 8649.077406123582
+        average_reel_out_power_w: 10852.063290770782
+        average_reel_in_power_w: 1501.0010887223925
       timing:
-        reel_out_time_s: 151.21092414602873
-        reel_in_time_s: 40.0
-        cycle_time_s: 191.21092414602873
+        reel_out_time_s: 92.14837521731536
+        reel_in_time_s: 20.000000000000004
+        cycle_time_s: 112.14837521731536
   - wind_speed_m_s: 10.151515151515152
     success: true
     performance:
       power:
-        average_cycle_power_w: 9987.901087403789
-        average_reel_out_power_w: 14109.300896158786
-        average_reel_in_power_w: 4617.357667397579
+        average_cycle_power_w: 9121.745720359435
+        average_reel_out_power_w: 11666.000181884187
+        average_reel_in_power_w: 1782.824920208767
       timing:
-        reel_out_time_s: 141.75046763263046
-        reel_in_time_s: 40.0
-        cycle_time_s: 181.75046763263046
+        reel_out_time_s: 85.71918261692407
+        reel_in_time_s: 19.999999999999996
+        cycle_time_s: 105.71918261692407
   - wind_speed_m_s: 10.363636363636363
     success: true
     performance:
       power:
-        average_cycle_power_w: 10446.102374134878
-        average_reel_out_power_w: 14992.044178870656
-        average_reel_in_power_w: 4715.078284412981
+        average_cycle_power_w: 9579.361259239928
+        average_reel_out_power_w: 12479.937072997605
+        average_reel_in_power_w: 2041.5940259976462
       timing:
-        reel_out_time_s: 133.4040892714778
-        reel_in_time_s: 40.0
-        cycle_time_s: 173.4040892714778
+        reel_out_time_s: 80.12860915490226
+        reel_in_time_s: 20.0
+        cycle_time_s: 100.12860915490226
   - wind_speed_m_s: 10.575757575757576
     success: true
     performance:
       power:
-        average_cycle_power_w: 10889.116764799857
-        average_reel_out_power_w: 15874.787461582539
-        average_reel_in_power_w: 4813.993304699196
+        average_cycle_power_w: 10021.35924828349
+        average_reel_out_power_w: 13293.873964111008
+        average_reel_in_power_w: 2286.996933903159
       timing:
-        reel_out_time_s: 125.9859386993407
-        reel_in_time_s: 40.0
-        cycle_time_s: 165.9859386993407
+        reel_out_time_s: 75.22261777865985
+        reel_in_time_s: 20.0
+        cycle_time_s: 95.22261777865985
   - wind_speed_m_s: 10.787878787878789
     success: true
     performance:
       power:
-        average_cycle_power_w: 11317.499332911122
-        average_reel_out_power_w: 16757.530744294407
-        average_reel_in_power_w: 4914.102728256223
+        average_cycle_power_w: 10447.78031587012
+        average_reel_out_power_w: 14107.810855224425
+        average_reel_in_power_w: 2523.8655933139926
       timing:
-        reel_out_time_s: 119.34932601457162
-        reel_in_time_s: 40.0
-        cycle_time_s: 159.3493260145716
+        reel_out_time_s: 70.88271952764936
+        reel_in_time_s: 20.0
+        cycle_time_s: 90.88271952764936
   - wind_speed_m_s: 11.0
     success: true
     performance:
       power:
-        average_cycle_power_w: 11731.776175906027
-        average_reel_out_power_w: 17640.274027006275
-        average_reel_in_power_w: 5015.406555084055
+        average_cycle_power_w: 10858.884039603234
+        average_reel_out_power_w: 14921.747746337822
+        average_reel_in_power_w: 2755.0162078785656
       timing:
-        reel_out_time_s: 113.37692356355188
-        reel_in_time_s: 40.0
-        cycle_time_s: 153.37692356355188
+        reel_out_time_s: 67.01627832070983
+        reel_in_time_s: 20.0
+        cycle_time_s: 87.01627832070983
   - wind_speed_m_s: 11.212121212121211
     success: true
     performance:
       power:
-        average_cycle_power_w: 12132.44628155879
-        average_reel_out_power_w: 18523.017309718136
-        average_reel_in_power_w: 5117.904785182703
+        average_cycle_power_w: 10695.441222242629
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 2982.2565612794215
       timing:
-        reel_out_time_s: 107.97376942204207
-        reel_in_time_s: 40.0
-        cycle_time_s: 147.97376942204207
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 11.424242424242426
     success: true
     performance:
       power:
-        average_cycle_power_w: 12519.983251963711
-        average_reel_out_power_w: 19405.76059243001
-        average_reel_in_power_w: 5221.5974185521645
+        average_cycle_power_w: 10641.684062194832
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 3206.826626155817
       timing:
-        reel_out_time_s: 103.06218045275585
-        reel_in_time_s: 40.0
-        cycle_time_s: 143.06218045275585
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 11.636363636363637
     success: true
     performance:
       power:
-        average_cycle_power_w: 12894.836897610801
-        average_reel_out_power_w: 20288.50387514188
-        average_reel_in_power_w: 5326.484455192432
+        average_cycle_power_w: 10588.35240312475
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 3429.619164427656
       timing:
-        reel_out_time_s: 98.57799334580129
-        reel_in_time_s: 40.0
-        cycle_time_s: 138.5779933458013
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 11.848484848484848
     success: true
     performance:
       power:
-        average_cycle_power_w: 13257.434712832677
-        average_reel_out_power_w: 21171.24715785376
-        average_reel_in_power_w: 5432.565895103511
+        average_cycle_power_w: 10535.286565120297
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 3651.30123752796
       timing:
-        reel_out_time_s: 94.46774604669773
-        reel_in_time_s: 40.0
-        cycle_time_s: 134.46774604669773
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 12.06060606060606
     success: true
     performance:
       power:
-        average_cycle_power_w: 13608.183242796007
-        average_reel_out_power_w: 22053.990440565627
-        average_reel_in_power_w: 5539.8417382853995
+        average_cycle_power_w: 10482.363687538242
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 3872.3860947168628
       timing:
-        reel_out_time_s: 90.68653608923508
-        reel_in_time_s: 40.0
-        cycle_time_s: 130.68653608923506
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 12.272727272727273
     success: true
     performance:
       power:
-        average_cycle_power_w: 13947.469351225935
-        average_reel_out_power_w: 22936.733723277495
-        average_reel_in_power_w: 5648.311984738102
+        average_cycle_power_w: 10429.486964807033
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 4093.2781404209245
       timing:
-        reel_out_time_s: 87.19637347362527
-        reel_in_time_s: 40.0
-        cycle_time_s: 127.19637347362527
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 12.484848484848484
     success: true
     performance:
       power:
-        average_cycle_power_w: 14275.661397172782
-        average_reel_out_power_w: 23819.477005989374
-        average_reel_in_power_w: 5757.976634461613
+        average_cycle_power_w: 10376.578605203164
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 4314.302348883212
       timing:
-        reel_out_time_s: 83.96489979595702
-        reel_in_time_s: 40.0
-        cycle_time_s: 123.96489979595702
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 12.696969696969697
     success: true
     performance:
       power:
-        average_cycle_power_w: 14593.110328344794
-        average_reel_out_power_w: 24702.22028870124
-        average_reel_in_power_w: 5868.835687455934
+        average_cycle_power_w: 10323.57505248734
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 4535.724225736248
       timing:
-        reel_out_time_s: 80.96438201204113
-        reel_in_time_s: 40.0
-        cycle_time_s: 120.96438201204113
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 12.90909090909091
     success: true
     performance:
       power:
-        average_cycle_power_w: 14900.150697827956
-        average_reel_out_power_w: 25584.963571413107
-        average_reel_in_power_w: 5980.889143721068
+        average_cycle_power_w: 10270.423641847869
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 4757.763777769233
       timing:
-        reel_out_time_s: 78.17091450677943
-        reel_in_time_s: 40.00000000000001
-        cycle_time_s: 118.17091450677944
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 13.121212121212121
     success: true
     performance:
       power:
-        average_cycle_power_w: 15197.101610383637
-        average_reel_out_power_w: 26467.70685412498
-        average_reel_in_power_w: 6094.137003257013
+        average_cycle_power_w: 10217.080197614212
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 4980.605548458601
       timing:
-        reel_out_time_s: 75.56378083763992
-        reel_in_time_s: 40.0
-        cycle_time_s: 115.56378083763992
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 13.333333333333334
     success: true
     performance:
       power:
-        average_cycle_power_w: 15484.267603949913
-        average_reel_out_power_w: 27350.45013683684
-        average_reel_in_power_w: 6208.579266063769
+        average_cycle_power_w: 10163.50726823288
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 5204.405991340771
       timing:
-        reel_out_time_s: 73.12493907755866
-        reel_in_time_s: 40.0
-        cycle_time_s: 113.12493907755866
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 13.545454545454545
     success: true
     performance:
       power:
-        average_cycle_power_w: 15761.939471464453
-        average_reel_out_power_w: 28233.193419548716
-        average_reel_in_power_w: 6324.215932141332
+        average_cycle_power_w: 10109.672803812873
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 5429.298994554425
       timing:
-        reel_out_time_s: 70.83860370592001
-        reel_in_time_s: 40.0
-        cycle_time_s: 110.83860370592001
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.000000000000004
+        cycle_time_s: 83.54982468446151
   - wind_speed_m_s: 13.757575757575758
     success: true
     performance:
       power:
-        average_cycle_power_w: 16030.395027669962
-        average_reel_out_power_w: 29115.93670226058
-        average_reel_in_power_w: 6441.047001489711
+        average_cycle_power_w: 10055.549148083015
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 5655.400091930029
       timing:
-        reel_out_time_s: 68.69090355745686
-        reel_in_time_s: 40.0
-        cycle_time_s: 108.69090355745686
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 13.96969696969697
     success: true
     performance:
       power:
-        average_cycle_power_w: 16289.899825151937
-        average_reel_out_power_w: 29998.67998497246
-        average_reel_in_power_w: 6559.072474108898
+        average_cycle_power_w: 10001.112258223193
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 5882.809722137797
       timing:
-        reel_out_time_s: 66.66960016246982
-        reel_in_time_s: 40.0
-        cycle_time_s: 106.66960016246982
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.000000000000004
+        cycle_time_s: 83.54982468446151
   - wind_speed_m_s: 14.181818181818182
     success: true
     performance:
       power:
-        average_cycle_power_w: 16540.70782348716
-        average_reel_out_power_w: 30881.423267684324
-        average_reel_in_power_w: 6678.292349998895
+        average_cycle_power_w: 9946.34109280568
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 6111.615785557646
       timing:
-        reel_out_time_s: 64.76385439439535
-        reel_in_time_s: 40.0
-        cycle_time_s: 104.76385439439535
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 14.393939393939394
     success: true
     performance:
       power:
-        average_cycle_power_w: 16783.062015046602
-        average_reel_out_power_w: 31764.1665503962
-        average_reel_in_power_w: 6798.706629159703
+        average_cycle_power_w: 9891.21712573827
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 6341.895674777354
       timing:
-        reel_out_time_s: 62.964032027311404
-        reel_in_time_s: 40.0
-        cycle_time_s: 102.9640320273114
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 14.606060606060606
     success: true
     performance:
       power:
-        average_cycle_power_w: 17017.195010693526
-        average_reel_out_power_w: 32646.909833108064
-        average_reel_in_power_w: 6920.31531159132
+        average_cycle_power_w: 9835.72395600436
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 6573.717904900016
       timing:
-        reel_out_time_s: 61.26154083875188
-        reel_in_time_s: 40.00000000000001
-        cycle_time_s: 101.26154083875188
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 14.818181818181818
     success: true
     performance:
       power:
-        average_cycle_power_w: 17243.329588343517
-        average_reel_out_power_w: 33529.65311581995
-        average_reel_in_power_w: 7043.118397293753
+        average_cycle_power_w: 9779.846991180424
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 6807.143435646993
       timing:
-        reel_out_time_s: 59.64869344432199
-        reel_in_time_s: 40.0
-        cycle_time_s: 99.64869344432199
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 15.030303030303031
     success: true
     performance:
       power:
-        average_cycle_power_w: 17461.679207105095
-        average_reel_out_power_w: 34412.39639853181
-        average_reel_in_power_w: 7167.115886266995
+        average_cycle_power_w: 9723.573188442106
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 7042.226753302721
       timing:
-        reel_out_time_s: 58.11859124362896
-        reel_in_time_s: 40.0
-        cycle_time_s: 98.11859124362897
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 15.242424242424242
     success: true
     performance:
       power:
-        average_cycle_power_w: 17672.448489494498
-        average_reel_out_power_w: 35295.13968124368
-        average_reel_in_power_w: 7292.307778511045
+        average_cycle_power_w: 9666.890840847727
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 7279.0167635134185
       timing:
-        reel_out_time_s: 56.66502578151936
-        reel_in_time_s: 40.0
-        cycle_time_s: 96.66502578151936
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 15.454545454545455
     success: true
     performance:
       power:
-        average_cycle_power_w: 17875.833674013582
-        average_reel_out_power_w: 36177.88296395556
-        average_reel_in_power_w: 7418.694074025906
+        average_cycle_power_w: 9609.789399632902
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 7517.557533649854
       timing:
-        reel_out_time_s: 55.28239455007975
-        reel_in_time_s: 40.0
-        cycle_time_s: 95.28239455007974
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 15.666666666666668
     success: true
     performance:
       power:
-        average_cycle_power_w: 18072.02304019462
-        average_reel_out_power_w: 37060.626246667445
-        average_reel_in_power_w: 7546.274772811582
+        average_cycle_power_w: 9552.259325405454
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 7757.888914439228
       timing:
-        reel_out_time_s: 53.965628823658726
-        reel_in_time_s: 40.0
-        cycle_time_s: 93.96562882365873
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 15.878787878787879
     success: true
     performance:
       power:
-        average_cycle_power_w: 18261.197308046383
-        average_reel_out_power_w: 37943.36952937929
-        average_reel_in_power_w: 7675.049874868065
+        average_cycle_power_w: 9494.291962727666
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 8000.047063896712
       timing:
-        reel_out_time_s: 52.71013156729303
-        reel_in_time_s: 40.0
-        cycle_time_s: 92.71013156729303
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 16.090909090909093
     success: true
     performance:
       power:
-        average_cycle_power_w: 18443.530013682324
-        average_reel_out_power_w: 38826.112812091174
-        average_reel_in_power_w: 7805.019380195363
+        average_cycle_power_w: 9435.879433770746
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 8244.064891583048
       timing:
-        reel_out_time_s: 51.51172381534839
-        reel_in_time_s: 40.0
-        cycle_time_s: 91.51172381534839
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 16.303030303030305
     success: true
     performance:
       power:
-        average_cycle_power_w: 18619.187862771494
-        average_reel_out_power_w: 39708.85609480304
-        average_reel_in_power_w: 7936.18328879347
+        average_cycle_power_w: 9377.01454763412
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 8489.972437422344
       timing:
-        reel_out_time_s: 50.36659820230261
-        reel_in_time_s: 40.0
-        cycle_time_s: 90.36659820230261
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 16.515151515151516
     success: true
     performance:
       power:
-        average_cycle_power_w: 18461.811065013775
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 8068.541600662384
+        average_cycle_power_w: 9317.690722616791
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 8737.797196412806
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.000000000000004
+        cycle_time_s: 83.54982468446151
   - wind_speed_m_s: 16.727272727272727
     success: true
     performance:
       power:
-        average_cycle_power_w: 18401.96977348143
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 8202.094315802111
+        average_cycle_power_w: 9257.901919264548
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 8987.5643983215
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.00000000000001
-        cycle_time_s: 89.27127855690924
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 16.939393939393938
     success: true
     performance:
       power:
-        average_cycle_power_w: 18341.593302755908
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 8336.841434212647
+        average_cycle_power_w: 9197.642582434546
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 9239.297249708932
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 17.151515151515152
     success: true
     performance:
       power:
-        average_cycle_power_w: 18280.681652837196
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 8472.782955893996
+        average_cycle_power_w: 9136.907590947145
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 9493.01714425816
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 17.363636363636363
     success: true
     performance:
       power:
-        average_cycle_power_w: 18219.234823725306
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 8609.918880846159
+        average_cycle_power_w: 9075.692213654218
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 9748.743846299021
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 17.575757575757578
     success: true
     performance:
       power:
-        average_cycle_power_w: 18157.252815420234
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 8748.249209069128
+        average_cycle_power_w: 9013.992070960147
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 10006.495651553814
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 17.78787878787879
     success: true
     performance:
       power:
-        average_cycle_power_w: 18094.73562792198
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 8887.77394056291
+        average_cycle_power_w: 8951.803100997491
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 10266.289528438168
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 18.0
     success: true
     performance:
       power:
-        average_cycle_power_w: 18031.68326123054
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 9028.4930753275
+        average_cycle_power_w: 8889.121529793189
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 10528.14124269148
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 18.21212121212121
     success: true
     performance:
       power:
-        average_cycle_power_w: 17968.095715345924
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 9170.406613362902
+        average_cycle_power_w: 8825.943844869804
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 10792.065467657421
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 18.424242424242422
     success: true
     performance:
       power:
-        average_cycle_power_w: 17903.97299026812
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 9313.514554669116
+        average_cycle_power_w: 8762.266771815082
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 11058.075882164505
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 18.636363636363637
     success: true
     performance:
       power:
-        average_cycle_power_w: 17839.315085997136
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 9457.816899246141
+        average_cycle_power_w: 8698.087253425734
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 11326.185257652665
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 18.84848484848485
     success: true
     performance:
       power:
-        average_cycle_power_w: 17774.12200253297
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 9603.313647093984
+        average_cycle_power_w: 8633.402431091614
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 11596.405535940736
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 39.99999999999999
-        cycle_time_s: 89.27127855690921
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 19.999999999999996
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 19.060606060606062
     success: true
     performance:
       power:
-        average_cycle_power_w: 17708.393739875624
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 9750.004798212625
+        average_cycle_power_w: 8568.209628135986
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 11868.747898822292
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 39.99999999999999
-        cycle_time_s: 89.27127855690921
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 19.272727272727273
     success: true
     performance:
       power:
-        average_cycle_power_w: 17642.130298025095
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 9897.890352602086
+        average_cycle_power_w: 8502.506334869175
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 12143.222830503986
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 39.99999999999999
-        cycle_time_s: 89.27127855690921
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 19.484848484848484
     success: true
     performance:
       power:
-        average_cycle_power_w: 17575.33167698138
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 10046.970310262346
+        average_cycle_power_w: 8436.290195147374
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 12419.840173755902
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 19.696969696969695
     success: true
     performance:
       power:
-        average_cycle_power_w: 17507.997876744485
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 10197.244671193423
+        average_cycle_power_w: 8369.558994257595
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 12698.609180522131
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 19.90909090909091
     success: true
     performance:
       power:
-        average_cycle_power_w: 17440.128897314404
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 10348.713435395315
+        average_cycle_power_w: 8302.310647974095
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 12979.53855763745
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 20.12121212121212
     success: true
     performance:
       power:
-        average_cycle_power_w: 17371.724738691144
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 10501.376602868011
+        average_cycle_power_w: 8234.543192652476
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 13262.63650820911
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.000000000000014
-        cycle_time_s: 89.27127855690924
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.000000000000004
+        cycle_time_s: 83.54982468446151
   - wind_speed_m_s: 20.333333333333332
     success: true
     performance:
       power:
-        average_cycle_power_w: 17302.785400874705
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 10655.234173611525
+        average_cycle_power_w: 8166.254776245136
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 13547.91076914976
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 20.545454545454547
     success: true
     performance:
       power:
-        average_cycle_power_w: 17233.310883865077
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 10810.286147625848
+        average_cycle_power_w: 8097.4436501367945
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 13835.368645284363
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.00000000000001
-        cycle_time_s: 89.27127855690924
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.000000000000004
+        cycle_time_s: 83.54982468446151
   - wind_speed_m_s: 20.757575757575758
     success: true
     performance:
       power:
-        average_cycle_power_w: 17163.301187662277
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 10966.53252491098
+        average_cycle_power_w: 8028.108161711691
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 14125.017040400819
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 20.96969696969697
     success: true
     performance:
       power:
-        average_cycle_power_w: 17092.756312266283
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 11123.97330546692
+        average_cycle_power_w: 7958.246747574831
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 14416.862485567981
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.00000000000001
-        cycle_time_s: 89.27127855690924
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 21.181818181818183
     success: true
     performance:
       power:
-        average_cycle_power_w: 17021.676257677118
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 11282.608489293678
+        average_cycle_power_w: 7887.8579273593705
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 14710.911165005371
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 21.393939393939394
     success: true
     performance:
       power:
-        average_cycle_power_w: 16950.061023894763
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 11442.438076391238
+        average_cycle_power_w: 7816.940298060178
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 15007.168939754625
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 21.606060606060606
     success: true
     performance:
       power:
-        average_cycle_power_w: 16877.91061091923
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 11603.462066759612
+        average_cycle_power_w: 7745.492528840723
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 15305.641369373694
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.00000000000001
-        cycle_time_s: 89.27127855690924
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 21.81818181818182
     success: true
     performance:
       power:
-        average_cycle_power_w: 16805.225018750512
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 11765.680460398802
+        average_cycle_power_w: 7673.513356266584
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 15606.33373184879
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 22.03030303030303
     success: true
     performance:
       power:
-        average_cycle_power_w: 16732.004247388613
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 11929.093257308801
+        average_cycle_power_w: 7601.001579924139
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 15909.2510418973
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 22.242424242424242
     success: true
     performance:
       power:
-        average_cycle_power_w: 16658.24829683353
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 12093.700457489607
+        average_cycle_power_w: 7527.956058387638
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 16214.398067815284
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 22.454545454545457
     success: true
     performance:
       power:
-        average_cycle_power_w: 16583.957167085264
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 12259.502060941222
+        average_cycle_power_w: 7454.3757055019405
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 16521.779347006326
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.00000000000001
-        cycle_time_s: 89.27127855690924
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 22.666666666666668
     success: true
     performance:
       power:
-        average_cycle_power_w: 16509.130858143817
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 12426.498067663651
+        average_cycle_power_w: 7380.2594869517
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 16831.39920031372
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.00000000000001
-        cycle_time_s: 89.27127855690924
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 22.87878787878788
     success: true
     performance:
       power:
-        average_cycle_power_w: 16433.769370009195
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 12594.688477656893
+        average_cycle_power_w: 7305.606417090895
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 17143.261745265074
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 23.09090909090909
     success: true
     performance:
       power:
-        average_cycle_power_w: 16357.872702681383
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 12764.073290920947
+        average_cycle_power_w: 7230.415556009412
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 17457.37090832665
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 23.303030303030305
     success: true
     performance:
       power:
-        average_cycle_power_w: 16281.440856160389
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 12934.652507455807
+        average_cycle_power_w: 7154.686006815666
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 17773.730436255195
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 23.515151515151516
     success: true
     performance:
       power:
-        average_cycle_power_w: 16204.473830446217
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 13106.426127261479
+        average_cycle_power_w: 7078.416913116508
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 18092.343906625563
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 23.727272727272727
     success: true
     performance:
       power:
-        average_cycle_power_w: 16126.97162553886
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 13279.394150337957
+        average_cycle_power_w: 7001.607456677491
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 18413.214737604994
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 23.93939393939394
     success: true
     performance:
       power:
-        average_cycle_power_w: 16048.934241438317
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 13453.556576685261
+        average_cycle_power_w: 6924.256855248208
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 18736.346197037703
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 24.151515151515152
     success: true
     performance:
       power:
-        average_cycle_power_w: 15970.361678144596
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 13628.913406303365
+        average_cycle_power_w: 6846.364360539001
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 19061.741410897186
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 24.363636363636363
     success: true
     performance:
       power:
-        average_cycle_power_w: 15891.253935657693
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 13805.46463919227
+        average_cycle_power_w: 6767.929256336534
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 19389.40337115836
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.000000000000014
-        cycle_time_s: 89.27127855690924
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 24.575757575757578
     success: true
     performance:
       power:
-        average_cycle_power_w: 15811.611013977608
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 13983.210275352001
+        average_cycle_power_w: 6688.950856747019
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 19719.334943136528
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 24.78787878787879
     success: true
     performance:
       power:
-        average_cycle_power_w: 15731.432913104341
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 14162.150314782539
+        average_cycle_power_w: 6609.428504556864
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 20051.538872335706
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615
   - wind_speed_m_s: 25.0
     success: true
     performance:
       power:
-        average_cycle_power_w: 15650.719633037888
-        average_reel_out_power_w: 40000.0
-        average_reel_in_power_w: 14342.284757483887
+        average_cycle_power_w: 6529.361569701454
+        average_reel_out_power_w: 15000.0
+        average_reel_in_power_w: 20386.017790845293
       timing:
-        reel_out_time_s: 49.27127855690922
-        reel_in_time_s: 40.0
-        cycle_time_s: 89.27127855690922
+        reel_out_time_s: 63.549824684461505
+        reel_in_time_s: 20.0
+        cycle_time_s: 83.5498246844615

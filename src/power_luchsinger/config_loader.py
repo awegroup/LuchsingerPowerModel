@@ -23,7 +23,7 @@ def load_yaml(file_path):
         return yaml.full_load(f)
 
 
-def load_system_config(file_path, simulation_settings, validate_file=False):
+def load_system_config(file_path, validate_file=False):
     """Load and extract model parameters from system configuration YAML file.
 
     Loads the awesIO system configuration, optionally validates it, and
@@ -32,19 +32,15 @@ def load_system_config(file_path, simulation_settings, validate_file=False):
 
     Args:
         file_path (str or Path): Path to the system configuration YAML file.
-        simulation_settings (dict): Simulation settings dictionary with
-            'operational' and 'atmosphere' keys.
         validate_file (bool): If True, validate the YAML against the awesIO
             schema. Defaults to False.
 
     Returns:
         dict: Flat parameter dictionary with keys:
-            cutInWindSpeed, cutOutWindSpeed, elevationAngleOut,
-            elevationAngleIn, tetherMinLength, airDensity, wingArea,
-            liftCoefficientOut, dragCoefficientKiteOut,
-            dragCoefficientKiteIn, tetherMaxLength, reelOutSpeedLimit,
-            reelInSpeedLimit, nominalTetherForce, nominalGeneratorPower,
-            generatorEfficiency, storageEfficiency.
+            wingArea, liftCoefficientKiteOut, dragCoefficientKiteOut,
+            liftCoefficientKiteIn, dragCoefficientKiteIn, tetherMaxLength,
+            reelOutSpeedLimit, reelInSpeedLimit, nominalTetherForce,
+            nominalGeneratorPower, generatorEfficiency, storageEfficiency.
 
     Raises:
         FileNotFoundError: If the system configuration file is not found.
@@ -68,14 +64,9 @@ def load_system_config(file_path, simulation_settings, validate_file=False):
     config = load_yaml(file_path)
     components = config.get('components', {})
 
-    # Operational and atmosphere parameters from simulation settings
-    operational = simulation_settings.get('operational', {})
-    atmosphere = simulation_settings.get('atmosphere', {})
-
     # Wing parameters
     wing = components.get('wing', {})
     wing_structure = wing.get('structure', {})
-    wing_aero = wing.get('aerodynamics', {}).get('simple_aero_model', {})
 
     # Tether parameters
     tether = components.get('tether', {})
@@ -88,17 +79,7 @@ def load_system_config(file_path, simulation_settings, validate_file=False):
     storage = ground_station.get('storage', {})
 
     return {
-        'cutInWindSpeed': operational.get('cut_in_wind_speed_m_s'),
-        'cutOutWindSpeed': operational.get('cut_out_wind_speed_m_s'),
-        'elevationAngleOut': np.radians(operational.get('elevation_angle_out_deg')),
-        'elevationAngleIn': np.radians(operational.get('elevation_angle_in_deg')),
-        'tetherMinLength': operational.get('minimum_tether_length_m'),
-        'airDensity': atmosphere.get('air_density_kg_m3'),
         'wingArea': wing_structure.get('projected_surface_area_m2'),
-        'liftCoefficientKiteOut': wing_aero.get('lift_coefficient_reel_out'),
-        'liftCoefficientKiteIn': wing_aero.get('lift_coefficient_reel_in'),
-        'dragCoefficientKiteOut': wing_aero.get('drag_coefficient_reel_out'),
-        'dragCoefficientKiteIn': wing_aero.get('drag_coefficient_reel_in'),
         'tetherMaxLength': tether_structure.get('length_m'),
         'reelOutSpeedLimit': drum.get('max_tether_speed_m_s'),
         'reelInSpeedLimit': drum.get('max_tether_speed_m_s'),
@@ -226,5 +207,22 @@ def load_simulation_settings(file_path):
         )
 
     settings = load_yaml(file_path)
-    print(f"  Loaded simulation settings from: {file_path.name}")
-    return settings
+    settings = settings.get('settings', {})
+
+    return {
+        'model': settings.get('model'),
+        'cutInWindSpeed': settings.get('cut_in_wind_speed_m_s'),
+        'cutOutWindSpeed': settings.get('cut_out_wind_speed_m_s'),
+        'elevationAngleOut': (
+            np.radians(settings.get('elevation_angle_out_deg'))),
+        'elevationAngleIn': (
+            np.radians(settings.get('elevation_angle_in_deg'))),
+        'numPoints': settings.get('num_points'),
+        'nSegments': settings.get('n_segments'),
+        'tetherMinLength': settings.get('minimum_tether_length_m'),
+        'airDensity': settings.get('air_density_kg_m3'),
+        'liftCoefficientKiteOut': settings.get('lift_coefficient_reel_out'),
+        'dragCoefficientKiteOut': settings.get('drag_coefficient_reel_out'),
+        'liftCoefficientKiteIn': settings.get('lift_coefficient_reel_in'),
+        'dragCoefficientKiteIn': settings.get('drag_coefficient_reel_in'),
+    }
