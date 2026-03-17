@@ -52,9 +52,9 @@ def plot_comprehensive_analysis(
     # Use the reference wind speed axis (same across profiles)
     windSpeedRef = profiles[0]['windSpeedAtRef']
 
-    # Create figure with subplots (4 rows, 2 columns)
+    # Create figure with subplots (3 rows, 2 columns)
     fig = plt.figure(figsize=(16, 14))
-    gs = fig.add_gridspec(4, 2, hspace=0.45, wspace=0.3)
+    gs = fig.add_gridspec(3, 2, hspace=0.45, wspace=0.3)
 
     def _add_region_lines(ax):
         """No-op placeholder for backward compatibility."""
@@ -137,7 +137,7 @@ def plot_comprehensive_analysis(
     ax3.legend(handles=handles3, loc='upper left', fontsize=8, ncol=2)
     ax3.grid(True, alpha=0.3)
 
-    # Subplot 4: Reel speeds – all profiles
+    # Subplot 4: Reel speeds and reeling factors – all profiles
     ax4 = fig.add_subplot(gs[1, 1])
     ax4_twin = ax4.twinx()
 
@@ -155,28 +155,34 @@ def plot_comprehensive_analysis(
     ax4.tick_params(axis='y', labelcolor='black')
     ax4.grid(True, alpha=0.3)
 
-
-    elevOut_deg = np.rad2deg(np.asarray(profile['elevationAngleOut']))
-    elevIn_deg = np.rad2deg(np.asarray(profile['elevationAngleIn']))
-    l3 = ax4_twin.plot(
-        windSpeedRef,
-        elevOut_deg,
-        'g--',
-        linewidth=1.5,
-        alpha=0.6,
-        label='Elev Out (profile 0)',
-    )
-    l4 = ax4_twin.plot(
-        windSpeedRef,
-        elevIn_deg,
-        'r--',
-        linewidth=1.5,
-        alpha=0.6,
-        label='Elev In (profile 0)',
-    )
-    ax4_twin.set_ylabel('Elevation Angle (°)', fontsize=11, color='gray')
+    for i, profile in enumerate(profiles):
+        c = colors[i]
+        ax4_twin.plot(
+            windSpeedRef,
+            profile['gammaOut'],
+            color=c,
+            linestyle='-.',
+            linewidth=1,
+            alpha=0.5,
+        )
+        ax4_twin.plot(
+            windSpeedRef,
+            np.abs(profile['gammaIn']),
+            color=c,
+            linestyle=':',
+            linewidth=1,
+            alpha=0.5,
+        )
+    ax4_twin.set_ylabel('Reeling Factor (-)', fontsize=11, color='gray')
     ax4_twin.tick_params(axis='y', labelcolor='gray')
-    ax4_twin.legend(handles=l3 + l4, loc='center right', fontsize=8)
+    ax4_twin.legend(
+        handles=[
+            Line2D([0], [0], color='gray', linestyle='-.', linewidth=1, label='γ_out'),
+            Line2D([0], [0], color='gray', linestyle=':', linewidth=1, label='γ_in'),
+        ],
+        loc='center right',
+        fontsize=8,
+    )
 
 
     handles4, _ = ax4.get_legend_handles_labels()
@@ -185,7 +191,7 @@ def plot_comprehensive_analysis(
         Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='Reel-in speed'),
     ]
     ax4.legend(handles=handles4, loc='upper left', fontsize=8, ncol=2)
-    ax4.set_title('Reel Speeds & Elevation Angles', fontsize=12, fontweight='bold')
+    ax4.set_title('Reel Speeds & Reeling Factors', fontsize=12, fontweight='bold')
 
     # Subplot 5: Energy per cycle – all profiles
     ax5 = fig.add_subplot(gs[2, 0])
@@ -216,25 +222,25 @@ def plot_comprehensive_analysis(
     ax5.legend(handles=handles5, loc='upper left', fontsize=8, ncol=2)
     ax5.grid(True, alpha=0.3)
 
-    # Subplot 6: Reeling factors (gamma) – all profiles
+    # Subplot 6: Elevation angles – all profiles
     ax6 = fig.add_subplot(gs[2, 1])
     for i, profile in enumerate(profiles):
         c = colors[i]
         lbl = f'Profile {profile["profile_id"]}'
-        ax6.plot(windSpeedRef, profile['gammaOut'],
+        ax6.plot(windSpeedRef, np.rad2deg(np.asarray(profile['elevationAngleOut'])),
                  color=c, linewidth=2, label=lbl)
-        ax6.plot(windSpeedRef, np.abs(profile['gammaIn']),
+        ax6.plot(windSpeedRef, np.rad2deg(np.asarray(profile['elevationAngleIn'])),
                  color=c, linewidth=1, linestyle='--', alpha=0.6)
     _add_region_lines(ax6)
 
     handles6, labels6 = ax6.get_legend_handles_labels()
     handles6 += [
-        Line2D([0], [0], color='gray', linewidth=2, label='γ_out'),
-        Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='γ_in'),
+        Line2D([0], [0], color='gray', linewidth=2, label='Elevation out'),
+        Line2D([0], [0], color='gray', linewidth=1, linestyle='--', label='Elevation in'),
     ]
     ax6.set_xlabel('Wind Speed at ref. height (m/s)', fontsize=11)
-    ax6.set_ylabel('Reeling Factor (-)', fontsize=11)
-    ax6.set_title('Dimensionless Reeling Factors – All Profiles', fontsize=12, fontweight='bold')
+    ax6.set_ylabel('Elevation Angle (°)', fontsize=11)
+    ax6.set_title('Elevation Angles – All Profiles', fontsize=12, fontweight='bold')
     ax6.legend(handles=handles6, loc='upper right', fontsize=8, ncol=2)
     ax6.grid(True, alpha=0.3)
     

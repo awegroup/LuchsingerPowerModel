@@ -722,6 +722,9 @@ class PowerModel:
             tetherForceOut = self._calculate_tether_force_out(windSpeed, gammaOut)
         else:
             tetherForceOut = self.nominalTetherForce
+        if region == 3:
+            vOut = self.nominalReelOutSpeed
+            gammaOut = vOut / windSpeed
         mechPower = tetherForceOut * vOut
         timeOut = self.reelingLength / vOut if vOut > 0 else float('inf')
         energyOut = mechPower * timeOut

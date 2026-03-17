@@ -1,242 +1,168 @@
-"""Plot power curves for all wind shear profiles.
+"""Compare and plot two awesIO power curve YAML files.
 
-This script loads power curve data from a YAML file and creates visualizations
-comparing the power curves across different wind shear profiles.
+This script loads two power curve result files (awesIO schema), converts each
+file into one plotting profile, and overlays them using the same comprehensive
+multi-panel style defined in ``src.power_luchsinger.plotting``.
 """
 
 import sys
 from pathlib import Path
+from typing import Dict, Any, List
+
 import numpy as np
-import matplotlib.pyplot as plt
 import yaml
 
 # Add workspace root to path
 workspace_root = Path(__file__).parent.parent
 if str(workspace_root) not in sys.path:
-    sys.path.insert(0, str(workspace_root))
+	sys.path.insert(0, str(workspace_root))
+
+from src.power_luchsinger.plotting import plot_comprehensive_analysis
 
 
-def load_power_curves(yaml_path: Path) -> dict:
-    """Load power curves from YAML file.
-    
-    Args:
-        yaml_path: Path to power curves YAML file.
-        
-    Returns:
-        Dict with power curve data.
-    """
-    if not yaml_path.exists():
-        raise FileNotFoundError(f"Power curves file not found: {yaml_path}")
-    
-    with open(yaml_path, 'r') as f:
-        data = yaml.safe_load(f)
-    
-    return data
+# User settings: edit these paths/labels and run the script
+yamlPathA = workspace_root / 'results' / 'luchsinger_power_curves_OG.yml'
+yamlPathB = workspace_root / 'results' / 'luchsinger_power_curves_extended.yml'
+profileLabelA = 'OG'
+profileLabelB = 'Extended'
+savePath = workspace_root / 'results' / 'power_curve_analysis_comparison.pdf'
+showPlot = True
 
 
-def plot_all_power_curves(data: dict, output_path: Path) -> None:
-    """Create comprehensive plot of all power curves.
-    
-    Args:
-        data: Power curve data dictionary.
-        output_path: Path to save the plot.
-    """
-    metadata = data.get('metadata', {})
-    reference_wind_speeds = np.array(data['reference_wind_speeds_m_s'])
-    power_curves = data['power_curves']
-    n_profiles = len(power_curves)
-    
-    # Create figure with subplots
-    fig = plt.figure(figsize=(16, 10))
-    gs = fig.add_gridspec(3, 2, hspace=0.3, wspace=0.3)
-    
-    # Define color map for profiles
-    colors = plt.cm.viridis(np.linspace(0, 1, n_profiles))
-    
-    # 1. Main plot: All cycle power curves
-    ax1 = fig.add_subplot(gs[0, :])
-    for i, curve in enumerate(power_curves):
-        profile_id = curve['profile_id']
-        cycle_power_kw = np.array(curve['cycle_power_w']) / 1000
-        ax1.plot(reference_wind_speeds, cycle_power_kw, 
-                label=f'Profile {profile_id}', color=colors[i], linewidth=2)
-    
-    ax1.set_xlabel('Wind Speed at Reference Height (m/s)', fontsize=12)
-    ax1.set_ylabel('Cycle Power (kW)', fontsize=12)
-    ax1.set_title('Power Curves for All Wind Shear Profiles', fontsize=14, fontweight='bold')
-    ax1.grid(True, alpha=0.3)
-    ax1.legend(loc='upper left', ncol=4, fontsize=9)
-    
-    # 2. Reel-out vs Reel-in power comparison
-    ax2 = fig.add_subplot(gs[1, 0])
-    for i, curve in enumerate(power_curves):
-        profile_id = curve['profile_id']
-        reel_out_power_kw = np.array(curve['reel_out_power_w']) / 1000
-        ax2.plot(reference_wind_speeds, reel_out_power_kw,
-                color=colors[i], linewidth=1.5, alpha=0.7)
-    
-    ax2.set_xlabel('Wind Speed (m/s)', fontsize=11)
-    ax2.set_ylabel('Reel-Out Power (kW)', fontsize=11)
-    ax2.set_title('Reel-Out Power Generation', fontsize=12, fontweight='bold')
-    ax2.grid(True, alpha=0.3)
-    
-    ax3 = fig.add_subplot(gs[1, 1])
-    for i, curve in enumerate(power_curves):
-        profile_id = curve['profile_id']
-        reel_in_power_kw = np.array(curve['reel_in_power_w']) / 1000
-        ax3.plot(reference_wind_speeds, reel_in_power_kw,
-                color=colors[i], linewidth=1.5, alpha=0.7)
-    
-    ax3.set_xlabel('Wind Speed (m/s)', fontsize=11)
-    ax3.set_ylabel('Reel-In Power (kW)', fontsize=11)
-    ax3.set_title('Reel-In Power Consumption', fontsize=12, fontweight='bold')
-    ax3.grid(True, alpha=0.3)
-    
-    # 3. Cycle time breakdown
-    ax4 = fig.add_subplot(gs[2, 0])
-    for i, curve in enumerate(power_curves):
-        profile_id = curve['profile_id']
-        cycle_time = np.array(curve['cycle_time_s'])
-        ax4.plot(reference_wind_speeds, cycle_time,
-                color=colors[i], linewidth=1.5, alpha=0.7)
-    
-    ax4.set_xlabel('Wind Speed (m/s)', fontsize=11)
-    ax4.set_ylabel('Cycle Time (s)', fontsize=11)
-    ax4.set_title('Pumping Cycle Duration', fontsize=12, fontweight='bold')
-    ax4.grid(True, alpha=0.3)
-    
-    # 4. Statistics summary
-    ax5 = fig.add_subplot(gs[2, 1])
-    ax5.axis('off')
-    
-    # Calculate statistics for each profile
-    stats_text = "Power Statistics by Profile\n" + "="*40 + "\n\n"
-    for i, curve in enumerate(power_curves):
-        profile_id = curve['profile_id']
-        cycle_power_kw = np.array(curve['cycle_power_w']) / 1000
-        max_power = np.max(cycle_power_kw)
-        idx_max = np.argmax(cycle_power_kw)
-        ws_at_max = reference_wind_speeds[idx_max]
-        
-        # Find average power in operational range (5-15 m/s)
-        mask = (reference_wind_speeds >= 5) & (reference_wind_speeds <= 15)
-        avg_power = np.mean(cycle_power_kw[mask])
-        
-        stats_text += f"Profile {profile_id}:\n"
-        stats_text += f"  Max Power: {max_power:.1f} kW @ {ws_at_max:.1f} m/s\n"
-        stats_text += f"  Avg Power (5-15 m/s): {avg_power:.1f} kW\n\n"
-    
-    ax5.text(0.05, 0.95, stats_text, transform=ax5.transAxes,
-            fontsize=9, verticalalignment='top', fontfamily='monospace',
-            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
-    
-    # Overall title
-    fig.suptitle(metadata.get('name', 'Power Curves Analysis'),
-                fontsize=16, fontweight='bold', y=0.995)
-    
-    # Save figure
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    print(f"Plot saved to: {output_path}")
-    
-    plt.show()
+def load_yaml(file_path: Path) -> Dict[str, Any]:
+	"""Load and parse a YAML file.
+
+	Args:
+		file_path (Path): Path to YAML file.
+
+	Returns:
+		Dict[str, Any]: Parsed YAML content.
+
+	Raises:
+		ValueError: If the file is empty or invalid.
+	"""
+	with file_path.open('r', encoding='utf-8') as file_handle:
+		data = yaml.safe_load(file_handle)
+
+	if not isinstance(data, dict):
+		raise ValueError(f"Invalid or empty YAML content: {file_path}")
+
+	return data
 
 
-def plot_wind_shear_profiles(data: dict, output_path: Path) -> None:
-    """Plot normalized wind shear profiles.
-    
-    Args:
-        data: Power curve data dictionary.
-        output_path: Path to save the plot.
-    """
-    altitudes = np.array(data.get('altitudes_m', []))
-    power_curves = data['power_curves']
-    n_profiles = len(power_curves)
-    
-    if len(altitudes) == 0:
-        print("No altitude data available for wind shear profiles")
-        return
-    
-    # Create figure
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
-    
-    # Define color map for profiles
-    colors = plt.cm.viridis(np.linspace(0, 1, n_profiles))
-    
-    # Plot u_normalized (horizontal wind speed)
-    for i, curve in enumerate(power_curves):
-        profile_id = curve['profile_id']
-        u_norm = np.array(curve['u_normalized'])
-        ax1.plot(u_norm, altitudes, label=f'Profile {profile_id}',
-                color=colors[i], linewidth=2)
-    
-    ax1.set_xlabel('Normalized Horizontal Wind Speed', fontsize=12)
-    ax1.set_ylabel('Altitude (m)', fontsize=12)
-    ax1.set_title('Horizontal Wind Shear Profiles', fontsize=14, fontweight='bold')
-    ax1.grid(True, alpha=0.3)
-    ax1.legend(loc='best', fontsize=9)
-    ax1.axhline(y=data['metadata']['reference_height_m'], color='red',
-               linestyle='--', linewidth=1, alpha=0.5, label='Reference Height')
-    ax1.axhline(y=data['metadata']['model_config']['operating_altitude_m'],
-               color='green', linestyle='--', linewidth=1, alpha=0.5,
-               label='Operating Altitude')
-    
-    # Plot v_normalized (vertical wind speed)
-    for i, curve in enumerate(power_curves):
-        profile_id = curve['profile_id']
-        v_norm = np.array(curve['v_normalized'])
-        ax2.plot(v_norm, altitudes, label=f'Profile {profile_id}',
-                color=colors[i], linewidth=2)
-    
-    ax2.set_xlabel('Normalized Vertical Wind Speed', fontsize=12)
-    ax2.set_ylabel('Altitude (m)', fontsize=12)
-    ax2.set_title('Vertical Wind Shear Profiles', fontsize=14, fontweight='bold')
-    ax2.grid(True, alpha=0.3)
-    ax2.legend(loc='best', fontsize=9)
-    ax2.axhline(y=data['metadata']['reference_height_m'], color='red',
-               linestyle='--', linewidth=1, alpha=0.5)
-    ax2.axhline(y=data['metadata']['model_config']['operating_altitude_m'],
-               color='green', linestyle='--', linewidth=1, alpha=0.5)
-    
-    plt.tight_layout()
-    
-    # Save figure
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    print(f"Wind shear profiles plot saved to: {output_path}")
-    
-    plt.show()
+def _extract_series(wind_speed_data: List[Dict[str, Any]], key_path: List[str]) -> np.ndarray:
+	"""Extract a numeric series from nested wind speed entries.
+
+	Args:
+		wind_speed_data (List[Dict[str, Any]]): Per-wind-speed result entries.
+		key_path (List[str]): Nested path to value.
+
+	Returns:
+		np.ndarray: Numeric series.
+	"""
+	values = []
+	for entry in wind_speed_data:
+		value = entry
+		for key in key_path:
+			value = value[key]
+		values.append(float(value))
+	return np.asarray(values, dtype=float)
 
 
-def main():
-    """Main entry point for plotting script."""
-    # Load power curves
-    power_curves_path = workspace_root / 'results' / 'luchsinger_power_curves.yml'
-    
-    if not power_curves_path.exists():
-        print(f"Error: Power curves file not found: {power_curves_path}")
-        print("Please run calculate_power_curves.py first to generate the data.")
-        sys.exit(1)
-    
-    print(f"Loading power curves from: {power_curves_path}")
-    data = load_power_curves(power_curves_path)
-    
-    n_profiles = len(data['power_curves'])
-    print(f"Loaded {n_profiles} power curve profiles")
-    
-    # Create plots
-    print("\nGenerating power curves comparison plot...")
-    output_path_curves = workspace_root / 'results' / 'all_power_curves.png'
-    plot_all_power_curves(data, output_path_curves)
-    
-    print("\nGenerating wind shear profiles plot...")
-    output_path_shear = workspace_root / 'results' / 'wind_shear_profiles.png'
-    plot_wind_shear_profiles(data, output_path_shear)
-    
-    print("\n" + "="*60)
-    print("Plotting complete!")
-    print("="*60)
+def awesio_to_profile(data: Dict[str, Any], profile_label: str) -> Dict[str, Any]:
+	"""Convert awesIO power curve YAML data to internal plotting profile format.
+
+	Args:
+		data (Dict[str, Any]): Parsed awesIO power curve YAML data.
+		profile_label (str): Label for legend/profile identifier.
+
+	Returns:
+		Dict[str, Any]: Single profile in plotting.py compatible format.
+
+	Raises:
+		ValueError: If required awesIO fields are missing.
+	"""
+	power_curves = data.get('power_curves', [])
+	if len(power_curves) == 0:
+		raise ValueError('Missing power_curves in awesIO file')
+
+	curve = power_curves[0]
+	wind_speed_data = curve.get('wind_speed_data', [])
+	if len(wind_speed_data) == 0:
+		raise ValueError('Missing wind_speed_data in awesIO file')
+
+	reference_wind_speeds = data.get('reference_wind_speeds_m_s')
+	if reference_wind_speeds is None:
+		reference_wind_speeds = [entry['wind_speed_m_s'] for entry in wind_speed_data]
+
+	return {
+		'profile_id': profile_label,
+		'u_normalized': np.asarray(curve['wind_profile']['u_normalized'], dtype=float),
+		'v_normalized': np.asarray(curve['wind_profile']['v_normalized'], dtype=float),
+		'windSpeedAtRef': np.asarray(reference_wind_speeds, dtype=float),
+		'power': _extract_series(wind_speed_data, ['performance', 'power', 'average_cycle_power_w']),
+		'reelOutPower': _extract_series(wind_speed_data, ['performance', 'power', 'average_reel_out_power_w']),
+		'reelInPower': _extract_series(wind_speed_data, ['performance', 'power', 'average_reel_in_power_w']),
+		'reelOutTime': _extract_series(wind_speed_data, ['performance', 'timing', 'reel_out_time_s']),
+		'reelInTime': _extract_series(wind_speed_data, ['performance', 'timing', 'reel_in_time_s']),
+		'tetherForceOut': _extract_series(wind_speed_data, ['performance', 'forces', 'tether_force_out_n']),
+		'tetherForceIn': _extract_series(wind_speed_data, ['performance', 'forces', 'tether_force_in_n']),
+		'reelOutSpeed': _extract_series(wind_speed_data, ['performance', 'speeds', 'reel_out_speed_m_s']),
+		'reelInSpeed': _extract_series(wind_speed_data, ['performance', 'speeds', 'reel_in_speed_m_s']),
+		'gammaOut': _extract_series(wind_speed_data, ['performance', 'reel factors', 'gamma_out']),
+		'gammaIn': _extract_series(wind_speed_data, ['performance', 'reel factors', 'gamma_in']),
+		'elevationAngleOut': _extract_series(wind_speed_data, ['performance', 'elevation_angles', 'elevation_angle_out_rad']),
+		'elevationAngleIn': _extract_series(wind_speed_data, ['performance', 'elevation_angles', 'elevation_angle_in_rad']),
+	}
 
 
-if __name__ == "__main__":
-    main()
+def build_comparison_dataset(data_a: Dict[str, Any], data_b: Dict[str, Any], label_a: str, label_b: str) -> Dict[str, Any]:
+	"""Build combined plotting dataset with two profiles.
+
+	Args:
+		data_a (Dict[str, Any]): First awesIO dataset.
+		data_b (Dict[str, Any]): Second awesIO dataset.
+		label_a (str): Label for first profile.
+		label_b (str): Label for second profile.
+
+	Returns:
+		Dict[str, Any]: Combined dataset for ``plot_comprehensive_analysis``.
+	"""
+	profile_a = awesio_to_profile(data_a, label_a)
+	profile_b = awesio_to_profile(data_b, label_b)
+
+	metadata_a = data_a.get('metadata', {})
+	model_config_a = metadata_a.get('model_config', {})
+
+	return {
+		'reference_height_m': float(metadata_a.get('reference_height_m', 0.0)),
+		'operational_altitude_m': float(model_config_a.get('operating_altitude_m', 0.0)),
+		'altitudes': np.asarray(data_a.get('altitudes_m', []), dtype=float),
+		'profiles': [profile_a, profile_b],
+	}
+
+
+def main() -> None:
+	"""Run YAML comparison plotting script."""
+	data_a = load_yaml(yamlPathA)
+	data_b = load_yaml(yamlPathB)
+
+	comparison_data = build_comparison_dataset(
+		data_a,
+		data_b,
+		profileLabelA,
+		profileLabelB,
+	)
+
+	plot_comprehensive_analysis(
+		comparison_data,
+		model_params=None,
+		save_path=str(savePath),
+		show=showPlot,
+	)
+
+	print('Comparison plot saved to:', savePath)
+
+
+if __name__ == '__main__':
+	main()
