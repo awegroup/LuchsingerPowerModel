@@ -57,17 +57,8 @@ def plot_comprehensive_analysis(
     gs = fig.add_gridspec(4, 2, hspace=0.45, wspace=0.3)
 
     def _add_region_lines(ax):
-        """Add vertical region-boundary lines if model_params available."""
-        if not model_params:
-            return
-        if 'nominalWindSpeedForce' in model_params:
-            ax.axvline(x=model_params['nominalWindSpeedForce'], color='orange',
-                       linestyle=':', alpha=0.5)
-        if ('nominalWindSpeedPower' in model_params and
-                'cutOutWindSpeed' in model_params and
-                model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']):
-            ax.axvline(x=model_params['nominalWindSpeedPower'], color='red',
-                       linestyle=':', alpha=0.5)
+        """No-op placeholder for backward compatibility."""
+        return
 
     # Subplot 1: Power curves – all profiles
     ax1 = fig.add_subplot(gs[0, 0])
@@ -81,9 +72,6 @@ def plot_comprehensive_analysis(
         ax1.plot(windSpeedRef, np.abs(profile['reelInPower']) / 1000,
                  color=c, linewidth=1, linestyle=':', alpha=0.6)
 
-    if model_params and 'nominalGeneratorPower' in model_params:
-        ax1.axhline(y=model_params['nominalGeneratorPower'] / 1000,
-                    color='purple', linestyle=':', alpha=0.5, label='Nominal Power')
     _add_region_lines(ax1)
 
     # Legend: profile colours + line-style guide
@@ -136,9 +124,6 @@ def plot_comprehensive_analysis(
         ax3.plot(windSpeedRef, profile['tetherForceIn'] / 1000,
                  color=c, linewidth=1, linestyle='--', alpha=0.6)
 
-    if model_params and 'nominalTetherForce' in model_params:
-        ax3.axhline(y=model_params['nominalTetherForce'] / 1000,
-                    color='purple', linestyle=':', alpha=0.5, label='Nominal Force')
     _add_region_lines(ax3)
 
     handles3, labels3 = ax3.get_legend_handles_labels()
@@ -170,18 +155,29 @@ def plot_comprehensive_analysis(
     ax4.tick_params(axis='y', labelcolor='black')
     ax4.grid(True, alpha=0.3)
 
-    if model_params and 'elevationAngleOut' in model_params and 'elevationAngleIn' in model_params:
-        elevOut_deg = np.rad2deg(model_params['elevationAngleOut'])
-        elevIn_deg = np.rad2deg(model_params['elevationAngleIn'])
-        l3 = ax4_twin.plot(windSpeedRef, np.ones_like(windSpeedRef) * elevOut_deg,
-                           'g--', linewidth=1.5, alpha=0.5,
-                           label=f'Elev Out ({elevOut_deg:.1f}°)')
-        l4 = ax4_twin.plot(windSpeedRef, np.ones_like(windSpeedRef) * elevIn_deg,
-                           'r--', linewidth=1.5, alpha=0.5,
-                           label=f'Elev In ({elevIn_deg:.1f}°)')
-        ax4_twin.set_ylabel('Elevation Angle (°)', fontsize=11, color='gray')
-        ax4_twin.tick_params(axis='y', labelcolor='gray')
-        ax4_twin.legend(handles=l3 + l4, loc='center right', fontsize=8)
+
+    elevOut_deg = np.rad2deg(np.asarray(profile['elevationAngleOut']))
+    elevIn_deg = np.rad2deg(np.asarray(profile['elevationAngleIn']))
+    l3 = ax4_twin.plot(
+        windSpeedRef,
+        elevOut_deg,
+        'g--',
+        linewidth=1.5,
+        alpha=0.6,
+        label='Elev Out (profile 0)',
+    )
+    l4 = ax4_twin.plot(
+        windSpeedRef,
+        elevIn_deg,
+        'r--',
+        linewidth=1.5,
+        alpha=0.6,
+        label='Elev In (profile 0)',
+    )
+    ax4_twin.set_ylabel('Elevation Angle (°)', fontsize=11, color='gray')
+    ax4_twin.tick_params(axis='y', labelcolor='gray')
+    ax4_twin.legend(handles=l3 + l4, loc='center right', fontsize=8)
+
 
     handles4, _ = ax4.get_legend_handles_labels()
     handles4 += [
@@ -231,18 +227,6 @@ def plot_comprehensive_analysis(
                  color=c, linewidth=1, linestyle='--', alpha=0.6)
     _add_region_lines(ax6)
 
-    if model_params:
-        if 'nominalWindSpeedForce' in model_params:
-            ax6.axvline(x=model_params['nominalWindSpeedForce'], color='orange',
-                        linestyle=':', alpha=0.5,
-                        label=f"Force Limit ({model_params['nominalWindSpeedForce']:.1f} m/s)")
-        if ('nominalWindSpeedPower' in model_params and
-                'cutOutWindSpeed' in model_params and
-                model_params['nominalWindSpeedPower'] < model_params['cutOutWindSpeed']):
-            ax6.axvline(x=model_params['nominalWindSpeedPower'], color='red',
-                        linestyle=':', alpha=0.5,
-                        label=f"Power Limit ({model_params['nominalWindSpeedPower']:.1f} m/s)")
-
     handles6, labels6 = ax6.get_legend_handles_labels()
     handles6 += [
         Line2D([0], [0], color='gray', linewidth=2, label='γ_out'),
@@ -256,9 +240,7 @@ def plot_comprehensive_analysis(
     
     # Overall title
     title = 'AWE Power Curve Analysis (Luchsinger Model)'
-    if model_params and 'wingArea' in model_params and 'nominalGeneratorPower' in model_params:
-        title += (f"\n{model_params['wingArea']} m² wing"
-                  f" – {n_profiles} wind shear profile{'s' if n_profiles != 1 else ''}")
+    title += f"\n{n_profiles} wind shear profile{'s' if n_profiles != 1 else ''}"
     fig.suptitle(title, fontsize=14, fontweight='bold')
     
     # Save if path provided

@@ -753,6 +753,11 @@ class PowerModel:
         cyclePower = netEnergy / cycleTime if cycleTime > 0 else 0.0
 
         if self.model == 'luchsinger_extended_const_lod_in':
+            elevationAngleIn = self._get_extended_beta_in(gammaIn)
+        else:
+            elevationAngleIn = self.elevationAngleIn
+
+        if self.model == 'luchsinger_extended_const_lod_in':
             # Recalculate gammaIn based on the extended const LoD-in model for reporting
             self.elevationAngleIn = self._get_extended_beta_in(gammaIn)
 
@@ -769,7 +774,7 @@ class PowerModel:
             'gammaOut': gammaOut,
             'gammaIn': gammaIn,
             'elevationAngleOut': self.elevationAngleOut,
-            'elevationAngleIn': self.elevationAngleIn,
+            'elevationAngleIn': elevationAngleIn,
         }
 
     def _extended_sqrt_term(self, gamma_in: float) -> float:
