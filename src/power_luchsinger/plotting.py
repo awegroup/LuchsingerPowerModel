@@ -78,7 +78,7 @@ def plot_comprehensive_analysis(
                  color=c, linewidth=2, label=lbl)
         ax1.plot(windSpeedRef, profile['reelOutPower'] / 1000,
                  color=c, linewidth=1, linestyle='--', alpha=0.6)
-        ax1.plot(windSpeedRef, profile['reelInPower'] / 1000,
+        ax1.plot(windSpeedRef, np.abs(profile['reelInPower']) / 1000,
                  color=c, linewidth=1, linestyle=':', alpha=0.6)
 
     if model_params and 'nominalGeneratorPower' in model_params:
@@ -161,7 +161,7 @@ def plot_comprehensive_analysis(
         lbl = f'Profile {profile["profile_id"]}'
         ax4.plot(windSpeedRef, profile['reelOutSpeed'],
                  color=c, linewidth=2, label=lbl)
-        ax4.plot(windSpeedRef, profile['reelInSpeed'],
+        ax4.plot(windSpeedRef, np.abs(profile['reelInSpeed']),
                  color=c, linewidth=1, linestyle='--', alpha=0.6)
     _add_region_lines(ax4)
 
@@ -197,7 +197,7 @@ def plot_comprehensive_analysis(
         c = colors[i]
         lbl = f'Profile {profile["profile_id"]}'
         energyOut = profile['reelOutPower'] * profile['reelOutTime'] / 3_600_000
-        energyIn = profile['reelInPower'] * profile['reelInTime'] / 3_600_000
+        energyIn = np.abs(profile['reelInPower']) * profile['reelInTime'] / 3_600_000
         cycleTime = profile['reelOutTime'] + profile['reelInTime']
         cycleEnergy = profile['power'] * cycleTime / 3_600_000
         ax5.plot(windSpeedRef, energyOut,
@@ -227,7 +227,7 @@ def plot_comprehensive_analysis(
         lbl = f'Profile {profile["profile_id"]}'
         ax6.plot(windSpeedRef, profile['gammaOut'],
                  color=c, linewidth=2, label=lbl)
-        ax6.plot(windSpeedRef, profile['gammaIn'],
+        ax6.plot(windSpeedRef, np.abs(profile['gammaIn']),
                  color=c, linewidth=1, linestyle='--', alpha=0.6)
     _add_region_lines(ax6)
 

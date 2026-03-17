@@ -228,6 +228,14 @@ class PowerModel:
                 'u_normalized': profile_data['u_normalized']
             }
 
+            # Calculate wind speeds at operational altitude 
+            windSpeedsAtOp = np.array([
+                self._get_wind_speed_at_operational_altitude(
+                    ws_ref, wind_profile
+                )
+                for ws_ref in windSpeedsAtRef
+            ])
+
             # Initialise regime tracking for this profile.  Wind speeds are
             # processed in ascending order so transitions are detected
             # naturally: after detecting a transition the same wind speed is
@@ -239,18 +247,19 @@ class PowerModel:
             self.nominalGammaOutPower = None
             self.nominalReelOutSpeed = None
 
-            sorted_indices = np.argsort(windSpeedsAtRef)
+
             _zero = {
                 'cyclePower': 0.0, 'reelOutPower': 0.0, 'reelInPower': 0.0,
                 'reelOutTime': 0.0, 'reelInTime': 0.0,
                 'tetherForceOut': 0.0, 'tetherForceIn': 0.0,
                 'reelOutSpeed': 0.0, 'reelInSpeed': 0.0,
-                'gammaOut': 0.0, 'gammaIn': 0.0,
+                'gammaOut': 0.0, 'gammaIn': 0.0, 'elevationAngleOut': 0.0, 'elevationAngleIn': 0.0
             }
-            results_sorted = []
-            for ws_ref in windSpeedsAtRef[sorted_indices]:
+            results = []
+
+            for ws_ref in windSpeedsAtRef:
                 if ws_ref < self.cutInWindSpeed or ws_ref > self.cutOutWindSpeed:
-                    results_sorted.append(dict(_zero))
+                    results.append(dict(_zero))
                     continue
 
                 if wind_speed_regime == 1:
@@ -282,22 +291,10 @@ class PowerModel:
                         )
 
                 if wind_speed_regime == 3:
-                    result = self._calculate_power_region3(
-                        ws_ref
-                    )
+                    result = self._calculate_power_region3(ws_ref)
 
-                results_sorted.append(result)
+                results.append(result)
 
-            # Restore original wind speed ordering
-            results = [results_sorted[i] for i in np.argsort(sorted_indices)]
-
-            # Calculate wind speeds at operational altitude (for reporting)
-            windSpeedsAtOp = np.array([
-                self._get_wind_speed_at_operational_altitude(
-                    ws_ref, wind_profile
-                )
-                for ws_ref in windSpeedsAtRef
-            ])
 
             # Collect results for this profile
             profile_curve = {
@@ -317,6 +314,9 @@ class PowerModel:
                 'reelInSpeed': np.array([r['reelInSpeed'] for r in results]),
                 'gammaOut': np.array([r['gammaOut'] for r in results]),
                 'gammaIn': np.array([r['gammaIn'] for r in results]),
+                'elevationAngleOut': np.array([r['elevationAngleOut'] for r in results]),
+                'elevationAngleIn': np.array([r['elevationAngleIn'] for r in results])
+
             }
 
             power_curves.append(profile_curve)
@@ -374,23 +374,15 @@ class PowerModel:
             Dict with power and time details.
         """
         gammaOutMax = self.reelOutSpeedLimit / windSpeed
-        gammaInMax = self.reelInSpeedLimit / windSpeed
-        gammaInMin = -self.reelInSpeedLimit / windSpeed
+        gammaInMin = self.reelInSpeedLimit / windSpeed
 
         gammaOut, gammaIn = self._optimize_gamma_out_in_region1(
-            self.elevationAngleOut, self.elevationAngleIn,
-            self.forceFactorOut, self.forceFactorIn,
-            gammaOutMax, gammaInMax, gammaInMin)
+            gammaOutMax, gammaInMin)
 
         return self._calculate_cycle_results(1,windSpeed, gammaOut, gammaIn)
 
     def _optimize_gamma_out_in_region1(self,
-                                        elevationAngleOut: float,
-                                        elevationAngleIn: float,
-                                        forceFactorOut: float,
-                                        forceFactorIn: float,
                                         gammaOutMax: float,
-                                        gammaInMax: float,
                                         gammaInMin: float) -> Tuple[float, float]:
         """Calculate optimal dimensionless reeling velocity factors.
         
@@ -398,12 +390,9 @@ class PowerModel:
         velocities for both reel-out and reel-in phases.
         
         Args:
-            elevationAngleOut (float): Elevation angle during reel-out in rad.
-            elevationAngleIn (float): Elevation angle during reel-in in rad.
-            forceFactorOut (float): Force factor during reel-out.
-            forceFactorIn (float): Force factor during reel-in.
+
             gammaOutMax (float): Maximum gamma_out (v_out_max / v_wind).
-            gammaInMax (float): Maximum gamma_in (v_in_max / v_wind).
+            gammaInMin (float): Minimum gamma_in (v_in_min / v_wind).
             
         Returns:
             Tuple[float, float]: (optimal gamma_out, optimal gamma_in).
@@ -414,8 +403,8 @@ class PowerModel:
             def objective(x):
                 gammaOut, gammaIn = x
                 powerFactor = (
-                    (np.cos(elevationAngleOut) - gammaOut)**2 -
-                    (forceFactorIn / forceFactorOut) *
+                    (np.cos(self.elevationAngleOut) - gammaOut)**2 -
+                    (self.forceFactorIn / self.forceFactorOut) *
                     ((
                         self._extended_sqrt_term(gammaIn) - gammaIn
                     )**2 / (1 + self.e2in))
@@ -425,17 +414,19 @@ class PowerModel:
             bounds = ((0.001, gammaOutMax), (gammaInMin, -0.001))
             start = (0.001, -0.001)
         elif self.model == 'luchsinger_original':
+            # In original luchsinger paper, gammaIn is defined as positive during reel-in, 
+            # but we define it as negative for consistency. 
             def objective(x):
-                gammaOut, gammaIn = x
+                gammaOut, gammaIn = x[0], -x[1]
                 powerFactor = (
-                    (np.cos(elevationAngleOut) - gammaOut)**2 -
-                    (forceFactorIn / forceFactorOut) *
-                    (1 + 2 * np.cos(elevationAngleIn) * gammaIn + gammaIn**2)
+                    (np.cos(self.elevationAngleOut) - gammaOut)**2 -
+                    (self.forceFactorIn / self.forceFactorOut) *
+                    (1 + 2 * np.cos(self.elevationAngleIn) * gammaIn + gammaIn**2)
                 ) * ((gammaOut * gammaIn) / (gammaOut + gammaIn))
                 return -powerFactor
 
-            bounds = ((0.001, gammaOutMax), (0.001, gammaInMax))
-            start = (0.001, 0.001)
+            bounds = ((0.001, gammaOutMax), (gammaInMin, -0.001))
+            start = (0.001, -0.001)
 
         result = op.minimize(objective, start, bounds=bounds, method='SLSQP')
         if self._verbose:
@@ -455,27 +446,23 @@ class PowerModel:
         """
 
         mu = windSpeed / self.nominalWindSpeedForce
-        gammaInMax = self.reelInSpeedLimit / windSpeed
-        gammaInMin = -self.reelInSpeedLimit / windSpeed
-        print(self.elevationAngleOut, self.nominalGammaOutForce, mu)
+        gammaInMin = self.reelInSpeedLimit / windSpeed
         gammaOut = (
             np.cos(self.elevationAngleOut) -
             (np.cos(self.elevationAngleOut) - self.nominalGammaOutForce) / mu)
-        print(gammaOut)
-        gammaIn = self._optimize_gamma_in_region2(mu, gammaInMax, gammaInMin)
+        gammaIn = self._optimize_gamma_in_region2(mu, gammaInMin)
 
         return self._calculate_cycle_results(2, windSpeed, gammaOut, gammaIn)
 
     def _optimize_gamma_in_region2(
         self,
         mu: float,
-        gammaInMax: float,
         gammaInMin: float,) -> float:
         """Optimize gamma_in for Region 2 operation.
 
         Args:
             mu (float): Wind speed ratio to nominal force wind speed.
-            gammaInMax (float): Maximum gamma_in.
+            gammaInMin (float): Minimum gamma_in.
 
         Returns:
             float: Optimal gamma_in.
@@ -506,8 +493,10 @@ class PowerModel:
                 method='SLSQP',
             )
         elif self.model == 'luchsinger_original':
+            # In original luchsinger paper, gammaIn is defined as positive during reel-in, 
+            # but we define it as negative for consistency. 
             def objective(x):
-                gammaIn = x[0]
+                gammaIn = -x[0]
                 gammaOutEff = (
                     mu * np.cos(self.elevationAngleOut) -
                     np.cos(self.elevationAngleOut) +
@@ -526,8 +515,8 @@ class PowerModel:
 
             result = op.minimize(
                 objective,
-                [0.001],
-                bounds=[(0.001, gammaInMax)],
+                [-0.001],
+                bounds=[(gammaInMin, -0.001)],
                 method='SLSQP',
             )
         if self._verbose:
@@ -546,26 +535,24 @@ class PowerModel:
         """
 
         mu = windSpeed / self.nominalWindSpeedPower
-        gammaInMax = self.reelInSpeedLimit / windSpeed
-        gammaInMin = -self.reelInSpeedLimit / windSpeed
+        gammaInMin = self.reelInSpeedLimit / windSpeed
 
         vOut = self.nominalReelOutSpeed
         gammaOut = vOut / windSpeed
 
-        gammaIn = self._optimize_gamma_in_region3(mu, gammaInMax, gammaInMin)
+        gammaIn = self._optimize_gamma_in_region3(mu, gammaInMin)
 
         return self._calculate_cycle_results(3, windSpeed, gammaOut, gammaIn)
 
     def _optimize_gamma_in_region3(
         self,
         mu: float,
-        gammaInMax: float,
         gammaInMin: float,) -> float:
         """Optimize gamma_in for Region 3 operation.
 
         Args:
             mu (float): Wind speed ratio to nominal power wind speed.
-            gammaInMax (float): Maximum gamma_in.
+            gammaInMin (float): Minimum gamma_in.
 
         Returns:
             float: Optimal gamma_in.
@@ -595,8 +582,10 @@ class PowerModel:
                 method='SLSQP',
             )
         elif self.model == 'luchsinger_original':
+            # In original luchsinger paper, gammaIn is defined as positive during reel-in, 
+            # but we define it as negative for consistency. 
             def objective(x):
-                gammaIn = x[0]
+                gammaIn = -x[0]
 
                 powerFactor = (
                     (1 / mu**2) *
@@ -611,8 +600,8 @@ class PowerModel:
 
             result = op.minimize(
                 objective,
-                [0.001],
-                bounds=[(0.001, gammaInMax)],
+                [-0.001],
+                bounds=[(gammaInMin, -0.001)],
                 method='SLSQP',
             )
         if self._verbose:
@@ -705,14 +694,13 @@ class PowerModel:
         wingArea = self.wingArea
         forceFactor = self.forceFactorIn
         if self.model == 'luchsinger_extended_const_lod_in':
-            elevationAngle = self._get_extended_beta_in(gammaIn)
             sqrt_term = np.sqrt(np.maximum(0.0, 1 + self.e2in * (1 - gammaIn**2)))
             effectiveWindFactor = ((sqrt_term - gammaIn)**2) / (1 + self.e2in)
             tetherForce = 0.5 * airDensity * windSpeed**2 * wingArea * effectiveWindFactor * forceFactor
 
         elif self.model == 'luchsinger_original':
-            elevationAngle = self.elevationAngleIn
-            effectiveWindFactor = 1 + 2 * np.cos(elevationAngle) * gammaIn + gammaIn**2
+            gammaIn = -gammaIn  # Convert to positive for original model
+            effectiveWindFactor = 1 + 2 * np.cos(self.elevationAngleIn) * gammaIn + gammaIn**2
             tetherForce = 0.5 * airDensity * windSpeed**2 * wingArea * effectiveWindFactor * forceFactor
         
         return max(0.0, tetherForce)
@@ -734,7 +722,7 @@ class PowerModel:
         """
 
         vOut = windSpeed * gammaOut
-        vIn = windSpeed * abs(gammaIn)
+        vIn = windSpeed * gammaIn
 
         # Reel-out phase
         if region == 1:
@@ -748,7 +736,7 @@ class PowerModel:
         # Reel-in phase
         tetherForceIn = self._calculate_tether_force_in(windSpeed, gammaIn)
         mechPower = tetherForceIn * vIn
-        timeIn = self.reelingLength / vIn if vIn > 0 else float('inf')
+        timeIn = self.reelingLength / abs(vIn) if vIn != 0 else float('inf')
         energyIn = mechPower * timeIn
 
         elecEnergyOut = energyOut * self.generatorEfficiency
@@ -757,9 +745,12 @@ class PowerModel:
         elecPowerIn = elecEnergyIn / timeIn if timeIn > 0 else 0.0
 
         cycleTime = timeOut + timeIn
-        netEnergy = elecEnergyOut - (elecEnergyIn / self.storageEfficiency)
+        netEnergy = elecEnergyOut + (elecEnergyIn / self.storageEfficiency)
         cyclePower = netEnergy / cycleTime if cycleTime > 0 else 0.0
 
+        if self.model == 'luchsinger_extended_const_lod_in':
+            # Recalculate gammaIn based on the extended const LoD-in model for reporting
+            self.elevationAngleIn = self._get_extended_beta_in(gammaIn)
 
         return {
             'cyclePower': cyclePower,
@@ -773,6 +764,8 @@ class PowerModel:
             'reelInSpeed': vIn,
             'gammaOut': gammaOut,
             'gammaIn': gammaIn,
+            'elevationAngleOut': self.elevationAngleOut,
+            'elevationAngleIn': self.elevationAngleIn,
         }
 
     def _extended_sqrt_term(self, gamma_in: float) -> float:
@@ -904,6 +897,23 @@ class PowerModel:
                             'reel_in_time_s': float(profile['reelInTime'][i]),
                             'cycle_time_s': float(profile['reelOutTime'][i] + profile['reelInTime'][i]),
                         },
+                        'forces': {
+                            'tether_force_out_n': float(profile['tetherForceOut'][i]),
+                            'tether_force_in_n': float(profile['tetherForceIn'][i]),
+                        },
+                        'speeds': {
+                            'reel_out_speed_m_s': float(profile['reelOutSpeed'][i]),
+                            'reel_in_speed_m_s': float(profile['reelInSpeed'][i]),
+                        },
+                        'reel factors': {
+                            'gamma_out': float(profile['gammaOut'][i]),
+                            'gamma_in': float(profile['gammaIn'][i]),
+                        },
+                        'elevation_angles': {
+                            'elevation_angle_out_rad': float(profile['elevationAngleOut'][i]),
+                            'elevation_angle_in_rad': float(profile['elevationAngleIn'][i]),
+                        },
+
                     },
                 }
                 wind_speed_data.append(entry)

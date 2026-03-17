@@ -82,7 +82,7 @@ def load_system_config(file_path, validate_file=False):
         'wingArea': wing_structure.get('projected_surface_area_m2'),
         'tetherMaxLength': tether_structure.get('length_m'),
         'reelOutSpeedLimit': drum.get('max_tether_speed_m_s'),
-        'reelInSpeedLimit': drum.get('max_tether_speed_m_s'),
+        'reelInSpeedLimit': -drum.get('max_tether_speed_m_s'),
         'nominalTetherForce': (
             drum.get('max_tether_force_n')
             or tether_structure.get('max_tether_force_n')
