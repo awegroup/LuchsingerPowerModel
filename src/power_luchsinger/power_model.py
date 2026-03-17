@@ -129,31 +129,31 @@ class PowerModel:
             self.liftCoefficientKiteIn / self.dragCoefficientKiteIn
         )**2
 
-    def _get_wind_speed_at_operational_altitude(
+    def _get_average_wind_speed(
         self,
         reference_wind_speed: float,
         wind_profile: Dict[str, np.ndarray]) -> float:
-        """Calculate wind speed at operational altitude using wind shear profile.
+        """Calculate average wind speed over operational altitude band.
         
         Args:
             reference_wind_speed: Wind speed at reference height (m/s).
             wind_profile: Dict with 'altitudes' and 'u_normalized' arrays.
-            reference_height_m: Reference altitude where wind_profile = 1.0 (m).
             
-        Returns:
-            float: Wind speed at operational altitude (m/s).
+        Returns:    
+            float: Average wind speed over operational altitude band (m/s).
         """
-        altitudes = wind_profile['altitudes']
-        u_normalized = wind_profile['u_normalized']
-        
-        # Interpolate normalized wind speed at operational altitude
-        u_norm_at_op = np.interp(self.operationalAltitude, altitudes, u_normalized)
-             
-        # Scale to get actual wind speed at operational altitude
-        # reference_wind_speed corresponds to u_norm_at_ref
-        wind_speed_at_op = reference_wind_speed * u_norm_at_op
-        
-        return wind_speed_at_op
+        altitudes = np.asarray(wind_profile['altitudes'], dtype=float)
+        u_normalized = np.asarray(wind_profile['u_normalized'], dtype=float)
+
+        altitude_min = self.tetherMinLength * np.sin(self.elevationAngleOut)
+        altitude_max = self.tetherMaxLength * np.sin(self.elevationAngleOut)
+
+
+        samples = np.linspace(altitude_min, altitude_max, 200)
+        u_norm_samples = np.interp(samples, altitudes, u_normalized)
+        average_u_norm = np.trapezoid(u_norm_samples, samples) / (altitude_max - altitude_min)
+
+        return reference_wind_speed * float(average_u_norm)
 
     
     def generate_power_curves(
@@ -223,16 +223,7 @@ class PowerModel:
             # Prepare wind profile for interpolation
             wind_profile = {
                 'altitudes': wind_shear_data['altitudes'],
-                'u_normalized': profile_data['u_normalized']
-            }
-
-            # Calculate wind speeds at operational altitude 
-            windSpeedsAtOp = np.array([
-                self._get_wind_speed_at_operational_altitude(
-                    ws_ref, wind_profile
-                )
-                for ws_ref in windSpeedsAtRef
-            ])
+                'u_normalized': profile_data['u_normalized']}
 
             # Initialise regime tracking for this profile.  Wind speeds are
             # processed in ascending order so transitions are detected
@@ -256,40 +247,38 @@ class PowerModel:
             results = []
 
             for ws_ref in windSpeedsAtRef:
-                if ws_ref < self.cutInWindSpeed or ws_ref > self.cutOutWindSpeed:
-                    results.append(dict(_zero))
-                    continue
-
+        
+                ws_avg = self._get_average_wind_speed(ws_ref, wind_profile)
                 if wind_speed_regime == 1:
                     result = self._calculate_power_region1(
-                        ws_ref
+                        ws_avg
                     )
                     if result['tetherForceOut'] >= self.nominalTetherForce:
                         wind_speed_regime = 2
-                        self.nominalWindSpeedForce = ws_ref
+                        self.nominalWindSpeedForce = ws_avg
                         self.nominalGammaOutForce = result['gammaOut']
 
                         logger.debug(
                             'Profile %s: regime 1→2 at %.2f m/s',
-                            profile_id, ws_ref
+                            profile_id, ws_avg
                         )
 
                 if wind_speed_regime == 2:
                     result = self._calculate_power_region2(
-                        ws_ref
+                        ws_avg
                     )
                     if result['reelOutPower'] >= self.nominalGeneratorPower:
                         wind_speed_regime = 3
-                        self.nominalWindSpeedPower = ws_ref
+                        self.nominalWindSpeedPower = ws_avg
                         self.nominalGammaOutPower = result['gammaOut']
                         self.nominalReelOutSpeed = result['reelOutSpeed']
                         logger.debug(
                             'Profile %s: regime 2→3 at %.2f m/s',
-                            profile_id, ws_ref
+                            profile_id, ws_avg
                         )
 
                 if wind_speed_regime == 3:
-                    result = self._calculate_power_region3(ws_ref)
+                    result = self._calculate_power_region3(ws_avg)
 
                 results.append(result)
 
@@ -300,7 +289,6 @@ class PowerModel:
                 'u_normalized': profile_data['u_normalized'],
                 'v_normalized': profile_data['v_normalized'],
                 'windSpeedAtRef': windSpeedsAtRef,
-                'windSpeedAtOp': windSpeedsAtOp,
                 'power': np.array([r['cyclePower'] for r in results]),
                 'reelOutPower': np.array([r['reelOutPower'] for r in results]),
                 'reelInPower': np.array([r['reelInPower'] for r in results]),
@@ -835,22 +823,6 @@ class PowerModel:
               f"{data['operational_altitude_m']:.1f} m")
         print(f"  Number of Profiles:     {n_profiles}")
 
-        print(f"\nPower Statistics Across Profiles:")
-        for profile in profiles:
-            power = profile['power']
-            windSpeedRef = profile['windSpeedAtRef']
-            windSpeedOp = profile['windSpeedAtOp']
-            profile_id = profile['profile_id']
-
-            max_power = np.max(power)
-            idx_max = np.argmax(power)
-
-            print(f"\n  Profile {profile_id}:")
-            print(f"    Max Power:            {max_power/1000:.2f} kW")
-            print(f"    Wind Speed at Max:    {windSpeedRef[idx_max]:.1f}"
-                  f" m/s (ref), {windSpeedOp[idx_max]:.1f} m/s (op)")
-            print(f"    Avg Speed Ratio:      "
-                  f"{np.mean(windSpeedOp/windSpeedRef):.3f}")
 
         print("=" * 60)
 
