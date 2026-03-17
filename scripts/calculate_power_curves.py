@@ -35,7 +35,7 @@ def main():
     # Generate power curves with wind shear
     data = model.generate_power_curves(
         output_path=OUTPUT_PATH,
-        verbose=False,
+        verbose=True,
         show_plot=True,
         save_plot=True, 
         validate_file=True)

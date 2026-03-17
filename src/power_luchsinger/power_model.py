@@ -108,8 +108,6 @@ class PowerModel:
 
         if self.cutInWindSpeed >= self.cutOutWindSpeed:
             raise ValueError("Cut-in wind speed must be less than cut-out")
-        if self.nSegments < 1:
-            raise ValueError("nSegments must be at least 1")
 
     def _compute_derived_parameters(self) -> None:
         """Compute derived parameters from base configuration."""
@@ -373,17 +371,13 @@ class PowerModel:
         Returns:
             Dict with power and time details.
         """
-        gammaOutMax = self.reelOutSpeedLimit / windSpeed
-        gammaInMin = self.reelInSpeedLimit / windSpeed
 
-        gammaOut, gammaIn = self._optimize_gamma_out_in_region1(
-            gammaOutMax, gammaInMin)
+        gammaOut, gammaIn = self._optimize_gamma_out_in_region1(windSpeed)
 
         return self._calculate_cycle_results(1,windSpeed, gammaOut, gammaIn)
 
     def _optimize_gamma_out_in_region1(self,
-                                        gammaOutMax: float,
-                                        gammaInMin: float) -> Tuple[float, float]:
+                                        windSpeed: float) -> Tuple[float, float]:
         """Calculate optimal dimensionless reeling velocity factors.
         
         Optimizes the cycle power factor by finding the optimal reeling
@@ -391,21 +385,25 @@ class PowerModel:
         
         Args:
 
-            gammaOutMax (float): Maximum gamma_out (v_out_max / v_wind).
-            gammaInMin (float): Minimum gamma_in (v_in_min / v_wind).
+            windSpeed (float): Wind speed at reference height in m/s.
             
         Returns:
             Tuple[float, float]: (optimal gamma_out, optimal gamma_in).
         """
+
+        gammaOutMax = min(self.reelOutSpeedLimit / windSpeed, 1.0)
+
+
         from scipy import optimize as op
         
         if self.model == 'luchsinger_extended_const_lod_in':
+            gammaInMin = max(self.reelInSpeedLimit / windSpeed, -np.sqrt(1+1/self.e2in))
             def objective(x):
                 gammaOut, gammaIn = x
                 powerFactor = (
                     (np.cos(self.elevationAngleOut) - gammaOut)**2 -
                     (self.forceFactorIn / self.forceFactorOut) *
-                    ((
+                    ( (
                         self._extended_sqrt_term(gammaIn) - gammaIn
                     )**2 / (1 + self.e2in))
                 ) * ((gammaIn * gammaOut) / (gammaIn - gammaOut))
@@ -414,6 +412,7 @@ class PowerModel:
             bounds = ((0.001, gammaOutMax), (gammaInMin, -0.001))
             start = (0.001, -0.001)
         elif self.model == 'luchsinger_original':
+            gammaInMin = self.reelInSpeedLimit / windSpeed
             # In original luchsinger paper, gammaIn is defined as positive during reel-in, 
             # but we define it as negative for consistency. 
             def objective(x):
@@ -446,28 +445,29 @@ class PowerModel:
         """
 
         mu = windSpeed / self.nominalWindSpeedForce
-        gammaInMin = self.reelInSpeedLimit / windSpeed
+
         gammaOut = (
             np.cos(self.elevationAngleOut) -
             (np.cos(self.elevationAngleOut) - self.nominalGammaOutForce) / mu)
-        gammaIn = self._optimize_gamma_in_region2(mu, gammaInMin)
+        gammaIn = self._optimize_gamma_in_region2(mu, windSpeed)
 
         return self._calculate_cycle_results(2, windSpeed, gammaOut, gammaIn)
 
     def _optimize_gamma_in_region2(
         self,
         mu: float,
-        gammaInMin: float,) -> float:
+        windSpeed: float) -> float:
         """Optimize gamma_in for Region 2 operation.
 
         Args:
             mu (float): Wind speed ratio to nominal force wind speed.
-            gammaInMin (float): Minimum gamma_in.
+            windSpeed (float): Wind speed at reference height in m/s.
 
         Returns:
             float: Optimal gamma_in.
         """
         if self.model == 'luchsinger_extended_const_lod_in':
+            gammaInMin = max(self.reelInSpeedLimit / windSpeed, -np.sqrt(1+1/self.e2in))
             def objective(x):
                 gammaIn = x[0]
                 b = (
@@ -493,6 +493,7 @@ class PowerModel:
                 method='SLSQP',
             )
         elif self.model == 'luchsinger_original':
+            gammaInMin = self.reelInSpeedLimit / windSpeed
             # In original luchsinger paper, gammaIn is defined as positive during reel-in, 
             # but we define it as negative for consistency. 
             def objective(x):
@@ -535,29 +536,28 @@ class PowerModel:
         """
 
         mu = windSpeed / self.nominalWindSpeedPower
-        gammaInMin = self.reelInSpeedLimit / windSpeed
 
         vOut = self.nominalReelOutSpeed
         gammaOut = vOut / windSpeed
-
-        gammaIn = self._optimize_gamma_in_region3(mu, gammaInMin)
+        gammaIn = self._optimize_gamma_in_region3(mu, windSpeed)
 
         return self._calculate_cycle_results(3, windSpeed, gammaOut, gammaIn)
 
     def _optimize_gamma_in_region3(
         self,
         mu: float,
-        gammaInMin: float,) -> float:
+        windSpeed: float) -> float:
         """Optimize gamma_in for Region 3 operation.
 
         Args:
             mu (float): Wind speed ratio to nominal power wind speed.
-            gammaInMin (float): Minimum gamma_in.
+            windSpeed (float): Wind speed at reference height in m/s.
 
         Returns:
             float: Optimal gamma_in.
         """
         if self.model == 'luchsinger_extended_const_lod_in':
+            gammaInMin = max(self.reelInSpeedLimit / windSpeed, -np.sqrt(1+1/self.e2in))
             def objective(x):
                 gammaIn = x[0]
                 powerFactor = (
@@ -582,6 +582,7 @@ class PowerModel:
                 method='SLSQP',
             )
         elif self.model == 'luchsinger_original':
+            gammaInMin = self.reelInSpeedLimit / windSpeed
             # In original luchsinger paper, gammaIn is defined as positive during reel-in, 
             # but we define it as negative for consistency. 
             def objective(x):
@@ -624,7 +625,10 @@ class PowerModel:
         liftCoefficient = self.liftCoefficientKiteOut
         dragCoefficient = self.dragCoefficientKiteOut
         if self.model == 'luchsinger_extended_const_lod_in':
-            E2out = (self.liftCoefficientKiteOut / self.dragCoefficientKiteOut)**2
+            rm_out = 0.5 * (self.tetherMinLength + self.tetherMaxLength)
+            CD_out = (self.dragCoefficientKiteOut + 0.25 * self.tetherDragCoefficient *
+                       self.tetherDiameter * rm_out / self.wingArea)
+            E2out = (self.liftCoefficientKiteOut / CD_out)**2
             force_factor_out = liftCoefficient * np.sqrt(1 + 1/E2out) * (1 + E2out)
 
         elif self.model == 'luchsinger_original':
@@ -694,7 +698,7 @@ class PowerModel:
         wingArea = self.wingArea
         forceFactor = self.forceFactorIn
         if self.model == 'luchsinger_extended_const_lod_in':
-            sqrt_term = np.sqrt(np.maximum(0.0, 1 + self.e2in * (1 - gammaIn**2)))
+            sqrt_term = self._extended_sqrt_term(gammaIn)
             effectiveWindFactor = ((sqrt_term - gammaIn)**2) / (1 + self.e2in)
             tetherForce = 0.5 * airDensity * windSpeed**2 * wingArea * effectiveWindFactor * forceFactor
 

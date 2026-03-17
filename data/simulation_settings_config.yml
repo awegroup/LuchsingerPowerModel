@@ -9,7 +9,6 @@ settings:
   elevation_angle_in_deg: 45.0    # Initial/reference reel-in angle [degrees], only used for luchsinger_original
 
   num_points: 250                 # Number of wind speed points for power curve
-  n_segments: 20                  # Number of tether segments used in phase integration
 
   minimum_tether_length_m: 100.0  # Minimum tether length [m]
 
@@ -17,6 +16,7 @@ settings:
 
   lift_coefficient_reel_out: 0.7
   drag_coefficient_reel_out: 0.16
+  tether_drag_coefficient: 1.1
 
   lift_coefficient_reel_in: 0.22  # Only used for luchsinger_original
   drag_coefficient_reel_in: 0.11

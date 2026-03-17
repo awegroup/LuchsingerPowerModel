@@ -81,6 +81,7 @@ def load_system_config(file_path, validate_file=False):
     return {
         'wingArea': wing_structure.get('projected_surface_area_m2'),
         'tetherMaxLength': tether_structure.get('length_m'),
+        'tetherDiameter': tether_structure.get('diameter_m'),
         'reelOutSpeedLimit': drum.get('max_tether_speed_m_s'),
         'reelInSpeedLimit': -drum.get('max_tether_speed_m_s'),
         'nominalTetherForce': (
@@ -218,11 +219,11 @@ def load_simulation_settings(file_path):
         'elevationAngleIn': (
             np.radians(settings.get('elevation_angle_in_deg'))),
         'numPoints': settings.get('num_points'),
-        'nSegments': settings.get('n_segments'),
         'tetherMinLength': settings.get('minimum_tether_length_m'),
         'airDensity': settings.get('air_density_kg_m3'),
         'liftCoefficientKiteOut': settings.get('lift_coefficient_reel_out'),
         'dragCoefficientKiteOut': settings.get('drag_coefficient_reel_out'),
+        'tetherDragCoefficient': settings.get('tether_drag_coefficient'),
         'liftCoefficientKiteIn': settings.get('lift_coefficient_reel_in'),
         'dragCoefficientKiteIn': settings.get('drag_coefficient_reel_in'),
     }
