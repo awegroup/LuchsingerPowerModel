@@ -12,6 +12,7 @@ from typing import Dict, Any, Tuple
 from pathlib import Path
 from datetime import datetime
 import logging
+import numbers
 
 import numpy as np
 import yaml
@@ -937,15 +938,49 @@ class PowerModel:
 
         # Write output file
         output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        class _NumericFlowStyleDumper(yaml.SafeDumper):
+            """Dump numeric sequences in flow style while preserving structure."""
+
+        def _represent_sequence_with_numeric_flow(dumper, data):
+            is_numeric_sequence = (
+                len(data) > 0 and
+                all(
+                    isinstance(item, numbers.Real) and
+                    not isinstance(item, bool)
+                    for item in data
+                )
+            )
+            return dumper.represent_sequence(
+                'tag:yaml.org,2002:seq',
+                data,
+                flow_style=is_numeric_sequence,
+            )
+
+        _NumericFlowStyleDumper.add_representer(
+            list,
+            _represent_sequence_with_numeric_flow,
+        )
+        _NumericFlowStyleDumper.add_representer(
+            tuple,
+            _represent_sequence_with_numeric_flow,
+        )
+
         with open(output_path, 'w') as f:
-            yaml.dump(output, f, default_flow_style=False, sort_keys=False)
+            yaml.dump(
+                output,
+                f,
+                Dumper=_NumericFlowStyleDumper,
+                default_flow_style=False,
+                sort_keys=False,
+            )
 
         # Validate output if requested and awesIO is available
         if file_validate:
             try:
                 from awesio.validator import validate as awesio_validate
                 awesio_validate(input=output_path)
-                print(f"  ✓ {output_path.name} validated against system_schema")
+                print(f"  ✓ {output_path.name} validated against power_curves_schema")
             except ImportError:
                 print("  awesIO not installed; skipping validation.")
             except Exception as e:
