@@ -1,6 +1,6 @@
 # Luchsinger Power Model
 
-A configurable power model for pumping kite airborne wind energy (AWE) systems based on the Luchsinger model. Takes awesIO-format YAML configuration files as input and always computes power curves using segmented wind shear profiles.
+A configurable power model for pumping kite airborne wind energy (AWE) systems based on the Luchsinger model [1] [2]. Takes awesIO-format YAML configuration files as input and always computes power curves using segmented wind shear profiles.
 
 ## Overview
 
@@ -9,7 +9,6 @@ This repository provides a standalone power model for AWE pumping kite systems. 
 - Aerodynamic forces on the kite
 - Ground station generator and storage efficiency losses
 - Optimal reeling velocity control
-- Wind shear along the tether deployment using segmented calculations
 - Three operating regions (below force limit, force-limited, power-limited)
 
 ## Purpose
@@ -20,8 +19,6 @@ This repository is designed to be:
 2. **Integrated into a larger toolchain** where `PowerModel` is instantiated directly with paths to awesIO YAML files
 
 ## Features
-
-- **Wind shear**: Tether deployment is divided into 20 segments; each segment uses the local wind speed interpolated from a normalized wind profile
 - **Reeling-factor optimization**: Optimal reel-out and reel-in velocity factors calculated per operating region
 - **awesIO format**: Input and output follow the awesIO data schema; optional validation on load and export
 - **Configurable**: All physical parameters via awesIO-format YAML files
@@ -92,28 +89,6 @@ Three YAML files are required, all following the awesIO schema:
 | `clustered_profiles_wind_resource.yml` | Wind resource with clustered normalized wind shear profiles |
 | `simulation_settings_config.yml` | Simulation settings (e.g. number of power curve points) |
 
-### System Configuration Parameters
-
-| Parameter | Description | Unit |
-|-----------|-------------|------|
-| `wingArea` | Projected wing area | m² |
-| `liftCoefficientOut` | Lift coefficient during reel-out | - |
-| `dragCoefficientKiteOut` | Kite drag coefficient during reel-out | - |
-| `dragCoefficientKiteIn` | Kite drag coefficient during reel-in | - |
-| `tetherMaxLength` | Maximum tether length | m |
-| `tetherMinLength` | Minimum tether length | m |
-| `airDensity` | Air density | kg/m³ |
-| `nominalTetherForce` | Maximum tether force | N |
-| `nominalGeneratorPower` | Maximum generator power | W |
-| `reelOutSpeedLimit` | Maximum reel-out speed | m/s |
-| `reelInSpeedLimit` | Maximum reel-in speed | m/s |
-| `cutInWindSpeed` | Cut-in wind speed at reference height | m/s |
-| `cutOutWindSpeed` | Cut-out wind speed at reference height | m/s |
-| `elevationAngleOut` | Tether elevation angle during reel-out | rad |
-| `elevationAngleIn` | Tether elevation angle during reel-in | rad |
-| `generatorEfficiency` | Generator efficiency | - |
-| `storageEfficiency` | Energy storage round-trip efficiency | - |
-
 ## Physical Model
 
 ### Luchsinger Pumping Cycle
@@ -136,6 +111,34 @@ Nominal operating wind speeds (force limit, power limit) are recomputed for each
 | **Region 1** | Below force limit — reel-out and reel-in factors jointly optimized |
 | **Region 2** | Force-limited — tether force held at nominal; reel-in factor optimized |
 | **Region 3** | Power-limited — generator power held at nominal; reel-in factor optimized |
+
+## Model Variants
+
+The simulation setting `settings.model` in `data/simulation_settings_config.yml` selects one of two model formulations:
+
+| Model key | Description |
+|-----------|-------------|
+| `luchsinger_original` | Original Luchsinger-style pumping-cycle formulation with reel-in force represented using a reel-in elevation angle term. |
+| `luchsinger_extended_const_lod_in` | Extended formulation with explicit lift-to-drag-based reel-in force treatment and tether drag contribution in reel-out force factor. |
+
+### 1) `luchsinger_original` [1]
+
+- Uses the classical reel-in apparent-wind expression that depends on `elevation_angle_in_deg`.
+- Reel-in force factor is based on drag during depowered reel-in.
+- Useful when reproducing or benchmarking against the original Luchsinger-style assumptions.
+
+### 2) `luchsinger_extended_const_lod_in` [2]
+
+- Uses an extended reel-in expression based on constant reel-in lift-to-drag ratio.
+- Includes tether drag effect in the reel-out force factor.
+- Does **not** use `elevation_angle_in_deg` in the reel-in force expression.
+- Useful when you want a more detailed aerodynamic reel-in treatment while keeping the same region-based control structure.
+
+### Practical guidance
+
+- Keep all other inputs identical and change only `settings.model` to compare formulations.
+- The same three operating regions are used in both models; the main differences are in force-factor definitions and reel-in/reel-out aerodynamic expressions.
+- The comparison workflow in `scripts/plot_power_curves.py` is intended for side-by-side evaluation of outputs from the two model variants.
 
 ## Project Structure
 
@@ -163,6 +166,9 @@ Nominal operating wind speeds (force limit, power limit) are recomputed for each
 ## References
 
 1. R.H. Luchsinger: "Pumping cycle kite power". In *Airborne Wind Energy*, Springer, 2013. https://doi.org/10.1007/978-3-642-39965-7_3
+2. R. Schmehl, M. Rodriguez, L. Ouroumova, and M. Gaunaa: "Airborne Wind Energy for Martian Habitats". In Adaptive On- and Off-Earth Environments, Springer, 2024. https://doi.org/10.1007/978-3-031-50081-7_7
+
+
 
 ## License
 
