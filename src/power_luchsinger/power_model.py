@@ -156,10 +156,132 @@ class PowerModel:
 
         return reference_wind_speed * float(average_u_norm)
 
-    
+    def _get_selected_profiles(self, selected_profiles: list = None) -> list:
+        """Return selected wind profiles by index.
+
+        Args:
+            selected_profiles: List of profile indices to simulate. If None,
+                all profiles are returned.
+
+        Returns:
+            list: Selected profile dictionaries from ``self.wind_resource``.
+
+        Raises:
+            IndexError: If any requested profile index is out of range.
+        """
+        profiles = self.wind_resource['profiles']
+
+        if selected_profiles is None:
+            return profiles
+
+        selected_profile_data = []
+        n_profiles = len(profiles)
+
+        for profile_index in selected_profiles:
+            idx = int(profile_index)
+            if idx < 0 or idx >= n_profiles:
+                raise IndexError(
+                    f"Profile index {idx} out of range [0, {n_profiles - 1}]"
+                )
+            selected_profile_data.append(profiles[idx])
+
+        return selected_profile_data
+
+    def simulate_cycle_at_one_wind_speed(
+        self,
+        ws_ref: float,
+        selected_profiles: list = None,
+        verbose: bool = False
+    ) -> float:
+        """Calculate power output for a single wind speed and profile.
+
+        Args:
+            ws_ref: Wind speed at reference height (m/s).
+            selected_profiles: Optional list of profile indices. If None,
+                simulate all profiles.
+
+        Returns:
+            float: Power output (W).
+        """
+        self._verbose = verbose
+        wind_shear_data = self.wind_resource
+        profiles = self._get_selected_profiles(selected_profiles)
+        # print(profiles[:]['id'])
+        results = []
+        for profile_data in profiles:
+            if self._verbose:
+                print(f"Simulating cycle for profile {profile_data['id']} at reference wind speed {ws_ref} m/s")
+            profile_id = profile_data['id']
+
+            # Prepare wind profile for interpolation
+            wind_profile = {
+                'altitudes': wind_shear_data['altitudes'],
+                'u_normalized': profile_data['u_normalized']}
+
+            # Initialise regime tracking for this profile.  Wind speeds are
+            # processed in ascending order so transitions are detected
+            # naturally: after detecting a transition the same wind speed is
+            # re-evaluated in the new regime (if/if/if fall-through
+            wind_speed_regime = 1
+            self.nominalWindSpeedForce = None
+            self.nominalGammaOutForce = None 
+            self.nominalWindSpeedPower = None
+            self.nominalGammaOutPower = None
+            self.nominalReelOutSpeed = None
+
+
+            _zero = {
+                'cyclePower': 0.0, 'reelOutPower': 0.0, 'reelInPower': 0.0,
+                'reelOutTime': 0.0, 'reelInTime': 0.0,
+                'tetherForceOut': 0.0, 'tetherForceIn': 0.0,
+                'reelOutSpeed': 0.0, 'reelInSpeed': 0.0,
+                'gammaOut': 0.0, 'gammaIn': 0.0, 'elevationAngleOut': 0.0, 'elevationAngleIn': 0.0
+            }
+            
+
+            
+        
+            ws_avg = self._get_average_wind_speed(ws_ref, wind_profile)
+            if wind_speed_regime == 1:
+                result = self._calculate_power_region1(
+                    ws_avg
+                )
+                if result['tetherForceOut'] >= self.nominalTetherForce:
+                    wind_speed_regime = 2
+                    self.nominalWindSpeedForce = ws_avg
+                    self.nominalGammaOutForce = result['gammaOut']
+
+                    logger.debug(
+                        'Profile %s: regime 1→2 at %.2f m/s',
+                        profile_id, ws_avg
+                    )
+
+            if wind_speed_regime == 2:
+                result = self._calculate_power_region2(
+                    ws_avg
+                )
+                if result['reelOutPower'] >= self.nominalGeneratorPower:
+                    wind_speed_regime = 3
+                    self.nominalWindSpeedPower = ws_avg
+                    self.nominalGammaOutPower = result['gammaOut']
+                    self.nominalReelOutSpeed = result['reelOutSpeed']
+                    logger.debug(
+                        'Profile %s: regime 2→3 at %.2f m/s',
+                        profile_id, ws_avg
+                    )
+
+            if wind_speed_regime == 3:
+                result = self._calculate_power_region3(ws_avg)
+
+            results.append(result)
+
+        return results
+
+
     def generate_power_curves(
         self,
         wind_speeds: np.ndarray = None,
+        selected_profiles: list = None,
         output_path: Path = None,
         verbose: bool = False,
         show_plot: bool = False,
@@ -178,6 +300,8 @@ class PowerModel:
                 file. When ``None``, a linearly-spaced array is built from
                 ``cut_in`` to ``cut_out`` using ``power_curve.num_points``
                 from the simulation settings (default 100).
+            selected_profiles: Optional list of profile indices. If None,
+                simulate all profiles.
             output_path (Path): If given, export power curves to this YAML
                 file in awesIO format.
             verbose (bool): If True, print a summary of the results.
@@ -204,7 +328,7 @@ class PowerModel:
  
         wind_shear_data = self.wind_resource
         reference_height_m = wind_shear_data['reference_height_m']
-        profiles = wind_shear_data['profiles']
+        profiles = self._get_selected_profiles(selected_profiles)
 
         # Wind speeds at reference height
         if wind_speeds is not None:

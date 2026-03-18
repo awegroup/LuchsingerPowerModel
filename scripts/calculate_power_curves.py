@@ -39,6 +39,9 @@ def main():
         show_plot=True,
         save_plot=True, 
         validate_file=True)
+    
+    # data = model.simulate_cycle_at_one_wind_speed(ws_ref=10.0,  selected_profiles=[0, 1, 2], verbose=True)
+    # print(data)
 
 if __name__ == '__main__':
     main()
