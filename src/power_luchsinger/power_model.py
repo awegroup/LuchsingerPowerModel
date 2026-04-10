@@ -18,7 +18,7 @@ import numpy as np
 import yaml
 from scipy import optimize as op
 
-from src.power_luchsinger.config_loader import (
+from .config_loader import (
     load_system_config,
     load_wind_resource,
     load_simulation_settings,
@@ -453,7 +453,7 @@ class PowerModel:
 
         # Plot
         if show_plot or save_plot:
-            from src.power_luchsinger.plotting import (
+            from .plotting import (
                 plot_comprehensive_analysis,
                 extract_model_params,
             )

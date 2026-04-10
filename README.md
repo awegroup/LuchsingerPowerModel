@@ -57,7 +57,7 @@ python scripts/calculate_power_curves.py
 
 ```python
 import numpy as np
-from src.power_luchsinger import PowerModel
+from power_luchsinger import PowerModel
 
 model = PowerModel(
     system_config_path='data/soft_kite_pumping_ground_gen_system.yml',

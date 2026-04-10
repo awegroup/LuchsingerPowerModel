@@ -4,7 +4,7 @@ metadata:
   note: Power curve data generated from Luchsinger model with wind shear profiles
   awesIO_version: 0.1.0
   schema: power_curves_schema.yml
-  time_created: '2026-03-17T22:41:25.070509'
+  time_created: '2026-04-10T14:58:52.368958'
   reference_height_m: 100.0
   model_config:
     wing_area_m2: 19.75
@@ -1858,7 +1858,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 10454.127561715519
-        average_reel_out_power_w: 15004.229548522004
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -4708.6036271534695
       timing:
         reel_out_time_s: 66.64787397220975
@@ -1868,7 +1868,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 470.860362715347
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.28964601610970303
@@ -1949,18 +1949,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10417.829398586475
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 10417.829398586477
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -4865.861560364862
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.000000000000004
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 486.58615603648633
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.28055398869818765
@@ -1972,18 +1972,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10408.646657412246
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 10408.646657412248
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -4905.644810364061
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 490.56448103640616
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.27836947488185027
@@ -2088,7 +2088,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 10362.083749189302
-        average_reel_out_power_w: 15004.229548522004
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -5107.373660538138
       timing:
         reel_out_time_s: 66.64787397220975
@@ -2098,7 +2098,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 510.7373660538138
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2679380705768559
@@ -2110,18 +2110,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10352.641327074349
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 10352.64132707435
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -5148.281950608574
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 514.8281950608574
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26594490745885585
@@ -2156,8 +2156,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10333.626642374087
-        average_reel_out_power_w: 15004.229548522004
+        average_cycle_power_w: 10333.626642374085
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -5230.661050785058
       timing:
         reel_out_time_s: 66.64787397220975
@@ -2167,7 +2167,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 523.0661050785059
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.262046238658412
@@ -2202,18 +2202,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10314.438837046673
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 10314.438837046675
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -5313.790177675704
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 531.3790177675704
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2582602248903853
@@ -3605,18 +3605,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9646.04795329413
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 9646.047953294132
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -8209.522630653917
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 820.9522630653917
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.17926515610228036
@@ -3882,7 +3882,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9495.604513391358
-        average_reel_out_power_w: 15004.229548522004
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -8861.302841685982
       timing:
         reel_out_time_s: 66.64787397220975
@@ -3892,7 +3892,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 886.1302841685981
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1690906472424212
@@ -4111,18 +4111,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9365.47416289246
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 9365.474162892462
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -9425.078752185367
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 942.5078752185368
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.16145429543147313
@@ -4203,18 +4203,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9312.210178302861
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 9312.210178302863
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -9655.83930338423
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 965.583930338423
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15858945368744196
@@ -4387,18 +4387,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9203.604761597882
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 9203.604761597884
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -10126.36072635185
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 19.999999999999996
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1012.6360726351849
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.000000000000002
       reel factors:
         gamma_out: 0.15315431941174013
@@ -4479,8 +4479,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9148.263329482505
-        average_reel_out_power_w: 15004.229548522004
+        average_cycle_power_w: 9148.263329482503
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -10366.121598120604
       timing:
         reel_out_time_s: 66.64787397220975
@@ -4490,7 +4490,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1036.6121598120603
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15057410223753515
@@ -4732,8 +4732,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8992.50377823027
-        average_reel_out_power_w: 15004.229548522004
+        average_cycle_power_w: 8992.503778230268
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -11040.933296464187
       timing:
         reel_out_time_s: 66.64787397220975
@@ -4743,7 +4743,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1104.0933296464186
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14390693382333722
@@ -4755,8 +4755,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8978.084138084798
-        average_reel_out_power_w: 15004.229548522004
+        average_cycle_power_w: 8978.084138084796
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -11103.404854566656
       timing:
         reel_out_time_s: 66.64787397220975
@@ -4766,7 +4766,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1110.3404854566656
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1433299873532551
@@ -4778,18 +4778,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8963.621217782536
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 8963.621217782538
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -11166.063919347669
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1116.6063919347669
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14275764855606582
@@ -4824,18 +4824,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8934.565536707658
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 8934.56553670766
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -11291.944568945306
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1129.1944568945305
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14162657493988873
@@ -4847,8 +4847,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8919.97277593504
-        average_reel_out_power_w: 15004.229548522004
+        average_cycle_power_w: 8919.972775935039
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -11355.166153761937
       timing:
         reel_out_time_s: 66.64787397220975
@@ -4858,7 +4858,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1135.5166153761936
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14106773276143372
@@ -4939,8 +4939,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8861.168931276688
-        average_reel_out_power_w: 15004.229548522004
+        average_cycle_power_w: 8861.168931276687
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -11609.92755981385
       timing:
         reel_out_time_s: 66.64787397220975
@@ -4950,7 +4950,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1160.992755981385
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13887578130898082
@@ -5054,18 +5054,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8786.690321926037
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 8786.690321926038
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -11932.598217645875
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1193.2598217645875
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13622980833902198
@@ -5077,18 +5077,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8771.664759585545
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 8771.664759585547
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -11997.6948692479
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1199.76948692479
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13571266698415585
@@ -5170,7 +5170,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8711.12970865571
-        average_reel_out_power_w: 15004.229548522004
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -12259.956542441394
       timing:
         reel_out_time_s: 66.64787397220975
@@ -5180,7 +5180,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1225.9956542441394
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13368277666601677
@@ -5192,18 +5192,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8695.887745531281
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 8695.887745531283
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -12325.99072743611
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1232.599072743611
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1331847567423009
@@ -5284,18 +5284,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8634.487091465702
-        average_reel_out_power_w: 15004.229548521998
+        average_cycle_power_w: 8634.487091465704
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -12592.002534200392
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1259.2002534200392
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1312292385520626
@@ -5469,17 +5469,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8509.608335808762
-        average_reel_out_power_w: 15004.229548521998
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -13133.02646829884
       timing:
-        reel_out_time_s: 66.64787397220977
+        reel_out_time_s: 66.64787397220975
         reel_in_time_s: 20.0
-        cycle_time_s: 86.64787397220977
+        cycle_time_s: 86.64787397220975
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1313.3026468298842
       speeds:
-        reel_out_speed_m_s: 3.0008459097044
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12748556185368487
@@ -5492,7 +5492,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8493.803730646103
-        average_reel_out_power_w: 15004.229548522004
+        average_reel_out_power_w: 15004.229548522002
         average_reel_in_power_w: -13201.498240114577
       timing:
         reel_out_time_s: 66.64787397220975
@@ -5502,7 +5502,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1320.1498240114577
       speeds:
-        reel_out_speed_m_s: 3.0008459097044007
+        reel_out_speed_m_s: 3.0008459097044002
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12703256747146366
@@ -7591,18 +7591,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10470.281857896993
-        average_reel_out_power_w: 15000.444570962693
+        average_cycle_power_w: 10470.281857896995
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -4629.812981408705
       timing:
-        reel_out_time_s: 66.66469085428062
+        reel_out_time_s: 66.66469085428061
         reel_in_time_s: 20.0
-        cycle_time_s: 86.66469085428062
+        cycle_time_s: 86.66469085428061
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 462.9812981408705
       speeds:
-        reel_out_speed_m_s: 3.0000889141925384
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.29442329305892384
@@ -7798,8 +7798,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10388.46808076108
-        average_reel_out_power_w: 15000.444570962696
+        average_cycle_power_w: 10388.468080761078
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -4984.331266563961
       timing:
         reel_out_time_s: 66.66469085428061
@@ -7809,7 +7809,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 498.43312665639627
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.27410711840096963
@@ -7845,17 +7845,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 10369.811513618635
-        average_reel_out_power_w: 15000.444570962693
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -5065.174547754059
       timing:
-        reel_out_time_s: 66.66469085428062
+        reel_out_time_s: 66.66469085428061
         reel_in_time_s: 20.0
-        cycle_time_s: 86.66469085428062
+        cycle_time_s: 86.66469085428061
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 506.5174547754059
       speeds:
-        reel_out_speed_m_s: 3.0000889141925384
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26996742081994096
@@ -7890,8 +7890,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10350.981954556592
-        average_reel_out_power_w: 15000.444570962696
+        average_cycle_power_w: 10350.98195455659
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -5146.767443505789
       timing:
         reel_out_time_s: 66.66469085428061
@@ -7901,7 +7901,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 514.6767443505789
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.265950902338029
@@ -7913,8 +7913,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10341.502303055719
-        average_reel_out_power_w: 15000.444570962696
+        average_cycle_power_w: 10341.502303055717
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -5187.844996842264
       timing:
         reel_out_time_s: 66.66469085428061
@@ -7924,7 +7924,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 518.7844996842264
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26398712985241063
@@ -7936,18 +7936,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10331.979403574942
-        average_reel_out_power_w: 15000.444570962693
+        average_cycle_power_w: 10331.979403574944
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -5229.109953819145
       timing:
-        reel_out_time_s: 66.66469085428062
+        reel_out_time_s: 66.66469085428061
         reel_in_time_s: 20.0
-        cycle_time_s: 86.66469085428062
+        cycle_time_s: 86.66469085428061
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 522.9109953819145
       speeds:
-        reel_out_speed_m_s: 3.0000889141925384
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26205214565453955
@@ -9708,17 +9708,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9468.842459914025
-        average_reel_out_power_w: 15000.444570962693
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -8969.284773183248
       timing:
-        reel_out_time_s: 66.66469085428062
+        reel_out_time_s: 66.66469085428061
         reel_in_time_s: 20.0
-        cycle_time_s: 86.66469085428062
+        cycle_time_s: 86.66469085428061
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 896.9284773183248
       speeds:
-        reel_out_speed_m_s: 3.0000889141925384
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.16750990568948143
@@ -9892,7 +9892,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9364.461581172682
-        average_reel_out_power_w: 15000.444570962696
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -9421.591602544086
       timing:
         reel_out_time_s: 66.66469085428061
@@ -9902,7 +9902,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 942.1591602544087
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.1614579349032808
@@ -10237,7 +10237,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9161.287156999817
-        average_reel_out_power_w: 15000.444570962696
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -10301.99403556598
       timing:
         reel_out_time_s: 66.66469085428061
@@ -10247,7 +10247,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1030.1994035565979
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.000000000000002
       reel factors:
         gamma_out: 0.15121438012089744
@@ -10397,8 +10397,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9063.142331266805
-        average_reel_out_power_w: 15000.444570962696
+        average_cycle_power_w: 9063.142331266803
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -10727.278584620915
       timing:
         reel_out_time_s: 66.66469085428061
@@ -10408,7 +10408,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1072.7278584620915
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14686607928408763
@@ -10512,8 +10512,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8991.741444917638
-        average_reel_out_power_w: 15000.444570962696
+        average_cycle_power_w: 8991.741444917636
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -11036.675371729523
       timing:
         reel_out_time_s: 66.66469085428061
@@ -10523,7 +10523,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1103.6675371729523
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14391017774588
@@ -10581,8 +10581,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8948.381937349332
-        average_reel_out_power_w: 15000.444570962696
+        average_cycle_power_w: 8948.381937349328
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -11224.562287679586
       timing:
         reel_out_time_s: 66.66469085428061
@@ -10592,7 +10592,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1122.4562287679587
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14219306767050302
@@ -10903,18 +10903,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8740.891059089063
-        average_reel_out_power_w: 15000.444570962693
+        average_cycle_power_w: 8740.891059089065
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -12123.668928655035
       timing:
-        reel_out_time_s: 66.66469085428062
+        reel_out_time_s: 66.66469085428061
         reel_in_time_s: 20.0
-        cycle_time_s: 86.66469085428062
+        cycle_time_s: 86.66469085428061
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1212.3668928655036
       speeds:
-        reel_out_speed_m_s: 3.0000889141925384
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13469311038755935
@@ -10927,17 +10927,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8725.74592222122
-        average_reel_out_power_w: 15000.444570962693
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -12189.296358884912
       timing:
-        reel_out_time_s: 66.66469085428062
+        reel_out_time_s: 66.66469085428061
         reel_in_time_s: 20.0
-        cycle_time_s: 86.66469085428062
+        cycle_time_s: 86.66469085428061
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1218.9296358884912
       speeds:
-        reel_out_speed_m_s: 3.0000889141925384
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13418755983918781
@@ -10949,18 +10949,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8710.557537373475
-        average_reel_out_power_w: 15000.444570962693
+        average_cycle_power_w: 8710.557537373474
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -12255.111192755194
       timing:
-        reel_out_time_s: 66.66469085428062
+        reel_out_time_s: 66.66469085428061
         reel_in_time_s: 20.0
-        cycle_time_s: 86.66469085428062
+        cycle_time_s: 86.66469085428061
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1225.5111192755194
       speeds:
-        reel_out_speed_m_s: 3.0000889141925384
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1336857901175669
@@ -10973,7 +10973,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8695.325904545829
-        average_reel_out_power_w: 15000.444570962696
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -12321.113430265888
       timing:
         reel_out_time_s: 66.66469085428061
@@ -10983,7 +10983,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1232.1113430265889
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1331877589675813
@@ -11042,17 +11042,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8649.371518183489
-        average_reel_out_power_w: 15000.444570962693
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -12520.244564640405
       timing:
-        reel_out_time_s: 66.66469085428062
+        reel_out_time_s: 66.66469085428061
         reel_in_time_s: 20.0
-        cycle_time_s: 86.66469085428062
+        cycle_time_s: 86.66469085428061
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1252.0244564640404
       speeds:
-        reel_out_speed_m_s: 3.0000889141925384
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13171568373688697
@@ -11179,8 +11179,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8556.295050001496
-        average_reel_out_power_w: 15000.444570962696
+        average_cycle_power_w: 8556.295050001494
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -12923.566731680447
       timing:
         reel_out_time_s: 66.66469085428061
@@ -11190,7 +11190,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1292.3566731680446
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1288670438208472
@@ -11225,8 +11225,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8524.923576768295
-        average_reel_out_power_w: 15000.444570962696
+        average_cycle_power_w: 8524.923576768293
+        average_reel_out_power_w: 15000.444570962694
         average_reel_in_power_w: -13059.506683150383
       timing:
         reel_out_time_s: 66.66469085428061
@@ -11236,7 +11236,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1305.9506683150382
       speeds:
-        reel_out_speed_m_s: 3.0000889141925393
+        reel_out_speed_m_s: 3.000088914192539
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1279446825665058
@@ -13440,18 +13440,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10635.882305427938
-        average_reel_out_power_w: 15361.509747146041
+        average_cycle_power_w: 10635.882305427936
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -4745.507673496697
       timing:
-        reel_out_time_s: 65.09776815301545
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301545
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 474.5507673496697
       speeds:
-        reel_out_speed_m_s: 3.072301949429208
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2942885376247861
@@ -13464,17 +13464,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 10626.670939605416
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -4784.701007153564
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 478.4701007153564
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2919422736573902
@@ -13533,17 +13533,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 10598.772662209009
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -4903.4050642409675
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 490.34050642409676
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.28512270997907524
@@ -13648,17 +13648,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 10551.394933452151
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -5104.992013109337
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 510.49920131093364
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.27443824011904566
@@ -13670,18 +13670,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10541.787297736357
-        average_reel_out_power_w: 15361.509747146041
+        average_cycle_power_w: 10541.787297736355
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -5145.871430941414
       timing:
-        reel_out_time_s: 65.09776815301545
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301545
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 514.5871430941413
       speeds:
-        reel_out_speed_m_s: 3.072301949429208
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.27239672292368616
@@ -13694,17 +13694,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 10532.135632032416
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -5186.938191459625
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 518.6938191459625
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2703853547164437
@@ -13716,18 +13716,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10522.439936340335
-        average_reel_out_power_w: 15361.509747146041
+        average_cycle_power_w: 10522.439936340334
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -5228.192294663969
       timing:
-        reel_out_time_s: 65.09776815301545
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301545
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 522.8192294663969
       speeds:
-        reel_out_speed_m_s: 3.072301949429208
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26840347253527613
@@ -13947,17 +13947,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 10423.06133007171
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -5651.037174444828
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 565.1037174444829
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.25007347928896456
@@ -15418,18 +15418,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9682.775238032184
-        average_reel_out_power_w: 15361.509747146036
+        average_cycle_power_w: 9682.775238032185
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -8800.8718858089
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 880.0871885808899
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1740158291046766
@@ -15602,18 +15602,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9577.558839942341
-        average_reel_out_power_w: 15361.509747146041
+        average_cycle_power_w: 9577.55883994234
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -9248.555918336153
       timing:
-        reel_out_time_s: 65.09776815301545
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301545
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 924.8555918336152
       speeds:
-        reel_out_speed_m_s: 3.072301949429208
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1676424566848847
@@ -15694,18 +15694,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9523.893921182009
-        average_reel_out_power_w: 15361.509747146041
+        average_cycle_power_w: 9523.893921182007
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -9476.894159067007
       timing:
-        reel_out_time_s: 65.09776815301545
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301545
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 947.6894159067007
       speeds:
-        reel_out_speed_m_s: 3.072301949429208
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1646276918890101
@@ -15718,17 +15718,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9510.36761652157
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -9534.44707596506
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 953.444707596506
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1638908671810669
@@ -15763,18 +15763,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9483.182917236269
-        average_reel_out_power_w: 15361.509747146036
+        average_cycle_power_w: 9483.182917236267
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -9650.11493781956
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 965.0114937819561
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.16243682906919435
@@ -15855,18 +15855,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9428.28515880796
-        average_reel_out_power_w: 15361.509747146036
+        average_cycle_power_w: 9428.285158807957
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -9883.698773762186
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 988.3698773762185
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15960480465204774
@@ -16362,17 +16362,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9113.75491084364
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -11221.989879681088
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1122.198987968109
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14563938424499356
@@ -16822,17 +16822,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8809.325726765515
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -12517.302085965686
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1251.7302085965687
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13490806119536244
@@ -16867,18 +16867,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8777.914148618578
-        average_reel_out_power_w: 15361.509747146036
+        average_cycle_power_w: 8777.91414861858
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -12650.9548456891
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1265.09548456891
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13392127286895958
@@ -16937,17 +16937,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8730.466556487107
-        average_reel_out_power_w: 15361.509747146036
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -12852.839055420241
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1285.283905542024
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13246786370604063
@@ -17029,17 +17029,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8666.586680477825
-        average_reel_out_power_w: 15361.509747146041
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -13124.640799334305
       timing:
-        reel_out_time_s: 65.09776815301545
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301545
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1312.4640799334306
       speeds:
-        reel_out_speed_m_s: 3.072301949429208
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13057835775404417
@@ -17097,18 +17097,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8618.214458595372
-        average_reel_out_power_w: 15361.509747146036
+        average_cycle_power_w: 8618.21445859537
+        average_reel_out_power_w: 15361.509747146038
         average_reel_in_power_w: -13330.459205474272
       timing:
-        reel_out_time_s: 65.09776815301548
+        reel_out_time_s: 65.09776815301547
         reel_in_time_s: 20.0
-        cycle_time_s: 85.09776815301548
+        cycle_time_s: 85.09776815301547
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1333.045920547427
       speeds:
-        reel_out_speed_m_s: 3.072301949429207
+        reel_out_speed_m_s: 3.0723019494292076
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12919622795926847
@@ -19128,8 +19128,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10667.857691815367
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 10667.857691815369
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -4587.424912306735
       timing:
         reel_out_time_s: 65.13907177920991
@@ -19139,7 +19139,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 458.74249123067347
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.3040800458302407
@@ -19174,8 +19174,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10649.771800238348
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 10649.771800238352
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -4664.415713365076
       timing:
         reel_out_time_s: 65.13907177920991
@@ -19185,7 +19185,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 466.4415713365076
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2991125771702368
@@ -19197,18 +19197,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10640.662932481819
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 10640.662932481817
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -4703.191740652617
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 470.3191740652617
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.29668921138297794
@@ -19220,18 +19220,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10631.510116746604
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 10631.510116746602
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -4742.154852445735
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 474.2154852445735
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2943047975142284
@@ -19358,18 +19358,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10575.670314782994
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 10575.670314782992
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -4979.86229782157
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 497.98622978215695
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2807661321302223
@@ -19588,18 +19588,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10479.088139882417
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 10479.088139882415
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -5391.008133894189
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 539.1008133894189
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26077261305685956
@@ -19703,8 +19703,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10429.14900323155
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 10429.149003231552
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -5603.596720889667
       timing:
         reel_out_time_s: 65.13907177920991
@@ -19714,7 +19714,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 560.3596720889667
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2518069534723899
@@ -20969,7 +20969,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9807.304335246776
-        average_reel_out_power_w: 15351.769263607537
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -8250.760612043407
       timing:
         reel_out_time_s: 65.13907177920991
@@ -20979,7 +20979,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 825.0760612043406
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.182708110217315
@@ -21060,8 +21060,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9756.89340699977
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 9756.893406999772
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -8465.357593967323
       timing:
         reel_out_time_s: 65.13907177920991
@@ -21071,7 +21071,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 846.5357593967323
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.17913310875953384
@@ -21451,18 +21451,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9534.802247755271
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 9534.80224775527
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -9410.789351389602
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 941.0789351389602
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.16538030879670512
@@ -21520,18 +21520,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9494.291250881077
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 9494.291250881075
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -9583.242784925573
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 958.3242784925573
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.16316962357408846
@@ -21543,8 +21543,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9480.699689298977
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 9480.69968929898
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -9641.101431782054
       timing:
         reel_out_time_s: 65.13907177920991
@@ -21554,7 +21554,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 964.1101431782054
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1624458039511362
@@ -21567,7 +21567,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9467.064179738201
-        average_reel_out_power_w: 15351.769263607537
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -9699.147163144113
       timing:
         reel_out_time_s: 65.13907177920991
@@ -21577,7 +21577,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 969.9147163144113
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1617283776876296
@@ -21705,7 +21705,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9384.328214821213
-        average_reel_out_power_w: 15351.769263607537
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -10051.350325933596
       timing:
         reel_out_time_s: 65.13907177920991
@@ -21715,7 +21715,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1005.1350325933594
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.000000000000002
       reel factors:
         gamma_out: 0.15755345951745112
@@ -21727,18 +21727,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9370.385069409662
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 9370.38506940966
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -10110.705648834699
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1011.07056488347
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15687850589650731
@@ -21842,8 +21842,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9300.010122671672
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 9300.010122671674
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -10410.28853092388
       timing:
         reel_out_time_s: 65.13907177920991
@@ -21853,7 +21853,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1041.028853092388
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15358866305266203
@@ -21935,7 +21935,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9242.919101665006
-        average_reel_out_power_w: 15351.769263607537
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -10653.322357695632
       timing:
         reel_out_time_s: 65.13907177920991
@@ -21945,7 +21945,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1065.332235769563
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1510544953652875
@@ -22003,8 +22003,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9199.639382133844
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 9199.639382133846
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -10837.562115083005
       timing:
         reel_out_time_s: 65.13907177920991
@@ -22014,7 +22014,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1083.7562115083006
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14920807836722522
@@ -22072,18 +22072,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9155.96413079455
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 9155.964130794548
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -11023.485633020588
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1102.3485633020587
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14740625568423976
@@ -22256,18 +22256,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9037.563082827746
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 9037.563082827744
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -11527.513399099555
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1152.7513399099555
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14280750898879832
@@ -22302,8 +22302,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9007.52334104922
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 9007.523341049222
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -11655.391185675078
       timing:
         reel_out_time_s: 65.13907177920991
@@ -22313,7 +22313,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1165.5391185675078
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1417023099142581
@@ -22348,8 +22348,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8977.307807355972
-        average_reel_out_power_w: 15351.769263607537
+        average_cycle_power_w: 8977.307807355974
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -11784.01731027291
       timing:
         reel_out_time_s: 65.13907177920991
@@ -22359,7 +22359,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1178.401731027291
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14061408592149915
@@ -22486,18 +22486,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8885.606454787861
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 8885.60645478786
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -12174.385712200272
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1217.4385712200271
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13744744162728847
@@ -22785,18 +22785,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8681.492615523055
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 8681.492615523053
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -13043.288852815098
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1304.3288852815099
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1310529031875731
@@ -22831,18 +22831,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8649.431266725162
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 8649.43126672516
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -13179.772526647203
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1317.9772526647203
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1301215627588289
@@ -22854,18 +22854,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8633.334670358192
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 8633.33467035819
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -13248.294990321621
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1324.8294990321622
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1296608389655503
@@ -22877,18 +22877,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8617.194126012542
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 8617.19412601254
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -13317.004538501613
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1331.7004538501612
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1292033662474259
@@ -22900,18 +22900,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8601.009633688209
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 8601.009633688207
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -13385.90117118719
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1338.590117118719
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12874911031385886
@@ -22946,18 +22946,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8568.508805103496
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 8568.508805103495
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -13524.255690075068
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1352.4255690075067
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12785011403236557
@@ -22993,7 +22993,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8535.832184604053
-        average_reel_out_power_w: 15351.769263607537
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -13663.358546985266
       timing:
         reel_out_time_s: 65.13907177920991
@@ -23003,7 +23003,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1366.3358546985266
       speeds:
-        reel_out_speed_m_s: 3.0703538527215075
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1269635852575002
@@ -23084,18 +23084,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8469.951567860991
-        average_reel_out_power_w: 15351.769263607543
+        average_cycle_power_w: 8469.95156786099
+        average_reel_out_power_w: 15351.769263607539
         average_reel_in_power_w: -13943.809274872585
       timing:
-        reel_out_time_s: 65.1390717792099
+        reel_out_time_s: 65.13907177920991
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1390717792099
+        cycle_time_s: 85.13907177920991
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1394.3809274872583
       speeds:
-        reel_out_speed_m_s: 3.0703538527215084
+        reel_out_speed_m_s: 3.070353852721508
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12522690700287883
@@ -25253,8 +25253,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10521.34834808927
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 10521.348348089274
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -5177.096500943922
       timing:
         reel_out_time_s: 65.20372487656705
@@ -25264,7 +25264,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 517.7096500943923
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.27042368175880543
@@ -25414,8 +25414,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10452.836187172381
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 10452.836187172385
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -5468.971066417007
       timing:
         reel_out_time_s: 65.20372487656705
@@ -25425,7 +25425,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 546.8971066417008
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.2571330494557147
@@ -25437,18 +25437,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10442.873455590066
-        average_reel_out_power_w: 15336.547135812187
+        average_cycle_power_w: 10442.873455590065
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -5511.414158454954
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 551.1414158454954
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.25534028915074464
@@ -25483,8 +25483,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10422.816532408355
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 10422.816532408357
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -5596.860386687191
       timing:
         reel_out_time_s: 65.20372487656705
@@ -25494,7 +25494,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 559.6860386687191
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2518287331113434
@@ -25506,8 +25506,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10412.722340808963
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 10412.722340808967
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -5639.863522881483
       timing:
         reel_out_time_s: 65.20372487656705
@@ -25517,7 +25517,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 563.9863522881483
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2501089271291196
@@ -26680,17 +26680,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9839.813241694195
-        average_reel_out_power_w: 15336.547135812187
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -8080.562985894327
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 808.0562985894327
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.18550047055524432
@@ -26702,8 +26702,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9827.440409798886
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 9827.440409798888
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -8133.2735541319125
       timing:
         reel_out_time_s: 65.20372487656705
@@ -26713,7 +26713,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 813.3273554131913
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.18456562297145254
@@ -26794,8 +26794,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9777.510882160754
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 9777.510882160756
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -8345.982640936732
       timing:
         reel_out_time_s: 65.20372487656705
@@ -26805,7 +26805,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 834.5982640936733
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.18091859584145914
@@ -27139,8 +27139,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9584.030802706831
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 9584.030802706835
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -9170.243813881147
       timing:
         reel_out_time_s: 65.20372487656705
@@ -27150,7 +27150,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 917.0243813881146
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1684373523701364
@@ -27255,17 +27255,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9517.346442604325
-        average_reel_out_power_w: 15336.547135812187
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -9454.331607468353
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 945.4331607468353
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1646510278146099
@@ -27554,17 +27554,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9338.84016567199
-        average_reel_out_power_w: 15336.547135812187
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -10214.801592892494
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1021.4801592892494
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15555925382727404
@@ -27691,18 +27691,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9253.954912917316
-        average_reel_out_power_w: 15336.547135812187
+        average_cycle_power_w: 9253.954912917314
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -10576.428578981864
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1057.6428578981863
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15169328420553116
@@ -27737,8 +27737,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9225.309268620225
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 9225.309268620229
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -10698.464358761907
       timing:
         reel_out_time_s: 65.20372487656705
@@ -27748,7 +27748,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1069.8464358761908
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1504469778798988
@@ -27967,8 +27967,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9079.451846793361
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 9079.451846793365
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -11319.844140788984
       timing:
         reel_out_time_s: 65.20372487656705
@@ -27978,7 +27978,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1131.9844140788985
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1445105131383019
@@ -27991,17 +27991,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9064.625094579378
-        average_reel_out_power_w: 15336.547135812187
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -11383.008866611657
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1138.3008866611658
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14394253245780328
@@ -28174,8 +28174,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8944.433556662627
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 8944.43355666263
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -11895.047203069164
       timing:
         reel_out_time_s: 65.20372487656705
@@ -28185,7 +28185,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1189.5047203069164
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13955451840356428
@@ -28197,18 +28197,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8929.212424397429
-        average_reel_out_power_w: 15336.547135812187
+        average_cycle_power_w: 8929.21242439743
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -11959.892061360864
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1195.9892061360865
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13902475613196727
@@ -28244,17 +28244,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8898.638699849953
-        average_reel_out_power_w: 15336.547135812187
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -12090.141822100615
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1209.0141822100616
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13797720683926137
@@ -28335,8 +28335,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8836.965410686713
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 8836.965410686716
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -12352.881520205492
       timing:
         reel_out_time_s: 65.20372487656705
@@ -28346,7 +28346,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1235.2881520205492
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13592876474408674
@@ -28382,17 +28382,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8805.86584607095
-        average_reel_out_power_w: 15336.547135812187
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -12485.371457570625
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1248.5371457570625
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1349271843722882
@@ -28497,17 +28497,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8727.350084431955
-        average_reel_out_power_w: 15336.547135812187
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -12819.863225228775
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1281.9863225228776
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13248664098570936
@@ -28612,17 +28612,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8647.738822650692
-        average_reel_out_power_w: 15336.547135812187
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -13159.022027523135
       timing:
-        reel_out_time_s: 65.20372487656704
+        reel_out_time_s: 65.20372487656705
         reel_in_time_s: 20.0
-        cycle_time_s: 85.20372487656704
+        cycle_time_s: 85.20372487656705
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1315.9022027523135
       speeds:
-        reel_out_speed_m_s: 3.0673094271624373
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13013281741489727
@@ -28818,8 +28818,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8501.677891085903
-        average_reel_out_power_w: 15336.547135812181
+        average_cycle_power_w: 8501.677891085905
+        average_reel_out_power_w: 15336.547135812185
         average_reel_in_power_w: -13781.268798936193
       timing:
         reel_out_time_s: 65.20372487656705
@@ -28829,7 +28829,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1378.1268798936194
       speeds:
-        reel_out_speed_m_s: 3.0673094271624364
+        reel_out_speed_m_s: 3.067309427162437
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12610017231054974
@@ -30757,18 +30757,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10612.281974382271
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 10612.28197438227
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -4681.857304061567
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 468.1857304061567
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.29679557281562474
@@ -30895,18 +30895,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10557.274199797059
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 10557.274199797057
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -4916.759673227441
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 491.67596732274416
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.28303683765198645
@@ -30941,8 +30941,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10538.590908205606
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 10538.59090820561
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -4996.543839951896
       timing:
         reel_out_time_s: 65.40697053722296
@@ -30952,7 +30952,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 499.65438399518973
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.278729755339891
@@ -31102,18 +31102,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10471.83163113731
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 10471.831631137307
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -5281.629220434828
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 528.1629220434828
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26463506182941154
@@ -31194,18 +31194,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10432.728214305866
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 10432.728214305864
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -5448.6144388962275
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 544.8614438896227
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.25720298386429263
@@ -31286,8 +31286,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10392.930064014996
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 10392.930064014998
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -5618.566411362622
       timing:
         reel_out_time_s: 65.40697053722296
@@ -31297,7 +31297,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 561.8566411362622
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2501769511343412
@@ -32436,8 +32436,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9836.835049740626
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9836.83504974063
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -7993.285936363999
       timing:
         reel_out_time_s: 65.40697053722296
@@ -32447,7 +32447,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 799.3285936363999
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1864955453910543
@@ -32712,8 +32712,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9687.219693383267
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9687.21969338327
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -8632.19565298046
       timing:
         reel_out_time_s: 65.40697053722296
@@ -32723,7 +32723,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 863.219565298046
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.17575831042679899
@@ -33310,8 +33310,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9341.603192382729
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9341.60319238273
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -10108.098568887013
       timing:
         reel_out_time_s: 65.40697053722296
@@ -33321,7 +33321,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1010.8098568887013
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1562653107329066
@@ -33333,8 +33333,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9327.724068680169
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9327.72406868017
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -10167.367264344364
       timing:
         reel_out_time_s: 65.40697053722296
@@ -33344,7 +33344,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1016.7367264344365
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15560156244702653
@@ -33563,8 +33563,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9186.544685387811
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9186.544685387815
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -10770.252435810044
       timing:
         reel_out_time_s: 65.40697053722296
@@ -33574,7 +33574,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1077.0252435810044
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14926156863370182
@@ -33586,8 +33586,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9172.1879324319
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9172.187932431902
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -10831.56077464583
       timing:
         reel_out_time_s: 65.40697053722296
@@ -33597,7 +33597,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1083.156077464583
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14865586951460855
@@ -33655,8 +33655,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9128.857148516885
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9128.857148516887
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -11016.598323905058
       timing:
         reel_out_time_s: 65.40697053722296
@@ -33666,7 +33666,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1101.659832390506
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14686791232113386
@@ -33678,8 +33678,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9114.326712196116
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9114.32671219612
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -11078.648351242093
       timing:
         reel_out_time_s: 65.40697053722296
@@ -33689,7 +33689,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1107.8648351242093
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1462814460426125
@@ -33701,18 +33701,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9099.752855034141
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 9099.75285503414
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -11140.88380070444
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1114.088380070444
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14569964483676123
@@ -33770,8 +33770,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9055.770758500916
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9055.770758500918
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -11328.70268184335
       timing:
         reel_out_time_s: 65.40697053722296
@@ -33781,7 +33781,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1132.870268184335
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1439816815905108
@@ -33793,18 +33793,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9041.023217974085
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 9041.023217974083
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -11391.679819806943
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1139.1679819806943
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14341799491761734
@@ -33839,8 +33839,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9011.397874396767
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 9011.397874396771
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -11518.190362110074
       timing:
         reel_out_time_s: 65.40697053722296
@@ -33850,7 +33850,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1151.8190362110074
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14230375966298542
@@ -34069,18 +34069,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8860.665906037393
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 8860.665906037391
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -12161.868401144435
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1216.1868401144434
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13698257206874986
@@ -34138,8 +34138,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8814.599609125908
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 8814.599609125911
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -12358.587544298325
       timing:
         reel_out_time_s: 65.40697053722296
@@ -34149,7 +34149,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1235.8587544298325
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1354629555798731
@@ -34184,8 +34184,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8783.671640312185
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 8783.671640312186
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -12490.66075036082
       timing:
         reel_out_time_s: 65.40697053722296
@@ -34195,7 +34195,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1249.0660750360819
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13446847137530138
@@ -34276,18 +34276,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8721.294652590175
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 8721.294652590173
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -12757.032227989552
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1275.7032227989553
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13252267437348825
@@ -34299,8 +34299,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8705.591853556632
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 8705.591853556636
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -12824.088652710016
       timing:
         reel_out_time_s: 65.40697053722296
@@ -34310,7 +34310,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1282.4088652710016
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13204499223105032
@@ -34437,8 +34437,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8610.46322168992
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 8610.463221689924
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -13230.321065664346
       timing:
         reel_out_time_s: 65.40697053722296
@@ -34448,7 +34448,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1323.0321065664348
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12924968493583655
@@ -34461,17 +34461,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8594.45647676789
-        average_reel_out_power_w: 15288.890339767418
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -13298.675445261997
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1329.8675445261995
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12879526615404308
@@ -34529,18 +34529,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8546.175716954509
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 8546.175716954507
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -13504.851116806807
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1350.4851116806808
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1274509815669482
@@ -34552,18 +34552,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8529.99528866762
-        average_reel_out_power_w: 15288.890339767418
+        average_cycle_power_w: 8529.995288667618
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -13573.947184905706
       timing:
-        reel_out_time_s: 65.40697053722295
+        reel_out_time_s: 65.40697053722296
         reel_in_time_s: 20.0
-        cycle_time_s: 85.40697053722295
+        cycle_time_s: 85.40697053722296
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1357.3947184905708
       speeds:
-        reel_out_speed_m_s: 3.0577780679534836
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12700910099687954
@@ -34598,8 +34598,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8497.504169570197
-        average_reel_out_power_w: 15288.890339767413
+        average_cycle_power_w: 8497.5041695702
+        average_reel_out_power_w: 15288.890339767417
         average_reel_in_power_w: -13712.69558747944
       timing:
         reel_out_time_s: 65.40697053722296
@@ -34609,7 +34609,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1371.2695587479438
       speeds:
-        reel_out_speed_m_s: 3.0577780679534827
+        reel_out_speed_m_s: 3.057778067953483
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12613446872242978
@@ -36491,18 +36491,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10634.75458693375
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 10634.754586933748
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -4608.2940216028865
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 20.000000000000004
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 460.82940216028874
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.30166696298361106
@@ -36629,8 +36629,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10580.180008775795
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 10580.180008775798
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -4841.23152715514
       timing:
         reel_out_time_s: 65.36483960648616
@@ -36640,7 +36640,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 484.123152715514
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2874629131570285
@@ -36698,18 +36698,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10552.305426557621
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 10552.30542655762
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -4960.206989162776
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 20.0
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 496.02069891627764
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.28085095129909027
@@ -36836,18 +36836,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10495.381675842851
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 10495.38167584285
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -5203.1713316410705
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 20.0
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 520.3171331641071
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26849939113724547
@@ -37020,18 +37020,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10417.04716260868
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 10417.047162608678
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -5537.521989535427
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 20.0
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 553.7521989535427
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2536270213017502
@@ -37066,18 +37066,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10397.02850234517
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 10397.028502345169
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -5622.966475661989
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 20.0
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 562.2966475661989
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.25016284735226285
@@ -38768,8 +38768,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9534.007086858757
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 9534.007086858759
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -9306.55071115999
       timing:
         reel_out_time_s: 65.36483960648616
@@ -38779,7 +38779,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 930.6550711159991
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.16618076379524913
@@ -38791,18 +38791,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9520.713265467008
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 9520.713265467006
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -9363.291957703206
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 19.999999999999996
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 936.3291957703204
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.000000000000002
       reel factors:
         gamma_out: 0.16543027002327057
@@ -38952,8 +38952,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9426.438426250837
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 9426.438426250841
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -9765.679784133965
       timing:
         reel_out_time_s: 65.36483960648616
@@ -38963,7 +38963,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 976.5679784133965
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.16036079958478386
@@ -39021,8 +39021,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9385.382375797173
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 9385.382375797175
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -9940.91694222661
       timing:
         reel_out_time_s: 65.36483960648616
@@ -39032,7 +39032,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 994.0916942226609
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.15828204847905517
@@ -39044,8 +39044,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9371.610019254958
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 9371.610019254962
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -9999.700692588081
       timing:
         reel_out_time_s: 65.36483960648616
@@ -39055,7 +39055,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 999.970069258808
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.157601056260645
@@ -39182,8 +39182,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9288.062312896242
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 9288.062312896245
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -10356.302520228166
       timing:
         reel_out_time_s: 65.36483960648616
@@ -39193,7 +39193,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1035.6302520228166
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1536350620347929
@@ -39412,18 +39412,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9145.335879991988
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 9145.335879991986
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -10965.493472852066
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 20.0
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1096.5493472852065
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14745078696726246
@@ -39435,8 +39435,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9130.823969126324
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 9130.823969126328
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -11027.433820023589
       timing:
         reel_out_time_s: 65.36483960648616
@@ -39446,7 +39446,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1102.7433820023589
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14685963260943263
@@ -39504,18 +39504,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9087.027217356377
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 9087.027217356375
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -11214.368954529946
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 20.0
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1121.4368954529946
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14511427195023735
@@ -39642,8 +39642,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8998.259127538058
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 8998.25912753806
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -11593.252642005675
       timing:
         reel_out_time_s: 65.36483960648616
@@ -39653,7 +39653,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1159.3252642005675
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14174511804094492
@@ -39872,8 +39872,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8846.832055534469
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 8846.83205553447
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -12239.580027688986
       timing:
         reel_out_time_s: 65.36483960648616
@@ -39883,7 +39883,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1223.9580027688985
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1364645654795473
@@ -40033,8 +40033,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8738.244664999907
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 8738.24466499991
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -12703.057286502473
       timing:
         reel_out_time_s: 65.36483960648616
@@ -40044,7 +40044,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1270.3057286502474
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13299632704152978
@@ -40171,18 +40171,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8643.473134203057
-        average_reel_out_power_w: 15298.744799501814
+        average_cycle_power_w: 8643.473134203055
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -13107.5651127892
       timing:
-        reel_out_time_s: 65.36483960648614
+        reel_out_time_s: 65.36483960648616
         reel_in_time_s: 20.0
-        cycle_time_s: 85.36483960648614
+        cycle_time_s: 85.36483960648616
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1310.75651127892
       speeds:
-        reel_out_speed_m_s: 3.0597489599003627
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13016087235333473
@@ -40355,8 +40355,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8514.674914192774
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 8514.674914192776
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -13657.307082428126
       timing:
         reel_out_time_s: 65.36483960648616
@@ -40366,7 +40366,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1365.7307082428126
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12656313846795134
@@ -40378,8 +40378,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8498.379372311752
-        average_reel_out_power_w: 15298.744799501808
+        average_cycle_power_w: 8498.379372311754
+        average_reel_out_power_w: 15298.744799501812
         average_reel_in_power_w: -13726.86039837683
       timing:
         reel_out_time_s: 65.36483960648616
@@ -40389,7 +40389,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1372.686039837683
       speeds:
-        reel_out_speed_m_s: 3.0597489599003618
+        reel_out_speed_m_s: 3.059748959900362
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1261273578632904
@@ -42409,18 +42409,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10607.802999694646
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 10607.802999694644
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -4863.397604343947
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.000000000000004
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 486.3397604343948
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.2873613682541295
@@ -42455,18 +42455,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10589.074213997612
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 10589.07421399761
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -4943.089294827343
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 494.3089294827343
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.28292090561002586
@@ -42524,18 +42524,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10560.650855074677
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 10560.650855074675
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -5064.0317605283435
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.000000000000004
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 506.4031760528344
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.2765116941560771
@@ -42616,8 +42616,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10522.136706472975
-        average_reel_out_power_w: 15360.804871969229
+        average_cycle_power_w: 10522.136706472977
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -5227.910917418052
       timing:
         reel_out_time_s: 65.10075535330992
@@ -42627,7 +42627,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 522.7910917418052
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2684045450080455
@@ -42639,18 +42639,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10512.398109196758
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 10512.398109196756
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -5269.349016632451
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 526.9349016632451
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.26645149738324686
@@ -42777,8 +42777,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10453.04202048276
-        average_reel_out_power_w: 15360.804871969229
+        average_cycle_power_w: 10453.042020482764
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -5521.9114158513985
       timing:
         reel_out_time_s: 65.10075535330992
@@ -42788,7 +42788,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 552.1911415851398
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.25530512000267275
@@ -42823,18 +42823,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 10432.904465175556
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 10432.904465175554
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -5607.597474232023
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 560.7597474232023
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.2517940476254258
@@ -44295,18 +44295,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9695.523901073391
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 9695.52390107339
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -8745.179623629225
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 874.5179623629225
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.17484743552706922
@@ -44318,18 +44318,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9682.57154812396
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 9682.571548123959
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -8800.292374609182
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 880.0292374609181
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.17401652442816257
@@ -44548,18 +44548,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9550.626695862178
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 9550.626695862176
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -9361.722704232112
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 936.1722704232112
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.1661220612331066
@@ -44663,8 +44663,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9483.00336784436
-        average_reel_out_power_w: 15360.804871969229
+        average_cycle_power_w: 9483.003367844361
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -9649.462518923146
       timing:
         reel_out_time_s: 65.10075535330992
@@ -44674,7 +44674,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 964.9462518923148
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -9.999999999999998
       reel factors:
         gamma_out: 0.1624374781259084
@@ -44686,18 +44686,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9469.346630089847
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 9469.346630089845
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -9707.57245385172
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 970.757245385172
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.16172008863260784
@@ -44939,18 +44939,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 9316.216927469177
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 9316.216927469175
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -10359.145121854055
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 19.999999999999996
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1035.9145121854053
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.000000000000002
       reel factors:
         gamma_out: 0.1542276416863318
@@ -45193,7 +45193,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9157.760314760035
-        average_reel_out_power_w: 15360.804871969229
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -11033.383993467789
       timing:
         reel_out_time_s: 65.10075535330992
@@ -45203,7 +45203,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1103.338399346779
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14739870068009397
@@ -45400,17 +45400,17 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 9024.151830742125
-        average_reel_out_power_w: 15360.804871969234
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -11601.893139044536
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1160.1893139044537
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.14224547196597306
@@ -45514,8 +45514,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8948.384053415486
-        average_reel_out_power_w: 15360.804871969229
+        average_cycle_power_w: 8948.384053415488
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -11924.287893141438
       timing:
         reel_out_time_s: 65.10075535330992
@@ -45525,7 +45525,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1192.4287893141438
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13953529694212488
@@ -45560,18 +45560,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8917.768774132612
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 8917.76877413261
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -12054.557062757714
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1205.4557062757715
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13847992462597702
@@ -45836,8 +45836,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8730.379078208623
-        average_reel_out_power_w: 15360.804871969229
+        average_cycle_power_w: 8730.379078208625
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -12851.907296185622
       timing:
         reel_out_time_s: 65.10075535330992
@@ -45847,7 +45847,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1285.1907296185623
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.13246839301430668
@@ -45997,8 +45997,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8618.140822906822
-        average_reel_out_power_w: 15360.804871969229
+        average_cycle_power_w: 8618.140822906824
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -13329.485311471672
       timing:
         reel_out_time_s: 65.10075535330992
@@ -46008,7 +46008,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1332.9485311471672
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12919674419490093
@@ -46020,18 +46020,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8601.930690233867
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 8601.930690233865
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -13398.460038213972
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1339.8460038213973
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12874251154328653
@@ -46089,8 +46089,8 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8553.036147913082
-        average_reel_out_power_w: 15360.804871969229
+        average_cycle_power_w: 8553.036147913084
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -13606.508162421616
       timing:
         reel_out_time_s: 65.10075535330992
@@ -46100,7 +46100,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1360.6508162421617
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12739877757588638
@@ -46135,18 +46135,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8520.21966611431
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 8520.219666114308
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -13746.143531877318
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1374.614353187732
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12651843064298296
@@ -46158,18 +46158,18 @@ power_curves:
     success: true
     performance:
       power:
-        average_cycle_power_w: 8503.745389139445
-        average_reel_out_power_w: 15360.804871969234
+        average_cycle_power_w: 8503.745389139443
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -13816.242202600351
       timing:
-        reel_out_time_s: 65.1007553533099
+        reel_out_time_s: 65.10075535330992
         reel_in_time_s: 20.0
-        cycle_time_s: 85.1007553533099
+        cycle_time_s: 85.10075535330992
       forces:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1381.6242202600351
       speeds:
-        reel_out_speed_m_s: 3.0721609743938467
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.126082803975742
@@ -46182,7 +46182,7 @@ power_curves:
     performance:
       power:
         average_cycle_power_w: 8487.227088114258
-        average_reel_out_power_w: 15360.804871969229
+        average_reel_out_power_w: 15360.80487196923
         average_reel_in_power_w: -13886.528197320175
       timing:
         reel_out_time_s: 65.10075535330992
@@ -46192,7 +46192,7 @@ power_curves:
         tether_force_out_n: 5000.0
         tether_force_in_n: 1388.6528197320176
       speeds:
-        reel_out_speed_m_s: 3.072160974393846
+        reel_out_speed_m_s: 3.0721609743938463
         reel_in_speed_m_s: -10.0
       reel factors:
         gamma_out: 0.12565016690327618
