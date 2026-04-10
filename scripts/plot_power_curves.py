@@ -91,26 +91,31 @@ def awesio_to_profile(data: Dict[str, Any], profile_label: str) -> Dict[str, Any
 	if len(wind_speed_data) == 0:
 		raise ValueError('Missing wind_speed_data in awesIO file')
 
-	reference_wind_speeds = data.get('reference_wind_speeds_m_s')
+	reference_wind_speeds = data.get('reference_wind_speeds')
 	if reference_wind_speeds is None:
-		reference_wind_speeds = [entry['wind_speed_m_s'] for entry in wind_speed_data]
+		reference_wind_speeds = data.get('reference_wind_speeds_m_s')
+	if reference_wind_speeds is None:
+		reference_wind_speeds = [
+			entry.get('wind_speed', entry.get('wind_speed_m_s'))
+			for entry in wind_speed_data
+		]
 
 	return {
 		'profile_id': profile_label,
 		'u_normalized': np.asarray(curve['wind_profile']['u_normalized'], dtype=float),
 		'v_normalized': np.asarray(curve['wind_profile']['v_normalized'], dtype=float),
 		'windSpeedAtRef': np.asarray(reference_wind_speeds, dtype=float),
-		'power': _extract_series(wind_speed_data, ['performance', 'power', 'average_cycle_power_w']),
-		'reelOutPower': _extract_series(wind_speed_data, ['performance', 'power', 'average_reel_out_power_w']),
-		'reelInPower': _extract_series(wind_speed_data, ['performance', 'power', 'average_reel_in_power_w']),
-		'reelOutTime': _extract_series(wind_speed_data, ['performance', 'timing', 'reel_out_time_s']),
-		'reelInTime': _extract_series(wind_speed_data, ['performance', 'timing', 'reel_in_time_s']),
-		'tetherForceOut': _extract_series(wind_speed_data, ['performance', 'forces', 'tether_force_out_n']),
-		'tetherForceIn': _extract_series(wind_speed_data, ['performance', 'forces', 'tether_force_in_n']),
-		'reelOutSpeed': _extract_series(wind_speed_data, ['performance', 'speeds', 'reel_out_speed_m_s']),
-		'reelInSpeed': _extract_series(wind_speed_data, ['performance', 'speeds', 'reel_in_speed_m_s']),
-		'gammaOut': _extract_series(wind_speed_data, ['performance', 'reel factors', 'gamma_out']),
-		'gammaIn': _extract_series(wind_speed_data, ['performance', 'reel factors', 'gamma_in']),
+		'power': _extract_series(wind_speed_data, ['performance', 'power', 'average_cycle_power']),
+		'reelOutPower': _extract_series(wind_speed_data, ['performance', 'power', 'average_reel_out_power']),
+		'reelInPower': _extract_series(wind_speed_data, ['performance', 'power', 'average_reel_in_power']),
+		'reelOutTime': _extract_series(wind_speed_data, ['performance', 'timing', 'reel_out_time']),
+		'reelInTime': _extract_series(wind_speed_data, ['performance', 'timing', 'reel_in_time']),
+		'tetherForceOut': _extract_series(wind_speed_data, ['performance', 'forces', 'tether_force_out']),
+		'tetherForceIn': _extract_series(wind_speed_data, ['performance', 'forces', 'tether_force_in']),
+		'reelOutSpeed': _extract_series(wind_speed_data, ['performance', 'speeds', 'reel_out_speed']),
+		'reelInSpeed': _extract_series(wind_speed_data, ['performance', 'speeds', 'reel_in_speed']),
+		'gammaOut': _extract_series(wind_speed_data, ['performance', 'reel_factors', 'gamma_out']),
+		'gammaIn': _extract_series(wind_speed_data, ['performance', 'reel_factors', 'gamma_in']),
 		'elevationAngleOut': _extract_series(wind_speed_data, ['performance', 'elevation_angles', 'elevation_angle_out_rad']),
 		'elevationAngleIn': _extract_series(wind_speed_data, ['performance', 'elevation_angles', 'elevation_angle_in_rad']),
 	}
@@ -133,11 +138,12 @@ def build_comparison_dataset(data_a: Dict[str, Any], data_b: Dict[str, Any], lab
 
 	metadata_a = data_a.get('metadata', {})
 	model_config_a = metadata_a.get('model_config', {})
+	wind_resource_a = metadata_a.get('wind_resource', {})
 
 	return {
-		'reference_height_m': float(metadata_a.get('reference_height_m', 0.0)),
-		'operational_altitude_m': float(model_config_a.get('operating_altitude_m', 0.0)),
-		'altitudes': np.asarray(data_a.get('altitudes_m', []), dtype=float),
+		'reference_height_m': float(wind_resource_a.get('reference_height', metadata_a.get('reference_height_m', 0.0))),
+		'operational_altitude_m': float(model_config_a.get('operating_altitude', model_config_a.get('operating_altitude_m', 0.0))),
+		'altitudes': np.asarray(data_a.get('altitudes', data_a.get('altitudes_m', [])), dtype=float),
 		'profiles': [profile_a, profile_b],
 	}
 

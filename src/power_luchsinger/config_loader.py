@@ -10,6 +10,23 @@ import yaml
 from pathlib import Path
 
 
+def _get_first_available(mapping, *keys):
+    """Return the first non-None value found for the given keys.
+
+    Args:
+        mapping (dict): Mapping to search.
+        *keys: Candidate keys in lookup order.
+
+    Returns:
+        Any: First non-None value, or None if no key is present.
+    """
+    for key in keys:
+        value = mapping.get(key)
+        if value is not None:
+            return value
+    return None
+
+
 def load_yaml(file_path):
     """Load a YAML file.
 
@@ -78,19 +95,56 @@ def load_system_config(file_path, validate_file=False):
     generator = ground_station.get('generator', {})
     storage = ground_station.get('storage', {})
 
+    nominal_generator_power = _get_first_available(
+        generator,
+        'max_power',
+        'rated_power',
+    )
+    if nominal_generator_power is None:
+        legacy_power_kw = _get_first_available(
+            generator,
+            'rated_power_kw',
+            'max_power_kw',
+        )
+        nominal_generator_power = (
+            legacy_power_kw * 1000 if legacy_power_kw is not None else None
+        )
+
     return {
-        'wingArea': wing_structure.get('projected_surface_area_m2'),
-        'tetherMaxLength': tether_structure.get('length_m'),
-        'tetherDiameter': tether_structure.get('diameter_m'),
-        'reelOutSpeedLimit': drum.get('max_tether_speed_m_s'),
-        'reelInSpeedLimit': -drum.get('max_tether_speed_m_s'),
-        'nominalTetherForce': (
-            drum.get('max_tether_force_n')
-            or tether_structure.get('max_tether_force_n')
+        'wingArea': _get_first_available(
+            wing_structure,
+            'projected_surface_area',
+            'projected_surface_area_m2',
         ),
-        'nominalGeneratorPower': (
-            generator.get('rated_power_kw') or generator.get('max_power_kw', 0)
-        ) * 1000,
+        'tetherMaxLength': _get_first_available(
+            tether_structure,
+            'length',
+            'length_m',
+        ),
+        'tetherDiameter': _get_first_available(
+            tether_structure,
+            'diameter',
+            'diameter_m',
+        ),
+        'reelOutSpeedLimit': _get_first_available(
+            drum,
+            'max_tether_speed',
+            'max_tether_speed_m_s',
+        ),
+        'reelInSpeedLimit': -_get_first_available(
+            drum,
+            'max_tether_speed',
+            'max_tether_speed_m_s',
+        ),
+        'nominalTetherForce': (
+            _get_first_available(drum, 'max_tether_force', 'max_tether_force_n')
+            or _get_first_available(
+                tether_structure,
+                'max_tether_force',
+                'max_tether_force_n',
+            )
+        ),
+        'nominalGeneratorPower': nominal_generator_power,
         'generatorEfficiency': generator.get('efficiency'),
         'storageEfficiency': storage.get('efficiency'),
     }
@@ -110,7 +164,7 @@ def load_wind_resource(file_path, validate_file=False):
     Returns:
         dict: Wind resource dictionary containing:
             - 'altitudes': Array of altitudes in meters.
-            - 'reference_height_m': Reference altitude where profiles equal 1.0.
+            - 'reference_height': Reference altitude where profiles equal 1.0.
             - 'profiles': List of dicts with 'id', 'u_normalized',
               'v_normalized'.
             - 'n_clusters': Number of profiles/clusters.
@@ -140,13 +194,13 @@ def load_wind_resource(file_path, validate_file=False):
     # Extract metadata
     metadata = data.get('metadata', {})
     n_clusters = metadata.get('n_clusters')
-    reference_height_m = metadata.get('reference_height_m')
+    reference_height = metadata.get('reference_height')
 
     if n_clusters is None:
         raise ValueError("'n_clusters' not found in wind resource metadata")
-    if reference_height_m is None:
+    if reference_height is None:
         raise ValueError(
-            "'reference_height_m' not found in wind resource metadata"
+            "'reference_height' not found in wind resource metadata"
         )
 
     # Extract altitudes
@@ -182,9 +236,10 @@ def load_wind_resource(file_path, validate_file=False):
 
     return {
         'altitudes': altitudes,
-        'reference_height_m': reference_height_m,
+        'reference_height': reference_height,
         'profiles': profiles,
-        'n_clusters': n_clusters
+        'n_clusters': n_clusters,
+        'metadata': metadata,
     }
 
 

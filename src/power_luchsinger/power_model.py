@@ -315,7 +315,7 @@ class PowerModel:
 
         Returns:
             Dict with:
-                - 'reference_height_m': Reference altitude for wind speeds
+                - 'reference_height': Reference altitude for wind speeds
                 - 'operational_altitude_m': Operational altitude of kite
                 - 'profiles': List of dicts, each containing:
                     - 'profile_id': Profile/cluster ID
@@ -327,7 +327,7 @@ class PowerModel:
         self._verbose = verbose
  
         wind_shear_data = self.wind_resource
-        reference_height_m = wind_shear_data['reference_height_m']
+        reference_height = wind_shear_data['reference_height']
         profiles = self._get_selected_profiles(selected_profiles)
 
         # Wind speeds at reference height
@@ -433,7 +433,7 @@ class PowerModel:
             power_curves.append(profile_curve)
 
         data = {
-            'reference_height_m': reference_height_m,
+            'reference_height': reference_height,
             'operational_altitude_m': self.operationalAltitude,
             'altitudes': wind_shear_data['altitudes'],
             'profiles': power_curves
@@ -541,9 +541,7 @@ class PowerModel:
             start = (0.001, -0.001)
 
         result = op.minimize(objective, start, bounds=bounds, method='SLSQP')
-        if self._verbose:
-            print(f"Region 1 optimizer: {result.nit} iterations")
-        
+  
         return result['x'][0], result['x'][1]
 
     def _calculate_power_region2(self,
@@ -633,9 +631,6 @@ class PowerModel:
                 bounds=[(gammaInMin, -0.001)],
                 method='SLSQP',
             )
-        if self._verbose:
-            print(f"Region 2 optimizer: {result.nit} iterations")
-
         return result['x'][0]
 
     def _calculate_power_region3(self, windSpeed: float) -> Dict[str, float]:
@@ -718,9 +713,6 @@ class PowerModel:
                 bounds=[(gammaInMin, -0.001)],
                 method='SLSQP',
             )
-        if self._verbose:
-            print(f"Region 3 optimizer: {result.nit} iterations")
-
         return result['x'][0]
 
 
@@ -946,7 +938,7 @@ class PowerModel:
 
         print(f"\nWind Shear Configuration:")
         print(f"  Reference Height:       "
-              f"{data['reference_height_m']:.1f} m")
+              f"{data['reference_height']:.1f} m")
         print(f"  Operational Altitude:   "
               f"{data['operational_altitude_m']:.1f} m")
         print(f"  Number of Profiles:     {n_profiles}")
@@ -974,12 +966,21 @@ class PowerModel:
         """
         output_path = Path(output_path)
 
-        reference_height_m = data['reference_height_m']
+        reference_height = data['reference_height']
         altitudes = data.get('altitudes', [])
         profiles = data['profiles']
+        wind_resource_metadata = self.wind_resource.get('metadata', {})
 
         # Get reference wind speeds from first profile (same for all)
         reference_wind_speeds = profiles[0]['windSpeedAtRef']
+
+        wind_resource_info = {
+            'reference_height': float(reference_height),
+        }
+        for key in ('n_clusters', 'location', 'time_range', 'data_source'):
+            value = wind_resource_metadata.get(key)
+            if value is not None:
+                wind_resource_info[key] = value
 
         # Build power curves list for each profile
         power_curves_list = []
@@ -991,30 +992,28 @@ class PowerModel:
             n = len(profile['power'])
             for i in range(n):
                 power_val = float(profile['power'][i])
-                success = power_val > 0.0
                 entry = {
-                    'wind_speed_m_s': float(reference_wind_speeds[i]),
-                    'success': success,
+                    'wind_speed': float(reference_wind_speeds[i]),
                     'performance': {
                         'power': {
-                            'average_cycle_power_w': power_val,
-                            'average_reel_out_power_w': float(profile['reelOutPower'][i]),
-                            'average_reel_in_power_w': float(profile['reelInPower'][i]),
+                            'average_cycle_power': power_val,
+                            'average_reel_out_power': float(profile['reelOutPower'][i]),
+                            'average_reel_in_power': float(profile['reelInPower'][i]),
                         },
                         'timing': {
-                            'reel_out_time_s': float(profile['reelOutTime'][i]),
-                            'reel_in_time_s': float(profile['reelInTime'][i]),
-                            'cycle_time_s': float(profile['reelOutTime'][i] + profile['reelInTime'][i]),
+                            'reel_out_time': float(profile['reelOutTime'][i]),
+                            'reel_in_time': float(profile['reelInTime'][i]),
+                            'cycle_time': float(profile['reelOutTime'][i] + profile['reelInTime'][i]),
                         },
                         'forces': {
-                            'tether_force_out_n': float(profile['tetherForceOut'][i]),
-                            'tether_force_in_n': float(profile['tetherForceIn'][i]),
+                            'tether_force_out': float(profile['tetherForceOut'][i]),
+                            'tether_force_in': float(profile['tetherForceIn'][i]),
                         },
                         'speeds': {
-                            'reel_out_speed_m_s': float(profile['reelOutSpeed'][i]),
-                            'reel_in_speed_m_s': float(profile['reelInSpeed'][i]),
+                            'reel_out_speed': float(profile['reelOutSpeed'][i]),
+                            'reel_in_speed': float(profile['reelInSpeed'][i]),
                         },
-                        'reel factors': {
+                        'reel_factors': {
                             'gamma_out': float(profile['gammaOut'][i]),
                             'gamma_in': float(profile['gammaIn'][i]),
                         },
@@ -1047,19 +1046,19 @@ class PowerModel:
                 'awesIO_version': '0.1.0',
                 'schema': 'power_curves_schema.yml',
                 'time_created': datetime.now().isoformat(),
-                'reference_height_m': float(reference_height_m),
                 'model_config': {
-                    'wing_area_m2': float(self.wingArea),
-                    'nominal_power_w': float(self.nominalGeneratorPower),
-                    'nominal_tether_force_n': float(self.nominalTetherForce),
-                    'operating_altitude_m': float(self.operationalAltitude),
-                    'tether_length_operational_m': float(self.operationalLength),
-                    'cut_in_wind_speed_m_s': float(self.cutInWindSpeed),
-                    'cut_out_wind_speed_m_s': float(self.cutOutWindSpeed),
+                    'wing_area': float(self.wingArea),
+                    'nominal_power': float(self.nominalGeneratorPower),
+                    'nominal_tether_force': float(self.nominalTetherForce),
+                    'operating_altitude': float(self.operationalAltitude),
+                    'tether_length_operational': float(self.operationalLength),
+                    'cut_in_wind_speed': float(self.cutInWindSpeed),
+                    'cut_out_wind_speed': float(self.cutOutWindSpeed),
                 },
+                'wind_resource': wind_resource_info,
             },
-            'altitudes_m': [float(alt) for alt in altitudes],
-            'reference_wind_speeds_m_s': [float(v) for v in reference_wind_speeds],
+            'altitudes': [float(alt) for alt in altitudes],
+            'reference_wind_speeds': [float(v) for v in reference_wind_speeds],
             'power_curves': power_curves_list,
         }
 

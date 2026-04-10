@@ -21,7 +21,7 @@ def main():
     # Use awesIO format configuration files
     systemConfigPath = workspace_root / 'data' / 'kitepower V3_20.yml'
     simulationSettingsPath = workspace_root / 'data' / 'simulation_settings_config.yml'
-    windResourcePath = workspace_root / 'data' / 'clustered_profiles_wind_resource.yml'
+    windResourcePath = workspace_root / 'data' / 'wind_resource.yml'
     # windResourcePath = workspace_root / 'data' / 'wind_resource.yml'
     OUTPUT_PATH = workspace_root / 'results' / 'luchsinger_power_curves.yml'
 
