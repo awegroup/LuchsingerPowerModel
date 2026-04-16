@@ -475,6 +475,147 @@ class PowerModel:
 
         return data
 
+    def simulate_single_wind_speed(
+        self,
+        ws_ref: float,
+        profile_index: int,
+        output_path: Path = None,
+        verbose: bool = False,
+        show_plot: bool = False,
+        save_plot: bool = False,
+        validate_file: bool = True,
+    ) -> Dict[str, Any]:
+        """Calculate a power curve for a single wind speed and a single profile.
+
+        Produces the same output structure as ``generate_power_curves`` but
+        for exactly one reference wind speed and one wind shear profile.
+
+        Args:
+            ws_ref (float): Reference wind speed (m/s).
+            profile_index (int): Index of the wind shear profile to simulate.
+            output_path (Path): If given, export the result to this YAML file
+                in awesIO format.
+            verbose (bool): If True, print a summary of the results.
+                Defaults to False.
+            show_plot (bool): If True, display the analysis plot.
+                Defaults to False.
+            save_plot (bool): If True, save the plot next to *output_path*
+                (or in ``results/``). Defaults to False.
+            validate_file (bool): If True, validate the exported YAML against
+                the awesIO schema. Defaults to True.
+
+        Returns:
+            Dict with:
+                - 'reference_height': Reference altitude for wind speeds
+                - 'operational_altitude_m': Operational altitude of kite
+                - 'profiles': List with a single dict containing:
+                    - 'profile_id': Profile/cluster ID
+                    - 'windSpeedAtRef': Array with one wind speed value (m/s)
+                    - 'power': Array with one cycle power value (W)
+                    - ... other power curve variables
+
+        Raises:
+            IndexError: If *profile_index* is out of range.
+        """
+        self._verbose = verbose
+
+        wind_shear_data = self.wind_resource
+        reference_height = wind_shear_data['reference_height']
+
+        # Resolve single profile
+        profiles = self.wind_resource['profiles']
+        n_profiles = len(profiles)
+        idx = int(profile_index)
+        if idx < 0 or idx >= n_profiles:
+            raise IndexError(
+                f"Profile index {idx} out of range [0, {n_profiles - 1}]"
+            )
+        profile_data = profiles[idx]
+        profile_id = profile_data['id']
+
+        wind_profile = {
+            'altitudes': wind_shear_data['altitudes'],
+            'u_normalized': profile_data['u_normalized'],
+        }
+
+        # Initialise regime tracking
+        wind_speed_regime = 1
+        self.nominalWindSpeedForce = None
+        self.nominalGammaOutForce = None
+        self.nominalWindSpeedPower = None
+        self.nominalGammaOutPower = None
+        self.nominalReelOutSpeed = None
+
+        ws_avg = self._get_average_wind_speed(ws_ref, wind_profile)
+
+        if wind_speed_regime == 1:
+            result = self._calculate_power_region1(ws_avg)
+            if result['tetherForceOut'] >= self.nominalTetherForce:
+                wind_speed_regime = 2
+                self.nominalWindSpeedForce = ws_avg
+                self.nominalGammaOutForce = result['gammaOut']
+                logger.debug(
+                    'Profile %s: regime 1→2 at %.2f m/s', profile_id, ws_avg
+                )
+
+        if wind_speed_regime == 2:
+            result = self._calculate_power_region2(ws_avg)
+            if result['reelOutPower'] >= self.nominalGeneratorPower:
+                wind_speed_regime = 3
+                self.nominalWindSpeedPower = ws_avg
+                self.nominalGammaOutPower = result['gammaOut']
+                self.nominalReelOutSpeed = result['reelOutSpeed']
+                logger.debug(
+                    'Profile %s: regime 2→3 at %.2f m/s', profile_id, ws_avg
+                )
+
+        if wind_speed_regime == 3:
+            result = self._calculate_power_region3(ws_avg)
+
+        windSpeedsAtRef = np.array([ws_ref])
+
+        profile_curve = {
+            'profile_id': profile_id,
+            'u_normalized': profile_data['u_normalized'],
+            'v_normalized': profile_data['v_normalized'],
+            'windSpeedAtRef': windSpeedsAtRef,
+            'power': np.array([result['cyclePower']]),
+            'reelOutPower': np.array([result['reelOutPower']]),
+            'reelInPower': np.array([result['reelInPower']]),
+            'reelOutTime': np.array([result['reelOutTime']]),
+            'reelInTime': np.array([result['reelInTime']]),
+            'tetherForceOut': np.array([result['tetherForceOut']]),
+            'tetherForceIn': np.array([result['tetherForceIn']]),
+            'reelOutSpeed': np.array([result['reelOutSpeed']]),
+            'reelInSpeed': np.array([result['reelInSpeed']]),
+            'gammaOut': np.array([result['gammaOut']]),
+            'gammaIn': np.array([result['gammaIn']]),
+            'elevationAngleOut': np.array([result['elevationAngleOut']]),
+            'elevationAngleIn': np.array([result['elevationAngleIn']]),
+        }
+
+        data = {
+            'reference_height': reference_height,
+            'operational_altitude_m': self.operationalAltitude,
+            'altitudes': wind_shear_data['altitudes'],
+            'profiles': [profile_curve],
+        }
+
+        if verbose:
+            self._print_summary(data)
+
+        if output_path is not None:
+            self.export_power_curves_awesio(
+                data, output_path, file_validate=validate_file
+            )
+            if verbose:
+                print(f"\nExported result to: {output_path}")
+
+        if show_plot or save_plot:
+            print('There is no plotting function for single wind speed simulation. Skipping plot.')
+
+        return data
+
     def _calculate_power_region1(self, windSpeed: float) -> Dict[str, float]:
         """Calculate power in Region 1 (below force limit).
 
@@ -931,10 +1072,12 @@ class PowerModel:
               f" (at reference height)")
         print(f"  Cut-out Wind Speed:     {self.cutOutWindSpeed:.1f} m/s"
               f" (at reference height)")
-        print(f"  Force Limit Wind Speed: "
-              f"{self.nominalWindSpeedForce:.1f} m/s")
-        print(f"  Power Limit Wind Speed: "
-              f"{self.nominalWindSpeedPower:.1f} m/s")
+        force_ws = (f"{self.nominalWindSpeedForce:.1f} m/s"
+                    if self.nominalWindSpeedForce is not None else "N/A")
+        power_ws = (f"{self.nominalWindSpeedPower:.1f} m/s"
+                    if self.nominalWindSpeedPower is not None else "N/A")
+        print(f"  Force Limit Wind Speed: {force_ws}")
+        print(f"  Power Limit Wind Speed: {power_ws}")
 
         print(f"\nWind Shear Configuration:")
         print(f"  Reference Height:       "

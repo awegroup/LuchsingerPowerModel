@@ -40,8 +40,16 @@ def main():
         save_plot=True, 
         validate_file=True)
     
-    # data = model.simulate_cycle_at_one_wind_speed(ws_ref=10.0,  selected_profiles=[0, 1, 2], verbose=True)
-    # print(data)
+    # # Simulate single wind speed
+    # data = model.simulate_single_wind_speed(
+    #     ws_ref=10.0,  # Example wind speed in m/s
+    #     profile_index=0,  # Example profile index
+    #     output_path=OUTPUT_PATH,
+    #     verbose=True,
+    #     show_plot=True,
+    #     save_plot=True, 
+    #     validate_file=True
+    # )
 
 if __name__ == '__main__':
     main()

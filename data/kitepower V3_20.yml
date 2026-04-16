@@ -35,7 +35,7 @@ components:
       length: 340
       diameter: 0.010
       density: 724.0
-      max_tether_force: 8200.0 # N
+      max_tether_force: 5000.0 # N
       conductive: false
       material:
         type: dyneema
