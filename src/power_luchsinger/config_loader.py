@@ -153,7 +153,7 @@ def load_system_config(file_path, validate_file=False):
 def load_wind_resource(file_path, validate_file=False):
     """Load wind resource data from YAML file.
 
-    Extracts normalized wind profiles for each cluster, which represent
+    Extracts normalized wind profiles for each profile, which represent
     different atmospheric conditions and shear characteristics.
 
     Args:
@@ -167,7 +167,7 @@ def load_wind_resource(file_path, validate_file=False):
             - 'reference_height': Reference altitude where profiles equal 1.0.
             - 'profiles': List of dicts with 'id', 'u_normalized',
               'v_normalized'.
-            - 'n_clusters': Number of profiles/clusters.
+            - 'n_profiles': Number of profiles/profiles.
 
     Raises:
         FileNotFoundError: If wind resource file is not found.
@@ -193,11 +193,11 @@ def load_wind_resource(file_path, validate_file=False):
 
     # Extract metadata
     metadata = data.get('metadata', {})
-    n_clusters = metadata.get('n_clusters')
+    n_profiles = metadata.get('n_profiles')
     reference_height = metadata.get('reference_height')
 
-    if n_clusters is None:
-        raise ValueError("'n_clusters' not found in wind resource metadata")
+    if n_profiles is None:
+        raise ValueError("'n_profiles' not found in wind resource metadata")
     if reference_height is None:
         raise ValueError(
             "'reference_height' not found in wind resource metadata"
@@ -208,19 +208,19 @@ def load_wind_resource(file_path, validate_file=False):
     if len(altitudes) == 0:
         raise ValueError("'altitudes' array is empty or missing")
 
-    # Extract clusters/profiles
-    clusters = data.get('clusters', [])
-    if len(clusters) != n_clusters:
+    # Extract profiles/profiles
+    raw_profiles = data.get('profiles', [])
+    if len(raw_profiles) != n_profiles:
         raise ValueError(
-            f"Expected {n_clusters} clusters, found {len(clusters)}"
+            f"Expected {n_profiles} profiles, found {len(raw_profiles)}"
         )
 
     profiles = []
-    for cluster in clusters:
+    for profile in raw_profiles:
         profile = {
-            'id': cluster.get('id'),
-            'u_normalized': np.array(cluster.get('u_normalized', [])),
-            'v_normalized': np.array(cluster.get('v_normalized', []))
+            'id': profile.get('id'),
+            'u_normalized': np.array(profile.get('u_normalized', [])),
+            'v_normalized': np.array(profile.get('v_normalized', []))
         }
 
         if len(profile['u_normalized']) != len(altitudes):
@@ -238,7 +238,7 @@ def load_wind_resource(file_path, validate_file=False):
         'altitudes': altitudes,
         'reference_height': reference_height,
         'profiles': profiles,
-        'n_clusters': n_clusters,
+        'n_profiles': n_profiles,
         'metadata': metadata,
     }
 

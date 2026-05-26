@@ -1,7 +1,7 @@
 """Calculate and plot comprehensive power curve analysis for an AWE system.
 
 This script loads configuration from an awesIO YAML file, validates it,
-calculates power curves with wind shear profiles from clustered wind resource data,
+calculates power curves with wind shear profiles from profileed wind resource data,
 and creates a comprehensive visualization. Results are exported in awesIO format.
 """
 
@@ -19,9 +19,9 @@ from src.power_luchsinger import PowerModel
 def main():
     """Main entry point for power curve calculation script."""
     # Use awesIO format configuration files
-    systemConfigPath = workspace_root / 'data' / 'kitepower V3_20.yml'
+    systemConfigPath = workspace_root / 'data' / 'kitepower V3_25.yml'
     simulationSettingsPath = workspace_root / 'data' / 'simulation_settings_config.yml'
-    windResourcePath = workspace_root / 'data' / 'wind_resource.yml'
+    windResourcePath = workspace_root / 'data' / 'wind_profile_prescribed_logarithmic.yml'
     # windResourcePath = workspace_root / 'data' / 'wind_resource.yml'
     OUTPUT_PATH = workspace_root / 'results' / 'luchsinger_power_curves.yml'
 

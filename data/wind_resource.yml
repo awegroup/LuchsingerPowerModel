@@ -1,7 +1,7 @@
 metadata:
-  name: ERA5 Wind Profile Clustering
-  description: Wind profile clustering results derived from ERA5 reanalysis data
-  note: ERA5 reanalysis data processed for wind profile clustering analysis
+  name: ERA5 Wind Profile profileing
+  description: Wind profile profileing results derived from ERA5 reanalysis data
+  note: ERA5 reanalysis data processed for wind profile profileing analysis
   awesIO_version: 0.1.0
   schema: wind_resource_schema.yml
   data_source: ERA5
@@ -15,7 +15,7 @@ metadata:
   altitude_range:
   - 10
   - 500
-  n_clusters: 8
+  n_profiles: 8
   n_wind_speed_bins: 50
   n_wind_direction_bins: 10
   wind_direction_bin_width: 36.0
@@ -203,7 +203,7 @@ wind_direction_bins:
   - 270.0
   - 306.0
   - 342.0
-clusters:
+profiles:
 - id: 1
   u_normalized:
   - 0.6694798547980485
@@ -1029,9 +1029,9 @@ clusters:
   - 0.21075063767951174
   - 0.21812237337065646
 probability_matrix:
-  description: Probability of each cluster occurring at each wind speed and direction
+  description: Probability of each profile occurring at each wind speed and direction
     bin (% of total samples)
-  dimensions: '[n_clusters x n_wind_speed_bins x n_wind_direction_bins]'
+  dimensions: '[n_profiles x n_wind_speed_bins x n_wind_direction_bins]'
   data:
   - - - 0.0
       - 0.0

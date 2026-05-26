@@ -289,7 +289,7 @@ class PowerModel:
         validate_file: bool = True,) -> Dict[str, Any]:
         """Generate power curves for multiple wind shear profiles.
 
-        Calculates power curves for each wind profile/cluster stored in
+        Calculates power curves for each wind profile/profile stored in
         ``self.wind_resource``.  Optionally exports results in awesIO
         format, prints a summary, and creates a comprehensive plot.
 
@@ -318,7 +318,7 @@ class PowerModel:
                 - 'reference_height': Reference altitude for wind speeds
                 - 'operational_altitude_m': Operational altitude of kite
                 - 'profiles': List of dicts, each containing:
-                    - 'profile_id': Profile/cluster ID
+                    - 'profile_id': Profile/profile ID
                     - 'windSpeedAtRef': Wind speed at reference height (m/s)
                     - 'windSpeedAtOp': Wind speed at operational height (m/s)
                     - 'power': Cycle power (W)
@@ -341,6 +341,14 @@ class PowerModel:
             )
 
         power_curves = []
+
+        # Initialise regime tracking attributes so they always exist on the
+        # instance (even when the profiles list is empty).
+        self.nominalWindSpeedForce = None
+        self.nominalGammaOutForce = None
+        self.nominalWindSpeedPower = None
+        self.nominalGammaOutPower = None
+        self.nominalReelOutSpeed = None
 
         for profile_data in profiles:
             profile_id = profile_data['id']
@@ -509,7 +517,7 @@ class PowerModel:
                 - 'reference_height': Reference altitude for wind speeds
                 - 'operational_altitude_m': Operational altitude of kite
                 - 'profiles': List with a single dict containing:
-                    - 'profile_id': Profile/cluster ID
+                    - 'profile_id': Profile/profile ID
                     - 'windSpeedAtRef': Array with one wind speed value (m/s)
                     - 'power': Array with one cycle power value (W)
                     - ... other power curve variables
@@ -1120,7 +1128,7 @@ class PowerModel:
         wind_resource_info = {
             'reference_height': float(reference_height),
         }
-        for key in ('n_clusters', 'location', 'time_range', 'data_source'):
+        for key in ('n_profiles', 'location', 'time_range', 'data_source'):
             value = wind_resource_metadata.get(key)
             if value is not None:
                 wind_resource_info[key] = value

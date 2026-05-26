@@ -61,7 +61,7 @@ from power_luchsinger import PowerModel
 
 model = PowerModel(
     system_config_path='data/soft_kite_pumping_ground_gen_system.yml',
-    wind_resource_path='data/clustered_profiles_wind_resource.yml',
+    wind_resource_path='data/profileed_profiles_wind_resource.yml',
     simulation_settings_path='data/simulation_settings_config.yml',
     validate_file=True,
 )
@@ -86,7 +86,7 @@ Three YAML files are required, all following the awesIO schema:
 | File | Description |
 |------|-------------|
 | `soft_kite_pumping_ground_gen_system.yml` | System configuration (kite, tether, ground station, operational envelope) |
-| `clustered_profiles_wind_resource.yml` | Wind resource with clustered normalized wind shear profiles |
+| `profileed_profiles_wind_resource.yml` | Wind resource with profileed normalized wind shear profiles |
 | `simulation_settings_config.yml` | Simulation settings (e.g. number of power curve points) |
 
 ## Physical Model
@@ -155,7 +155,7 @@ The simulation setting `settings.model` in `data/simulation_settings_config.yml`
 │   └── calculate_power_curves.py   # Script for generating power curves
 ├── data/
 │   ├── soft_kite_pumping_ground_gen_system.yml
-│   ├── clustered_profiles_wind_resource.yml
+│   ├── profileed_profiles_wind_resource.yml
 │   └── simulation_settings_config.yml
 ├── results/                        # Generated outputs (YAML + plots)
 ├── requirements.txt
