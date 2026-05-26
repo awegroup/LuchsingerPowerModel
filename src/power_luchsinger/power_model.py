@@ -869,16 +869,16 @@ class PowerModel:
             float: Force factor f_out
         """
         liftCoefficient = self.liftCoefficientKiteOut
-        dragCoefficient = self.dragCoefficientKiteOut
-        if self.model == 'luchsinger_extended_const_lod_in':
-            rm_out = 0.5 * (self.tetherMinLength + self.tetherMaxLength)
-            CD_out = (self.dragCoefficientKiteOut + 0.25 * self.tetherDragCoefficient *
+
+        rm_out = 0.5 * (self.tetherMinLength + self.tetherMaxLength)
+        CD_out = (self.dragCoefficientKiteOut + 0.25 * self.tetherDragCoefficient *
                        self.tetherDiameter * rm_out / self.wingArea)
+        if self.model == 'luchsinger_extended_const_lod_in':
             E2out = (self.liftCoefficientKiteOut / CD_out)**2
             force_factor_out = liftCoefficient * np.sqrt(1 + 1/E2out) * (1 + E2out)
 
         elif self.model == 'luchsinger_original':
-            force_factor_out = (liftCoefficient**3) / (dragCoefficient**2)
+            force_factor_out = (liftCoefficient**3) / (CD_out**2)
 
         return force_factor_out
 
