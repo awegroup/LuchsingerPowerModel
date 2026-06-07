@@ -14,7 +14,7 @@ components:
     version: 1.0
     structure:
       projected_surface_area: 19.75 # m2
-      mass: 14.2 # kg, all mass of wing and bridle lumped together
+      mass: 10.6 # kg, all mass of wing and bridle lumped together
   bridle:
     name: Kitepower V3.25 Bridle
     type: LEI_soft_kite_bridle 
@@ -26,16 +26,16 @@ components:
     type: kite_control_unit
     version: 1.0
     structure:
-      mass: 22
+      mass: 8.4
   tether:
     name: Kitepower V3.25
     type: non_conductive_tether
     version: 1.0
     structure:
-      length: 355
-      diameter: 0.010
+      length: 500
+      diameter: 0.006
       density: 724.0
-      max_tether_force: 8800.0 # N
+      max_tether_force: 8200.0 # N
       conductive: false
   ground_station:
     name: ground station

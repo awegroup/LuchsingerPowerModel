@@ -23,7 +23,7 @@ def main():
     simulationSettingsPath = workspace_root / 'data' / 'simulation_settings_config.yml'
     windResourcePath = workspace_root / 'data' / 'wind_profile_prescribed_logarithmic.yml'
     # windResourcePath = workspace_root / 'data' / 'wind_resource.yml'
-    OUTPUT_PATH = workspace_root / 'results' / 'luchsinger_power_curves.yml'
+    OUTPUT_PATH = workspace_root / 'results' / 'luchsinger_extended_max.yml'
 
     # Load power model (all YAML loading handled internally via config_loader)
     model = PowerModel(

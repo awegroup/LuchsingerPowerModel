@@ -5,12 +5,12 @@ settings:
   cut_in_wind_speed_m_s: 4.0      # Cut-in wind speed [m/s]
   cut_out_wind_speed_m_s: 25.0    # Cut-out wind speed [m/s]
 
-  elevation_angle_out_deg: 35   # Tether elevation during reel-out [degrees]
+  elevation_angle_out_deg: 30   # Tether elevation during reel-out [degrees]
   elevation_angle_in_deg: 80.0    # Initial/reference reel-in angle [degrees], only used for luchsinger_original
 
   num_points: 250                 # Number of wind speed points for power curve
 
-  minimum_tether_length_m: 100.0  # Minimum tether length [m]
+  minimum_tether_length_m: 120.0  # Minimum tether length [m]
 
   air_density_kg_m3: 1.225        # Air density at sea level [kg/m³]
 

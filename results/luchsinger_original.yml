@@ -1,0 +1,5603 @@
+metadata:
+  name: Luchsinger Power Curves with Wind Shear
+  description: Power curves for pumping ground-gen AWE system with wind shear
+  note: Power curve data generated from Luchsinger model with wind shear profiles
+  awesIO_version: 0.1.0
+  schema: power_curves_schema.yml
+  time_created: '2026-05-30T17:09:31.299104'
+  model_config:
+    wing_area: 19.75
+    nominal_power: 40000.0
+    nominal_tether_force: 8200.0
+    operating_altitude: 154.99999999999997
+    tether_length_operational: 310.0
+    cut_in_wind_speed: 4.0
+    cut_out_wind_speed: 25.0
+  wind_resource:
+    reference_height: 200.0
+    n_profiles: 1
+    location: {}
+    time_range: {}
+    data_source: prescribed_analytical
+altitudes: [10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 110.0, 120.0,
+  130.0, 140.0, 150.0, 160.0, 170.0, 180.0, 190.0, 200.0, 210.0, 220.0, 230.0, 240.0,
+  250.0, 260.0, 270.0, 280.0, 290.0, 300.0, 310.0, 320.0, 330.0, 340.0, 350.0, 360.0,
+  370.0, 380.0, 390.0, 400.0, 410.0, 420.0, 430.0, 440.0, 450.0, 460.0, 470.0, 480.0,
+  490.0, 500.0]
+reference_wind_speeds: [4.0, 4.0843373493975905, 4.168674698795181, 4.253012048192771,
+  4.337349397590361, 4.421686746987952, 4.506024096385542, 4.590361445783133, 4.674698795180722,
+  4.759036144578313, 4.843373493975903, 4.927710843373494, 5.0120481927710845, 5.096385542168674,
+  5.1807228915662655, 5.265060240963855, 5.349397590361446, 5.433734939759036, 5.518072289156626,
+  5.602409638554217, 5.686746987951807, 5.771084337349397, 5.855421686746988, 5.9397590361445785,
+  6.024096385542169, 6.108433734939759, 6.192771084337349, 6.27710843373494, 6.36144578313253,
+  6.445783132530121, 6.53012048192771, 6.614457831325301, 6.698795180722891, 6.783132530120482,
+  6.867469879518072, 6.951807228915662, 7.036144578313253, 7.120481927710843, 7.204819277108434,
+  7.289156626506024, 7.373493975903614, 7.457831325301205, 7.542168674698795, 7.626506024096385,
+  7.710843373493976, 7.7951807228915655, 7.879518072289157, 7.9638554216867465, 8.048192771084338,
+  8.132530120481928, 8.216867469879517, 8.301204819277107, 8.385542168674698, 8.46987951807229,
+  8.55421686746988, 8.638554216867469, 8.72289156626506, 8.80722891566265, 8.891566265060241,
+  8.975903614457831, 9.06024096385542, 9.144578313253012, 9.228915662650602, 9.313253012048193,
+  9.397590361445783, 9.481927710843372, 9.566265060240964, 9.650602409638553, 9.734939759036145,
+  9.819277108433734, 9.903614457831324, 9.987951807228916, 10.072289156626505, 10.156626506024097,
+  10.240963855421686, 10.325301204819276, 10.409638554216867, 10.493975903614459,
+  10.578313253012048, 10.662650602409638, 10.746987951807228, 10.831325301204819,
+  10.91566265060241, 11.0, 11.08433734939759, 11.16867469879518, 11.25301204819277,
+  11.337349397590362, 11.421686746987952, 11.506024096385541, 11.590361445783131,
+  11.674698795180722, 11.759036144578314, 11.843373493975903, 11.927710843373493,
+  12.012048192771084, 12.096385542168674, 12.180722891566264, 12.265060240963855,
+  12.349397590361445, 12.433734939759036, 12.518072289156626, 12.602409638554215,
+  12.686746987951807, 12.771084337349397, 12.855421686746988, 12.939759036144578,
+  13.024096385542167, 13.108433734939759, 13.192771084337348, 13.27710843373494, 13.36144578313253,
+  13.44578313253012, 13.53012048192771, 13.6144578313253, 13.698795180722891, 13.783132530120481,
+  13.867469879518072, 13.951807228915662, 14.036144578313252, 14.120481927710843,
+  14.204819277108433, 14.289156626506024, 14.373493975903614, 14.457831325301203,
+  14.542168674698795, 14.626506024096384, 14.710843373493976, 14.795180722891565,
+  14.879518072289155, 14.963855421686747, 15.048192771084336, 15.132530120481928,
+  15.216867469879517, 15.301204819277107, 15.385542168674698, 15.469879518072288,
+  15.55421686746988, 15.638554216867469, 15.722891566265059, 15.80722891566265, 15.89156626506024,
+  15.975903614457831, 16.06024096385542, 16.14457831325301, 16.2289156626506, 16.313253012048193,
+  16.397590361445783, 16.481927710843372, 16.566265060240966, 16.65060240963855, 16.734939759036145,
+  16.819277108433734, 16.903614457831324, 16.987951807228917, 17.072289156626503,
+  17.156626506024097, 17.240963855421686, 17.325301204819276, 17.40963855421687, 17.493975903614455,
+  17.57831325301205, 17.662650602409638, 17.746987951807228, 17.83132530120482, 17.915662650602407,
+  18.0, 18.08433734939759, 18.16867469879518, 18.253012048192772, 18.33734939759036,
+  18.42168674698795, 18.50602409638554, 18.59036144578313, 18.674698795180724, 18.75903614457831,
+  18.843373493975903, 18.927710843373493, 19.012048192771083, 19.096385542168676,
+  19.180722891566262, 19.265060240963855, 19.349397590361445, 19.433734939759034,
+  19.518072289156628, 19.602409638554214, 19.686746987951807, 19.771084337349397,
+  19.855421686746986, 19.93975903614458, 20.02409638554217, 20.10843373493976, 20.19277108433735,
+  20.277108433734938, 20.361445783132528, 20.44578313253012, 20.53012048192771, 20.6144578313253,
+  20.69879518072289, 20.78313253012048, 20.867469879518072, 20.951807228915662, 21.03614457831325,
+  21.12048192771084, 21.20481927710843, 21.289156626506024, 21.373493975903614, 21.457831325301203,
+  21.542168674698793, 21.626506024096383, 21.710843373493976, 21.795180722891565,
+  21.879518072289155, 21.963855421686745, 22.048192771084334, 22.132530120481928,
+  22.216867469879517, 22.301204819277107, 22.385542168674696, 22.469879518072286,
+  22.55421686746988, 22.63855421686747, 22.72289156626506, 22.807228915662648, 22.89156626506024,
+  22.97590361445783, 23.06024096385542, 23.14457831325301, 23.2289156626506, 23.313253012048193,
+  23.397590361445783, 23.481927710843372, 23.566265060240962, 23.65060240963855, 23.734939759036145,
+  23.819277108433734, 23.903614457831324, 23.987951807228914, 24.072289156626503,
+  24.156626506024097, 24.240963855421686, 24.325301204819276, 24.409638554216865,
+  24.493975903614455, 24.57831325301205, 24.662650602409638, 24.746987951807228, 24.831325301204817,
+  24.915662650602407, 25.0]
+power_curves:
+- profile_id: 1
+  probability_weight: 1.0
+  wind_profile:
+    u_normalized: [0.6597643710130252, 0.7384874829013183, 0.7845375512960454, 0.8172105947896112,
+      0.8425537762234141, 0.8632606631843385, 0.880768086652316, 0.8959337066779042,
+      0.9093107315790656, 0.9212768881117069, 0.9321015933969078, 0.9419837750726315,
+      0.9510745009801297, 0.959491198540609, 0.9673269565064343, 0.9746568185661972,
+      0.9815421656040156, 0.9880338434673587, 0.9941744439472029, 1.0, 1.0055412669353363,
+      1.0108247052852006, 1.015873245013327, 1.0207068869609244, 1.025343181433803,
+      1.0297976128684228, 1.034083911862086, 1.038214310428902, 1.0421997524436541,
+      1.0460500683947274, 1.0497741214721794, 1.0533799304544902, 1.056874773679928,
+      1.0602652774923085, 1.0635574918627047, 1.0667569553556517, 1.0698687511922773,
+      1.0728975558354958, 1.07584768126315, 1.078723111888293, 1.0815275369199229,
+      1.0842643788236292, 1.086936818432939, 1.0895478171734938, 1.0921001367894545,
+      1.09459635690162, 1.0970388906771087, 1.0994299988492173, 1.1017718022916068,
+      1.1040662933220957]
+    v_normalized: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+      0.0, 0.0, 0.0, 0.0, 0.0]
+  wind_speed_data:
+  - wind_speed: 4.0
+    performance:
+      power:
+        average_cycle_power: 445.89002403557896
+        average_reel_out_power: 589.3166928575541
+        average_reel_in_power: -357.8863781621455
+      timing:
+        reel_out_time: 414.9429407321825
+        reel_in_time: 74.0428352682232
+        cycle_time: 488.9857760004057
+      forces:
+        tether_force_out: 643.5073725180996
+        tether_force_in: 69.73400563947571
+      speeds:
+        reel_out_speed: 0.9157885643974945
+        reel_in_speed: -5.13216435625992
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.0843373493975905
+    performance:
+      power:
+        average_cycle_power: 474.6927507067032
+        average_reel_out_power: 627.3842133494514
+        average_reel_in_power: -381.00441842738434
+      timing:
+        reel_out_time: 406.37479741322886
+        reel_in_time: 72.51392716533952
+        cycle_time: 478.8887245785684
+      forces:
+        tether_force_out: 670.9292963161612
+        tether_force_in: 72.7055964408313
+      speeds:
+        reel_out_speed: 0.9350973594299717
+        reel_in_speed: -5.240372640879858
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.168674698795181
+    performance:
+      power:
+        average_cycle_power: 504.70987395206294
+        average_reel_out_power: 667.0567578032416
+        average_reel_in_power: -405.09717435832073
+      timing:
+        reel_out_time: 398.1533419742329
+        reel_in_time: 71.04688239609855
+        cycle_time: 469.20022437033145
+      forces:
+        tether_force_out: 698.9233615943607
+        tether_force_in: 75.73918764638802
+      speeds:
+        reel_out_speed: 0.954406154462449
+        reel_in_speed: -5.348580925499796
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.253012048192771
+    performance:
+      power:
+        average_cycle_power: 535.9664698071152
+        average_reel_out_power: 708.367468306634
+        average_reel_in_power: -430.18477282710813
+      timing:
+        reel_out_time: 390.25794992375234
+        reel_in_time: 69.63802070552437
+        cycle_time: 459.8959706292767
+      forces:
+        tether_force_out: 727.4895683526989
+        tether_force_in: 78.83477925614594
+      speeds:
+        reel_out_speed: 0.9737149494949263
+        reel_in_speed: -5.456789210119734
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.337349397590361
+    performance:
+      power:
+        average_cycle_power: 568.4876143073154
+        average_reel_out_power: 751.3494869473368
+        average_reel_in_power: -456.2873407058992
+      timing:
+        reel_out_time: 382.6696008974572
+        reel_in_time: 68.28394808069474
+        cycle_time: 450.95354897815196
+      forces:
+        tether_force_out: 756.6279165911754
+        tether_force_in: 81.99237127010498
+      speeds:
+        reel_out_speed: 0.9930237445274035
+        reel_in_speed: -5.564997494739671
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.421686746987952
+    performance:
+      power:
+        average_cycle_power: 602.2983834881206
+        average_reel_out_power: 796.0359558130594
+        average_reel_in_power: -483.4250048668473
+      timing:
+        reel_out_time: 375.3707256759798
+        reel_in_time: 66.9815294524526
+        cycle_time: 442.35225512843243
+      forces:
+        tether_force_out: 786.3384063097903
+        tether_force_in: 85.2119636882652
+      speeds:
+        reel_out_speed: 1.0123325395598808
+        reel_in_speed: -5.673205779359609
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.506024096385542
+    performance:
+      power:
+        average_cycle_power: 637.4238533849864
+        average_reel_out_power: 842.4600169915101
+        average_reel_in_power: -511.6178921821055
+      timing:
+        reel_out_time: 368.345070382579
+        reel_in_time: 65.72786446270081
+        cycle_time: 434.07293484527986
+      forces:
+        tether_force_out: 816.6210375085436
+        tether_force_in: 88.49355651062658
+      speeds:
+        reel_out_speed: 1.0316413345923583
+        reel_in_speed: -5.781414063979549
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.590361445783133
+    performance:
+      power:
+        average_cycle_power: 673.8891000333695
+        average_reel_out_power: 890.6548125703978
+        average_reel_in_power: -540.8861295238265
+      timing:
+        reel_out_time: 361.5775756511406
+        reel_in_time: 64.52026590301864
+        cycle_time: 426.09784155415923
+      forces:
+        tether_force_out: 847.4758101874354
+        tether_force_in: 91.83714973718914
+      speeds:
+        reel_out_speed: 1.0509501296248356
+        reel_in_speed: -5.889622348599486
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.674698795180722
+    performance:
+      power:
+        average_cycle_power: 711.7191994687249
+        average_reel_out_power: 940.6534846374304
+        average_reel_in_power: -571.2498437641635
+      timing:
+        reel_out_time: 355.05426887392935
+        reel_in_time: 63.35624048724254
+        cycle_time: 418.4105093611719
+      forces:
+        tether_force_out: 878.9027243464653
+        tether_force_in: 95.24274336795281
+      speeds:
+        reel_out_speed: 1.0702589246573126
+        reel_in_speed: -5.997830633219424
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.759036144578313
+    performance:
+      power:
+        average_cycle_power: 750.9392277265104
+        average_reel_out_power: 992.4891752803178
+        average_reel_in_power: -602.7291617752696
+      timing:
+        reel_out_time: 348.76216790654325
+        reel_in_time: 62.23347166848128
+        cycle_time: 410.99563957502454
+      forces:
+        tether_force_out: 910.9017799856338
+        tether_force_in: 98.71033740291766
+      speeds:
+        reel_out_speed: 1.08956771968979
+        reel_in_speed: -6.106038917839362
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.843373493975903
+    performance:
+      power:
+        average_cycle_power: 791.574260842181
+        average_reel_out_power: 1046.1950265867679
+        average_reel_in_power: -635.344210429298
+      timing:
+        reel_out_time: 342.68919483354375
+        reel_in_time: 61.14980425136842
+        cycle_time: 403.8389990849122
+      forces:
+        tether_force_out: 943.4729771049406
+        tether_force_in: 102.23993184208368
+      speeds:
+        reel_out_speed: 1.1088765147222672
+        reel_in_speed: -6.214247202459299
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 4.927710843373494
+    performance:
+      power:
+        average_cycle_power: 833.6493748511941
+        average_reel_out_power: 1101.8041806444903
+        average_reel_in_power: -669.1151165984018
+      timing:
+        reel_out_time: 336.8240985894488
+        reel_in_time: 60.103230584474574
+        cycle_time: 396.92732917392334
+      forces:
+        tether_force_out: 976.616315704386
+        tether_force_in: 105.83152668545087
+      speeds:
+        reel_out_speed: 1.1281853097547447
+        reel_in_speed: -6.322455487079239
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.0120481927710845
+    performance:
+      power:
+        average_cycle_power: 877.1896457890047
+        average_reel_out_power: 1159.3497795411927
+        average_reel_in_power: -704.0620071547335
+      timing:
+        reel_out_time: 331.1563853920302
+        reel_in_time: 59.09187814675505
+        cycle_time: 390.24826353878524
+      forces:
+        tether_force_out: 1010.3317957839696
+        tether_force_in: 109.4851219330192
+      speeds:
+        reel_out_speed: 1.147494104787222
+        reel_in_speed: -6.430663771699177
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.096385542168674
+    performance:
+      power:
+        average_cycle_power: 922.2201496910689
+        average_reel_out_power: 1218.8649653645834
+        average_reel_in_power: -740.2050089704464
+      timing:
+        reel_out_time: 325.6762560829423
+        reel_in_time: 58.11399836654871
+        cycle_time: 383.790254449491
+      forces:
+        tether_force_out: 1044.6194173436913
+        tether_force_in: 113.20071758478868
+      speeds:
+        reel_out_speed: 1.166802899819699
+        reel_in_speed: -6.538872056319114
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.1807228915662655
+    performance:
+      power:
+        average_cycle_power: 968.7659625928446
+        average_reel_out_power: 1280.3828802023738
+        average_reel_in_power: -777.5642489176944
+      timing:
+        reel_out_time: 320.37454958856875
+        reel_in_time: 57.16795653267466
+        cycle_time: 377.54250612124343
+      forces:
+        tether_force_out: 1079.4791803835524
+        tether_force_in: 116.9783136407594
+      speeds:
+        reel_out_speed: 1.1861116948521766
+        reel_in_speed: -6.647080340939053
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.265060240963855
+    performance:
+      power:
+        average_cycle_power: 1016.8521605297858
+        average_reel_out_power: 1343.936666142269
+        average_reel_in_power: -816.1598538686288
+      timing:
+        reel_out_time: 315.2426918148389
+        reel_in_time: 56.252222675171865
+        cycle_time: 371.4949144900108
+      forces:
+        tether_force_out: 1114.9110849035508
+        tether_force_in: 120.81791010093116
+      speeds:
+        reel_out_speed: 1.2054204898846537
+        reel_in_speed: -6.75528862555899
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.349397590361446
+    performance:
+      power:
+        average_cycle_power: 1066.5038195373504
+        average_reel_out_power: 1409.5594652719803
+        average_reel_in_power: -856.0119506954045
+      timing:
+        reel_out_time: 310.2726493763166
+        reel_in_time: 55.3653633086714
+        cycle_time: 365.63801268498804
+      forces:
+        tether_force_out: 1150.9151309036881
+        tether_force_in: 124.71950696530415
+      speeds:
+        reel_out_speed: 1.2247292849171312
+        reel_in_speed: -6.863496910178929
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.433734939759036
+    performance:
+      power:
+        average_cycle_power: 1117.7460156509937
+        average_reel_out_power: 1477.2844196792155
+        average_reel_in_power: -897.1406662701734
+      timing:
+        reel_out_time: 305.45688763433384
+        reel_in_time: 54.50603394467872
+        cycle_time: 359.9629215790126
+      forces:
+        tether_force_out: 1187.4913183839637
+        tether_force_in: 128.6831042338783
+      speeds:
+        reel_out_speed: 1.2440380799496085
+        reel_in_speed: -6.971705194798867
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.518072289156626
+    performance:
+      power:
+        average_cycle_power: 1170.603824906172
+        average_reel_out_power: 1547.1446714516824
+        average_reel_in_power: -939.5661274650885
+      timing:
+        reel_out_time: 300.78833258315416
+        reel_in_time: 53.67297229050241
+        cycle_time: 354.46130487365656
+      forces:
+        tether_force_out: 1224.6396473443774
+        tether_force_in: 132.70870190665354
+      speeds:
+        reel_out_speed: 1.2633468749820855
+        reel_in_speed: -7.079913479418805
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.602409638554217
+    performance:
+      power:
+        average_cycle_power: 1225.102323338342
+        average_reel_out_power: 1619.1733626770922
+        average_reel_in_power: -983.3084611523041
+      timing:
+        reel_out_time: 296.2603361786765
+        reel_in_time: 52.864992062473334
+        cycle_time: 349.1253282411498
+      forces:
+        tether_force_out: 1262.36011778493
+        tether_force_in: 136.79629998363006
+      speeds:
+        reel_out_speed: 1.282655670014563
+        reel_in_speed: -7.188121764038743
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.686746987951807
+    performance:
+      power:
+        average_cycle_power: 1281.2665869829589
+        average_reel_out_power: 1693.4036354431505
+        average_reel_in_power: -1028.3877942039712
+      timing:
+        reel_out_time: 291.8666447522979
+        reel_in_time: 52.08097734968243
+        cycle_time: 343.9476221019803
+      forces:
+        tether_force_out: 1300.6527297056205
+        tether_force_in: 140.94589846480764
+      speeds:
+        reel_out_speed: 1.30196446504704
+        reel_in_speed: -7.29633004865868
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.771084337349397
+    performance:
+      power:
+        average_cycle_power: 1339.1216918754806
+        average_reel_out_power: 1769.8686318375692
+        average_reel_in_power: -1074.824253492245
+      timing:
+        reel_out_time: 287.601370194331
+        reel_in_time: 51.31987747192088
+        cycle_time: 338.92124766625193
+      forces:
+        tether_force_out: 1339.5174831064498
+        tether_force_in: 145.15749735018642
+      speeds:
+        reel_out_speed: 1.3212732600795176
+        reel_in_speed: -7.404538333278619
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.855421686746988
+    performance:
+      power:
+        average_cycle_power: 1398.6927140513615
+        average_reel_out_power: 1848.6014939480542
+        average_reel_in_power: -1122.6379658892768
+      timing:
+        reel_out_time: 283.458963627746
+        reel_in_time: 50.580702281996096
+        cycle_time: 334.0396659097421
+      forces:
+        tether_force_out: 1378.954377987417
+        tether_force_in: 149.4310966397663
+      speeds:
+        reel_out_speed: 1.340582055111995
+        reel_in_speed: -7.512746617898557
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 5.9397590361445785
+    performance:
+      power:
+        average_cycle_power: 1460.0047295460588
+        average_reel_out_power: 1929.635363862316
+        average_reel_in_power: -1171.849058267221
+      timing:
+        reel_out_time: 279.4341913247152
+        reel_in_time: 49.862517868255786
+        cycle_time: 329.296709192971
+      forces:
+        tether_force_out: 1418.9634143485232
+        tether_force_in: 153.76669633354743
+      speeds:
+        reel_out_speed: 1.359890850144472
+        reel_in_speed: -7.620954902518495
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.024096385542169
+    performance:
+      power:
+        average_cycle_power: 1523.0828143950287
+        average_reel_out_power: 2013.003383668063
+        average_reel_in_power: -1222.4776574982304
+      timing:
+        reel_out_time: 275.52211264616915
+        reel_in_time: 49.1644426181002
+        cycle_time: 324.6865552642694
+      forces:
+        tether_force_out: 1459.5445921897679
+        tether_force_in: 158.16429643152975
+      speeds:
+        reel_out_speed: 1.3791996451769495
+        reel_in_speed: -7.729163187138433
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.108433734939759
+    performance:
+      power:
+        average_cycle_power: 1587.952044633726
+        average_reel_out_power: 2098.738695453002
+        average_reel_in_power: -1274.5438904544562
+      timing:
+        reel_out_time: 271.71805980884534
+        reel_in_time: 48.4856436075939
+        cycle_time: 320.2037034164392
+      forces:
+        tether_force_out: 1500.6979115111499
+        tether_force_in: 162.62389693371307
+      speeds:
+        reel_out_speed: 1.3985084402094266
+        reel_in_speed: -7.83737147175837
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.192771084337349
+    performance:
+      power:
+        average_cycle_power: 1654.63749629761
+        average_reel_out_power: 2186.8744413048457
+        average_reel_in_power: -1328.0678840080543
+      timing:
+        reel_out_time: 268.017619305612
+        reel_in_time: 47.825333286089695
+        cycle_time: 315.8429525917017
+      forces:
+        tether_force_out: 1542.4233723126713
+        tether_force_in: 167.14549784009765
+      speeds:
+        reel_out_speed: 1.417817235241904
+        reel_in_speed: -7.94557975637831
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.27710843373494
+    performance:
+      power:
+        average_cycle_power: 1723.1642454221337
+        average_reel_out_power: 2277.443763311299
+        average_reel_in_power: -1383.0697650311763
+      timing:
+        reel_out_time: 264.41661482357887
+        reel_in_time: 47.1827664281192
+        cycle_time: 311.59938125169805
+      forces:
+        tether_force_out: 1584.7209745943305
+        tether_force_in: 171.7290991506834
+      speeds:
+        reel_out_speed: 1.4371260302743813
+        reel_in_speed: -8.053788040998247
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.36144578313253
+    performance:
+      power:
+        average_cycle_power: 1793.557368042755
+        average_reel_out_power: 2370.479803560073
+        average_reel_in_power: -1439.569660395975
+      timing:
+        reel_out_time: 260.9110915209935
+        reel_in_time: 46.55723732774641
+        cycle_time: 307.46832884873993
+      forces:
+        tether_force_out: 1627.5907183561287
+        tether_force_in: 176.3747008654703
+      speeds:
+        reel_out_speed: 1.4564348253068586
+        reel_in_speed: -8.161996325618185
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.445783132530121
+    performance:
+      power:
+        average_cycle_power: 1865.8419401949293
+        average_reel_out_power: 2466.015704138875
+        average_reel_in_power: -1497.5876969746048
+      timing:
+        reel_out_time: 257.4973015384758
+        reel_in_time: 45.948077213177754
+        cycle_time: 303.4453787516536
+      forces:
+        tether_force_out: 1671.0326035980652
+        tether_force_in: 181.0823029844584
+      speeds:
+        reel_out_speed: 1.475743620339336
+        reel_in_speed: -8.270204610238125
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.53012048192771
+    performance:
+      power:
+        average_cycle_power: 1940.0430379141117
+        average_reel_out_power: 2564.0846071354126
+        average_reel_in_power: -1557.144001639216
+      timing:
+        reel_out_time: 254.1716906329974
+        reel_in_time: 45.354651861716064
+        cycle_time: 299.5263424947135
+      forces:
+        tether_force_out: 1715.046630320139
+        tether_force_in: 185.8519055076475
+      speeds:
+        reel_out_speed: 1.495052415371813
+        reel_in_speed: -8.37841289485806
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.614457831325301
+    performance:
+      power:
+        average_cycle_power: 2016.1857372357629
+        average_reel_out_power: 2664.719654637399
+        average_reel_in_power: -1618.258701261965
+      timing:
+        reel_out_time: 250.93088583439814
+        reel_in_time: 44.77635939717687
+        cycle_time: 295.70724523157503
+      forces:
+        tether_force_out: 1759.6327985223525
+        tether_force_in: 190.68350843503794
+      speeds:
+        reel_out_speed: 1.5143612104042905
+        reel_in_speed: -8.486621179478
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.698795180722891
+    performance:
+      power:
+        average_cycle_power: 2094.295114195334
+        average_reel_out_power: 2767.953988732538
+        average_reel_in_power: -1680.9519227150024
+      timing:
+        reel_out_time: 247.77168403432478
+        reel_in_time: 44.212628253687235
+        cycle_time: 291.984312288012
+      forces:
+        tether_force_out: 1804.7911082047037
+        tether_force_in: 195.57711176662946
+      speeds:
+        reel_out_speed: 1.5336700054367678
+        reel_in_speed: -8.594829464097938
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.783132530120482
+    performance:
+      power:
+        average_cycle_power: 2174.3962448282837
+        average_reel_out_power: 2873.820751508541
+        average_reel_in_power: -1745.2437928704817
+      timing:
+        reel_out_time: 244.69104142643798
+        reel_in_time: 43.66291529138562
+        cycle_time: 288.3539567178236
+      forces:
+        tether_force_out: 1850.5215593671935
+        tether_force_in: 200.53271550242212
+      speeds:
+        reel_out_speed: 1.552978800469245
+        reel_in_speed: -8.703037748717875
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.867469879518072
+    performance:
+      power:
+        average_cycle_power: 2256.5142051700686
+        average_reel_out_power: 2982.353085053116
+        average_reel_in_power: -1811.1544386005576
+      timing:
+        reel_out_time: 241.68606372470978
+        reel_in_time: 43.12670405096509
+        cycle_time: 284.81276777567484
+      forces:
+        tether_force_out: 1896.8241520098218
+        tether_force_in: 205.55031964241599
+      speeds:
+        reel_out_speed: 1.5722875955017224
+        reel_in_speed: -8.811246033337815
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 6.951807228915662
+    performance:
+      power:
+        average_cycle_power: 2340.6740712561423
+        average_reel_out_power: 3093.584131453971
+        average_reel_in_power: -1878.703986777381
+      timing:
+        reel_out_time: 238.75399709373414
+        reel_in_time: 42.60350313526882
+        cycle_time: 281.35750022900294
+      forces:
+        tether_force_out: 1943.698886132588
+        tether_force_in: 210.629924186611
+      speeds:
+        reel_out_speed: 1.5915963905341994
+        reel_in_speed: -8.91945431795775
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.036144578313253
+    performance:
+      power:
+        average_cycle_power: 2426.900919121964
+        average_reel_out_power: 3207.547032798817
+        average_reel_in_power: -1947.9125642731065
+      timing:
+        reel_out_time: 235.8922197313092
+        reel_in_time: 42.09284470727757
+        cycle_time: 277.9850644385868
+      forces:
+        tether_force_out: 1991.1457617354931
+        tether_force_in: 215.77152913500714
+      speeds:
+        reel_out_speed: 1.610905185566677
+        reel_in_speed: -9.02766260257769
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.120481927710843
+    performance:
+      power:
+        average_cycle_power: 2515.2198248029877
+        average_reel_out_power: 3324.274931175359
+        average_reel_in_power: -2018.800297959886
+      timing:
+        reel_out_time: 233.0982340492125
+        reel_in_time: 41.59428309483943
+        cycle_time: 274.6925171440519
+      forces:
+        tether_force_out: 2039.1647788185362
+        tether_force_in: 220.97513448760444
+      speeds:
+        reel_out_speed: 1.6302139805991542
+        reel_in_speed: -9.135870887197628
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.204819277108434
+    performance:
+      power:
+        average_cycle_power: 2605.655864334672
+        average_reel_out_power: 3443.800968671311
+        average_reel_in_power: -2091.3873147098734
+      timing:
+        reel_out_time: 230.36965940315147
+        reel_in_time: 41.107393493394824
+        cycle_time: 271.4770528965463
+      forces:
+        tether_force_out: 2087.7559373817185
+        tether_force_in: 226.24074024440296
+      speeds:
+        reel_out_speed: 1.6495227756316315
+        reel_in_speed: -9.244079171817566
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.289156626506024
+    performance:
+      power:
+        average_cycle_power: 2698.2341137524713
+        average_reel_out_power: 3566.1582873743773
+        average_reel_in_power: -2165.693741395222
+      timing:
+        reel_out_time: 227.70422532741253
+        reel_in_time: 40.631770758760496
+        cycle_time: 268.33599608617305
+      forces:
+        tether_force_out: 2136.919237425039
+        tether_force_in: 231.56834640540262
+      speeds:
+        reel_out_speed: 1.6688315706641088
+        reel_in_speed: -9.352287456437505
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.373493975903614
+    performance:
+      power:
+        average_cycle_power: 2792.97964909184
+        average_reel_out_power: 3691.380029372265
+        average_reel_in_power: -2241.7397048880825
+      timing:
+        reel_out_time: 225.09976523379837
+        reel_in_time: 40.16702828276161
+        cycle_time: 265.26679351655997
+      forces:
+        tether_force_out: 2186.6546789484964
+        tether_force_in: 236.95795297060337
+      speeds:
+        reel_out_speed: 1.6881403656965859
+        reel_in_speed: -9.460495741057441
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.457831325301205
+    performance:
+      power:
+        average_cycle_power: 2889.9175463882393
+        average_reel_out_power: 3819.4993367526895
+        average_reel_in_power: -2319.5453320606116
+      timing:
+        reel_out_time: 222.5542105381011
+        reel_in_time: 39.71279694515364
+        cycle_time: 262.26700748325476
+      forces:
+        tether_force_out: 2236.9622619520937
+        tether_force_in: 242.40955994000535
+      speeds:
+        reel_out_speed: 1.7074491607290634
+        reel_in_speed: -9.56870402567738
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.542168674698795
+    performance:
+      power:
+        average_cycle_power: 2989.072881677122
+        average_reel_out_power: 3950.5493516033553
+        average_reel_in_power: -2399.1307497849602
+      timing:
+        reel_out_time: 220.0655851806463
+        reel_in_time: 39.26872413586278
+        cycle_time: 259.3343093165091
+      forces:
+        tether_force_out: 2287.8419864358293
+        tether_force_in: 247.92316731360853
+      speeds:
+        reel_out_speed: 1.7267579557615407
+        reel_in_speed: -9.676912310297318
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.626506024096385
+    performance:
+      power:
+        average_cycle_power: 3090.4707309939436
+        average_reel_out_power: 4084.56321601197
+        average_reel_in_power: -2480.51608493328
+      timing:
+        reel_out_time: 217.63200051040218
+        reel_in_time: 38.83447284210127
+        cycle_time: 256.46647335250344
+      forces:
+        tether_force_out: 2339.2938523997027
+        tether_force_in: 253.49877509141274
+      speeds:
+        reel_out_speed: 1.746066750794018
+        reel_in_speed: -9.785120594917256
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.710843373493976
+    performance:
+      power:
+        average_cycle_power: 3194.1361703741636
+        average_reel_out_power: 4221.574072066245
+        average_reel_in_power: -2563.721464377729
+      timing:
+        reel_out_time: 215.25165050481965
+        reel_in_time: 38.40972079539078
+        cycle_time: 253.66137130021042
+      forces:
+        tether_force_out: 2391.3178598437153
+        tether_force_in: 259.1363832734183
+      speeds:
+        reel_out_speed: 1.7653755458264953
+        reel_in_speed: -9.893328879537195
+      reel_factors:
+        gamma_out: 0.23777078481320607
+        gamma_in: -1.3324896097399033
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.7951807228915655
+    performance:
+      power:
+        average_cycle_power: 3300.0938707565906
+        average_reel_out_power: 4361.6082256840955
+        average_reel_in_power: -2647.8554399555055
+      timing:
+        reel_out_time: 212.92418021280145
+        reel_in_time: 38.0
+        cycle_time: 250.92418021280145
+      forces:
+        tether_force_out: 2443.9259364820987
+        tether_force_in: 264.78554399555054
+      speeds:
+        reel_out_speed: 1.7846728334011621
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23776925169207527
+        gamma_in: -1.3322848156933258
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.879518072289157
+    performance:
+      power:
+        average_cycle_power: 3408.2533224997774
+        average_reel_out_power: 4504.220077442129
+        average_reel_in_power: -2669.741566755374
+      timing:
+        reel_out_time: 210.7397918323212
+        reel_in_time: 38.0
+        cycle_time: 248.7397918323212
+      forces:
+        tether_force_out: 2497.9431618082
+        tether_force_in: 266.9741566755374
+      speeds:
+        reel_out_speed: 1.8031715638323949
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23766249957121952
+        gamma_in: -1.3180248864733666
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 7.9638554216867465
+    performance:
+      power:
+        average_cycle_power: 3518.5726794826246
+        average_reel_out_power: 4652.151171558307
+        average_reel_in_power: -2691.819153441704
+      timing:
+        reel_out_time: 208.18575096550828
+        reel_in_time: 38.0
+        cycle_time: 246.18575096550828
+      forces:
+        tether_force_out: 2548.714698041935
+        tether_force_in: 269.1819153441704
+      speeds:
+        reel_out_speed: 1.82529302912262
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23803043735528584
+        gamma_in: -1.3040669829857514
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.048192771084338
+    performance:
+      power:
+        average_cycle_power: 3631.081183600206
+        average_reel_out_power: 4800.702689742103
+        average_reel_in_power: -2714.088200014496
+      timing:
+        reel_out_time: 206.1491134621003
+        reel_in_time: 38.0
+        cycle_time: 244.1491134621003
+      forces:
+        tether_force_out: 2604.3700091722494
+        tether_force_in: 271.4088200014496
+      speeds:
+        reel_out_speed: 1.843325899482277
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23786307092015688
+        gamma_in: -1.2904016104095535
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.132530120481928
+    performance:
+      power:
+        average_cycle_power: 3745.7854063331633
+        average_reel_out_power: 4952.380351325031
+        average_reel_in_power: -2736.5487064737495
+      timing:
+        reel_out_time: 204.15193790516244
+        reel_in_time: 38.0
+        cycle_time: 242.15193790516244
+      forces:
+        tether_force_out: 2660.626436753827
+        tether_force_in: 273.65487064737493
+      speeds:
+        reel_out_speed: 1.8613587698419338
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23769917578886762
+        gamma_in: -1.277019667783084
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.216867469879517
+    performance:
+      power:
+        average_cycle_power: 3862.7018512715545
+        average_reel_out_power: 5107.216675872202
+        average_reel_in_power: -2759.2006728194647
+      timing:
+        reel_out_time: 202.1930883757894
+        reel_in_time: 38.0
+        cycle_time: 240.1930883757894
+      forces:
+        tether_force_out: 2717.4839807866674
+        tether_force_in: 275.92006728194644
+      speeds:
+        reel_out_speed: 1.8793916402015907
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2375386450737632
+        gamma_in: -1.2639124277911757
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.301204819277107
+    performance:
+      power:
+        average_cycle_power: 3981.846921947783
+        average_reel_out_power: 5265.244182948728
+        average_reel_in_power: -2782.0440990516404
+      timing:
+        reel_out_time: 200.27147213756513
+        reel_in_time: 38.0
+        cycle_time: 238.27147213756513
+      forces:
+        tether_force_out: 2774.9426412707708
+        tether_force_in: 278.204409905164
+      speeds:
+        reel_out_speed: 1.8974245105612473
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2373813762309541
+        gamma_in: -1.2510715177845892
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.385542168674698
+    performance:
+      power:
+        average_cycle_power: 4103.236922593734
+        average_reel_out_power: 5426.49539211972
+        average_reel_in_power: -2805.0789851702784
+      timing:
+        reel_out_time: 198.3860376038779
+        reel_in_time: 38.0
+        cycle_time: 236.3860376038779
+      forces:
+        tether_force_out: 2833.0024182061397
+        tether_force_in: 280.50789851702785
+      speeds:
+        reel_out_speed: 1.9154573809209043
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2372272708418796
+        gamma_in: -1.2384889019448015
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.46987951807229
+    performance:
+      power:
+        average_cycle_power: 4226.888058891041
+        average_reel_out_power: 5591.002822950288
+        average_reel_in_power: -2828.305331175379
+      timing:
+        reel_out_time: 196.53577241898364
+        reel_in_time: 38.0
+        cycle_time: 234.53577241898364
+      forces:
+        tether_force_out: 2891.6633115927707
+        tether_force_in: 282.83053311753787
+      speeds:
+        reel_out_speed: 1.9334902512805618
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23707623440792186
+        gamma_in: -1.2261568645143408
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.55421686746988
+    performance:
+      power:
+        average_cycle_power: 4352.816438714572
+        average_reel_out_power: 5758.798995005534
+        average_reel_in_power: -2851.7231370669397
+      timing:
+        reel_out_time: 194.71970164545996
+        reel_in_time: 38.0
+        cycle_time: 232.71970164545996
+      forces:
+        tether_force_out: 2950.925321430664
+        tether_force_in: 285.17231370669396
+      speeds:
+        reel_out_speed: 1.9515231216402185
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2369281761571689
+        gamma_in: -1.2140679940191292
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.638554216867469
+    performance:
+      power:
+        average_cycle_power: 4481.042587469753
+        average_reel_out_power: 5930.381009233652
+        average_reel_in_power: -2875.3324028449624
+      timing:
+        reel_out_time: 192.87576002556102
+        reel_in_time: 37.99999999999999
+        cycle_time: 230.87576002556102
+      forces:
+        tether_force_out: 3010.070379992353
+        tether_force_in: 287.5332402844962
+      speeds:
+        reel_out_speed: 1.9701801820490048
+        reel_in_speed: -10.000000000000002
+      reel_factors:
+        gamma_out: 0.23685804993700132
+        gamma_in: -1.2022151684150375
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.72289156626506
+    performance:
+      power:
+        average_cycle_power: 4611.582815995781
+        average_reel_out_power: 6105.813373314677
+        average_reel_in_power: -2899.1331285094466
+      timing:
+        reel_out_time: 191.00613656523393
+        reel_in_time: 38.0
+        cycle_time: 229.00613656523393
+      forces:
+        tether_force_out: 3069.0732184873023
+        tether_force_in: 289.91331285094464
+      speeds:
+        reel_out_speed: 1.989464877062834
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23686400539388175
+        gamma_in: -1.1905915410961074
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.80722891566265
+    performance:
+      power:
+        average_cycle_power: 4744.447969519011
+        average_reel_out_power: 6284.622669247163
+        average_reel_in_power: -2923.1253140603917
+      timing:
+        reel_out_time: 189.1783995850893
+        reel_in_time: 38.0
+        cycle_time: 227.1783995850893
+      forces:
+        tether_force_out: 3128.723312011448
+        tether_force_in: 292.31253140603917
+      speeds:
+        reel_out_speed: 2.0086859854688766
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23686234872020537
+        gamma_in: -1.1791905277066783
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.891566265060241
+    performance:
+      power:
+        average_cycle_power: 4879.653652176742
+        average_reel_out_power: 6466.83873966865
+        average_reel_in_power: -2947.3089594977996
+      timing:
+        reel_out_time: 187.39123848096824
+        reel_in_time: 38.0
+        cycle_time: 225.39123848096824
+      forces:
+        tether_force_out: 3189.0234749558213
+        tether_force_in: 294.73089594977995
+      speeds:
+        reel_out_speed: 2.0278429401521536
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23685323028195504
+        gamma_in: -1.16800579370404
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 8.975903614457831
+    performance:
+      power:
+        average_cycle_power: 5017.215384295367
+        average_reel_out_power: 6652.4909459558
+        average_reel_in_power: -2971.6840648216685
+      timing:
+        reel_out_time: 185.64343905329255
+        reel_in_time: 38.0
+        cycle_time: 223.64343905329255
+      forces:
+        tether_force_out: 3249.9770986266476
+        tether_force_in: 297.16840648216686
+      speeds:
+        reel_out_speed: 2.046934714945211
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23683674167996932
+        gamma_in: -1.1570312426222573
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.06024096385542
+    performance:
+      power:
+        average_cycle_power: 5157.14860406975
+        average_reel_out_power: 6841.607996244136
+        average_reel_in_power: -2996.2506300319983
+      timing:
+        reel_out_time: 183.93389139284812
+        reel_in_time: 38.0
+        cycle_time: 221.93389139284812
+      forces:
+        tether_force_out: 3311.5883740358163
+        tether_force_in: 299.62506300319984
+      speeds:
+        reel_out_speed: 2.0659596614981175
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23681289978606596
+        gamma_in: -1.1462610049914652
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.144578313253012
+    performance:
+      power:
+        average_cycle_power: 5299.450152614065
+        average_reel_out_power: 7039.4400376074445
+        average_reel_in_power: -3021.0086551287914
+      timing:
+        reel_out_time: 181.71222569804277
+        reel_in_time: 37.99999999999999
+        cycle_time: 219.71222569804277
+      forces:
+        tether_force_out: 3366.1903076356916
+        tether_force_in: 302.10086551287907
+      speeds:
+        reel_out_speed: 2.0912186757948725
+        reel_in_speed: -10.000000000000002
+      reel_factors:
+        gamma_out: 0.23749749414652316
+        gamma_in: -1.1356894278703318
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.228915662650602
+    performance:
+      power:
+        average_cycle_power: 5444.181209047746
+        average_reel_out_power: 7234.142268713653
+        average_reel_in_power: -3045.958140112043
+      timing:
+        reel_out_time: 180.24151616364747
+        reel_in_time: 38.0
+        cycle_time: 218.24151616364747
+      forces:
+        tether_force_out: 3431.296764885466
+        tether_force_in: 304.5958140112043
+      speeds:
+        reel_out_speed: 2.108282309692651
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23724734111406626
+        gamma_in: -1.1253110649524567
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.313253012048193
+    performance:
+      power:
+        average_cycle_power: 5591.326643619857
+        average_reel_out_power: 7432.39178201354
+        average_reel_in_power: -3071.09908498176
+      timing:
+        reel_out_time: 178.79442221911933
+        reel_in_time: 38.0
+        cycle_time: 216.79442221911933
+      forces:
+        tether_force_out: 3497.026827292741
+        tether_force_in: 307.10990849817597
+      speeds:
+        reel_out_speed: 2.1253459435904305
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23700171866693195
+        gamma_in: -1.1151206672103255
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.397590361445783
+    performance:
+      power:
+        average_cycle_power: 5740.9017608631375
+        average_reel_out_power: 7634.220500417413
+        average_reel_in_power: -3096.4314897379354
+      timing:
+        reel_out_time: 177.37037959171062
+        reel_in_time: 38.0
+        cycle_time: 215.37037959171062
+      forces:
+        tether_force_out: 3563.3804948575143
+        tether_force_in: 309.64314897379353
+      speeds:
+        reel_out_speed: 2.142409577488209
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23676050482782318
+        gamma_in: -1.1051131740430535
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.481927710843372
+    performance:
+      power:
+        average_cycle_power: 5892.921779401698
+        average_reel_out_power: 7839.660346835589
+        average_reel_in_power: -3121.9553543805746
+      timing:
+        reel_out_time: 175.96884184365936
+        reel_in_time: 37.99999999999999
+        cycle_time: 213.96884184365936
+      forces:
+        tether_force_out: 3630.357767579788
+        tether_force_in: 312.1955354380574
+      speeds:
+        reel_out_speed: 2.1594732113859876
+        reel_in_speed: -10.000000000000002
+      reel_factors:
+        gamma_out: 0.23652358195916867
+        gamma_in: -1.0952837048965463
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.566265060240964
+    performance:
+      power:
+        average_cycle_power: 6047.401832552953
+        average_reel_out_power: 8048.743244178388
+        average_reel_in_power: -3147.670678909674
+      timing:
+        reel_out_time: 174.58927967307505
+        reel_in_time: 38.0
+        cycle_time: 212.58927967307505
+      forces:
+        tether_force_out: 3697.958645459563
+        tether_force_in: 314.7670678909674
+      speeds:
+        reel_out_speed: 2.1765368452837666
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23629083657182545
+        gamma_in: -1.0856275513269291
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.650602409638553
+    performance:
+      power:
+        average_cycle_power: 6204.356968924498
+        average_reel_out_power: 8261.50111535611
+        average_reel_in_power: -3173.577463325235
+      timing:
+        reel_out_time: 173.23118024745418
+        reel_in_time: 38.0
+        cycle_time: 211.23118024745418
+      forces:
+        tether_force_out: 3766.1831284968366
+        tether_force_in: 317.3577463325235
+      speeds:
+        reel_out_speed: 2.1936004791815447
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23606215914381157
+        gamma_in: -1.0761401694801271
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.734939759036145
+    performance:
+      power:
+        average_cycle_power: 6363.802153006022
+        average_reel_out_power: 8477.965883279085
+        average_reel_in_power: -3199.6757076272575
+      timing:
+        reel_out_time: 171.89404656806164
+        reel_in_time: 38.0
+        cycle_time: 209.89404656806164
+      forces:
+        tether_force_out: 3835.031216691613
+        tether_force_in: 319.96757076272576
+      speeds:
+        reel_out_speed: 2.210664113079324
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2358374439484613
+        gamma_in: -1.0668171729623535
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.819277108433734
+    performance:
+      power:
+        average_cycle_power: 6525.752265756197
+        average_reel_out_power: 8698.169470857609
+        average_reel_in_power: -3225.9654118157423
+      timing:
+        reel_out_time: 170.5773968635252
+        reel_in_time: 38.0
+        cycle_time: 208.5773968635252
+      forces:
+        tether_force_out: 3904.502910043888
+        tether_force_in: 322.59654118157425
+      speeds:
+        reel_out_speed: 2.227727746977102
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23561658889143605
+        gamma_in: -1.0576543260780145
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.903614457831324
+    performance:
+      power:
+        average_cycle_power: 6690.22210518473
+        average_reel_out_power: 8922.143801002003
+        average_reel_in_power: -3252.446575890688
+      timing:
+        reel_out_time: 169.28076401108572
+        reel_in_time: 38.0
+        cycle_time: 207.28076401108572
+      forces:
+        tether_force_out: 3974.5982085536616
+        tether_force_in: 325.2446575890688
+      speeds:
+        reel_out_speed: 2.244791380874881
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23539949535606333
+        gamma_in: -1.0486475374131166
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 9.987951807228916
+    performance:
+      power:
+        average_cycle_power: 6857.226386929512
+        average_reel_out_power: 9149.920796622582
+        average_reel_in_power: -3279.119199852096
+      timing:
+        reel_out_time: 168.00369498404567
+        reel_in_time: 38.0
+        cycle_time: 206.00369498404567
+      forces:
+        tether_force_out: 4045.3171122209374
+        tether_force_in: 327.9119199852096
+      speeds:
+        reel_out_speed: 2.2618550147726597
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23518606805651113
+        gamma_in: -1.0397928537437657
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.072289156626505
+    performance:
+      power:
+        average_cycle_power: 7026.837626203115
+        average_reel_out_power: 9389.880210838186
+        average_reel_in_power: -3305.983283699964
+      timing:
+        reel_out_time: 166.1617091157729
+        reel_in_time: 38.0
+        cycle_time: 204.1617091157729
+      forces:
+        tether_force_out: 4105.890905855913
+        tether_force_in: 330.5983283699964
+      speeds:
+        reel_out_speed: 2.2869288118313444
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2358021319714938
+        gamma_in: -1.031086454250696
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.156626506024097
+    performance:
+      power:
+        average_cycle_power: 7198.969296109508
+        average_reel_out_power: 9626.57161022588
+        average_reel_in_power: -3333.038827434295
+      timing:
+        reel_out_time: 164.86073784302684
+        reel_in_time: 38.0
+        cycle_time: 202.86073784302684
+      forces:
+        tether_force_out: 4176.4307856857195
+        tether_force_in: 333.3038827434295
+      speeds:
+        reel_out_speed: 2.3049757326806297
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23568944928436833
+        gamma_in: -1.0225246450220424
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.240963855421686
+    performance:
+      power:
+        average_cycle_power: 7373.680112939684
+        average_reel_out_power: 9867.223300633525
+        average_reel_in_power: -3360.2858310550873
+      timing:
+        reel_out_time: 163.57876129229592
+        reel_in_time: 38.0
+        cycle_time: 201.57876129229592
+      forces:
+        tether_force_out: 4247.547802400294
+        tether_force_in: 336.02858310550874
+      speeds:
+        reel_out_speed: 2.32303996556732
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2355803781677687
+        gamma_in: -1.0141038538277432
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.325301204819276
+    performance:
+      power:
+        average_cycle_power: 7550.984323532049
+        average_reel_out_power: 10111.679565758746
+        average_reel_in_power: -3387.724294562342
+      timing:
+        reel_out_time: 162.3273713454994
+        reel_in_time: 37.99999999999999
+        cycle_time: 200.3273713454994
+      forces:
+        tether_force_out: 4319.479904730574
+        tether_force_in: 338.77242945623414
+      speeds:
+        reel_out_speed: 2.340948398598803
+        reel_in_speed: -10.000000000000002
+      reel_factors:
+        gamma_out: 0.23545741817226262
+        gamma_in: -1.0058206251500372
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.409638554216867
+    performance:
+      power:
+        average_cycle_power: 7730.8960653139875
+        average_reel_out_power: 10360.087930773845
+        average_reel_in_power: -3415.3542179560573
+      timing:
+        reel_out_time: 161.09798464258506
+        reel_in_time: 38.0
+        cycle_time: 199.09798464258506
+      forces:
+        tether_force_out: 4392.077069388515
+        tether_force_in: 341.5354217956057
+      speeds:
+        reel_out_speed: 2.3588128730665066
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23533206496295722
+        gamma_in: -0.9976716154555344
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.493975903614459
+    performance:
+      power:
+        average_cycle_power: 7913.429412109147
+        average_reel_out_power: 10612.484814350659
+        average_reel_in_power: -3443.175601236235
+      timing:
+        reel_out_time: 159.88963774094077
+        reel_in_time: 38.0
+        cycle_time: 197.88963774094077
+      forces:
+        tether_force_out: 4465.332506573058
+        tether_force_in: 344.3175601236235
+      speeds:
+        reel_out_speed: 2.37663932052739
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23520496325942236
+        gamma_in: -0.9896535886952718
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.578313253012048
+    performance:
+      power:
+        average_cycle_power: 8098.541151916682
+        average_reel_out_power: 10859.67002165066
+        average_reel_in_power: -3471.188444402873
+      timing:
+        reel_out_time: 159.2282524294135
+        reel_in_time: 38.0
+        cycle_time: 197.2282524294135
+      forces:
+        tether_force_out: 4550.4375776513825
+        tether_force_in: 347.11884444028726
+      speeds:
+        reel_out_speed: 2.3865111511442074
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2342989330571174
+        gamma_in: -0.9817634120200248
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.662650602409638
+    performance:
+      power:
+        average_cycle_power: 8286.367047979631
+        average_reel_out_power: 11120.632432633038
+        average_reel_in_power: -3499.392747455972
+      timing:
+        reel_out_time: 158.0158564725654
+        reel_in_time: 38.0
+        cycle_time: 196.0158564725654
+      forces:
+        tether_force_out: 4624.305943050257
+        tether_force_in: 349.93927474559723
+      speeds:
+        reel_out_speed: 2.4048219494097123
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23422918934079606
+        gamma_in: -0.9739980516989624
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.746987951807228
+    performance:
+      power:
+        average_cycle_power: 8476.855782908053
+        average_reel_out_power: 11385.686305278727
+        average_reel_in_power: -3527.788510395534
+      timing:
+        reel_out_time: 156.82470313662557
+        reel_in_time: 38.0
+        cycle_time: 194.82470313662557
+      forces:
+        tether_force_out: 4698.833881137051
+        tether_force_in: 352.7788510395534
+      speeds:
+        reel_out_speed: 2.423087641166738
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2341561813687366
+        gamma_in: -0.9663545692304729
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.831325301204819
+    performance:
+      power:
+        average_cycle_power: 8670.021144228032
+        average_reel_out_power: 11654.860992937445
+        average_reel_in_power: -3556.3757332215573
+      timing:
+        reel_out_time: 155.65427456483795
+        reel_in_time: 38.0
+        cycle_time: 193.65427456483795
+      forces:
+        tether_force_out: 4774.023507920277
+        tether_force_in: 355.6375733221557
+      speeds:
+        reel_out_speed: 2.441307834702031
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23407994783298267
+        gamma_in: -0.958830117634685
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 10.91566265060241
+    performance:
+      power:
+        average_cycle_power: 8865.876851202529
+        average_reel_out_power: 11928.185639865733
+        average_reel_in_power: -3585.1544159340424
+      timing:
+        reel_out_time: 154.50407545534628
+        reel_in_time: 38.0
+        cycle_time: 192.50407545534628
+      forces:
+        tether_force_out: 4849.877089861035
+        tether_force_in: 358.51544159340426
+      speeds:
+        reel_out_speed: 2.4594820484837308
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23400051768425809
+        gamma_in: -0.9514219379178606
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.0
+    performance:
+      power:
+        average_cycle_power: 9064.436555479731
+        average_reel_out_power: 12205.689132894162
+        average_reel_in_power: -3614.1245585329857
+      timing:
+        reel_out_time: 153.37363375250817
+        reel_in_time: 38.00000000000001
+        cycle_time: 191.37363375250817
+      forces:
+        tether_force_out: 4926.3970914881
+        tether_force_in: 361.4124558532987
+      speeds:
+        reel_out_speed: 2.4776096823342413
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.2339179077837538
+        gamma_in: -0.9441273556994323
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.08433734939759
+    performance:
+      power:
+        average_cycle_power: 9265.713841875377
+        average_reel_out_power: 12487.400049628124
+        average_reel_in_power: -3643.286161018396
+      timing:
+        reel_out_time: 152.26250121117025
+        reel_in_time: 38.0
+        cycle_time: 190.26250121117025
+      forces:
+        tether_force_out: 5003.5862241601835
+        tether_force_in: 364.3286161018396
+      speeds:
+        reel_out_speed: 2.495689989178521
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23383212071602916
+        gamma_in: -0.9369437779930236
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.16867469879518
+    performance:
+      power:
+        average_cycle_power: 9469.722229434652
+        average_reel_out_power: 12773.346629509319
+        average_reel_in_power: -3672.6392233902657
+      timing:
+        reel_out_time: 151.17025264617237
+        reel_in_time: 38.0
+        cycle_time: 189.17025264617237
+      forces:
+        tether_force_out: 5081.4474661054155
+        tether_force_in: 367.2639223390266
+      speeds:
+        reel_out_speed: 2.513722067326462
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23374314461040627
+        gamma_in: -0.9298686901333137
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.25301204819277
+    performance:
+      power:
+        average_cycle_power: 9676.475172081029
+        average_reel_out_power: 13063.5566691527
+        average_reel_in_power: -3702.1837456485955
+      timing:
+        reel_out_time: 150.09648847045972
+        reel_in_time: 38.0
+        cycle_time: 188.09648847045972
+      forces:
+        tether_force_out: 5159.98416572283
+        tether_force_in: 370.2183745648596
+      speeds:
+        reel_out_speed: 2.531704797842671
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23365094790251328
+        gamma_in: -0.922899652841094
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.337349397590362
+    performance:
+      power:
+        average_cycle_power: 9885.986059917235
+        average_reel_out_power: 13358.05749391709
+        average_reel_in_power: -3731.9197277933886
+      timing:
+        reel_out_time: 149.04083333817306
+        reel_in_time: 38.0
+        cycle_time: 187.04083333817306
+      forces:
+        tether_force_out: 5239.200054401659
+        tether_force_in: 373.19197277933887
+      speeds:
+        reel_out_speed: 2.5496368444061335
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23355548005392626
+        gamma_in: -0.9160342994193217
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.421686746987952
+    performance:
+      power:
+        average_cycle_power: 10098.268220284428
+        average_reel_out_power: 13656.875895327628
+        average_reel_in_power: -3761.847169824643
+      timing:
+        reel_out_time: 148.00293623762587
+        reel_in_time: 38.0
+        cycle_time: 186.00293623762587
+      forces:
+        tether_force_out: 5319.099295635117
+        tether_force_in: 376.1847169824643
+      speeds:
+        reel_out_speed: 2.5675166294666725
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23345667008466506
+        gamma_in: -0.9092703330733986
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.506024096385541
+    performance:
+      power:
+        average_cycle_power: 10313.334918324023
+        average_reel_out_power: 13960.037921354007
+        average_reel_in_power: -3791.9660717423562
+      timing:
+        reel_out_time: 146.98247627436834
+        reel_in_time: 38.00000000000001
+        cycle_time: 184.98247627436834
+      forces:
+        tether_force_out: 5399.68669095973
+        tether_force_in: 379.19660717423574
+      speeds:
+        reel_out_speed: 2.5853422097112038
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.23335441608187596
+        gamma_in: -0.9026055243493001
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.590361445783131
+    performance:
+      power:
+        average_cycle_power: 10531.1993586885
+        average_reel_out_power: 14267.56892256966
+        average_reel_in_power: -3822.276433546534
+      timing:
+        reel_out_time: 145.97915724866425
+        reel_in_time: 38.0
+        cycle_time: 183.97915724866425
+      forces:
+        tether_force_out: 5480.967598168294
+        tether_force_in: 382.2276433546534
+      speeds:
+        reel_out_speed: 2.6031113424822645
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2332485922765986
+        gamma_in: -0.8960377086835569
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.674698795180722
+    performance:
+      power:
+        average_cycle_power: 10751.874686165882
+        average_reel_out_power: 14579.493382150155
+        average_reel_in_power: -3852.7782552371737
+      timing:
+        reel_out_time: 144.99271109621426
+        reel_in_time: 38.0
+        cycle_time: 182.99271109621426
+      forces:
+        tether_force_out: 5562.948083913855
+        tether_force_in: 385.27782552371735
+      speeds:
+        reel_out_speed: 2.6208213994139307
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23313904222279702
+        gamma_in: -0.8895647840594239
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.759036144578314
+    performance:
+      power:
+        average_cycle_power: 10975.321984556926
+        average_reel_out_power: 14908.348935745898
+        average_reel_in_power: -3883.4715368142743
+      timing:
+        reel_out_time: 143.56223865727998
+        reel_in_time: 38.0
+        cycle_time: 181.56223865727998
+      forces:
+        tether_force_out: 5632.305126051469
+        tether_force_in: 388.3471536814274
+      speeds:
+        reel_out_speed: 2.6469355977873668
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23377330450486766
+        gamma_in: -0.8831847087639156
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.843373493975903
+    performance:
+      power:
+        average_cycle_power: 11201.677692834908
+        average_reel_out_power: 15226.553370584894
+        average_reel_in_power: -3914.356278277835
+      timing:
+        reel_out_time: 142.71479093818732
+        reel_in_time: 38.0
+        cycle_time: 180.71479093818732
+      forces:
+        tether_force_out: 5718.564160505723
+        tether_force_in: 391.4356278277835
+      speeds:
+        reel_out_speed: 2.6626532365841866
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23348686391992846
+        gamma_in: -0.8768954992406732
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 11.927710843373493
+    performance:
+      power:
+        average_cycle_power: 11430.878704672103
+        average_reel_out_power: 15549.225109354527
+        average_reel_in_power: -3945.4324796278593
+      timing:
+        reel_out_time: 141.87728947207276
+        reel_in_time: 38.0
+        cycle_time: 179.87728947207276
+      forces:
+        tether_force_out: 5805.478715542934
+        tether_force_in: 394.5432479627859
+      speeds:
+        reel_out_speed: 2.6783708753810065
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2332044740099278
+        gamma_in: -0.870695228033921
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.012048192771084
+    performance:
+      power:
+        average_cycle_power: 11662.938089523586
+        average_reel_out_power: 15876.39506176204
+        average_reel_in_power: -3976.7001408643446
+      timing:
+        reel_out_time: 141.0495601760016
+        reel_in_time: 38.0
+        cycle_time: 179.0495601760016
+      forces:
+        tether_force_out: 5893.0487911631035
+        tether_force_in: 397.67001408643443
+      speeds:
+        reel_out_speed: 2.6940885141778264
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23292604945473153
+        gamma_in: -0.8645820218190388
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.096385542168674
+    performance:
+      power:
+        average_cycle_power: 11897.868852194817
+        average_reel_out_power: 16208.094137514654
+        average_reel_in_power: -4008.1592619872913
+      timing:
+        reel_out_time: 140.23143300595916
+        reel_in_time: 38.0
+        cycle_time: 178.23143300595916
+      forces:
+        tether_force_out: 5981.274387366226
+        tether_force_in: 400.8159261987291
+      speeds:
+        reel_out_speed: 2.7098061529746458
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23265150731365156
+        gamma_in: -0.8585540595155197
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.180722891566264
+    performance:
+      power:
+        average_cycle_power: 12135.683933240934
+        average_reel_out_power: 16544.353246319624
+        average_reel_in_power: -4039.8098429966976
+      timing:
+        reel_out_time: 139.42274184039223
+        reel_in_time: 38.0
+        cycle_time: 177.42274184039223
+      forces:
+        tether_force_out: 6070.155504152306
+        tether_force_in: 403.9809842996698
+      speeds:
+        reel_out_speed: 2.7255237917714656
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23238076694307122
+        gamma_in: -0.8526095704783203
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.265060240963855
+    performance:
+      power:
+        average_cycle_power: 12376.396209363009
+        average_reel_out_power: 16885.203297884196
+        average_reel_in_power: -4071.651883892568
+      timing:
+        reel_out_time: 138.6233243677564
+        reel_in_time: 38.0
+        cycle_time: 176.6233243677564
+      forces:
+        tether_force_out: 6159.692141521345
+        tether_force_in: 407.1651883892568
+      speeds:
+        reel_out_speed: 2.7412414305682855
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2321137499174694
+        gamma_in: -0.8467468327638328
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.349397590361445
+    performance:
+      power:
+        average_cycle_power: 12620.018493801434
+        average_reel_out_power: 17230.67520191561
+        average_reel_in_power: -4103.685384674899
+      timing:
+        reel_out_time: 137.8330219779104
+        reel_in_time: 38.0
+        cycle_time: 175.8330219779104
+      forces:
+        tether_force_out: 6249.88429947334
+        tether_force_in: 410.36853846748994
+      speeds:
+        reel_out_speed: 2.756959069365106
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23185037995368066
+        gamma_in: -0.840964171466909
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.433734939759036
+    performance:
+      power:
+        average_cycle_power: 12866.563536726373
+        average_reel_out_power: 17580.799868121085
+        average_reel_in_power: -4135.910345343693
+      timing:
+        reel_out_time: 137.05167965720432
+        reel_in_time: 38.0
+        cycle_time: 175.05167965720432
+      forces:
+        tether_force_out: 6340.731978008292
+        tether_force_in: 413.59103453436927
+      speeds:
+        reel_out_speed: 2.7726767081619257
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23159058283823789
+        gamma_in: -0.8352599571255637
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.518072289156626
+    performance:
+      power:
+        average_cycle_power: 13116.044025625353
+        average_reel_out_power: 17935.608206207875
+        average_reel_in_power: -4168.326765898947
+      timing:
+        reel_out_time: 136.27914588711587
+        reel_in_time: 38.0
+        cycle_time: 174.27914588711587
+      forces:
+        tether_force_out: 6432.235177126199
+        tether_force_in: 416.8326765898947
+      speeds:
+        reel_out_speed: 2.788394346958745
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2313342863576519
+        gamma_in: -0.8296326041901653
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.602409638554215
+    performance:
+      power:
+        average_cycle_power: 13368.472585688012
+        average_reel_out_power: 18295.13112588322
+        average_reel_in_power: -4200.934646340662
+      timing:
+        reel_out_time: 135.5152725462958
+        reel_in_time: 38.0
+        cycle_time: 173.5152725462958
+      forces:
+        tether_force_out: 6524.393896827063
+        tether_force_in: 420.0934646340662
+      speeds:
+        reel_out_speed: 2.8041119857555645
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2310814202314906
+        gamma_in: -0.8240805695540935
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.686746987951807
+    performance:
+      power:
+        average_cycle_power: 13623.861780187959
+        average_reel_out_power: 18659.399536854366
+        average_reel_in_power: -4233.733986668839
+      timing:
+        reel_out_time: 134.75991481588912
+        reel_in_time: 38.0
+        cycle_time: 172.75991481588912
+      forces:
+        tether_force_out: 6617.2081371108825
+        tether_force_in: 423.3733986668839
+      speeds:
+        reel_out_speed: 2.819829624552385
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23083191604812725
+        gamma_in: -0.8186023511430026
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.771084337349397
+    performance:
+      power:
+        average_cycle_power: 13882.224110861907
+        average_reel_out_power: 19028.444348828554
+        average_reel_in_power: -4266.724786883478
+      timing:
+        reel_out_time: 134.01293108800564
+        reel_in_time: 38.0
+        cycle_time: 172.01293108800564
+      forces:
+        tether_force_out: 6710.677897977662
+        tether_force_in: 426.67247868834784
+      speeds:
+        reel_out_speed: 2.8355472633492047
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23058570720303473
+        gamma_in: -0.8131964865599828
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.855421686746988
+    performance:
+      power:
+        average_cycle_power: 14143.687086896341
+        average_reel_out_power: 19420.975262640874
+        average_reel_in_power: -4299.907046984579
+      timing:
+        reel_out_time: 132.8061977567856
+        reel_in_time: 38.0
+        cycle_time: 170.8061977567856
+      forces:
+        tether_force_out: 6787.4365298945395
+        tether_force_in: 429.99070469845793
+      speeds:
+        reel_out_speed: 2.8613122461039984
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23115441512762824
+        gamma_in: -0.8078615517840503
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 12.939759036144578
+    performance:
+      power:
+        average_cycle_power: 14408.060455214001
+        average_reel_out_power: 19802.121976136317
+        average_reel_in_power: -4333.2807669721415
+      timing:
+        reel_out_time: 132.02870669545146
+        reel_in_time: 38.0
+        cycle_time: 170.02870669545146
+      forces:
+        tether_force_out: 6880.127774565409
+        tether_force_in: 433.32807669721416
+      speeds:
+        reel_out_speed: 2.878161950616846
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23100017291916022
+        gamma_in: -0.8025961599195361
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.024096385542167
+    performance:
+      power:
+        average_cycle_power: 14675.446392922058
+        average_reel_out_power: 20188.298634849765
+        average_reel_in_power: -4366.845946846164
+      timing:
+        reel_out_time: 131.2582084837748
+        reel_in_time: 38.0
+        cycle_time: 169.2582084837748
+      forces:
+        tether_force_out: 6973.368187225834
+        tether_force_in: 436.6845946846164
+      speeds:
+        reel_out_speed: 2.8950570359717567
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23085154696073729
+        gamma_in: -0.7973989599940627
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.108433734939759
+    performance:
+      power:
+        average_cycle_power: 14945.85693372632
+        average_reel_out_power: 20579.5177870784
+        average_reel_in_power: -4400.602586606649
+      timing:
+        reel_out_time: 130.49515775079414
+        reel_in_time: 38.0
+        cycle_time: 168.49515775079414
+      forces:
+        tether_force_out: 7067.177421210709
+        tether_force_in: 440.06025866066494
+      speeds:
+        reel_out_speed: 2.911985444898146
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2307074735907426
+        gamma_in: -0.7922686358029244
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.192771084337348
+    performance:
+      power:
+        average_cycle_power: 15219.304058506885
+        average_reel_out_power: 20975.720333115372
+        average_reel_in_power: -4434.550686253597
+      timing:
+        reel_out_time: 129.7415691765089
+        reel_in_time: 38.0
+        cycle_time: 167.7415691765089
+      forces:
+        tether_force_out: 7161.6391332262965
+        tether_force_in: 443.4550686253597
+      speeds:
+        reel_out_speed: 2.9288993682743514
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23056410194653543
+        gamma_in: -0.7872039047977916
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.27710843373494
+    performance:
+      power:
+        average_cycle_power: 15495.799771565118
+        average_reel_out_power: 21376.791390394217
+        average_reel_in_power: -4468.690245787004
+      timing:
+        reel_out_time: 129.00045941749312
+        reel_in_time: 38.00000000000001
+        cycle_time: 167.00045941749312
+      forces:
+        tether_force_out: 7256.88397429675
+        tether_force_in: 446.8690245787005
+      speeds:
+        reel_out_speed: 2.945725943271099
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.23041571929971394
+        gamma_in: -0.7822035170177691
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.36144578313253
+    performance:
+      power:
+        average_cycle_power: 15775.356062913419
+        average_reel_out_power: 21782.648380775467
+        average_reel_in_power: -4503.021265206876
+      timing:
+        reel_out_time: 128.2738208322804
+        reel_in_time: 38.0
+        cycle_time: 166.2738208322804
+      forces:
+        tether_force_out: 7353.009304337251
+        tether_force_in: 450.3021265206876
+      speeds:
+        reel_out_speed: 2.9624127318765585
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23025834470881265
+        gamma_in: -0.7772662540609394
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.44578313253012
+    performance:
+      power:
+        average_cycle_power: 16057.984725315904
+        average_reel_out_power: 22193.504735731785
+        average_reel_in_power: -4537.543744513207
+      timing:
+        reel_out_time: 127.55725358647435
+        reel_in_time: 38.0
+        cycle_time: 165.55725358647436
+      forces:
+        tether_force_out: 7449.848714600944
+        tether_force_in: 453.7543744513207
+      speeds:
+        reel_out_speed: 2.9790544192172357
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23009946077035417
+        gamma_in: -0.7723909280946073
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.53012048192771
+    performance:
+      power:
+        average_cycle_power: 16343.69754219058
+        average_reel_out_power: 22609.422300721264
+        average_reel_in_power: -4572.257683706
+      timing:
+        reel_out_time: 126.84985843049589
+        reel_in_time: 38.0
+        cycle_time: 164.84985843049589
+      forces:
+        tether_force_out: 7547.373731688918
+        tether_force_in: 457.22576837059995
+      speeds:
+        reel_out_speed: 2.995667513560618
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22994036284462482
+        gamma_in: -0.7675763809025662
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.6144578313253
+    performance:
+      power:
+        average_cycle_power: 16632.50625500816
+        average_reel_out_power: 23030.430328172053
+        average_reel_in_power: -4607.163082785254
+      timing:
+        reel_out_time: 126.15145562942267
+        reel_in_time: 38.0
+        cycle_time: 164.15145562942268
+      forces:
+        tether_force_out: 7645.585025449755
+        tether_force_in: 460.7163082785254
+      speeds:
+        reel_out_speed: 3.0122522019585123
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22978106917709273
+        gamma_in: -0.7628214829677714
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.698795180722891
+    performance:
+      power:
+        average_cycle_power: 16924.4225511722
+        average_reel_out_power: 23456.55804124253
+        average_reel_in_power: -4642.259941750971
+      timing:
+        reel_out_time: 125.46187016127816
+        reel_in_time: 38.0
+        cycle_time: 163.46187016127817
+      forces:
+        tether_force_out: 7744.483261581198
+        tether_force_in: 464.22599417509707
+      speeds:
+        reel_out_speed: 3.028808669211764
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22962159739325846
+        gamma_in: -0.7581251325889021
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.783132530120481
+    performance:
+      power:
+        average_cycle_power: 17219.458064445294
+        average_reel_out_power: 23887.834573375418
+        average_reel_in_power: -4677.548260603147
+      timing:
+        reel_out_time: 124.78093269591659
+        reel_in_time: 38.0
+        cycle_time: 162.7809326959166
+      forces:
+        tether_force_out: 7844.0691530303875
+        tether_force_in: 467.75482606031477
+      speeds:
+        reel_out_speed: 3.0453370702560503
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22946196243692982
+        gamma_in: -0.7534862550293547
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.867469879518072
+    performance:
+      power:
+        average_cycle_power: 17517.62437532402
+        average_reel_out_power: 24324.28907644499
+        average_reel_in_power: -4713.028039341787
+      timing:
+        reel_out_time: 124.10847733078117
+        reel_in_time: 38.0
+        cycle_time: 162.10847733078117
+      forces:
+        tether_force_out: 7944.343366924582
+        tether_force_in: 471.30280393417866
+      speeds:
+        reel_out_speed: 3.0618375809027274
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22930218045176887
+        gamma_in: -0.7489038016972908
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 13.951807228915662
+    performance:
+      power:
+        average_cycle_power: 17818.93301145501
+        average_reel_out_power: 24765.95067942521
+        average_reel_in_power: -4748.699277966888
+      timing:
+        reel_out_time: 123.4443423041703
+        reel_in_time: 38.0
+        cycle_time: 161.4443423041703
+      forces:
+        tether_force_out: 8045.30656094517
+        tether_force_in: 474.8699277966888
+      speeds:
+        reel_out_speed: 3.0783103778354572
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22914226725602269
+        gamma_in: -0.7443767493554246
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.036144578313252
+    performance:
+      power:
+        average_cycle_power: 18123.39544804176
+        average_reel_out_power: 25212.848448076624
+        average_reel_in_power: -4784.56197647845
+      timing:
+        reel_out_time: 122.78837057351066
+        reel_in_time: 38.0
+        cycle_time: 160.78837057351066
+      forces:
+        tether_force_out: 8146.959416989988
+        tether_force_in: 478.45619764784493
+      speeds:
+        reel_out_speed: 3.094755620789857
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22898223703376436
+        gamma_in: -0.7399040993592977
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.120481927710843
+    performance:
+      power:
+        average_cycle_power: 18314.032024534354
+        average_reel_out_power: 25511.622356027798
+        average_reel_in_power: -4820.616134876473
+      timing:
+        reel_out_time: 122.1404094382795
+        reel_in_time: 38.0
+        cycle_time: 160.1404094382795
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 482.06161348764726
+      speeds:
+        reel_out_speed: 3.1111734580521704
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2288221027881142
+        gamma_in: -0.7354848769228512
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.204819277108433
+    performance:
+      power:
+        average_cycle_power: 18619.350652058074
+        average_reel_out_power: 26088.310688984147
+        average_reel_in_power: -4856.861753160958
+      timing:
+        reel_out_time: 119.44046654257835
+        reel_in_time: 38.0
+        cycle_time: 157.44046654257835
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 485.68617531609584
+      speeds:
+        reel_out_speed: 3.181501303534652
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23260532849377502
+        gamma_in: -0.7311181304101626
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.289156626506024
+    performance:
+      power:
+        average_cycle_power: 18920.996914861786
+        average_reel_out_power: 26664.999021940534
+        average_reel_in_power: -4893.298831331906
+      timing:
+        reel_out_time: 116.85730786774408
+        reel_in_time: 38.0
+        cycle_time: 154.85730786774408
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 489.3298831331906
+      speeds:
+        reel_out_speed: 3.2518291490171385
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23634389554861046
+        gamma_in: -0.7268029306522612
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.373493975903614
+    performance:
+      power:
+        average_cycle_power: 19219.02594017538
+        average_reel_out_power: 27241.687354896887
+        average_reel_in_power: -4929.927369389315
+      timing:
+        reel_out_time: 114.38351668182833
+        reel_in_time: 38.0
+        cycle_time: 152.38351668182833
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 492.99273693893144
+      speeds:
+        reel_out_speed: 3.3221569944996205
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.240038590064663
+        gamma_in: -0.7225383702879982
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.457831325301203
+    performance:
+      power:
+        average_cycle_power: 19513.491697272137
+        average_reel_out_power: 27818.375687853262
+        average_reel_in_power: -4966.747367333183
+      timing:
+        reel_out_time: 112.012291262591
+        reel_in_time: 38.0
+        cycle_time: 150.01229126259102
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 496.67473673331835
+      speeds:
+        reel_out_speed: 3.3924848399821053
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24369017981136176
+        gamma_in: -0.7183235631279848
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.542168674698795
+    performance:
+      power:
+        average_cycle_power: 19804.447027713646
+        average_reel_out_power: 28395.06402080964
+        average_reel_in_power: -5003.758825163516
+      timing:
+        reel_out_time: 109.73738244493495
+        reel_in_time: 38.0
+        cycle_time: 147.73738244493495
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 500.3758825163516
+      speeds:
+        reel_out_speed: 3.4628126854645904
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24729941474741113
+        gamma_in: -0.7141576435406642
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.626506024096384
+    performance:
+      power:
+        average_cycle_power: 20091.943674651804
+        average_reel_out_power: 28971.752353766
+        average_reel_in_power: -5040.9617428803085
+      timing:
+        reel_out_time: 107.55303862712174
+        reel_in_time: 38.0
+        cycle_time: 145.55303862712174
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 504.09617428803085
+      speeds:
+        reel_out_speed: 3.5331405309470734
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.25086702753428025
+        gamma_in: -0.7100397658596226
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.710843373493976
+    performance:
+      power:
+        average_cycle_power: 20376.032311221883
+        average_reel_out_power: 29548.440686722373
+        average_reel_in_power: -5078.356120483565
+      timing:
+        reel_out_time: 105.45395721677382
+        reel_in_time: 38.0
+        cycle_time: 143.4539572167738
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 507.8356120483565
+      speeds:
+        reel_out_speed: 3.6034683764295576
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2543937340320289
+        gamma_in: -0.7059691038112872
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.795180722891565
+    performance:
+      power:
+        average_cycle_power: 20656.762568059334
+        average_reel_out_power: 30125.129019678727
+        average_reel_in_power: -5115.94195797328
+      timing:
+        reel_out_time: 103.43524165372125
+        reel_in_time: 38.0
+        cycle_time: 141.43524165372125
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 511.594195797328
+      speeds:
+        reel_out_speed: 3.67379622191204
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2578802337781745
+        gamma_in: -0.7019448499622002
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.879518072289155
+    performance:
+      power:
+        average_cycle_power: 20934.1830599719
+        average_reel_out_power: 30701.81735263511
+        average_reel_in_power: -5153.719255349459
+      timing:
+        reel_out_time: 101.49236327642203
+        reel_in_time: 38.0
+        cycle_time: 139.49236327642203
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 515.3719255349458
+      speeds:
+        reel_out_speed: 3.7441240673945253
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.26132721045027485
+        gamma_in: -0.6979662151850865
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 14.963855421686747
+    performance:
+      power:
+        average_cycle_power: 21208.34141179686
+        average_reel_out_power: 31278.505685591474
+        average_reel_in_power: -5191.688012612095
+      timing:
+        reel_out_time: 99.62112740684391
+        reel_in_time: 38.00000000000001
+        cycle_time: 137.62112740684393
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 519.1688012612096
+      speeds:
+        reel_out_speed: 3.814451912877009
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.2647353323128667
+        gamma_in: -0.6940324281429803
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.048192771084336
+    performance:
+      power:
+        average_cycle_power: 21479.28428347263
+        average_reel_out_power: 31855.19401854785
+        average_reel_in_power: -5229.8482297612
+      timing:
+        reel_out_time: 97.8176431192255
+        reel_in_time: 38.0
+        cycle_time: 135.8176431192255
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 522.98482297612
+      speeds:
+        reel_out_speed: 3.884779758359494
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2681052526493768
+        gamma_in: -0.690142734790698
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.132530120481928
+    performance:
+      power:
+        average_cycle_power: 21747.057394352087
+        average_reel_out_power: 32431.88235150422
+        average_reel_in_power: -5268.199906796761
+      timing:
+        reel_out_time: 96.07829623418318
+        reel_in_time: 38.0
+        cycle_time: 134.0782962341832
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 526.819990679676
+      speeds:
+        reel_out_speed: 3.955107603841978
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2714376101795881
+        gamma_in: -0.686296397892979
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.216867469879517
+    performance:
+      power:
+        average_cycle_power: 22011.705546784575
+        average_reel_out_power: 33008.57068446058
+        average_reel_in_power: -5306.743043718785
+      timing:
+        reel_out_time: 94.39972514371598
+        reel_in_time: 38.0
+        cycle_time: 132.39972514371598
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 530.6743043718785
+      speeds:
+        reel_out_speed: 4.025435449324461
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2747330294632254
+        gamma_in: -0.6824926965586554
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.301204819277107
+    performance:
+      power:
+        average_cycle_power: 22273.27264899184
+        average_reel_out_power: 33585.25901741694
+        average_reel_in_power: -5345.47764052727
+      timing:
+        reel_out_time: 92.77879912684541
+        reel_in_time: 38.0
+        cycle_time: 130.7787991268454
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 534.547764052727
+      speeds:
+        reel_out_speed: 4.095763294806944
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2779921212901927
+        gamma_in: -0.678730925790222
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.385542168674698
+    performance:
+      power:
+        average_cycle_power: 22531.801737262635
+        average_reel_out_power: 34161.94735037334
+        average_reel_in_power: -5384.403697222219
+      timing:
+        reel_out_time: 91.21259886157945
+        reel_in_time: 38.0
+        cycle_time: 129.21259886157947
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 538.4403697222219
+      speeds:
+        reel_out_speed: 4.166091140289431
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2812154830579765
+        gamma_in: -0.6750103960482238
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.469879518072288
+    performance:
+      power:
+        average_cycle_power: 22787.334997489368
+        average_reel_out_power: 34738.63568332968
+        average_reel_in_power: -5423.521213803628
+      timing:
+        reel_out_time: 89.6983988779761
+        reel_in_time: 38.0
+        cycle_time: 127.6983988779761
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 542.3521213803627
+      speeds:
+        reel_out_speed: 4.236418985771913
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.28440369913670316
+        gamma_in: -0.6713304328298924
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.55421686746988
+    performance:
+      power:
+        average_cycle_power: 23039.913786069756
+        average_reel_out_power: 35315.32401628606
+        average_reel_in_power: -5462.8301902714975
+      timing:
+        reel_out_time: 88.23365173042222
+        reel_in_time: 38.0
+        cycle_time: 126.23365173042222
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 546.2830190271497
+      speeds:
+        reel_out_speed: 4.306746831254397
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.28755734122232224
+        gamma_in: -0.6676903762614885
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.638554216867469
+    performance:
+      power:
+        average_cycle_power: 23289.578650194733
+        average_reel_out_power: 35892.01234924243
+        average_reel_in_power: -5502.330626625828
+      timing:
+        reel_out_time: 86.81597369576768
+        reel_in_time: 38.0
+        cycle_time: 124.81597369576768
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 550.2330626625828
+      speeds:
+        reel_out_speed: 4.377074676736882
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.29067696867835835
+        gamma_in: -0.6640895807038381
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.722891566265059
+    performance:
+      power:
+        average_cycle_power: 23536.369347544034
+        average_reel_out_power: 36468.700682198774
+        average_reel_in_power: -5542.022522866623
+      timing:
+        reel_out_time: 85.44313182841177
+        reel_in_time: 38.0
+        cycle_time: 123.44313182841177
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 554.2022522866623
+      speeds:
+        reel_out_speed: 4.447402522219363
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.29376312886666667
+        gamma_in: -0.6605274143705608
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.80722891566265
+    performance:
+      power:
+        average_cycle_power: 23780.32486540927
+        average_reel_out_power: 37045.389015155175
+        average_reel_in_power: -5581.905878993877
+      timing:
+        reel_out_time: 84.1130322244761
+        reel_in_time: 38.0
+        cycle_time: 122.1130322244761
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 558.1905878993878
+      speeds:
+        reel_out_speed: 4.5177303677018505
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.29681635746760004
+        gamma_in: -0.6570032589585226
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.89156626506024
+    performance:
+      power:
+        average_cycle_power: 24021.483439263673
+        average_reel_out_power: 37622.077348111525
+        average_reel_in_power: -5621.980695007595
+      timing:
+        reel_out_time: 82.82370936533121
+        reel_in_time: 38.0
+        cycle_time: 120.82370936533121
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 562.1980695007595
+      speeds:
+        reel_out_speed: 4.588058213184333
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.29983717878997895
+        gamma_in: -0.6535165092900544
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 15.975903614457831
+    performance:
+      power:
+        average_cycle_power: 24259.882570797618
+        average_reel_out_power: 38198.76568106791
+        average_reel_in_power: -5662.246970907772
+      timing:
+        reel_out_time: 81.57331642640887
+        reel_in_time: 38.0
+        cycle_time: 119.57331642640887
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 566.2246970907772
+      speeds:
+        reel_out_speed: 4.658386058666818
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.30282610607124694
+        gamma_in: -0.650066572966502
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.06024096385542
+    performance:
+      power:
+        average_cycle_power: 24495.559045437065
+        average_reel_out_power: 38775.45401402426
+        average_reel_in_power: -5702.7047066944115
+      timing:
+        reel_out_time: 80.36011645080954
+        reel_in_time: 38.0
+        cycle_time: 118.36011645080954
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 570.2704706694411
+      speeds:
+        reel_out_speed: 4.7287139041493
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.3057836417681653
+        gamma_in: -0.6466528700326946
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.14457831325301
+    performance:
+      power:
+        average_cycle_power: 24728.54894936285
+        average_reel_out_power: 39352.14234698063
+        average_reel_in_power: -5743.353902367513
+      timing:
+        reel_out_time: 79.18247429899026
+        reel_in_time: 38.0
+        cycle_time: 117.18247429899026
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 574.3353902367513
+      speeds:
+        reel_out_speed: 4.799041749631784
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.30871027783839955
+        gamma_in: -0.6432748326519268
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.2289156626506
+    performance:
+      power:
+        average_cycle_power: 24958.887686046688
+        average_reel_out_power: 39928.830679937004
+        average_reel_in_power: -5784.194557927075
+      timing:
+        reel_out_time: 78.0388492960725
+        reel_in_time: 38.0
+        cycle_time: 116.0388492960725
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 578.4194557927075
+      speeds:
+        reel_out_speed: 4.869369595114269
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.31160649601332335
+        gamma_in: -0.6399319047910778
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.313253012048193
+    performance:
+      power:
+        average_cycle_power: 25186.609992320336
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -5825.226673373101
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 582.5226673373102
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.3144727680623617
+        gamma_in: -0.6366235419154961
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.397590361445783
+    performance:
+      power:
+        average_cycle_power: 25172.9797303708
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -5866.450248705587
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 586.6450248705587
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.31285534750656707
+        gamma_in: -0.6333492106933003
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.481927710843372
+    performance:
+      power:
+        average_cycle_power: 25159.2861636646
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -5907.865283924535
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 590.7865283924535
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.31125447950032004
+        gamma_in: -0.6301083887087586
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.566265060240966
+    performance:
+      power:
+        average_cycle_power: 25145.52929220174
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -5949.471779029945
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 594.9471779029944
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.30966991124104565
+        gamma_in: -0.626900564184423
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.65060240963855
+    performance:
+      power:
+        average_cycle_power: 25131.709115982205
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -5991.269734021811
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 599.1269734021811
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.3081013950480737
+        gamma_in: -0.623725235711709
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.734939759036145
+    performance:
+      power:
+        average_cycle_power: 25117.82563500601
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6033.259148900146
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 603.3259148900146
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.3065486882335765
+        gamma_in: -0.6205819119896198
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.819277108433734
+    performance:
+      power:
+        average_cycle_power: 25103.87884927315
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6075.44002366494
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 607.5440023664939
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.305011552977391
+        gamma_in: -0.6174701115713337
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.903614457831324
+    performance:
+      power:
+        average_cycle_power: 25089.86875878362
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6117.812358316194
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 611.7812358316194
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.30348975620558644
+        gamma_in: -0.6143893626183761
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 16.987951807228917
+    performance:
+      power:
+        average_cycle_power: 25075.79536353743
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6160.3761528539135
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 616.0376152853913
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.30198306947265086
+        gamma_in: -0.6113392026621146
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.072289156626503
+    performance:
+      power:
+        average_cycle_power: 25061.658663534574
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6203.13140727809
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 620.313140727809
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.30049126884716854
+        gamma_in: -0.6083191783723231
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.156626506024097
+    performance:
+      power:
+        average_cycle_power: 25047.45865877505
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6246.07812158873
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 624.607812158873
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2990141348008692
+        gamma_in: -0.6053288453325714
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.240963855421686
+    performance:
+      power:
+        average_cycle_power: 25033.19534925886
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6289.216295785831
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 628.9216295785831
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.29755145210093487
+        gamma_in: -0.6023677678222095
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.325301204819276
+    performance:
+      power:
+        average_cycle_power: 25018.86873498601
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6332.545929869393
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 633.2545929869393
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2961030097054505
+        gamma_in: -0.5994355186047161
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.40963855421687
+    performance:
+      power:
+        average_cycle_power: 25004.478815956485
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6376.06702383942
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 637.606702383942
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.29466860066189465
+        gamma_in: -0.5965316787222018
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.493975903614455
+    performance:
+      power:
+        average_cycle_power: 24990.025592170306
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6419.779577695903
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 641.9779577695904
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.29324802200856603
+        gamma_in: -0.5936558372958552
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.57831325301205
+    performance:
+      power:
+        average_cycle_power: 24975.509063627454
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6463.683591438853
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 646.3683591438853
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.291841074678847
+        gamma_in: -0.5908075913321328
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.662650602409638
+    performance:
+      power:
+        average_cycle_power: 24960.92923032794
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6507.779065068261
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 650.7779065068261
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2904475634082113
+        gamma_in: -0.5879865455345032
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.746987951807228
+    performance:
+      power:
+        average_cycle_power: 24946.28609227176
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6552.065998584134
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 655.2065998584134
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2890672966438817
+        gamma_in: -0.5851923121205579
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.83132530120482
+    performance:
+      power:
+        average_cycle_power: 24931.57964945891
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6596.544391986468
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 659.6544391986469
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.28770008645705253
+        gamma_in: -0.5824245106443119
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 17.915662650602407
+    performance:
+      power:
+        average_cycle_power: 24916.8099018894
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6641.214245275259
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 664.1214245275258
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.286345748457591
+        gamma_in: -0.5796827678235251
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.0
+    performance:
+      power:
+        average_cycle_power: 24901.976849563223
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6686.075558450515
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 668.6075558450515
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2850041017111364
+        gamma_in: -0.5769667173718753
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.08433734939759
+    performance:
+      power:
+        average_cycle_power: 24887.080492480385
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6731.128331512228
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 673.112833151223
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.2836749686585195
+        gamma_in: -0.5742759998358306
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.16867469879518
+    performance:
+      power:
+        average_cycle_power: 24872.120830640873
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6776.372564460409
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 677.637256446041
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2823581750374256
+        gamma_in: -0.5716102624360622
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.253012048192772
+    performance:
+      power:
+        average_cycle_power: 24857.097864044703
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6821.8082572950525
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 37.99999999999999
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 682.1808257295052
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.000000000000002
+      reel_factors:
+        gamma_out: 0.28105354980622954
+        gamma_in: -0.5689691589132553
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.33734939759036
+    performance:
+      power:
+        average_cycle_power: 24842.011592691862
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6867.435410016151
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 686.7435410016151
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2797609250699329
+        gamma_in: -0.5663523493781747
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.42168674698795
+    performance:
+      power:
+        average_cycle_power: 24826.86201658236
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6913.254022623714
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 691.3254022623714
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2784801360081346
+        gamma_in: -0.5637595001658481
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.50602409638554
+    performance:
+      power:
+        average_cycle_power: 24811.64913571619
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -6959.264095117741
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 695.9264095117741
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.27721102080497256
+        gamma_in: -0.5611902836937381
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.59036144578313
+    performance:
+      power:
+        average_cycle_power: 24796.37295009336
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7005.465627498226
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 700.5465627498227
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.27595342058097067
+        gamma_in: -0.558644378323773
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.674698795180724
+    performance:
+      power:
+        average_cycle_power: 24781.033459713854
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7051.8586197651775
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 705.1858619765178
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.274707179326734
+        gamma_in: -0.5561214682281171
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.75903614457831
+    performance:
+      power:
+        average_cycle_power: 24765.630664577693
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7098.443071918584
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 709.8443071918583
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2734721438384315
+        gamma_in: -0.5536212432585625
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.843373493975903
+    performance:
+      power:
+        average_cycle_power: 24750.16456468486
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7145.218983958457
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 714.5218983958456
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.27224816365501137
+        gamma_in: -0.5511433988194256
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 18.927710843373493
+    performance:
+      power:
+        average_cycle_power: 24734.635160035366
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7192.186355884787
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 719.2186355884787
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.271035090997096
+        gamma_in: -0.5486876357438458
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.012048192771083
+    performance:
+      power:
+        average_cycle_power: 24719.042450629204
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7239.345187697581
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 723.9345187697581
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2698327807075018
+        gamma_in: -0.5462536601733725
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.096385542168676
+    performance:
+      power:
+        average_cycle_power: 24703.38643646638
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7286.695479396838
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 728.6695479396838
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2686410901933361
+        gamma_in: -0.5438411834407455
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.180722891566262
+    performance:
+      power:
+        average_cycle_power: 24687.667117546887
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7334.237230982552
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 733.4237230982553
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.2674598793696218
+        gamma_in: -0.5414499219557675
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.265060240963855
+    performance:
+      power:
+        average_cycle_power: 24671.88449387073
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7381.970442454732
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 738.1970442454733
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.26628901060440135
+        gamma_in: -0.5390795970941724
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.349397590361445
+    performance:
+      power:
+        average_cycle_power: 24656.03856543791
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7429.895113813373
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 742.9895113813374
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.26512834866527885
+        gamma_in: -0.5367299350894034
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.433734939759034
+    performance:
+      power:
+        average_cycle_power: 24640.129332248423
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7478.011245058474
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 747.8011245058474
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2639777606673514
+        gamma_in: -0.5344006669272051
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.518072289156628
+    performance:
+      power:
+        average_cycle_power: 24624.156794302267
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7526.318836190041
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 752.631883619004
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.26283711602249243
+        gamma_in: -0.5320915282429516
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.602409638554214
+    performance:
+      power:
+        average_cycle_power: 24608.12095159945
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7574.817887208063
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 757.4817887208063
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.26170628638994337
+        gamma_in: -0.5298022592216237
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.686746987951807
+    performance:
+      power:
+        average_cycle_power: 24592.021804139964
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7623.508398112553
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 762.3508398112554
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.26058514562817486
+        gamma_in: -0.527532604500356
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.771084337349397
+    performance:
+      power:
+        average_cycle_power: 24575.859351923817
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7672.3903689035
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 767.23903689035
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2594735697479816
+        gamma_in: -0.5252823130734806
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.855421686746986
+    performance:
+      power:
+        average_cycle_power: 24559.633594951003
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7721.463799580909
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 772.1463799580908
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2583714368667705
+        gamma_in: -0.5230511381999889
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 19.93975903614458
+    performance:
+      power:
+        average_cycle_power: 24543.344533221523
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7770.728690144781
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 777.0728690144782
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.25727862716401073
+        gamma_in: -0.5208388373133424
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.02409638554217
+    performance:
+      power:
+        average_cycle_power: 24526.992166735374
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7820.185040595113
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 782.0185040595114
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.25619502283780854
+        gamma_in: -0.518645171933563
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.10843373493976
+    performance:
+      power:
+        average_cycle_power: 24510.576495492565
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7869.832850931908
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 786.9832850931907
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2551205080625751
+        gamma_in: -0.5164699075815349
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.19277108433735
+    performance:
+      power:
+        average_cycle_power: 24494.09751949309
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7919.672121155163
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 791.9672121155163
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.25405496894775526
+        gamma_in: -0.5143128136954546
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.277108433734938
+    performance:
+      power:
+        average_cycle_power: 24477.555238736946
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -7969.702851264881
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 796.9702851264881
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.25299829349758635
+        gamma_in: -0.5121736635493653
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.361445783132528
+    performance:
+      power:
+        average_cycle_power: 24460.949653224143
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8019.92504126106
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 801.992504126106
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2519503715718567
+        gamma_in: -0.510052234173717
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.44578313253012
+    performance:
+      power:
+        average_cycle_power: 24444.28076295467
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8070.338691143705
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 807.0338691143704
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2509110948476357
+        gamma_in: -0.5079483062778913
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.53012048192771
+    performance:
+      power:
+        average_cycle_power: 24427.54856792853
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8120.943800912803
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 812.0943800912804
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24988035678194706
+        gamma_in: -0.5058616641746372
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.6144578313253
+    performance:
+      power:
+        average_cycle_power: 24410.75306814573
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8171.740370568367
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 817.1740370568367
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24885805257535815
+        gamma_in: -0.5037920957063599
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.69879518072289
+    performance:
+      power:
+        average_cycle_power: 24393.89426360626
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8222.728400110393
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 822.2728400110392
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24784407913645973
+        gamma_in: -0.5017393921732141
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.78313253012048
+    performance:
+      power:
+        average_cycle_power: 24376.97215431013
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8273.90788953888
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 827.3907889538879
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24683833504721034
+        gamma_in: -0.499703348262946
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.867469879518072
+    performance:
+      power:
+        average_cycle_power: 24359.986740257325
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8325.278838853828
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 832.5278838853828
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24584072052912112
+        gamma_in: -0.49768376198243747
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 20.951807228915662
+    performance:
+      power:
+        average_cycle_power: 24342.938021447866
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8376.841248055238
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 837.6841248055238
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24485113741025752
+        gamma_in: -0.49568043459090383
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.03614457831325
+    performance:
+      power:
+        average_cycle_power: 24325.825997881733
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8428.595117143108
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 842.8595117143108
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24386948909303427
+        gamma_in: -0.49369317053469747
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.12048192771084
+    performance:
+      power:
+        average_cycle_power: 24308.65066955894
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8480.54044611744
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 848.0540446117441
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24289568052278257
+        gamma_in: -0.4917217773836748
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.20481927710843
+    performance:
+      power:
+        average_cycle_power: 24291.41203647948
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8532.677234978237
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 853.2677234978237
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24192961815706693
+        gamma_in: -0.48976606576908055
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.289156626506024
+    performance:
+      power:
+        average_cycle_power: 24274.110098643356
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8585.005483725494
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 858.5005483725495
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2409712099357316
+        gamma_in: -0.48782584932290984
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.373493975903614
+    performance:
+      power:
+        average_cycle_power: 24256.744856050558
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8637.525192359213
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 863.7525192359213
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.24002036525165601
+        gamma_in: -0.4859009446187045
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.457831325301203
+    performance:
+      power:
+        average_cycle_power: 24239.316308701105
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8690.23636087939
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 869.023636087939
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.23907699492219978
+        gamma_in: -0.483991171113746
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.542168674698793
+    performance:
+      power:
+        average_cycle_power: 24221.824456594983
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8743.138989286032
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 874.3138989286032
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2381410111613187
+        gamma_in: -0.4820963510926073
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.626506024096383
+    performance:
+      power:
+        average_cycle_power: 24204.269299732197
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8796.23307757913
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 879.6233077579132
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23721232755233307
+        gamma_in: -0.48021630961202333
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.710843373493976
+    performance:
+      power:
+        average_cycle_power: 24186.650838112742
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8849.518625758697
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 884.9518625758698
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23629085902133062
+        gamma_in: -0.4783508744470487
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.795180722891565
+    performance:
+      power:
+        average_cycle_power: 24168.969071736625
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8902.995633824725
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 890.2995633824726
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2353765218111873
+        gamma_in: -0.4764998760384642
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.879518072289155
+    performance:
+      power:
+        average_cycle_power: 24151.224000603845
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -8956.664101777209
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 895.666410177721
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23446923345618823
+        gamma_in: -0.4746631474413997
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 21.963855421686745
+    performance:
+      power:
+        average_cycle_power: 24133.415624714395
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9010.524029616157
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 901.0524029616158
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23356891275723415
+        gamma_in: -0.4728405242751409
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.048192771084334
+    performance:
+      power:
+        average_cycle_power: 24115.543944068282
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9064.575417341568
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 906.457541734157
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.2326754797576163
+        gamma_in: -0.4710318446740883
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.132530120481928
+    performance:
+      power:
+        average_cycle_power: 24097.6089586655
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9118.818264953441
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 911.8818264953442
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.23178885571934554
+        gamma_in: -0.4692369492398376
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.216867469879517
+    performance:
+      power:
+        average_cycle_power: 24079.610668506055
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9173.252572451776
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 917.3252572451777
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2309089631000205
+        gamma_in: -0.46745568099435014
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.301204819277107
+    performance:
+      power:
+        average_cycle_power: 24061.549073589944
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9227.878339836569
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 922.7878339836569
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2300357255302203
+        gamma_in: -0.46568788533418787
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.385542168674696
+    performance:
+      power:
+        average_cycle_power: 24043.42417391717
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9282.695567107825
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 928.2695567107826
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22916906779140894
+        gamma_in: -0.46393340998578136
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.469879518072286
+    performance:
+      power:
+        average_cycle_power: 24025.23596948773
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9337.70425426554
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 933.7704254265541
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22830891579433665
+        gamma_in: -0.4621921049617061
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.55421686746988
+    performance:
+      power:
+        average_cycle_power: 24006.98446030162
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9392.904401309725
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 939.2904401309725
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22745519655792618
+        gamma_in: -0.46046382251793894
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.63855421686747
+    performance:
+      power:
+        average_cycle_power: 23988.66964635885
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9448.296008240366
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 944.8296008240366
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2266078381886311
+        gamma_in: -0.4587484171120712
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.72289156626506
+    performance:
+      power:
+        average_cycle_power: 23970.291527659418
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9503.879075057466
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 950.3879075057466
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22576676986025335
+        gamma_in: -0.4570457453624506
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.807228915662648
+    performance:
+      power:
+        average_cycle_power: 23951.85010420331
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9559.65360176103
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 955.965360176103
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22493192179420912
+        gamma_in: -0.4553556660082313
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.89156626506024
+    performance:
+      power:
+        average_cycle_power: 23933.345375990542
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9615.619588351059
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 961.561958835106
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2241032252402304
+        gamma_in: -0.4536780398703062
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 22.97590361445783
+    performance:
+      power:
+        average_cycle_power: 23914.777343021113
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9671.777034827548
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 967.1777034827549
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22328061245749226
+        gamma_in: -0.4520127298131
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.06024096385542
+    performance:
+      power:
+        average_cycle_power: 23896.146005295013
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9728.125941190494
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 972.8125941190494
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22246401669615348
+        gamma_in: -0.4503596007072005
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.14457831325301
+    performance:
+      power:
+        average_cycle_power: 23877.451362812248
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9784.666307439904
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 978.4666307439904
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2216533721793013
+        gamma_in: -0.44871851939280677
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.2289156626506
+    performance:
+      power:
+        average_cycle_power: 23858.69341557282
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9841.398133575778
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 984.1398133575777
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.22084861408528933
+        gamma_in: -0.447089354643974
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.313253012048193
+    performance:
+      power:
+        average_cycle_power: 23839.87216357673
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9898.321419598113
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 989.8321419598112
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2200496785304588
+        gamma_in: -0.44547197713363396
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.397590361445783
+    performance:
+      power:
+        average_cycle_power: 23820.98760682397
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -9955.436165506906
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 995.5436165506906
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21925650255223367
+        gamma_in: -0.4438662593993727
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.481927710843372
+    performance:
+      power:
+        average_cycle_power: 23802.03974531454
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10012.74237130216
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1001.2742371302161
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.21846902409257968
+        gamma_in: -0.44227207580994443
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.566265060240962
+    performance:
+      power:
+        average_cycle_power: 23783.028579048452
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10070.240036983876
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1007.0240036983877
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21768718198181894
+        gamma_in: -0.44068930253250604
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.65060240963855
+    performance:
+      power:
+        average_cycle_power: 23763.954108025697
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10127.929162552058
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1012.7929162552058
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21691091592279055
+        gamma_in: -0.4391178175005511
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.734939759036145
+    performance:
+      power:
+        average_cycle_power: 23744.81633224627
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10185.809748006703
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1018.5809748006702
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21614016647534914
+        gamma_in: -0.43755750038252883
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.819277108433734
+    performance:
+      power:
+        average_cycle_power: 23725.615251710184
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10243.881793347808
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1024.3881793347807
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2153748750411926
+        gamma_in: -0.4360082325511288
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.903614457831324
+    performance:
+      power:
+        average_cycle_power: 23706.350866417433
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10302.145298575371
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1030.2145298575372
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21461498384901098
+        gamma_in: -0.4344698970532166
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 23.987951807228914
+    performance:
+      power:
+        average_cycle_power: 23687.023176368017
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10360.600263689394
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1036.0600263689396
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.21386043593994866
+        gamma_in: -0.43294237858040263
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.072289156626503
+    performance:
+      power:
+        average_cycle_power: 23667.632181561938
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10419.24668868988
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1041.924668868988
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21311117515337227
+        gamma_in: -0.43142556344023114
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.156626506024097
+    performance:
+      power:
+        average_cycle_power: 23648.17788199919
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10478.084573576827
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.00000000000001
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1047.808457357683
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -9.999999999999998
+      reel_factors:
+        gamma_out: 0.21236714611293656
+        gamma_in: -0.42991933952797085
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.240963855421686
+    performance:
+      power:
+        average_cycle_power: 23628.660277679774
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10537.113918350244
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1053.7113918350244
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21162829421294124
+        gamma_in: -0.4284235962989969
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.325301204819276
+    performance:
+      power:
+        average_cycle_power: 23609.079368603696
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10596.334723010114
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1059.6334723010114
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21089456560497166
+        gamma_in: -0.4269382247417443
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.409638554216865
+    performance:
+      power:
+        average_cycle_power: 23589.43515477095
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10655.74698755645
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1065.574698755645
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.21016590718481631
+        gamma_in: -0.425463117351225
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.493975903614455
+    performance:
+      power:
+        average_cycle_power: 23569.727636181542
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10715.350711989246
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1071.5350711989245
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.20944226657965462
+        gamma_in: -0.42399816810308993
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.57831325301205
+    performance:
+      power:
+        average_cycle_power: 23549.956812835466
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10775.145896308502
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1077.5145896308502
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.20872359213550873
+        gamma_in: -0.42254327242822637
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.662650602409638
+    performance:
+      power:
+        average_cycle_power: 23530.122684732723
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10835.132540514223
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1083.5132540514223
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2080098329049525
+        gamma_in: -0.42109832718787576
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.746987951807228
+    performance:
+      power:
+        average_cycle_power: 23510.225251873322
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10895.3106446064
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1089.53106446064
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.20730093863507196
+        gamma_in: -0.4196632306492608
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.831325301204817
+    performance:
+      power:
+        average_cycle_power: 23490.26451425725
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -10955.680208585043
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1095.5680208585043
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.20659685975567094
+        gamma_in: -0.4182378824617088
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 24.915662650602407
+    performance:
+      power:
+        average_cycle_power: 23470.240471884514
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -11016.241232450142
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1101.6241232450143
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.20589754736771654
+        gamma_in: -0.41682218363326007
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
+  - wind_speed: 25.0
+    performance:
+      power:
+        average_cycle_power: 23450.153124755114
+        average_reel_out_power: 40505.51901289339
+        average_reel_in_power: -11076.993716201712
+      timing:
+        reel_out_time: 76.92778850724366
+        reel_in_time: 38.0
+        cycle_time: 114.92778850724366
+      forces:
+        tether_force_out: 8200.0
+        tether_force_in: 1107.6993716201712
+      speeds:
+        reel_out_speed: 4.939697440596755
+        reel_in_speed: -10.0
+      reel_factors:
+        gamma_out: 0.2052029532320182
+        gamma_in: -0.4154160365077502
+      elevation_angles:
+        elevation_angle_out_rad: 0.5235987755982988
+        elevation_angle_in_rad: 1.3962634015954636
