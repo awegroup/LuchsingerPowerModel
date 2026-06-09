@@ -27,6 +27,22 @@ def _get_first_available(mapping, *keys):
     return None
 
 
+def _first_item(value):
+    """Return the first item from a list-like value, or the value itself."""
+    if isinstance(value, list):
+        return value[0] if value else {}
+    return value or {}
+
+
+def _get_component(components, singular_key, plural_key=None):
+    """Get a component from either legacy singular or awesIO list format."""
+    if plural_key:
+        component = _first_item(components.get(plural_key))
+        if component:
+            return component
+    return components.get(singular_key, {}) or {}
+
+
 def load_yaml(file_path):
     """Load a YAML file.
 
@@ -81,19 +97,34 @@ def load_system_config(file_path, validate_file=False):
     config = load_yaml(file_path)
     components = config.get('components', {})
 
-    # Wing parameters
-    wing = components.get('wing', {})
+    # Wing parameters. The current awesIO system schema nests the wing,
+    # bridle, and KCU under components.kites[0]; older local configs kept
+    # those components flat under components.wing/control_system.
+    kite = _get_component(components, 'kite', 'kites')
+    wing = kite.get('wing') or components.get('wing', {})
     wing_structure = wing.get('structure', {})
 
     # Tether parameters
-    tether = components.get('tether', {})
+    tether = _get_component(components, 'tether', 'tethers')
     tether_structure = tether.get('structure', {})
 
     # Ground station parameters
-    ground_station = components.get('ground_station', {})
-    drum = ground_station.get('drum', {})
-    generator = ground_station.get('generator', {})
-    storage = ground_station.get('storage', {})
+    ground_station = _get_component(
+        components,
+        'ground_station',
+        'ground_stations',
+    )
+    drum = _first_item(ground_station.get('drums')) or ground_station.get(
+        'drum',
+        {},
+    )
+    generator = _first_item(
+        ground_station.get('generators')
+    ) or ground_station.get('generator', {})
+    storage = _first_item(ground_station.get('storages')) or ground_station.get(
+        'storage',
+        {},
+    )
 
     nominal_generator_power = _get_first_available(
         generator,
