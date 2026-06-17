@@ -98,12 +98,6 @@ The model implements a ground-based pumping kite system with two phases:
 1. **Reel-out phase**: Kite flies crosswind generating high tether force, pulling out the tether and driving the generator
 2. **Reel-in phase**: Kite is depowered, tether is reeled back in consuming energy from storage
 
-### Wind Shear
-
-The reeling length is divided into 20 equal segments. For each segment the average altitude is computed and the local wind speed is interpolated from the normalized wind shear profile, then scaled by the reference wind speed. All forces and energies are integrated over these segments.
-
-Nominal operating wind speeds (force limit, power limit) are recomputed for each wind profile before calculating the power curve.
-
 ### Operating Regions
 
 | Region | Description |
@@ -114,29 +108,16 @@ Nominal operating wind speeds (force limit, power limit) are recomputed for each
 
 ## Model Variants
 
-The simulation setting `settings.model` in `data/simulation_settings_config.yml` selects one of two model formulations:
+The simulation setting in `data/simulation_settings_config.yml` selects one of two model formulations:
 
 | Model key | Description |
 |-----------|-------------|
-| `luchsinger_original` | Original Luchsinger-style pumping-cycle formulation with reel-in force represented using a reel-in elevation angle term. |
-| `luchsinger_extended_const_lod_in` | Extended formulation with explicit lift-to-drag-based reel-in force treatment and tether drag contribution in reel-out force factor. |
-
-### 1) `luchsinger_original` [1]
-
-- Uses the classical reel-in apparent-wind expression that depends on `elevation_angle_in_deg`.
-- Reel-in force factor is based on drag during depowered reel-in.
-- Useful when reproducing or benchmarking against the original Luchsinger-style assumptions.
-
-### 2) `luchsinger_extended_const_lod_in` [2]
-
-- Uses an extended reel-in expression based on constant reel-in lift-to-drag ratio.
-- Includes tether drag effect in the reel-out force factor.
-- Does **not** use `elevation_angle_in_deg` in the reel-in force expression.
-- Useful when you want a more detailed aerodynamic reel-in treatment while keeping the same region-based control structure.
+| `luchsinger_original` | Original Luchsinger-style pumping-cycle formulation with reel-in force represented using a reel-in elevation angle term. For fixed wing kites.|
+| `luchsinger_extended_const_lod_in` | Extended formulation with explicit lift-to-drag-based reel-in force treatment and tether drag contribution in reel-out force factor. For soft wing kites.|
 
 ### Practical guidance
 
-- Keep all other inputs identical and change only `settings.model` to compare formulations.
+- Keep all other inputs identical and change only `model` to compare formulations.
 - The same three operating regions are used in both models; the main differences are in force-factor definitions and reel-in/reel-out aerodynamic expressions.
 - The comparison workflow in `scripts/plot_power_curves.py` is intended for side-by-side evaluation of outputs from the two model variants.
 
